@@ -7,7 +7,7 @@ using TutorScout24.ViewModels;
 
 namespace TutorScout24
 {
-    public partial class App : MvvmNanoApplication
+    public partial class App  :MvvmNanoApplication
     {
         public App()
         {
@@ -23,7 +23,7 @@ namespace TutorScout24
             SetUpMainPage<MasterDetailViewModel>();
         }
 
-        protected override IMvvmNanoIoCAdapter GetIoCAdapter()
+      protected override IMvvmNanoIoCAdapter GetIoCAdapter()
         {
             return new MvvmNanoNinjectAdapter();
         }

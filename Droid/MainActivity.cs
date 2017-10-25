@@ -23,8 +23,14 @@ namespace TutorScout24.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
+            try
+            {
+                LoadApplication(new App());
 
-            LoadApplication(new App());
+            }catch(Exception ex){
+                Console.WriteLine(ex);
+            }
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
