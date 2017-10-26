@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using MvvmNano.Forms;
 using Plugin.Geolocator;
+using TutorScout24.Services;
+using TutorScout24.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -13,14 +16,20 @@ namespace TutorScout24
         {
             InitializeComponent();
 
-            MoveMapsToMyLocation();
+            MoveMapToMyLocation();
         }
-
-        private async void MoveMapsToMyLocation(){
-            Plugin.Geolocator.Abstractions.Position p = await CrossGeolocator.Current.GetPositionAsync();
+        private async void MoveMapToMyLocation()
+        {
+            Debug.WriteLine("MoveMap");
+            Plugin.Geolocator.Abstractions.Position p = await LocationService.GetPosition();
             MyMap.MoveToRegion(
             MapSpan.FromCenterAndRadius(
-                    new Position(p.Latitude, p.Longitude), Distance.FromMiles(0.5)));
+                    new Xamarin.Forms.Maps.Position(p.Latitude, p.Longitude), Distance.FromMiles(0.5)));
+            Debug.WriteLine("MoveMap");
+
         }
+
+
+       
     }
 }

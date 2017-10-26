@@ -33,7 +33,7 @@
     <Compile Include="Pages\MasterDetailPage.cs" />
     <Compile Include="Services\RestService.cs" />
     <Compile Include="ViewModels\CurrentLocationWeatherViewModel.cs" />
-    <Compile Include="ViewModels\MenuDetailViewModel.cs" />
+    <Compile Include="ViewModels\MasterDetailViewModel.cs" />
     <Compile Include="ViewModels\SearchWeatherViewModel.cs" />
     <Compile Include="Pages\CurrentLocationWeatherPage.xaml.cs">
       <DependentUpon>CurrentLocationWeatherPage.xaml</DependentUpon>
@@ -44,6 +44,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\LocationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

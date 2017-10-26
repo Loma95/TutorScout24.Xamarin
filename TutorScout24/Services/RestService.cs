@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
+using TutorScout24.Services;
 
-namespace TutorScout24
+namespace TutorScout24.Services
 {
     public class RestService
     {
@@ -35,9 +36,9 @@ namespace TutorScout24
         /// </summary>
         /// <returns>The weather for current location.</returns>
         public async Task<RootWeather> GetWeatherForCurrentLocation(){
-            Position p = await CrossGeolocator.Current.GetPositionAsync();
+            Plugin.Geolocator.Abstractions.Position p = await LocationService.GetPosition();
+            Debug.WriteLine(p.Latitude);
             RestUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+ p.Latitude + "&lon="+ p.Longitude +"&appid=d3d7a0ec7620eb0ba79308afb2e25b6a&units=metric";
-            Debug.WriteLine(RestUrl);
             return await GetWeather();
         }
 
