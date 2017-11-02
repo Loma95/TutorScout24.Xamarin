@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using TutorScout24.ViewModels;
 using Xamarin.Forms;
 
 namespace TutorScout24
@@ -9,7 +9,10 @@ namespace TutorScout24
     {
         public SearchWeatherPage()
         {
+         
             InitializeComponent();
+           
+      
         }
     }
 }

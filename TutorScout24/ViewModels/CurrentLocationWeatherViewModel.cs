@@ -22,8 +22,6 @@ namespace TutorScout24.ViewModels
 
         }
 
-   
-
         private RootWeather _weather;
         public RootWeather Weather
         {
@@ -37,6 +35,9 @@ namespace TutorScout24.ViewModels
         }
 
        
+        /// <summary>
+        /// Gets the weather json.
+        /// </summary>
         private async void getWeatherJSON()
         {
             RestService service = new RestService();

@@ -8,6 +8,7 @@ namespace TutorScout24.ViewModels
     {
         public SearchWeatherViewModel()
         {
+            
             getWeatherJSON();
         }
 
@@ -34,11 +35,12 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets the weather json.
+        /// </summary>
         private async void getWeatherJSON()
         {
             RestService service = new RestService();
-
-
             Weather = await service.GetWeatherForCity(Input);
 
         }
