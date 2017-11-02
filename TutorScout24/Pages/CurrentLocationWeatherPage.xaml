@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+    xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     x:TypeArguments="viewModels1:CurrentLocationWeatherViewModel"   x:Class="TutorScout24.CurrentLocationWeatherPage" >
     <forms:MvvmNanoContentPage.Content>
@@ -13,10 +14,11 @@
                   </Grid.RowDefinitions>
                 <Label Grid.Row="0" TextColor="Black" Text="{Binding Weather.name}" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
                 <Label Grid.Row="1" TextColor="Black" FontSize="20" Text="{Binding Weather.main.temp}" HorizontalTextAlignment="Center" />
-            <maps:Map Grid.Row="2" WidthRequest="320" HeightRequest="200"
+            <controls:CustomMap Grid.Row="2" WidthRequest="320" HeightRequest="200"
             x:Name="MyMap"
             IsShowingUser="true"
             MapType="Hybrid"
+            Position="{Binding Position}"
         />
             </Grid>
       

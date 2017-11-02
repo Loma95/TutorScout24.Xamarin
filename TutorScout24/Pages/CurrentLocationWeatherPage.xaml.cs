@@ -16,12 +16,12 @@ namespace TutorScout24
         {
             InitializeComponent();
 
-            MoveMapToMyLocation();
+            //MoveMapToMyLocation();
         }
         private async void MoveMapToMyLocation()
         {
             Debug.WriteLine("MoveMap");
-            Plugin.Geolocator.Abstractions.Position p = await LocationService.GetPosition();
+            Plugin.Geolocator.Abstractions.Position p = await LocationService.getInstance().GetPosition();
             MyMap.MoveToRegion(
             MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(p.Latitude, p.Longitude), Distance.FromMiles(0.5)));
