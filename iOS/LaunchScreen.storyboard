@@ -24,4 +24,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Marker" width="26" height="26"/>
+    </resources>
 </document>

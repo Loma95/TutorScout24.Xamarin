@@ -23,8 +23,6 @@ namespace TutorScout24.ViewModels
 
         }
 
-   
-
         private RootWeather _weather;
         public RootWeather Weather
         {
@@ -48,7 +46,6 @@ namespace TutorScout24.ViewModels
 
             }
         }
-
 
         private async void getWeatherJSON()
         {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms:MvvmNanoDefaultMasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="clr-namespace:MvvmNano.Forms.MasterDetail;assembly=MvvmNano.Forms.MasterDetail" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+  
+    x:TypeArguments="viewModels1:MasterDetailViewModel" x:Class="TutorScout24.Pages.MasterDetailPage">
+	<forms:MvvmNanoDefaultMasterDetailPage.Master>
+        
+    </forms:MvvmNanoDefaultMasterDetailPage.Master>
+    <forms:MvvmNanoDefaultMasterDetailPage.Detail >
+       
+         
+       
+    </forms:MvvmNanoDefaultMasterDetailPage.Detail>
+</forms:MvvmNanoDefaultMasterDetailPage>
