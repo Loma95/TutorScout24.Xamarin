@@ -45,8 +45,8 @@
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>New Entry</string>
+	<string>Berechtigung zum Benutzen des GPS</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>New Entry</string>
+	<string>Berechtigung zum Benutzen des GPS</string>
 </dict>
 </plist>
