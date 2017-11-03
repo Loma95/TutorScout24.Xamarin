@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="CustomData\CustomMasterDetailData.cs" />
     <Compile Include="CustomData\ActionButton.cs" />
+    <Compile Include="GPSMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

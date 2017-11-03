@@ -6,15 +6,21 @@ using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms.Maps;
 using TutorScout24.Services;
+using Xamarin.Forms;
+using MvvmNano;
 
 namespace TutorScout24.ViewModels
 {
 
     public class CurrentLocationWeatherViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>
     {
+        private readonly IMessenger _messenger;
+        private int count = 0;
 
         public CurrentLocationWeatherViewModel()
         {
+            _messenger = MvvmNanoIoC.Resolve<IMessenger>();
+
 
 
             getWeatherJSON();
@@ -23,6 +29,34 @@ namespace TutorScout24.ViewModels
 
         }
 
+        private bool _hasData;
+        public bool HasData
+        {
+            get { return _hasData; }
+            set
+            {
+                _hasData = value;
+             
+                NotifyPropertyChanged("HasData");
+
+            }
+        }
+       
+
+        private bool _searchingGPS;
+        public bool SearchingGPS
+        {
+            get { return _searchingGPS; }
+            set
+            {
+                _searchingGPS = value;
+             
+                NotifyPropertyChanged("SearchingGPS");
+
+            }
+        }
+       
+
         private RootWeather _weather;
         public RootWeather Weather
         {
@@ -30,6 +64,7 @@ namespace TutorScout24.ViewModels
             set
             {
                 _weather = value;
+                Debug.WriteLine(value.name);
                 NotifyPropertyChanged("Weather");
 
             }
@@ -47,21 +82,24 @@ namespace TutorScout24.ViewModels
             }
         }
 
+      
+
         private async void getWeatherJSON()
         {
             RestService service = new RestService();
-            Debug.WriteLine("requestWeather");
             Weather = await service.GetWeatherForCurrentLocation();
-            Debug.WriteLine("gotWeather");
+            HasData = true;
 
 
         }
         private async void getFirstPosition()
         {
+            SearchingGPS = true;
             LocationService service = LocationService.getInstance();
             Plugin.Geolocator.Abstractions.Position p = await service.GetPosition();
             Position = new Xamarin.Forms.Maps.Position(p.Latitude, p.Longitude);
             service.Subscribe(this);
+            SearchingGPS = false;
         }
 
         public void OnCompleted()
@@ -77,6 +115,8 @@ namespace TutorScout24.ViewModels
         public void OnNext(Plugin.Geolocator.Abstractions.Position value)
         {
             Position = new Xamarin.Forms.Maps.Position(value.Latitude, value.Longitude);
+            getWeatherJSON();
+
         }
     }
 }

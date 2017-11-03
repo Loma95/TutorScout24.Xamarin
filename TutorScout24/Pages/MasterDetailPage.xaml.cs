@@ -7,6 +7,7 @@ using System.Diagnostics;
 using NControl.Abstractions;
 using NGraphics;
 using TutorScout24.CustomData;
+using MvvmNano;
 
 namespace TutorScout24.Pages
 {
@@ -20,6 +21,11 @@ namespace TutorScout24.Pages
             AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-marker.png")));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
 
+
+            MvvmNanoIoC.Resolve<IMessenger>().Subscribe<GPSMessage>(this, (object arg1, GPSMessage arg2) =>
+            {
+                DisplayAlert("Button clicked" , "clicked","ok");
+            });
         }
 
 
@@ -122,6 +128,11 @@ namespace TutorScout24.Pages
 
             };
             this.ToolbarItems.Add(SwitchItem);
+
+            SwitchItem.Clicked += (o, i) =>
+            {
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new GPSMessage("test"));
+            };
         }
 
         /// <summary>
@@ -132,16 +143,6 @@ namespace TutorScout24.Pages
         {
             AddToggleButtonToToolBar();
 
-           // AddToLayoutWithConstraints(profileImage,0,0,_headerLayout);
-
-
-            var t = new NControlView
-            {
-                DrawingFunction = (canvas, rect) => {
-                    canvas.DrawLine(rect.Left, rect.Top, rect.Width, rect.Height, NGraphics.Colors.Red);
-                    canvas.DrawLine(rect.Width, rect.Top, rect.Left, rect.Height, NGraphics.Colors.Yellow);
-                }
-            };
             AddToLayoutWithConstraints(profileImage,0,0,_headerLayout);
             DetailListView.Header = _headerLayout;
 

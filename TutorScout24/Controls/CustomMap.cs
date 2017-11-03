@@ -21,12 +21,26 @@ namespace TutorScout24.Controls
             set { _position = value; }
         }
 
+
+
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var map = (CustomMap)bindable;
             var newPos = (Position)newValue;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(newPos.Latitude, newPos.Longitude), Distance.FromMiles(0.5)));
+            AddLocationAsPin(map, newPos);
+        }
+
+        private static void AddLocationAsPin(CustomMap map, Position newPos)
+        {
+            var pin = new Pin()
+            {
+                Position = new Position(newPos.Latitude, newPos.Longitude),
+                Label = newPos.Latitude + " " + newPos.Longitude
+            };
+            map.Pins.Clear();
+            map.Pins.Add(pin);
         }
     }
 }

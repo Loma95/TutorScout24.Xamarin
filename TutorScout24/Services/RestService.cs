@@ -39,7 +39,6 @@ namespace TutorScout24.Services
         public async Task<RootWeather> GetWeatherForCurrentLocation(){
             service = LocationService.getInstance();
             Plugin.Geolocator.Abstractions.Position p = await service.GetPosition();
-            Debug.WriteLine(p.Latitude);
             RestUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+ p.Latitude + "&lon="+ p.Longitude +"&appid=d3d7a0ec7620eb0ba79308afb2e25b6a&units=metric";
             return await GetWeather();
         }

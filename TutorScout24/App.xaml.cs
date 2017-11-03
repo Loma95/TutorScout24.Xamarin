@@ -7,12 +7,13 @@ using TutorScout24.ViewModels;
 
 namespace TutorScout24
 {
-    public partial class App  :MvvmNanoApplication
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
-
+            MvvmNanoIoC.SetUp(GetIoCAdapter());
+            SetupDependencies();
 
         }
         protected override void OnStart()
@@ -25,7 +26,12 @@ namespace TutorScout24
 
       protected override IMvvmNanoIoCAdapter GetIoCAdapter()
         {
+            
             return new MvvmNanoNinjectAdapter();
+        }
+         
+        private static void SetupDependencies(){
+            MvvmNanoIoC.Register<IMessenger,MvvmNano.Forms.MvvmNanoFormsMessenger>();
         }
 
     }

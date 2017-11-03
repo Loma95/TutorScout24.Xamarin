@@ -35,13 +35,12 @@ namespace TutorScout24.Services
                 pos = await CrossGeolocator.Current.GetPositionAsync();
                 if (pos == null)
                 {
+                    Debug.WriteLine("Use Last Known Location");
                     pos = await CrossGeolocator.Current.GetLastKnownLocationAsync();
                 }
                 await StartListening();
-                //new LocationService();
             }
 
-            Debug.WriteLine(pos.Latitude);  
             return pos;
         }
 
@@ -71,7 +70,7 @@ namespace TutorScout24.Services
               output += "\n" + $"Accuracy: {position.Accuracy}";
               output += "\n" + $"Altitude: {position.Altitude}";
               output += "\n" + $"Altitude Accuracy: {position.AltitudeAccuracy}";
-              Debug.WriteLine(output);
+              pos = position;
             foreach(var obs in observers)
             {
                 obs.OnNext(position);
@@ -97,6 +96,7 @@ namespace TutorScout24.Services
 
         public IDisposable Subscribe(IObserver<Position> observer)
         {
+
             observers.Add(observer);
             return null;
         }
