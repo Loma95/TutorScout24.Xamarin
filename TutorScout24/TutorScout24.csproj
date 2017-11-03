@@ -51,6 +51,8 @@
     <Compile Include="CustomData\CustomMasterDetailData.cs" />
     <Compile Include="CustomData\ActionButton.cs" />
     <Compile Include="GPSMessage.cs" />
+    <Compile Include="Services\TutorScoutRestService.cs" />
+    <Compile Include="Models\UserInfos.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

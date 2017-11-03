@@ -4,6 +4,7 @@ using MvvmNano.Forms;
 using MvvmNano;
 using MvvmNano.Ninject;
 using TutorScout24.ViewModels;
+using TutorScout24.Services;
 
 namespace TutorScout24
 {
@@ -32,6 +33,7 @@ namespace TutorScout24
          
         private static void SetupDependencies(){
             MvvmNanoIoC.Register<IMessenger,MvvmNano.Forms.MvvmNanoFormsMessenger>();
+            MvvmNanoIoC.Register<TutorScoutRestService,TutorScoutRestService>();
         }
 
     }

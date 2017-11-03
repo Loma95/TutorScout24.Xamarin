@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using MvvmNano;
+using TutorScout24.Models;
 using TutorScout24.Services;
 
 namespace TutorScout24.ViewModels
@@ -8,8 +10,15 @@ namespace TutorScout24.ViewModels
     {
         public SearchWeatherViewModel()
         {
-            
-            getWeatherJSON();
+
+            GetUserInfo();
+
+        }
+
+
+        private async void GetUserInfo(){
+            UserInfos userI = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo();
+            Debug.WriteLine("UserCount " + userI.UserCount);
         }
 
         private RootWeather _weather;
