@@ -159,7 +159,9 @@ namespace TutorScout24.Pages
         {
             AddToggleButtonToToolBar();
 
-            AddToLayoutWithConstraints(profileImage,0,0,_headerLayout);
+            AddToLayoutWithConstraints(profileImage, 0, 0, _headerLayout);
+            DetailListView.Header = _headerLayout;
+
 
             //Call base Constructor and set MasterPage Title
             Page p = base.CreateMasterPage();
