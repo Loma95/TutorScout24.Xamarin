@@ -8,6 +8,10 @@ using NControl.Abstractions;
 using NGraphics;
 using TutorScout24.CustomData;
 using MvvmNano;
+using TutorScout24.Controls;
+using TutorScout24.Models;
+using TutorScout24.Services;
+using System.Threading.Tasks;
 
 namespace TutorScout24.Pages
 {
@@ -18,18 +22,18 @@ namespace TutorScout24.Pages
         {
             InitializeComponent();
 
+           
             AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-marker.png")));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
 
 
-            MvvmNanoIoC.Resolve<IMessenger>().Subscribe<GPSMessage>(this, (object arg1, GPSMessage arg2) =>
+            MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, async (object arg1, DialogMessage arg2) =>
             {
-                DisplayAlert("Button clicked" , "clicked","ok");
+                DisplayAlert("Alert",arg2.Text,"ok");
             });
         }
 
 
-        //TODO: Use NGraphics
 
         private RelativeLayout _headerLayout = new RelativeLayout
         {
@@ -43,6 +47,17 @@ namespace TutorScout24.Pages
             HorizontalOptions = LayoutOptions.Center,
             Source = ImageSource.FromResource("TutorScout24.Resources.Placeholder_person.png")
         };
+
+
+        /// <summary>
+        /// Gets the user info.
+        /// </summary>
+        private async Task<UserInfos> GetUserInfo()
+        {
+            return await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo();
+
+        }
+
 
 
 
@@ -129,9 +144,10 @@ namespace TutorScout24.Pages
             };
             this.ToolbarItems.Add(SwitchItem);
 
-            SwitchItem.Clicked += (o, i) =>
+            SwitchItem.Clicked += async (o, i) =>
             {
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new GPSMessage("test"));
+                UserInfos userI = await GetUserInfo();
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
             };
         }
 
@@ -144,10 +160,11 @@ namespace TutorScout24.Pages
             AddToggleButtonToToolBar();
 
             AddToLayoutWithConstraints(profileImage,0,0,_headerLayout);
-            DetailListView.Header = _headerLayout;
 
             //Call base Constructor and set MasterPage Title
             Page p = base.CreateMasterPage();
+
+     
             //this title is the name of the IOS Button
             p.Title = "Menü";
             return p;

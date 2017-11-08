@@ -2,7 +2,7 @@
 using MvvmNano.Forms.MasterDetail;
 using Xamarin.Forms;
 
-namespace TutorScout24
+namespace TutorScout24.CustomData
 {
     public class CustomMasterDetailData : MvvmNanoMasterDetailData
     {

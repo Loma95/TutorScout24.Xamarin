@@ -1,7 +1,7 @@
 ﻿using System;
 namespace TutorScout24
 {
-    public class GPSMessage:MvvmNano.IMessage
+    public class DialogMessage:MvvmNano.IMessage
     {
         public string Text
         {
@@ -10,7 +10,7 @@ namespace TutorScout24
         }
 
        
-        public GPSMessage(string text)
+        public DialogMessage(string text)
         {
             this.Text = text;
 

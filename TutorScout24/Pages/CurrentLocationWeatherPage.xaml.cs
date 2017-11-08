@@ -24,7 +24,6 @@ namespace TutorScout24
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MvvmNanoIoC.Resolve<IMessenger>().Unsubscribe<GPSMessage>(this);
         }
 
 

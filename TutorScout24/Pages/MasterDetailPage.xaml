@@ -7,8 +7,7 @@
         
     </forms:MvvmNanoDefaultMasterDetailPage.Master>
     <forms:MvvmNanoDefaultMasterDetailPage.Detail >
-       
-         
+
        
     </forms:MvvmNanoDefaultMasterDetailPage.Detail>
 </forms:MvvmNanoDefaultMasterDetailPage>

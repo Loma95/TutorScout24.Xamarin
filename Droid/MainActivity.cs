@@ -9,6 +9,7 @@ using Android.Widget;
 using Android.OS;
 using TutorScout24;
 using Plugin.Permissions;
+using NControl.Droid;
 
 namespace TutorScout24.Droid
 {
@@ -24,6 +25,8 @@ namespace TutorScout24.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
+
+            NControlViewRenderer.Init();
             try
             {
                 LoadApplication(new App());
