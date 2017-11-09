@@ -25,6 +25,8 @@ namespace TutorScout24.Pages
            
             AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-marker.png")));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
+            AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
+            AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
                 DisplayAlert("Alert", arg2.Text, "ok");
@@ -148,7 +150,7 @@ namespace TutorScout24.Pages
         /// </summary>
         private void AddToggleButtonToToolBar(){
 
-            MySwitch switchI = new MySwitch();
+           /* MySwitch switchI = new MySwitch();
            
             this.ToolbarItems.Add(switchI);
          
@@ -157,7 +159,7 @@ namespace TutorScout24.Pages
             {
                 UserInfos userI = await GetUserInfo();
                 MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
-            };
+            };*/
 
         }
 
