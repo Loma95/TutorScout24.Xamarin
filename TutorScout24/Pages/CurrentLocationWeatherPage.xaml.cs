@@ -21,11 +21,6 @@ namespace TutorScout24
            
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
-
 
     }
 }

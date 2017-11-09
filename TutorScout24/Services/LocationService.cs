@@ -33,6 +33,7 @@ namespace TutorScout24.Services
             if (pos == null)
             {
                 pos = await CrossGeolocator.Current.GetPositionAsync();
+                Debug.WriteLine(pos.Latitude);
                 if (pos == null)
                 {
                     Debug.WriteLine("Use Last Known Location");
@@ -43,9 +44,6 @@ namespace TutorScout24.Services
 
             return pos;
         }
-
-        //TODO:update Position on change
-
 
           async Task StartListening()
           {

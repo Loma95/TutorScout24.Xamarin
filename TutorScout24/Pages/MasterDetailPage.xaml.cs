@@ -8,10 +8,10 @@ using NControl.Abstractions;
 using NGraphics;
 using TutorScout24.CustomData;
 using MvvmNano;
-using TutorScout24.Controls;
 using TutorScout24.Models;
 using TutorScout24.Services;
 using System.Threading.Tasks;
+using TutorScout24.Controls;
 
 namespace TutorScout24.Pages
 {
@@ -25,13 +25,22 @@ namespace TutorScout24.Pages
            
             AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-marker.png")));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
-
-
-            MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, async (object arg1, DialogMessage arg2) =>
+            MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
-                DisplayAlert("Alert",arg2.Text,"ok");
+                DisplayAlert("Alert", arg2.Text, "ok");
             });
+
+           
         }
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MvvmNanoIoC.Resolve<IMessenger>().Unsubscribe<DialogMessage>(this);
+        }
+
+
 
 
 
@@ -132,23 +141,24 @@ namespace TutorScout24.Pages
                 }));
         }
 
+
+
         /// <summary>
         /// Adds the toggle button to tool bar.
         /// </summary>
         private void AddToggleButtonToToolBar(){
-            var SwitchItem = new ToolbarItem
-            {
-                Text = "Switch Mode",
-                Order = ToolbarItemOrder.Primary
 
-            };
-            this.ToolbarItems.Add(SwitchItem);
+            MySwitch switchI = new MySwitch();
+           
+            this.ToolbarItems.Add(switchI);
+         
 
-            SwitchItem.Clicked += async (o, i) =>
+            switchI.Clicked += async (o, i) =>
             {
                 UserInfos userI = await GetUserInfo();
                 MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
             };
+
         }
 
         /// <summary>

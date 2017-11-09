@@ -14,14 +14,14 @@ namespace TutorScout24.Controls
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(CustomMap),
             new Position(0,0), propertyChanged: OnPropertyChanged);
 
+
+
         private Position _position;
         public Position Position
         {
             get { return _position; }
             set { _position = value; }
         }
-
-
 
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

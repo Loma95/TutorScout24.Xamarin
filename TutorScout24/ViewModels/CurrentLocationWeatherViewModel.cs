@@ -15,13 +15,10 @@ namespace TutorScout24.ViewModels
     public class CurrentLocationWeatherViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>
     {
         private readonly IMessenger _messenger;
-        private int count = 0;
 
         public CurrentLocationWeatherViewModel()
         {
             _messenger = MvvmNanoIoC.Resolve<IMessenger>();
-
-
 
             getWeatherJSON();
             getFirstPosition();
@@ -44,14 +41,14 @@ namespace TutorScout24.ViewModels
        
 
         private bool _searchingGPS;
-        public bool SearchingGPS
+        public bool Loads
         {
             get { return _searchingGPS; }
             set
             {
                 _searchingGPS = value;
              
-                NotifyPropertyChanged("SearchingGPS");
+                NotifyPropertyChanged("Loads");
 
             }
         }
@@ -94,12 +91,12 @@ namespace TutorScout24.ViewModels
         }
         private async void getFirstPosition()
         {
-            SearchingGPS = true;
+            Loads = true;
             LocationService service = LocationService.getInstance();
             Plugin.Geolocator.Abstractions.Position p = await service.GetPosition();
             Position = new Xamarin.Forms.Maps.Position(p.Latitude, p.Longitude);
             service.Subscribe(this);
-            SearchingGPS = false;
+            Loads = false;
         }
 
         public void OnCompleted()
