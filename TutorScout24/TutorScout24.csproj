@@ -37,10 +37,10 @@
     <Compile Include="Pages\CurrentLocationWeatherPage.xaml.cs">
       <DependentUpon>CurrentLocationWeatherPage.xaml</DependentUpon>
     </Compile>
-     <Compile Include="Pages\ProfilePage.xaml.cs">
+    <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-      <Compile Include="Pages\TutorialsPage.xaml.cs">
+    <Compile Include="Pages\TutorialsPage.xaml.cs">
       <DependentUpon>TutorialsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SearchWeatherPage.xaml.cs">
@@ -50,8 +50,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\LocationService.cs" />
-      <Compile Include="ViewModels\ProfileViewModel.cs" />
-        <Compile Include="ViewModels\TutorialsViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\TutorialsViewModel.cs" />
     <Compile Include="ViewModels\MasterDetailViewModel.cs" />
     <Compile Include="Pages\MasterDetailPage.xaml.cs">
       <DependentUpon>MasterDetailPage.xaml</DependentUpon>
@@ -135,8 +135,11 @@
     <EmbeddedResource Include="Resources\icons8-switch-on-filled.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="CustomData\" />
+    <EmbeddedResource Include="Resources\icons8-customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icons8-activity-feed.png" />
+    <EmbeddedResource Include="Resources\icons8-classroom.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

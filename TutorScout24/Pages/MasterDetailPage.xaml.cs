@@ -23,10 +23,10 @@ namespace TutorScout24.Pages
             InitializeComponent();
 
            
-            AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-marker.png")));
+            AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-activity-feed.png")));
+            AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", ImageSource.FromResource("TutorScout24.Resources.icons8-classroom.png")));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
-            AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
-            AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
+            AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", ImageSource.FromResource("TutorScout24.Resources.icons8-customer.png")));
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
                 DisplayAlert("Alert", arg2.Text, "ok");
