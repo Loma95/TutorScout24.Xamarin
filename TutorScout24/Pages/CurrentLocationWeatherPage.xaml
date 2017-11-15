@@ -2,6 +2,7 @@
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
     xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+    ControlTemplate="{StaticResource FloatingActionTemplate}"
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     x:TypeArguments="viewModels1:CurrentLocationWeatherViewModel"   x:Class="TutorScout24.CurrentLocationWeatherPage" >
     <forms:MvvmNanoContentPage.Content>

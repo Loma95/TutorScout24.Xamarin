@@ -44,9 +44,15 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Berechtigung zum Benutzen des GPS</string>
+	<key>UIAppFonts</key>
+   <array>
+      <string>fontawesome.ttf</string>
+   </array>
+		<key>NSLocationAlwaysUsageDescription</key>
+	<string>New Entry</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Berechtigung zum Benutzen des GPS</string>
+	<string>New Entry</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This app needs access location when open and in the background.</string>
 </dict>
 </plist>

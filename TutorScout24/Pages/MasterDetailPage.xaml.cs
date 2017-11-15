@@ -23,10 +23,10 @@ namespace TutorScout24.Pages
             InitializeComponent();
 
            
-            AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", ImageSource.FromResource("TutorScout24.Resources.icons8-activity-feed.png")));
-            AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", ImageSource.FromResource("TutorScout24.Resources.icons8-classroom.png")));
-            AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten", ImageSource.FromResource("TutorScout24.Resources.icons8-message.png")));
-            AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", ImageSource.FromResource("TutorScout24.Resources.icons8-customer.png")));
+            AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
+            AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", "\xf212"));
+            AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten","\xf0e0"));
+            AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", "\xf007"));
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
                 DisplayAlert("Alert", arg2.Text, "ok");
@@ -99,16 +99,17 @@ namespace TutorScout24.Pages
                 };
 
                 //icon for each cell
-                Image detailImage = new Image
+                Label detailImage = new Label
                 {
                     VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.StartAndExpand
+                    HorizontalOptions = LayoutOptions.StartAndExpand,
+                    FontFamily ="fontawesome"
                 };
 
 
                 //Bind the values from CustomMasterDetailData to the views
                 titleLabel.SetBinding(Label.TextProperty, nameof(CustomMasterDetailData.Title));
-                detailImage.SetBinding(Image.SourceProperty, nameof(CustomMasterDetailData.Source));
+                detailImage.SetBinding(Label.TextProperty, nameof(CustomMasterDetailData.ImageCode));
 
                 //fill the RelativeLayout with the views
                 AddToLayoutWithConstraints(detailImage,20,0,relLayout);
@@ -150,7 +151,10 @@ namespace TutorScout24.Pages
         /// </summary>
         private void AddToggleButtonToToolBar(){
 
-           /* MySwitch switchI = new MySwitch();
+            ToolbarItem switchI = new ToolbarItem
+            {
+                Text = "\uf073"
+            };
            
             this.ToolbarItems.Add(switchI);
          
@@ -159,7 +163,7 @@ namespace TutorScout24.Pages
             {
                 UserInfos userI = await GetUserInfo();
                 MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
-            };*/
+            };
 
         }
 

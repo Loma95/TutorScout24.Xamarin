@@ -8,6 +8,8 @@ using Xamarin.Forms.Maps;
 using TutorScout24.Services;
 using Xamarin.Forms;
 using MvvmNano;
+using System.Windows.Input;
+using TutorScout24.Models;
 
 namespace TutorScout24.ViewModels
 {
@@ -108,6 +110,34 @@ namespace TutorScout24.ViewModels
         {
             
         }
+
+
+        public ICommand FabCommand
+        {
+            get { return new Command(CreateUser); }
+
+        }
+
+
+        private async void CreateUser()
+        {
+            User usr = new User();
+            usr.age = 11;
+            usr.email = "test@dhbw.de";
+            usr.firstName = "Swagger";
+            usr.lastName = "IO";
+            usr.gender = "female";
+            usr.password = "passwort";
+            usr.maxGraduation = "Bachelor";
+            usr.note = "hi";
+            usr.placeOfResidence = "Stuggi";
+            usr.userName = "YoloSwagger";
+            string response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));
+        }
+
+
 
         public void OnNext(Plugin.Geolocator.Abstractions.Position value)
         {

@@ -8,15 +8,15 @@ namespace TutorScout24.CustomData
     {
       
 
-        public ImageSource Source
+        public string ImageCode
         {
             get;
             set;
         }
            
-        public CustomMasterDetailData(string title, ImageSource detailImageSource) : base(title)
+        public CustomMasterDetailData(string title, string imageCode) : base(title)
         {
-            Source = detailImageSource;
+            ImageCode = imageCode;
             Title = title;
 
         }

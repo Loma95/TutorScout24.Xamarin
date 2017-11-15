@@ -8,7 +8,7 @@
 
         <!-- Application resource dictionary -->
         <ResourceDictionary>
-        <ControlTemplate x:Key="TealTemplate">
+        <ControlTemplate x:Key="FloatingActionTemplate">
                 <Grid>
                     <Grid.RowDefinitions>
                          <RowDefinition Height="*" />
@@ -17,7 +17,7 @@
                     </Grid.RowDefinitions>
                 
                     <ContentPresenter Grid.Row="0" Grid.RowSpan="2"/>
-                    <fab:CircularButtonControl VerticalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50" HorizontalOptions="CenterAndExpand" BindingContext="{TemplateBinding BindingContext}" Command="{TemplateBinding BindingContext.FabCommand}" Grid.Row="1"></fab:CircularButtonControl>
+                    <fab:CircularButtonControl VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" BindingContext="{TemplateBinding BindingContext}" Command="{TemplateBinding BindingContext.FabCommand}" Grid.Row="1"></fab:CircularButtonControl>
 
                 </Grid>
             </ControlTemplate>
