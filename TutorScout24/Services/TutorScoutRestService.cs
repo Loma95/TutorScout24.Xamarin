@@ -4,6 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TutorScout24.Models;
+using System.Collections.Generic;
+using System.Reflection;
+using System.IO;
+using System.Diagnostics;
 
 namespace TutorScout24.Services
 {
@@ -49,6 +53,25 @@ namespace TutorScout24.Services
             }else{
                 return null;
             }
+        }
+
+        public List<Tutoring> GetTutorings()
+        {
+            var assembly = typeof(TutorScout24.App).GetTypeInfo().Assembly;
+                
+             Stream stream = assembly.GetManifestResourceStream("TutorScout24.MockData.TutoringData.json");
+           
+             string text = "";
+
+             using (var reader = new System.IO.StreamReader(stream))
+             {
+                 text = reader.ReadToEnd();
+             }
+
+            Debug.WriteLine(text);
+           var list = JsonConvert.DeserializeObject<List<Tutoring>>(text);
+        
+            return list;
         }
     }
 }

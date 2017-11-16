@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<forms:MvvmNanoTabbedPage   xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
+    xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+    xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+    x:TypeArguments="viewModels1:FeedTabViewModel" x:Class="TutorScout24.Pages.FeedTabPage"
+    xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
+</forms:MvvmNanoTabbedPage >
+

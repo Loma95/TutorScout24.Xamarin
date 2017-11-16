@@ -14,17 +14,37 @@ namespace TutorScout24.ViewModels
 
         public SearchWeatherViewModel()
         {
-
-
-
-
+            var tutServ =  MvvmNanoIoC.Resolve<TutorScoutRestService>();
+            _tut = tutServ.GetTutorings().ToArray();
 
         }
 
 
+        private Xamarin.Forms.Maps.Position _pos;
+        public Xamarin.Forms.Maps.Position Position
+        {
+            get { return _pos; }
+            set
+            {
+                _pos = value;
+                NotifyPropertyChanged("Position");
+
+            }
+        }
+
+        private Tutoring[] _tut;
+        public Tutoring[] tutorings
+        {
+            get { return _tut; }
+            set
+            {
+                _tut = value;
+                NotifyPropertyChanged("Tutorings");
+
+            }
+        }
 
 
-      
         private RootWeather _weather;
 
         private string _input;

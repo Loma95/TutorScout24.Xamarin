@@ -24,8 +24,10 @@ namespace TutorScout24.Droid
         {
 
             base.OnCreate(bundle);
+           TabLayoutResource = Resource.Layout.Tabbar;
+           ToolbarResource = Resource.Layout.Toolbar;
 
-      
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 

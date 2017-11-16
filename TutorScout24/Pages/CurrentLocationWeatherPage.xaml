@@ -6,23 +6,22 @@
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     x:TypeArguments="viewModels1:CurrentLocationWeatherViewModel"   x:Class="TutorScout24.CurrentLocationWeatherPage" >
     <forms:MvvmNanoContentPage.Content>
-      
-            <Grid >
-                <Grid.RowDefinitions>
-                <RowDefinition  Height="80"></RowDefinition>
-                <RowDefinition Height="60"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                  </Grid.RowDefinitions>
-                <Label Grid.Row="0" TextColor="Black" IsVisible="{Binding HasData}" Text="{Binding Weather.name,Mode = TwoWay}" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
-                <Label Grid.Row="1" TextColor="Black" IsVisible="{Binding HasData}" FontSize="20" Text="{Binding Weather.main.temp}" HorizontalTextAlignment="Center" />
-            <ActivityIndicator Grid.Row="0"  Color="Gray" IsVisible="{Binding Loads}" IsRunning="true" ></ActivityIndicator>
-            <controls:CustomMap Grid.Row="2" WidthRequest="320" HeightRequest="200"
-            x:Name="MyMap"
-            IsShowingUser="true"
-            MapType="Hybrid"
-            Position="{Binding Position}"
+      <Grid >
+        <Grid.RowDefinitions>
+          <RowDefinition  Height="80"></RowDefinition>
+          <RowDefinition Height="60"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" TextColor="Black" IsVisible="{Binding HasData}" Text="{Binding Weather.name,Mode = TwoWay}" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
+        <Label Grid.Row="1" TextColor="Black" IsVisible="{Binding HasData}" FontSize="20" Text="{Binding Weather.main.temp}" HorizontalTextAlignment="Center" />
+        <ActivityIndicator Grid.Row="0"  Color="Gray" IsVisible="{Binding Loads}" IsRunning="true" ></ActivityIndicator>
+        <controls:CustomMap Grid.Row="2" WidthRequest="320" HeightRequest="200"
+        x:Name="MyMap"
+        IsShowingUser="true"
+        MapType="Hybrid"
+        Position="{Binding Position}"
         />
-            </Grid>
+      </Grid>
       
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

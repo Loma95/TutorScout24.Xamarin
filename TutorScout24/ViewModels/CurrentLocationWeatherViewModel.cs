@@ -123,15 +123,15 @@ namespace TutorScout24.ViewModels
         {
             User usr = new User();
             usr.age = 11;
-            usr.email = "test@dhbw.de";
-            usr.firstName = "Swagger";
-            usr.lastName = "IO";
-            usr.gender = "female";
-            usr.password = "passwort";
-            usr.maxGraduation = "Bachelor";
-            usr.note = "hi";
-            usr.placeOfResidence = "Stuggi";
-            usr.userName = "YoloSwagger";
+            usr.email = "ard@dhbw.de";
+            usr.firstName = "sdf";
+            usr.lastName = "sdf";
+            usr.gender = "sdf";
+            usr.password = "sdf";
+            usr.maxGraduation = "sdf";
+            usr.note = "sdf";
+            usr.placeOfResidence = "sdf";
+            usr.userName = "sdf";
             string response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
 
             MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));

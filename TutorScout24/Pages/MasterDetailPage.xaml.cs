@@ -23,7 +23,7 @@ namespace TutorScout24.Pages
             InitializeComponent();
 
            
-            AddDetailData<SearchWeatherViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
+            AddDetailData<FeedTabViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
             AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", "\xf212"));
             AddDetailData<CurrentLocationWeatherViewModel>(new CustomMasterDetailData("Nachrichten","\xf0e0"));
             AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", "\xf007"));
@@ -49,6 +49,7 @@ namespace TutorScout24.Pages
         private RelativeLayout _headerLayout = new RelativeLayout
         {
             HeightRequest = 100,
+            BackgroundColor = Xamarin.Forms.Color.Chocolate,
             WidthRequest = 500
         };
 
@@ -56,19 +57,8 @@ namespace TutorScout24.Pages
         {
             VerticalOptions = LayoutOptions.Center,
             HorizontalOptions = LayoutOptions.Center,
-            Source = ImageSource.FromResource("TutorScout24.Resources.Placeholder_person.png")
+            Source = ImageSource.FromResource("TutorScout24.Resources.lel.jpg")
         };
-
-
-        /// <summary>
-        /// Gets the user info.
-        /// </summary>
-        private async Task<UserInfos> GetUserInfo()
-        {
-            return await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo();
-
-        }
-
 
 
 
@@ -118,6 +108,7 @@ namespace TutorScout24.Pages
 
                 return new ViewCell
                 {
+                    
                     View = relLayout
                 };
             });
@@ -152,20 +143,19 @@ namespace TutorScout24.Pages
         private void AddToggleButtonToToolBar(){
 
             ToolbarItem switchI = new ToolbarItem
-            {
+            { 
                 Text = "\uf073"
             };
+
+            //switchI.SetBinding(ToolbarItem.TextProperty, nameof(MasterDetailViewModel.ChangeCommand));
            
-            this.ToolbarItems.Add(switchI);
-         
+         this.ToolbarItems.Add(switchI);
 
-            switchI.Clicked += async (o, i) =>
-            {
-                UserInfos userI = await GetUserInfo();
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
-            };
+       switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
 
-        }
+      
+
+        } 
 
         /// <summary>
         /// Creates the master page.
