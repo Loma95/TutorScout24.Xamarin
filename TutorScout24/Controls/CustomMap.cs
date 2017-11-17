@@ -29,7 +29,7 @@ namespace TutorScout24.Controls
             var newPos = (Position)newValue;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(newPos.Latitude, newPos.Longitude), Distance.FromMiles(0.5)));
-            AddLocationAsPin(map, newPos);
+            //AddLocationAsPin(map, newPos);
         }
 
         private static void AddLocationAsPin(CustomMap map, Position newPos)
