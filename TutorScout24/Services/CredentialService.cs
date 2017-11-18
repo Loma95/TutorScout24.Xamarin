@@ -12,7 +12,10 @@ namespace TutorScout24.Services
         private string _userName;
         public string UserName
         {
-            get { return _userName; }
+             get {
+                    var account = AccountStore.Create().FindAccountsForService("TutorScout24").FirstOrDefault();
+                return (account != null) ? account.Username : null;
+                 }
             set
             {
                 _userName = value;
@@ -23,7 +26,10 @@ namespace TutorScout24.Services
         private string _password;
         public string Password
         {
-            get { return _password; }
+            get {   
+                    var account = AccountStore.Create().FindAccountsForService("TutorScout24").FirstOrDefault();
+                    return (account != null) ? account.Properties["Password"] : null;
+            }
             set
             {
                 _password = value;

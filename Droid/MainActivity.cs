@@ -14,6 +14,8 @@ using Android.Util;
 using Java.Lang;
 using Java.Lang.Reflect;
 using Android.Graphics;
+using TutorScout24.Services;
+using Xamarin.Auth;
 
 namespace TutorScout24.Droid
 {
@@ -27,7 +29,7 @@ namespace TutorScout24.Droid
            TabLayoutResource = Resource.Layout.Tabbar;
            ToolbarResource = Resource.Layout.Toolbar;
 
-
+      
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 

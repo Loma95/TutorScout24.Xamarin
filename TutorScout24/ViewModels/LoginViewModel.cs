@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
@@ -13,12 +14,25 @@ namespace TutorScout24.ViewModels
         ICredentialService cService;
         public LoginViewModel()
         {
-            cService = MvvmNanoIoC.Resolve<ICredentialService>();
+          
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            InitView<MasterDetailViewModel>();
+            cService = new CredentialService();
             if (cService.DoCredentialsExist())
             {
-                SetUpMainPage<MasterDetailViewModel>();
+
+                //Application.Current.MainPage = (Xamarin.Forms.Page)_view;
             }
+
         }
+
+        private IView _view;
+
         private string _userName;
         public string UserName
         {
@@ -42,15 +56,15 @@ namespace TutorScout24.ViewModels
         private  void Login()
         {
             cService.SaveCredentials(UserName,Password);
-            SetUpMainPage<MasterDetailViewModel>();
+            Application.Current.MainPage = (Xamarin.Forms.Page)_view;
         }
 
-        private void SetUpMainPage<TViewModel>()where TViewModel : MvvmNanoViewModel
+        private void InitView<TViewModel>()where TViewModel : MvvmNanoViewModel
         {
             var viewModel = MvvmNanoIoC.Resolve<TViewModel>();
-            var view = MvvmNanoIoC.Resolve<IPresenter>().CreateViewFor<TViewModel>();
-            view.SetViewModel(viewModel);
-            Application.Current.MainPage = (Xamarin.Forms.Page)view;
+            _view = MvvmNanoIoC.Resolve<IPresenter>().CreateViewFor<TViewModel>();
+            _view.SetViewModel(viewModel);
+
         }
 
 
