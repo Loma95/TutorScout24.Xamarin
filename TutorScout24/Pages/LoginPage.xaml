@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms:MvvmNanoContentPage   xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
+    xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+    xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+    x:TypeArguments="viewModels1:LoginViewModel" x:Class="TutorScout24.Pages.LoginPage"
+    xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"  >
+    <forms:MvvmNanoContentPage.Content  >
+        
+        <Grid BackgroundColor="#0074D9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition> 
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                 <ColumnDefinition Width="30"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalTextAlignment="Center" Margin="10" Grid.ColumnSpan="3" Text="TutorScout24" FontSize="30"></Label>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Benutzername" Text="{Binding UserName}"></Entry>
+            <Entry Grid.Row="2" Grid.Column="1" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"></Entry>
+            <Button Grid.Row="3" Grid.Column="1" Text="anmelden" Command="{Binding LoginCommand}"></Button>
+            </Grid>
+    </forms:MvvmNanoContentPage.Content>
+</forms:MvvmNanoContentPage >

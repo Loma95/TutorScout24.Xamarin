@@ -21,8 +21,7 @@ namespace TutorScout24
         {
             base.OnStart();
 
-
-            SetUpMainPage<MasterDetailViewModel>();
+            SetUpMainPage<LoginViewModel>();
         }
 
       protected override IMvvmNanoIoCAdapter GetIoCAdapter()
@@ -34,6 +33,7 @@ namespace TutorScout24
         private static void SetupDependencies(){
             MvvmNanoIoC.Register<IMessenger,MvvmNano.Forms.MvvmNanoFormsMessenger>();
             MvvmNanoIoC.Register<TutorScoutRestService,TutorScoutRestService>();
+            MvvmNanoIoC.Register<CredentialService, CredentialService>();
         }
 
     }
