@@ -16,6 +16,7 @@ using Java.Lang.Reflect;
 using Android.Graphics;
 using TutorScout24.Services;
 using Xamarin.Auth;
+using IconEntry.FormsPlugin.Android;
 
 namespace TutorScout24.Droid
 {
@@ -32,6 +33,7 @@ namespace TutorScout24.Droid
       
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
+            IconEntryRenderer.Init();
 
             NControlViewRenderer.Init();
             try

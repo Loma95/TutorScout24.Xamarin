@@ -5,6 +5,7 @@ using TutorScout24;
 using Foundation;
 using UIKit;
 using NControl.iOS;
+using IconEntry.FormsPlugin.iOS;
 
 namespace TutorScout24.iOS
 {
@@ -16,6 +17,7 @@ namespace TutorScout24.iOS
             global::Xamarin.Forms.Forms.Init();
             NControlViewRenderer.Init();
             Xamarin.FormsMaps.Init();
+            IconEntryRenderer.Init();
             LoadApplication(new App());
          
             return base.FinishedLaunching(app, options);

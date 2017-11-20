@@ -3,26 +3,30 @@
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
     xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
     x:TypeArguments="viewModels1:LoginViewModel" x:Class="TutorScout24.Pages.LoginPage"
+    xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
     xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"  >
     <forms:MvvmNanoContentPage.Content  >
         
-        <Grid BackgroundColor="#0074D9">
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"></ColumnDefinition> 
                 <ColumnDefinition Width="*"></ColumnDefinition>
                  <ColumnDefinition Width="30"></ColumnDefinition>
+                
             </Grid.ColumnDefinitions>
-            <Label HorizontalTextAlignment="Center" Margin="10" Grid.ColumnSpan="3" Text="TutorScout24" FontSize="30"></Label>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Benutzername" Text="{Binding UserName}"></Entry>
-            <Entry Grid.Row="2" Grid.Column="1" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"></Entry>
-            <Button Grid.Row="3" Grid.Column="1" Text="anmelden" Command="{Binding LoginCommand}"></Button>
-            </Grid>
+            <Label HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" Grid.ColumnSpan="3" TextColor="Black" FontSize="30"  Text="TutorScout24"  ></Label>
+           <StackLayout VerticalOptions="Center" Grid.Row="1" Grid.ColumnSpan="3" Margin="10"> 
+             <ie:IconEntry Icon="username.png" HeightRequest="50"   Placeholder="Benutzername" Text="{Binding UserName,Mode=TwoWay}"></ie:IconEntry>
+            <ie:IconEntry Icon="password.png"  HeightRequest="50" Placeholder="Passwort" Text="{Binding Password,Mode=TwoWay}" IsPassword="true"></ie:IconEntry>
+            <Button BackgroundColor="#0074D9"  TextColor="White"  Text="anmelden" Command="{Binding LoginCommand}"></Button>
+                </StackLayout>
+            <Button BackgroundColor="#0074D9" TextColor="White" Grid.Row="2"   Grid.Column="1" Text="registrieren" Command="{Binding SignUpCommand}"></Button>
+        </Grid>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage >

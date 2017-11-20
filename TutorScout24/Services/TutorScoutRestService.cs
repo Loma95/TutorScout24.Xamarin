@@ -22,7 +22,7 @@ namespace TutorScout24.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<string> CreateUser(User usr)
+        public async Task<bool> CreateUser(User usr)
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/create";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
@@ -33,10 +33,10 @@ namespace TutorScout24.Services
             response = await client.PostAsync(uri, content);
             if (response.IsSuccessStatusCode)
             {
-                return "Success";
+                return true;
 
             }
-            return "Failed";
+            return false;
  
         }
 
@@ -53,6 +53,25 @@ namespace TutorScout24.Services
             }else{
                 return null;
             }
+        }
+
+        public async Task<bool> CanAuthenticate(CheckAuthentication auth)
+        {
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/checkAuthentication";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(auth);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+
+            }
+            Debug.WriteLine(response.ReasonPhrase);
+            Debug.WriteLine(response.StatusCode);
+            return false;
         }
 
         public List<Tutoring> GetTutorings()

@@ -17,7 +17,7 @@
                     </Grid.RowDefinitions>
                 
                     <ContentPresenter Grid.Row="0" Grid.RowSpan="2"/>
-                    <fab:CircularButtonControl VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" BindingContext="{TemplateBinding BindingContext}" Command="{TemplateBinding BindingContext.FabCommand}" Grid.Row="1"></fab:CircularButtonControl>
+                    <fab:CircularButtonControl VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" BindingContext="{TemplateBinding BindingContext}" Command="{TemplateBinding FabCommand}" Grid.Row="1"></fab:CircularButtonControl>
 
                 </Grid>
             </ControlTemplate>

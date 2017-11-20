@@ -191,6 +191,12 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
     </Reference>
+    <Reference Include="IconEntry.FormsPlugin.Abstractions">
+      <HintPath>..\packages\Xam.FormsPlugin.IconEntry.1.0.1\lib\MonoAndroid10\IconEntry.FormsPlugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="IconEntry.FormsPlugin.Android">
+      <HintPath>..\packages\Xam.FormsPlugin.IconEntry.1.0.1\lib\MonoAndroid10\IconEntry.FormsPlugin.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TutorScout24\TutorScout24.csproj">
@@ -219,6 +225,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\password.png" />
+    <AndroidResource Include="Resources\drawable\username.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fontawesome.ttf">

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f85babbf-aee1-4459-89d5-4de21b654e12" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Droid/Resources/drawable/password.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Droid/Resources/drawable/username.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iOS/Resources/password.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iOS/Resources/username.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.TutorScout24/.idea/contentModel.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.TutorScout24/.idea/indexLayout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.TutorScout24/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.TutorScout24/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.TutorScout24/riderModule.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Droid/MainActivity.cs" afterPath="$PROJECT_DIR$/Droid/MainActivity.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Droid/Resources/Resource.designer.cs" afterPath="$PROJECT_DIR$/Droid/Resources/Resource.designer.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Droid/TutorScout24.Droid.csproj" afterPath="$PROJECT_DIR$/Droid/TutorScout24.Droid.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Droid/packages.config" afterPath="$PROJECT_DIR$/Droid/packages.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/App.xaml" afterPath="$PROJECT_DIR$/TutorScout24/App.xaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/App.xaml.cs" afterPath="$PROJECT_DIR$/TutorScout24/App.xaml.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/Pages/LoginPage.xaml" afterPath="$PROJECT_DIR$/TutorScout24/Pages/LoginPage.xaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml" afterPath="$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/project.json" afterPath="$PROJECT_DIR$/TutorScout24/project.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TutorScout24/project.lock.json" afterPath="$PROJECT_DIR$/TutorScout24/project.lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iOS/AppDelegate.cs" afterPath="$PROJECT_DIR$/iOS/AppDelegate.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iOS/TutorScout24.iOS.csproj" afterPath="$PROJECT_DIR$/iOS/TutorScout24.iOS.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iOS/packages.config" afterPath="$PROJECT_DIR$/iOS/packages.config" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="project.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/project.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="194" lean-forward="false" selection-start-line="19" selection-start-column="194" selection-end-line="19" selection-end-column="194" />
+              <folding>
+                <marker date="1511119652170" expanded="true" signature="39:1275" ph="&lt;&lt;Application.Resources&gt;&#10;&#10;        &lt;!-- Application resource dictionary --&gt;&#10;        &lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;&#10;    &lt;/Application.Resources&gt;.../&gt;" />
+                <marker date="1511119652170" expanded="true" signature="392:1246" ph="&lt;&lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;.../&gt;" />
+                <marker date="1511119652170" expanded="true" signature="474:1217" ph="&lt;&lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;.../&gt;" />
+                <marker date="1511119652170" expanded="true" signature="503:1183" ph="&lt;&lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;.../&gt;" />
+                <marker date="1511119652170" expanded="true" signature="568:1152" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt; &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt; &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;.../&gt;" />
+                <marker date="1511119652170" expanded="true" signature="595:791" ph="&lt;&lt;RowDefinition Height=&quot;*&quot; /&gt; &lt;RowDefinition Height=&quot;80&quot; /&gt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.xaml.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1511216698177" expanded="false" signature="6:168" ph="..." />
+                <marker date="1511216698177" expanded="true" signature="192:1192" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="223:1190" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="250:387" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="429:718" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="548:636" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="780:862" ph="{...}" />
+                <marker date="1511216698177" expanded="true" signature="920:1183" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasterDetailPage.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <folding>
+                <marker date="1511119667178" expanded="true" signature="39:856" ph="&lt;&lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt;&#10;        &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt; &lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Detail &gt;&#10;&#10;       &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Detail&gt;.../&gt;" />
+                <marker date="1511119667178" expanded="true" signature="560:681" ph="&lt;.../&gt;" />
+                <marker date="1511119667178" expanded="true" signature="686:808" ph="&lt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestService.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/Services/RestService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-58">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1509749000114" expanded="false" signature="6:207" ph="..." />
+                <marker date="1509749000114" expanded="true" signature="240:2193" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="271:2191" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="390:508" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="518:740" ph="/// builds the api path and returns the weather for the given cityName ... " />
+                <marker date="1509749000114" expanded="true" signature="815:1017" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="1027:1179" ph="/// Gets the weather for current location. ... " />
+                <marker date="1509749000114" expanded="true" signature="1249:1605" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="1615:1725" ph="/// Gets the weather. ... " />
+                <marker date="1509749000114" expanded="true" signature="1777:2183" ph="{...}" />
+                <marker date="1509749000114" expanded="true" signature="1957:2135" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TutorScoutRestService.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/Services/TutorScoutRestService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-208">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1510854787619" expanded="false" signature="6:237" ph="..." />
+                <marker date="1510854787619" expanded="true" signature="270:2324" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="311:2322" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="408:525" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="581:1158" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="1054:1117" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="1211:1717" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="1483:1659" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="1763:2316" ph="{...}" />
+                <marker date="1510854787619" expanded="true" signature="2087:2161" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasterDetailPage.xaml.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-28">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1510854787613" expanded="false" signature="6:368" ph="..." />
+                <marker date="1510854787613" expanded="true" signature="398:5643" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="442:5641" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="483:1157" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="1048:1132" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="1208:1343" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="1423:1559" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="1617:1814" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="1827:2066" ph="/// We hook up our own item template here. ... " />
+                <marker date="1510854787613" expanded="true" signature="2124:3646" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="2176:3634" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="2313:2469" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="2571:2713" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="2815:3010" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="3542:3619" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="3656:3976" ph="/// Adds View to layout with constraints. ... " />
+                <marker date="1510854787613" expanded="true" signature="4078:4503" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="4277:4354" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="4412:4490" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="4515:4599" ph="/// Adds the toggle button to tool bar. ... " />
+                <marker date="1510854787613" expanded="true" signature="4647:5041" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="4712:4760" ph="{...}" />
+                <marker date="1510854787613" expanded="true" signature="5052:5173" ph="/// Creates the master page. ... " />
+                <marker date="1510854787613" expanded="true" signature="5224:5634" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchWeatherPage.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/SearchWeatherPage.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+              <folding>
+                <marker date="1510854787614" expanded="true" signature="39:733" ph="&lt;&lt;forms:MvvmNanoContentPage.Content&gt;&#10;      &lt;local:FeedTabPage/&gt;&#10;    &lt;/forms:MvvmNanoContentPage.Content&gt;.../&gt;" />
+                <marker date="1510854787614" expanded="true" signature="600:703" ph="&lt;&lt;local:FeedTabPage/&gt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TutorScout24/project.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/App.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/Pages/SearchWeatherPage.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/Services/TutorScoutRestService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/App.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/iOS/AppDelegate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TutorScout24/Services/RestService.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml" />
+        <option value="$PROJECT_DIR$/TutorScout24/App.xaml" />
+        <option value="$PROJECT_DIR$/TutorScout24/Pages/SearchWeatherPage.xaml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="984" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="TutorScout24" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="TutorScout24" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Pages" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="TutorScout24" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Pages" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="MasterDetailPage.xaml" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="TutorScout24" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Services" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TutorScout24 (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="TutorScout24" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="App.xaml" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Xamarin.Android.Android Default">
+    <configuration name="Android Default" type="XamarinAndroidProject" factoryName="Xamarin.Android">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Droid/TutorScout24.Droid.csproj" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="DEPLOY_BEHAVIOUR_NAME" value="Default" />
+      <option name="DEPLOY_TARGET_BEHAVIOUR_NAME" value="Ask" />
+      <option name="DEFAULT_DEVICE_TO_RUN" value="" />
+      <option name="DEFAULT_EMULATOR_TO_RUN" value="" />
+    </configuration>
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <envs />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_OUTPUT_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+    </configuration>
+    <configuration name="iOS Default" type="XamarinIOSProject" factoryName="Xamarin.iOS">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/iOS/TutorScout24.iOS.csproj" />
+      <option name="DEFAULT_IPHONE_DEVICE" value="" />
+      <option name="DEFAULT_IPHONE_SIMULATOR" value="" />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue=".NET Project.Default" />
+      <item index="1" class="java.lang.String" itemvalue="Xamarin.Android.Android Default" />
+      <item index="2" class="java.lang.String" itemvalue="Xamarin.iOS.iOS Default" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f85babbf-aee1-4459-89d5-4de21b654e12" name="Default" comment="" />
+      <created>1511119278830</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1511119278830</updated>
+      <workItem from="1511119281087" duration="385000" />
+      <workItem from="1511216718168" duration="235000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="620000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1920" height="984" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24270834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TutorScout24/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="194" lean-forward="false" selection-start-line="19" selection-start-column="194" selection-end-line="19" selection-end-column="194" />
+          <folding>
+            <marker date="1511119652170" expanded="true" signature="39:1275" ph="&lt;&lt;Application.Resources&gt;&#10;&#10;        &lt;!-- Application resource dictionary --&gt;&#10;        &lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;&#10;    &lt;/Application.Resources&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="392:1246" ph="&lt;&lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="474:1217" ph="&lt;&lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="503:1183" ph="&lt;&lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="568:1152" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt; &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt; &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="595:791" ph="&lt;&lt;RowDefinition Height=&quot;*&quot; /&gt; &lt;RowDefinition Height=&quot;80&quot; /&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1511216698177" expanded="false" signature="6:168" ph="..." />
+            <marker date="1511216698177" expanded="true" signature="192:1192" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="223:1190" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="250:387" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="429:718" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="548:636" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="780:862" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="920:1183" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510854787613" expanded="false" signature="6:368" ph="..." />
+            <marker date="1510854787613" expanded="true" signature="398:5643" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="442:5641" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="483:1157" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1048:1132" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1208:1343" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1423:1559" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1617:1814" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1827:2066" ph="/// We hook up our own item template here. ... " />
+            <marker date="1510854787613" expanded="true" signature="2124:3646" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2176:3634" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2313:2469" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2571:2713" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2815:3010" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="3542:3619" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="3656:3976" ph="/// Adds View to layout with constraints. ... " />
+            <marker date="1510854787613" expanded="true" signature="4078:4503" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4277:4354" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4412:4490" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4515:4599" ph="/// Adds the toggle button to tool bar. ... " />
+            <marker date="1510854787613" expanded="true" signature="4647:5041" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4712:4760" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="5052:5173" ph="/// Creates the master page. ... " />
+            <marker date="1510854787613" expanded="true" signature="5224:5634" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/SearchWeatherPage.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding>
+            <marker date="1510854787614" expanded="true" signature="39:733" ph="&lt;&lt;forms:MvvmNanoContentPage.Content&gt;&#10;      &lt;local:FeedTabPage/&gt;&#10;    &lt;/forms:MvvmNanoContentPage.Content&gt;.../&gt;" />
+            <marker date="1510854787614" expanded="true" signature="600:703" ph="&lt;&lt;local:FeedTabPage/&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <marker date="1511119667178" expanded="true" signature="39:856" ph="&lt;&lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt;&#10;        &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt; &lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Detail &gt;&#10;&#10;       &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Detail&gt;.../&gt;" />
+            <marker date="1511119667178" expanded="true" signature="560:681" ph="&lt;.../&gt;" />
+            <marker date="1511119667178" expanded="true" signature="686:808" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="194" lean-forward="false" selection-start-line="19" selection-start-column="194" selection-end-line="19" selection-end-column="194" />
+          <folding>
+            <marker date="1511119652170" expanded="true" signature="39:1275" ph="&lt;&lt;Application.Resources&gt;&#10;&#10;        &lt;!-- Application resource dictionary --&gt;&#10;        &lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;&#10;    &lt;/Application.Resources&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="392:1246" ph="&lt;&lt;ResourceDictionary&gt;&#10;        &lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;&#10;            &lt;/ResourceDictionary&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="474:1217" ph="&lt;&lt;ControlTemplate x:Key=&quot;FloatingActionTemplate&quot;&gt;&#10;                &lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;&#10;            &lt;/ControlTemplate&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="503:1183" ph="&lt;&lt;Grid&gt;&#10;                    &lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt;&#10;                &#10;                    &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt;&#10;                    &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;&#10;&#10;                &lt;/Grid&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="568:1152" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                         &lt;RowDefinition Height=&quot;*&quot; /&gt;&#10;                        &lt;RowDefinition Height=&quot;80&quot; /&gt;&#10;                       &#10;                    &lt;/Grid.RowDefinitions&gt; &lt;ContentPresenter Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot;/&gt; &lt;fab:CircularButtonControl VerticalOptions=&quot;CenterAndExpand&quot;  HorizontalOptions=&quot;CenterAndExpand&quot; BindingContext=&quot;{TemplateBinding BindingContext}&quot; Command=&quot;{TemplateBinding FabCommand}&quot; Grid.Row=&quot;1&quot;&gt;&lt;/fab:CircularButtonControl&gt;.../&gt;" />
+            <marker date="1511119652170" expanded="true" signature="595:791" ph="&lt;&lt;RowDefinition Height=&quot;*&quot; /&gt; &lt;RowDefinition Height=&quot;80&quot; /&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510854787613" expanded="false" signature="6:368" ph="..." />
+            <marker date="1510854787613" expanded="true" signature="398:5643" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="442:5641" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="483:1157" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1048:1132" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1208:1343" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1423:1559" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1617:1814" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="1827:2066" ph="/// We hook up our own item template here. ... " />
+            <marker date="1510854787613" expanded="true" signature="2124:3646" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2176:3634" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2313:2469" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2571:2713" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="2815:3010" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="3542:3619" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="3656:3976" ph="/// Adds View to layout with constraints. ... " />
+            <marker date="1510854787613" expanded="true" signature="4078:4503" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4277:4354" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4412:4490" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4515:4599" ph="/// Adds the toggle button to tool bar. ... " />
+            <marker date="1510854787613" expanded="true" signature="4647:5041" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="4712:4760" ph="{...}" />
+            <marker date="1510854787613" expanded="true" signature="5052:5173" ph="/// Creates the master page. ... " />
+            <marker date="1510854787613" expanded="true" signature="5224:5634" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/App.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1511216698177" expanded="false" signature="6:168" ph="..." />
+            <marker date="1511216698177" expanded="true" signature="192:1192" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="223:1190" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="250:387" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="429:718" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="548:636" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="780:862" ph="{...}" />
+            <marker date="1511216698177" expanded="true" signature="920:1183" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/SearchWeatherPage.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding>
+            <marker date="1510854787614" expanded="true" signature="39:733" ph="&lt;&lt;forms:MvvmNanoContentPage.Content&gt;&#10;      &lt;local:FeedTabPage/&gt;&#10;    &lt;/forms:MvvmNanoContentPage.Content&gt;.../&gt;" />
+            <marker date="1510854787614" expanded="true" signature="600:703" ph="&lt;&lt;local:FeedTabPage/&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Pages/MasterDetailPage.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <marker date="1511119667178" expanded="true" signature="39:856" ph="&lt;&lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt;&#10;        &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Master&gt; &lt;masterDetail:MvvmNanoDefaultMasterDetailPage.Detail &gt;&#10;&#10;       &#10;    &lt;/masterDetail:MvvmNanoDefaultMasterDetailPage.Detail&gt;.../&gt;" />
+            <marker date="1511119667178" expanded="true" signature="560:681" ph="&lt;.../&gt;" />
+            <marker date="1511119667178" expanded="true" signature="686:808" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Services/RestService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1509749000114" expanded="false" signature="6:207" ph="..." />
+            <marker date="1509749000114" expanded="true" signature="240:2193" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="271:2191" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="390:508" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="518:740" ph="/// builds the api path and returns the weather for the given cityName ... " />
+            <marker date="1509749000114" expanded="true" signature="815:1017" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="1027:1179" ph="/// Gets the weather for current location. ... " />
+            <marker date="1509749000114" expanded="true" signature="1249:1605" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="1615:1725" ph="/// Gets the weather. ... " />
+            <marker date="1509749000114" expanded="true" signature="1777:2183" ph="{...}" />
+            <marker date="1509749000114" expanded="true" signature="1957:2135" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TutorScout24/Services/TutorScoutRestService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-208">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510854787619" expanded="false" signature="6:237" ph="..." />
+            <marker date="1510854787619" expanded="true" signature="270:2324" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="311:2322" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="408:525" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="581:1158" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="1054:1117" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="1211:1717" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="1483:1659" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="1763:2316" ph="{...}" />
+            <marker date="1510854787619" expanded="true" signature="2087:2161" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

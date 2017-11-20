@@ -152,6 +152,18 @@
           "lib/portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/Validation.dll": {}
         }
       },
+      "Xam.FormsPlugin.IconEntry/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "[2.0.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.dll": {}
+        }
+      },
       "Xam.Plugin.Geolocator/4.1.2": {
         "type": "package",
         "compile": {
@@ -479,6 +491,36 @@
         "tools/uninstall_snippets.cmd",
         "validation.2.2.8.nupkg.sha512",
         "validation.nuspec"
+      ]
+    },
+    "Xam.FormsPlugin.IconEntry/1.0.1": {
+      "sha512": "apKTa16Elz/vynFzrx9HBsyzmAaNpJRpHa41uE7ct+ijYwuzEu4QB3xS2ptm//NDnNBR8AqF5JrTc8D1IkILvA==",
+      "type": "package",
+      "path": "xam.formsplugin.iconentry/1.0.1",
+      "files": [
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Abstractions.dll",
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Abstractions.pdb",
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Abstractions.xml",
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Android.dll",
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Android.pdb",
+        "lib/MonoAndroid10/IconEntry.FormsPlugin.Android.xml",
+        "lib/UAP10/IconEntry.FormsPlugin.Abstractions.dll",
+        "lib/UAP10/IconEntry.FormsPlugin.Abstractions.pdb",
+        "lib/UAP10/IconEntry.FormsPlugin.Abstractions.xml",
+        "lib/UAP10/IconEntry.FormsPlugin.UWP.dll",
+        "lib/UAP10/IconEntry.FormsPlugin.UWP.pdb",
+        "lib/UAP10/IconEntry.FormsPlugin.UWP.pri",
+        "lib/UAP10/IconEntry.FormsPlugin.UWP/IconEntry.FormsPlugin.UWP.xr.xml",
+        "lib/UAP10/IconEntry.FormsPlugin.UWP/IconEntryStyle.xaml",
+        "lib/Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.dll",
+        "lib/Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.xml",
+        "lib/Xamarin.iOS10/IconEntry.FormsPlugin.iOS.dll",
+        "lib/Xamarin.iOS10/IconEntry.FormsPlugin.iOS.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.pdb",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/IconEntry.FormsPlugin.Abstractions.xml",
+        "xam.formsplugin.iconentry.1.0.1.nupkg.sha512",
+        "xam.formsplugin.iconentry.nuspec"
       ]
     },
     "Xam.Plugin.Geolocator/4.1.2": {
@@ -824,6 +866,7 @@
       "PInvoke.Windows.Core >= 0.3.2",
       "Portable.Ninject >= 3.3.1",
       "Validation >= 2.2.8",
+      "Xam.FormsPlugin.IconEntry >= 1.0.1",
       "Xam.Plugin.Geolocator >= 4.1.2",
       "Xamarin.Auth >= 1.5.0.3",
       "Xamarin.Forms >= 2.4.0.18342",
@@ -864,6 +907,7 @@
       "PInvoke.Windows.Core": "0.3.2",
       "Portable.Ninject": "3.3.1",
       "Validation": "2.2.8",
+      "Xam.FormsPlugin.IconEntry": "1.0.1",
       "Xam.Plugin.Geolocator": "4.1.2",
       "Xamarin.Auth": "1.5.0.3",
       "Xamarin.Forms": "2.4.0.18342",

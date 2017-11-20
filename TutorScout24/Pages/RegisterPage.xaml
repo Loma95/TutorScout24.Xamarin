@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24" x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage" xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions" xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
+    <forms:MvvmNanoContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition> 
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                 <ColumnDefinition Width="30"></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+           <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.ColumnSpan="3" Margin="10"> 
+            <ie:IconEntry Icon="username.png" HeightRequest="50"   Placeholder="Vorname" Text="{Binding FirstName}"></ie:IconEntry>
+            <ie:IconEntry Icon="password.png"  HeightRequest="50" Placeholder="Nachname" Text="{Binding LastName}" ></ie:IconEntry>
+             <ie:IconEntry Icon="password.png"  HeightRequest="50" Placeholder="Email" Text="{Binding Email}"></ie:IconEntry>
+             <ie:IconEntry Icon="username.png" HeightRequest="50"   Placeholder="Benutzername" Text="{Binding UserName}"></ie:IconEntry>
+            <ie:IconEntry Icon="password.png"  HeightRequest="50" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"></ie:IconEntry>
+            <Button BackgroundColor="#0074D9"  TextColor="White"  Text="Jetzt loslegen!" Command="{Binding StartCommand}"></Button>
+                </StackLayout>
+        </Grid>
+    </forms:MvvmNanoContentPage.Content>
+</forms:MvvmNanoContentPage>

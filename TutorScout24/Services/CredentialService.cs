@@ -4,7 +4,7 @@ using Xamarin.Auth;
 
 namespace TutorScout24.Services
 {
-    public class CredentialService:ICredentialService
+    public class CredentialService
     {
         public CredentialService(){
             

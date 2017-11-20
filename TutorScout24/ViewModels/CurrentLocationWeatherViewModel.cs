@@ -132,7 +132,7 @@ namespace TutorScout24.ViewModels
             usr.note = "sdf";
             usr.placeOfResidence = "sdf";
             usr.userName = "sdf";
-            string response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+            bool response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
 
             MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));
         }

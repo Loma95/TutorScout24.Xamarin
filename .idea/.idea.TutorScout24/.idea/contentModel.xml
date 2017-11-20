@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_TutorScout24.61560756.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Droid" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="AboutAssets.txt" t="Include" />
+          <e p="fontawesome.ttf" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CustomLabelRenderer.cs" t="Include" />
+        <e p="MainActivity.cs" t="Include" />
+        <e p="MainApplication.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="AboutResources.txt" t="Include" />
+          <e p="drawable" t="Include">
+            <e p="icon.png" t="Include" />
+            <e p="password.png" t="Include" />
+            <e p="username.png" t="Include" />
+          </e>
+          <e p="drawable-hdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="drawable-xhdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="drawable-xxhdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="layout" t="Include">
+            <e p="Tabbar.axml" t="Include" />
+            <e p="Toolbar.axml" t="Include" />
+          </e>
+          <e p="Resource.designer.cs" t="Include" />
+          <e p="values" t="Include">
+            <e p="styles.xml" t="Include" />
+          </e>
+        </e>
+        <e p="TutorScout24.Droid.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="iOS" t="IncludeRecursive">
+        <e p="AppDelegate.cs" t="Include" />
+        <e p="Assets.xcassets" t="Include">
+          <e p="AppIcon.appiconset" t="Include">
+            <e p="Contents.json" t="Include" />
+          </e>
+          <e p="Contents.json" t="Include" />
+          <e p="LaunchImage.launchimage" t="Include">
+            <e p="Contents.json" t="Include" />
+          </e>
+          <e p="Marker.imageset" t="Include">
+            <e p="Contents.json" t="Include" />
+            <e p="icons8-marker.png" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CustomFontPageNavigationRenderer.cs" t="Include" />
+        <e p="Entitlements.plist" t="Include" />
+        <e p="icons8-marker.png" t="Include" />
+        <e p="Info.plist" t="Include" />
+        <e p="LaunchScreen.storyboard" t="Include" />
+        <e p="Main.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="fontawesome.ttf" t="Include" />
+          <e p="password.png" t="Include" />
+          <e p="username.png" t="Include" />
+        </e>
+        <e p="TutorScout24.iOS.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="packages" t="ExcludeRecursive">
+        <e p="Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2/proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.Core.UI.25.4.0.2/proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.Design.25.4.0.2/proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.v7.RecyclerView.25.4.0.2/proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+      </e>
+      <e p="TutorScout24" t="IncludeRecursive">
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controls" t="Include">
+          <e p="CircularButtonControl.cs" t="Include" />
+          <e p="CustomMap.cs" t="Include" />
+        </e>
+        <e p="CustomData" t="Include">
+          <e p="CustomMasterDetailData.cs" t="Include" />
+          <e p="DialogMessage.cs" t="Include" />
+        </e>
+        <e p="MockData" t="Include">
+          <e p="TutoringData.json" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="RootWeather.cs" t="Include" />
+          <e p="Tutoring.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="UserInfos.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Pages" t="Include">
+          <e p="CurrentLocationWeatherPage.xaml" t="Include" />
+          <e p="CurrentLocationWeatherPage.xaml.cs" t="Include" />
+          <e p="FeedListPage.xaml" t="Include" />
+          <e p="FeedListPage.xaml.cs" t="Include" />
+          <e p="FeedMapPage.xaml" t="Include" />
+          <e p="FeedMapPage.xaml.cs" t="Include" />
+          <e p="FeedTabPage.xaml" t="Include" />
+          <e p="FeedTabPage.xaml.cs" t="Include" />
+          <e p="LoginPage.xaml" t="Include" />
+          <e p="LoginPage.xaml.cs" t="Include" />
+          <e p="MasterDetailPage.xaml" t="Include" />
+          <e p="MasterDetailPage.xaml.cs" t="Include" />
+          <e p="ProfilePage.xaml" t="Include" />
+          <e p="ProfilePage.xaml.cs" t="Include" />
+          <e p="SearchWeatherPage.xaml" t="Include" />
+          <e p="SearchWeatherPage.xaml.cs" t="Include" />
+          <e p="TutorialsPage.xaml" t="Include" />
+          <e p="TutorialsPage.xaml.cs" t="Include" />
+        </e>
+        <e p="project.json" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="lel.jpg" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="CredentialService.cs" t="Include" />
+          <e p="ICredentialService.cs" t="Include" />
+          <e p="LocationService.cs" t="Include" />
+          <e p="RestService.cs" t="Include" />
+          <e p="TutorScoutRestService.cs" t="Include" />
+        </e>
+        <e p="TutorScout24.csproj" t="IncludeRecursive" />
+        <e p="ViewModels" t="Include">
+          <e p="CurrentLocationWeatherViewModel.cs" t="Include" />
+          <e p="FeedListViewModel.cs" t="Include" />
+          <e p="FeedMapViewModel.cs" t="Include" />
+          <e p="FeedTabViewModel.cs" t="Include" />
+          <e p="LoginViewModel.cs" t="Include" />
+          <e p="MasterDetailViewModel.cs" t="Include" />
+          <e p="ProfileViewModel.cs" t="Include" />
+          <e p="SearchWeatherViewModel.cs" t="Include" />
+          <e p="TutorialsViewModel.cs" t="Include" />
+        </e>
+      </e>
+      <e p="TutorScout24.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

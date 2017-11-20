@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
+using TutorScout24.Models;
 using TutorScout24.Services;
 using Xamarin.Auth;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace TutorScout24.ViewModels
 {
     public class LoginViewModel:MvvmNano.MvvmNanoViewModel
     {
-        ICredentialService cService;
+        CredentialService CService;
         public LoginViewModel()
         {
           
@@ -22,12 +23,9 @@ namespace TutorScout24.ViewModels
             base.Initialize();
 
             InitView<MasterDetailViewModel>();
-            cService = new CredentialService();
-            if (cService.DoCredentialsExist())
-            {
 
-                //Application.Current.MainPage = (Xamarin.Forms.Page)_view;
-            }
+            CService = MvvmNanoIoC.Resolve<CredentialService>();
+          
 
         }
 
@@ -51,11 +49,30 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        public ICommand LoginCommand => new Command(Login);
+        public ICommand LoginCommand => new Command(async () => Login());
 
-        private  void Login()
+        private async void Login()
         {
-            cService.SaveCredentials(UserName,Password);
+            CheckAuthentication auth = new CheckAuthentication();
+            auth.authentication = new Authentication();
+            auth.authentication.password = Password;
+            auth.authentication.userName = UserName;
+
+            bool result = await IsValidAuthentication(auth);
+            if(result){
+                CService.SaveCredentials(UserName, Password);
+                Application.Current.MainPage = (Xamarin.Forms.Page)_view;
+            }else{
+                Debug.WriteLine("Not authenticated");
+            }
+           
+        }
+
+        public ICommand SignUpCommand => new Command(SignUp);
+
+        private void SignUp()
+        {
+            InitView<RegisterViewModel>();
             Application.Current.MainPage = (Xamarin.Forms.Page)_view;
         }
 
@@ -66,6 +83,13 @@ namespace TutorScout24.ViewModels
             _view.SetViewModel(viewModel);
 
         }
+
+        private async Task<bool> IsValidAuthentication(CheckAuthentication auth)
+        {
+            return await MvvmNanoIoC.Resolve<TutorScoutRestService>().CanAuthenticate(auth);
+
+        }
+
 
 
     }
