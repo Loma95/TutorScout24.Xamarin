@@ -21,6 +21,12 @@
 
                 </Grid>
             </ControlTemplate>
+
+
+      <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="Color.Red"/>
+        <Setter Property="BarTextColor" Value="Color.Green"/>
+      </Style>
             </ResourceDictionary>
     </Application.Resources>
 </forms:MvvmNanoApplication>

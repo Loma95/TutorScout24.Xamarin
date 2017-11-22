@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Windows.Input;
+using MvvmNano;
+using TutorScout24.Models;
+using TutorScout24.Pages;
+using TutorScout24.Services;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
     public class RegisterViewModel: MvvmNano.MvvmNanoViewModel
     {
+        User _usr = new User();
         public RegisterViewModel()
         {
+           
+
+           
         }
 
         private string _userName;
@@ -32,31 +40,11 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _lastName;
-        public string LastName
-        {
-            get { return _userName; }
-            set
-            {
-                _lastName = value;
-                NotifyPropertyChanged("LastName");
-            }
-        }
-
-        private string _firstName;
-        public string FirstName
-        {
-            get { return _password; }
-            set
-            {
-                _firstName = value;
-                NotifyPropertyChanged("FirstName");
-            }
-        }
+  
         private string _email;
         public string Email
         {
-            get { return _password; }
+            get { return _email; }
             set
             {
                 _email = value;
@@ -68,7 +56,27 @@ namespace TutorScout24.ViewModels
 
         private void Start()
         {
+            /*Check Password and all inputs*/
+            CreateUser();
             
+        }
+
+
+        private async void CreateUser()
+        {
+            User usr = new User();
+            usr.gender = "Male";
+            usr.firstName = "Max";
+            usr.lastName = "Mustermann";
+            usr.maxGraduation = "Test";
+            usr.note = "hi";
+            usr.placeOfResidence = "YoloTown";
+            usr.email = _email;
+            usr.password = _password;
+            usr.userName = _userName;
+            bool response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));
         }
 
 

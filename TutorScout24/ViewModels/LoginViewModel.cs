@@ -22,7 +22,7 @@ namespace TutorScout24.ViewModels
         {
             base.Initialize();
 
-            InitView<MasterDetailViewModel>();
+            //InitView<MasterDetailViewModel>();
 
             CService = MvvmNanoIoC.Resolve<CredentialService>();
           
@@ -49,31 +49,36 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        public ICommand LoginCommand => new Command(async () => Login());
+        public ICommand LoginCommand => new Command( () => LoginAsync());
 
-        private async void Login()
+        private async Task LoginAsync()
         {
+
+
+
             CheckAuthentication auth = new CheckAuthentication();
             auth.authentication = new Authentication();
             auth.authentication.password = Password;
             auth.authentication.userName = UserName;
 
             bool result = await IsValidAuthentication(auth);
-            if(result){
+            if (result)
+            {
                 CService.SaveCredentials(UserName, Password);
-                Application.Current.MainPage = (Xamarin.Forms.Page)_view;
-            }else{
+                NavigateTo<MasterDetailViewModel>();
+            }
+            else
+            {
                 Debug.WriteLine("Not authenticated");
             }
-           
+
         }
 
         public ICommand SignUpCommand => new Command(SignUp);
 
         private void SignUp()
         {
-            InitView<RegisterViewModel>();
-            Application.Current.MainPage = (Xamarin.Forms.Page)_view;
+            NavigateTo<RegisterViewModel>();
         }
 
         private void InitView<TViewModel>()where TViewModel : MvvmNanoViewModel

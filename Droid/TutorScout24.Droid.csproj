@@ -225,6 +225,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\background_screen.jpg" />
     <AndroidResource Include="Resources\drawable\password.png" />
     <AndroidResource Include="Resources\drawable\username.png" />
   </ItemGroup>

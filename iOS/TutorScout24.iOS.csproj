@@ -163,6 +163,9 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Marker.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Marker.imageset\icons8-marker.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo-40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo-1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo-20%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

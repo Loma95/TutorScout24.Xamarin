@@ -16,22 +16,21 @@ namespace TutorScout24
         public App()
         {
             InitializeComponent();
-            MvvmNanoIoC.SetUp(GetIoCAdapter());
-            SetupDependencies();
+
+      
 
         }
         protected override void OnStart()
         {
             base.OnStart();
-
-
+            SetupDependencies();
             TryToPerformAutoLogin();
         
             SetUpMainPage<LoginViewModel>();
 
         }
 
-        private void TryToPerformAutoLogin(){
+        private async void TryToPerformAutoLogin(){
             CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
             if (CService.DoCredentialsExist())
             {
@@ -39,7 +38,8 @@ namespace TutorScout24
                 auth.authentication = new Authentication();
                 auth.authentication.password = CService.Password;
                 auth.authentication.userName = CService.UserName;
-                if (IsValidAuthentication(auth).Result)
+                bool result = await IsValidAuthentication(auth);
+                if (result)
                 {
                     SetUpMainPage<MasterDetailViewModel>();
                 }
@@ -56,6 +56,11 @@ namespace TutorScout24
         {
             
             return new MvvmNanoNinjectAdapter();
+        }
+
+        protected override void SetUpPresenter()
+        {
+            MvvmNanoIoC.RegisterAsSingleton<IPresenter>(new CustomPresenter(this));
         }
          
         private static void SetupDependencies(){

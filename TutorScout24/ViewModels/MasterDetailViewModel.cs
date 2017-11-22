@@ -15,8 +15,10 @@ namespace TutorScout24.ViewModels
 
         private async Task Change()
         {
-            UserInfos userI = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo();
-            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));
+            /*UserInfos userI = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo();
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(userI.UserCount.ToString()));*/
+           
+           
         }
     }
 }

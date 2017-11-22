@@ -112,30 +112,8 @@ namespace TutorScout24.ViewModels
         }
 
 
-        public ICommand FabCommand
-        {
-            get { return new Command(CreateUser); }
-
-        }
-
-
-        private async void CreateUser()
-        {
-            User usr = new User();
-            usr.age = 11;
-            usr.email = "ard@dhbw.de";
-            usr.firstName = "sdf";
-            usr.lastName = "sdf";
-            usr.gender = "sdf";
-            usr.password = "sdf";
-            usr.maxGraduation = "sdf";
-            usr.note = "sdf";
-            usr.placeOfResidence = "sdf";
-            usr.userName = "sdf";
-            bool response = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
-
-            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));
-        }
+      
+       
 
 
 

@@ -49,15 +49,14 @@ namespace TutorScout24.Pages
         private RelativeLayout _headerLayout = new RelativeLayout
         {
             HeightRequest = 100,
-            BackgroundColor = Xamarin.Forms.Color.Chocolate,
             WidthRequest = 500
         };
 
         private Image profileImage = new Image
         {
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center,
-            Source = ImageSource.FromResource("TutorScout24.Resources.lel.jpg")
+            VerticalOptions = LayoutOptions.Fill,
+            HorizontalOptions = LayoutOptions.Fill,
+            Source = "background_screen.jpg"
         };
 
 
@@ -144,7 +143,7 @@ namespace TutorScout24.Pages
 
             ToolbarItem switchI = new ToolbarItem
             { 
-                Text = "\uf073"
+                Text = "\uf0ec"
             };
 
             //switchI.SetBinding(ToolbarItem.TextProperty, nameof(MasterDetailViewModel.ChangeCommand));
