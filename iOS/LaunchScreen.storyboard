@@ -26,5 +26,7 @@
     </scenes>
     <resources>
         <image name="Marker" width="26" height="26"/>
+        <image name="icon.png" width="72" height="72"/>
+        <image name="background_screen.jpg" width="480" height="444"/>
     </resources>
 </document>

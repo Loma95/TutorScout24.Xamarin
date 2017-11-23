@@ -10,7 +10,6 @@ namespace TutorScout24.Pages
         public RegisterPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
                 DisplayAlert("Alert", arg2.Text, "ok");

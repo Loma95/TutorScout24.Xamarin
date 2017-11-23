@@ -25,8 +25,12 @@ namespace TutorScout24
             base.OnStart();
             SetupDependencies();
             TryToPerformAutoLogin();
-        
+
             SetUpMainPage<LoginViewModel>();
+
+           /* var master =  (Pages.MasterDetailPage)Application.Current.MainPage;
+            var navigation = (MvvmNanoNavigationPage)master.Detail;
+            navigation.BarBackgroundColor */
 
         }
 
