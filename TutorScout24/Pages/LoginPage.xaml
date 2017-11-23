@@ -2,45 +2,43 @@
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24" x:TypeArguments="viewModels1:LoginViewModel" x:Class="TutorScout24.Pages.LoginPage" xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions" xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
     BackgroundImage="background_screen.jpg">
     <forms:MvvmNanoContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15">
-                </RowDefinition>
-                <RowDefinition Height="*">
-                </RowDefinition>
-                <RowDefinition Height="15">
-                </RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15">
-                </ColumnDefinition>
-                <ColumnDefinition Width="*">
-                </ColumnDefinition>
-                <ColumnDefinition Width="15">
-                </ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Frame Grid.Column="1" Grid.Row="1" IsClippedToBounds="False" HasShadow="True" CornerRadius="10" BackgroundColor="#BFFFFFFF" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <Image Source="icon.png" Margin="10">
-                    </Image>
-                    <ie:IconEntry Icon="username.png" HeightRequest="50" PlaceholderColor="Black" Placeholder="Benutzername" Text="{Binding UserName,Mode=TwoWay}">
-                    </ie:IconEntry>
-                    <ie:IconEntry Icon="password.png" HeightRequest="50" Placeholder="Passwort" PlaceholderColor="Black" Text="{Binding Password,Mode=TwoWay}" IsPassword="true">
-                    </ie:IconEntry>
-                    <Button Text="Anmelden" Command="{Binding LoginCommand}">
-                    </Button>
-                    <Label Text="Noch nicht dabei?" HorizontalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SignUpCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <Label Text="Passwort vergessen?" HorizontalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ForgotCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-            </Frame>
-        </Grid>
+        <Frame Margin="15" Grid.Column="1" Grid.Row="1" IsClippedToBounds="False" HasShadow="True" CornerRadius="10" BackgroundColor="#BFFFFFFF" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*">
+                    </RowDefinition>
+                    <RowDefinition Height="50">
+                    </RowDefinition>
+                    <RowDefinition Height="50">
+                    </RowDefinition>
+                    <RowDefinition Height="50">
+                    </RowDefinition>
+                    <RowDefinition Height="30">
+                    </RowDefinition>
+                    <RowDefinition Height="30">
+                    </RowDefinition>
+                    <RowDefinition Height="*">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Image Source="icon.png" Margin="10" Grid.Row="0">
+                </Image>
+                <ie:IconEntry Icon="username.png" Grid.Row="1" HeightRequest="50" PlaceholderColor="Black" Placeholder="Benutzername" Text="{Binding UserName,Mode=TwoWay}">
+                </ie:IconEntry>
+                <ie:IconEntry Icon="password.png" Grid.Row="2" HeightRequest="50" Placeholder="Passwort" PlaceholderColor="Black" Text="{Binding Password,Mode=TwoWay}" IsPassword="true">
+                </ie:IconEntry>
+                <Button Text="Anmelden" Grid.Row="3" Command="{Binding LoginCommand}">
+                </Button>
+                <Label Text="Noch nicht dabei?" Grid.Row="4" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Passwort vergessen?" Grid.Row="5" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </Frame>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>
