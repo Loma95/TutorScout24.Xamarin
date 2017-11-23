@@ -39,6 +39,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
-        </Frame>
+        </Frame>        
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>
