@@ -34,6 +34,7 @@
                             <TapGestureRecognizer Command="{Binding SignUpCommand}" />
                         </Label.GestureRecognizers>
                     </Label>
+                  
                     <Label Text="Passwort vergessen?" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ForgotCommand}" />

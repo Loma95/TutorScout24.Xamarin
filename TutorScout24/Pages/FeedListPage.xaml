@@ -14,23 +14,34 @@
               HasUnevenRows="true">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <ViewCell>
-            <Grid>
+            <ViewCell>
+                        <Grid Padding="15">
               <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="5" />
+                                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
               </Grid.ColumnDefinitions>
-              <Label Text="{Binding Creator}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center"/>
-              <Label Text="{Binding Subject}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center"/>
-              <Label Text="{Binding CreationDate}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center"/>
-              <Label Text="{Binding Text}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
-            </Grid>
+                            <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" BackgroundColor="#78909c">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Creator}" TextColor="WhiteSmoke" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start"/>
+                                <Label Text="{Binding Subject}" TextColor="WhiteSmoke" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                <Label Text="{Binding CreationDate}" TextColor="WhiteSmoke" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End"/>
+                            </Grid>
+                            <Label Text="{Binding Text}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <BoxView BackgroundColor="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        </Grid>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
