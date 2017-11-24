@@ -3,6 +3,6 @@
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
     xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
     x:TypeArguments="viewModels1:FeedTabViewModel" x:Class="TutorScout24.Pages.FeedTabPage"
-    xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24" BarBackgroundColor="{StaticResource MainColor}" >
+    xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24" BarBackgroundColor="{Binding ThemeColor}" >
 </forms:MvvmNanoTabbedPage >
 

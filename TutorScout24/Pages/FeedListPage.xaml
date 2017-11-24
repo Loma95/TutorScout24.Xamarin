@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24" x:TypeArguments="viewModels1:FeedListViewModel" x:Class="TutorScout24.Pages.FeedListPage">
     <forms:MvvmNanoContentPage.Content>
-        <ListView x:Name="MyListView" SelectedItem="{Binding CurrentItem}" ItemsSource="{Binding Tutorings}" CachingStrategy="RecycleElement" HasUnevenRows="true">
+        <ListView x:Name="MyListView" SelectedItem="{Binding CurrentItem}" ItemsSource="{Binding Tutorings}"  BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" BackgroundColor="{StaticResource MainColor}" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid Padding="15">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -26,11 +26,11 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Creator}" TextColor="White" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                                    <Label Text="{Binding Subject}" TextColor="White" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                                    <Label Text="{Binding CreationDate}" TextColor="White" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
+                                    <Label Text="{Binding Creator}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                                    <Label Text="{Binding Subject}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                                    <Label Text="{Binding CreationDate}" TextColor="Black" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
                                 </Grid>
-                                <Label Text="{Binding Text}" TextColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
+                                <Label Text="{Binding Text}" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
                                 <BoxView BackgroundColor="White" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
                             </Grid>
                         </Frame>

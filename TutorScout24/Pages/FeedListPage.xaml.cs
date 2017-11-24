@@ -17,7 +17,7 @@ namespace TutorScout24.Pages
         public FeedListPage()
         {
             InitializeComponent();
-
+          
 
         }
 

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Auth;
 using Xamarin.Forms;
 
@@ -15,7 +16,7 @@ namespace TutorScout24.ViewModels
         CredentialService CService;
         public LoginViewModel()
         {
-          
+            
         }
 
         public override void Initialize()

@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TutorScout24.Models;
 using TutorScout24.Services;
+using TutorScout24.Utils;
+using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class FeedListViewModel : MvvmNanoViewModel
+    public class FeedListViewModel : MvvmNanoViewModel,IThemeable
     {
         private Tutoring myVar;
 
@@ -26,7 +28,7 @@ namespace TutorScout24.ViewModels
 
         
             _tut = new ObservableCollection<Tutoring>(tutServ.GetTutorings());
-
+            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
         }
 
         private ObservableCollection<Tutoring> _tut = new ObservableCollection<Tutoring>();
@@ -40,5 +42,8 @@ namespace TutorScout24.ViewModels
 
             }
         }
+
+        private Color _themeColor;
+        public Color ThemeColor { get{ return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor");} }
     }
 }

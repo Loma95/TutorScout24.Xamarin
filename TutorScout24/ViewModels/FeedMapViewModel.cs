@@ -1,10 +1,12 @@
 ﻿using System;
 using Plugin.Geolocator.Abstractions;
 using TutorScout24.Services;
+using TutorScout24.Utils;
+using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class FeedMapViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>
+    public class FeedMapViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>,IThemeable
     {
 
         private Xamarin.Forms.Maps.Position _pos;
@@ -34,6 +36,7 @@ namespace TutorScout24.ViewModels
         public FeedMapViewModel()
         {
             GetFirstPosition();
+            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
         }
 
         private async void GetFirstPosition()
@@ -58,5 +61,9 @@ namespace TutorScout24.ViewModels
         {
             //Position = new Xamarin.Forms.Maps.Position(value.Latitude, value.Longitude);
         }
+
+
+        private Color _themeColor;
+        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
     }
 }

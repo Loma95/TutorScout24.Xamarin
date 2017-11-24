@@ -4,17 +4,18 @@ using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Pages;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class RegisterViewModel: MvvmNano.MvvmNanoViewModel
+    public class RegisterViewModel: MvvmNano.MvvmNanoViewModel,IThemeable
     {
         User _usr = new User();
         public RegisterViewModel()
         {
            
-
+            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
            
         }
 
@@ -79,6 +80,9 @@ namespace TutorScout24.ViewModels
             MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(response.ToString()));
         }
 
+
+        private Color _themeColor;
+        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
 
     }
 }

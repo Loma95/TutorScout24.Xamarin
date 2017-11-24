@@ -5,17 +5,19 @@ using System.Windows.Input;
 using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class SearchWeatherViewModel:MvvmNanoViewModel
+    public class SearchWeatherViewModel:MvvmNanoViewModel,IThemeable
     {
 
         public SearchWeatherViewModel()
         {
             var tutServ =  MvvmNanoIoC.Resolve<TutorScoutRestService>();
             _tut = tutServ.GetTutorings().ToArray();
+            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }
 
@@ -77,5 +79,10 @@ namespace TutorScout24.ViewModels
             Weather = await service.GetWeatherForCity(Input);
 
         }
+
+        private Color _themeColor;
+        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
+
+
     }
 }

@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.Linq;
 using System.Diagnostics.Contracts;
+using TutorScout24.Utils;
 
 namespace TutorScout24.ViewModels
 {
@@ -19,9 +20,9 @@ namespace TutorScout24.ViewModels
     {
         public enum Mode  { TUTOR,STUDENT };
         public static Mode CurrentMode;
-        public ICommand ChangeCommand => new Command(async () => await Change());
+        public ICommand ChangeCommand => new Command(Change);
 
-        private async Task Change()
+        private  void Change()
         {
 
 
@@ -33,11 +34,18 @@ namespace TutorScout24.ViewModels
                 Application.Current.Resources["MainColor"] = Color.FromHex("#78909c");
             }
 
-            RefreshCurrentPage();
-            SetBarColor();
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-        
+            var navigation = (MvvmNanoNavigationPage)master.Detail;
+            IThemeable vc =  (IThemeable)navigation.RootPage.BindingContext;
+            vc.ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+
+
+           // RefreshCurrentPage();
+            SetBarColor();
+
+           // var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            
         
         }
 

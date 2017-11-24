@@ -10,11 +10,12 @@ using Xamarin.Forms;
 using MvvmNano;
 using System.Windows.Input;
 using TutorScout24.Models;
+using TutorScout24.Utils;
 
 namespace TutorScout24.ViewModels
 {
 
-    public class CurrentLocationWeatherViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>
+    public class CurrentLocationWeatherViewModel : MvvmNano.MvvmNanoViewModel, IObserver<Plugin.Geolocator.Abstractions.Position>,IThemeable
     {
         private readonly IMessenger _messenger;
 
@@ -24,7 +25,7 @@ namespace TutorScout24.ViewModels
 
             getWeatherJSON();
             getFirstPosition();
-
+            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }
 
@@ -123,5 +124,8 @@ namespace TutorScout24.ViewModels
             getWeatherJSON();
 
         }
+
+        private Color _themeColor;
+        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
     }
 }
