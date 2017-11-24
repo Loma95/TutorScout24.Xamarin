@@ -24,13 +24,17 @@ namespace TutorScout24
         {
             base.OnStart();
             SetupDependencies();
-            TryToPerformAutoLogin();
+            //TryToPerformAutoLogin();
 
-            SetUpMainPage<LoginViewModel>();
+            //only for debug
+            SetUpMainPage<MasterDetailViewModel>();
+            //only for debug
 
-           /* var master =  (Pages.MasterDetailPage)Application.Current.MainPage;
+            //SetUpMainPage<LoginViewModel>();
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             var navigation = (MvvmNanoNavigationPage)master.Detail;
-            navigation.BarBackgroundColor */
+            navigation.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+          
 
         }
 

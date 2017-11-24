@@ -8,7 +8,11 @@ namespace TutorScout24.Pages
     {
         public FeedTabPage()
         {
+
+
             InitializeComponent();
+
+
             var presenter = (MvvmNano.Forms.MvvmNanoFormsPresenter)MvvmNanoIoC.Resolve<IPresenter>();
             var view = (Page)presenter.CreateViewFor<FeedListViewModel>();
             view.BindingContext = MvvmNanoIoC.Resolve<FeedListViewModel>();

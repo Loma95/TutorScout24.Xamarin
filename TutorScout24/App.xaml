@@ -22,11 +22,7 @@
                 </Grid>
             </ControlTemplate>
 
-
-      <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="Color.Red"/>
-        <Setter Property="BarTextColor" Value="Color.Green"/>
-      </Style>
+            <Color x:Key="MainColor">#EF5350</Color>
             </ResourceDictionary>
     </Application.Resources>
 </forms:MvvmNanoApplication>

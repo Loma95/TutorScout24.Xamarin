@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using MvvmNano.Forms;
 using TutorScout24.Pages;
 using TutorScout24.ViewModels;
 using Xamarin.Forms;
@@ -26,10 +27,16 @@ namespace TutorScout24
                 NavigateToViewModel<FeedTabViewModel>();
 
             }else{
+               
                 base.OpenPage(page); 
             }
-           
+
+
+ 
         }
+
+
+    
 
         protected override System.Threading.Tasks.Task OpenPageAsync(Page page)
         {

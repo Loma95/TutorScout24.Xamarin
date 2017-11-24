@@ -12,6 +12,7 @@ using TutorScout24.Models;
 using TutorScout24.Services;
 using System.Threading.Tasks;
 using TutorScout24.Controls;
+using MvvmNano.Forms;
 
 namespace TutorScout24.Pages
 {
@@ -56,8 +57,20 @@ namespace TutorScout24.Pages
         {
             VerticalOptions = LayoutOptions.Fill,
             HorizontalOptions = LayoutOptions.Fill,
-            Source = "background_screen.jpg"
+            Margin = 5,
+            Source = "icon.png"
         };
+
+
+        protected override void DetailSet(MvvmNanoMasterDetailData lastDetailData, MvvmNanoMasterDetailData newDetailData, Page page)
+        {
+            base.DetailSet(lastDetailData, newDetailData, page);
+
+            MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage) page.Parent;
+            navi.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+        }
+      
+       
 
 
 
@@ -150,11 +163,14 @@ namespace TutorScout24.Pages
            
          this.ToolbarItems.Add(switchI);
 
-       switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
+        switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
 
       
 
         } 
+
+    
+      
 
         /// <summary>
         /// Creates the master page.
