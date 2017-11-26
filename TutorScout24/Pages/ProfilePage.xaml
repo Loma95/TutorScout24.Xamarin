@@ -14,7 +14,7 @@
                     </RowDefinition>
                 <RowDefinition Height="1*">
                     </RowDefinition>
-                <RowDefinition Height="30">
+                <RowDefinition Height="80">
                     </RowDefinition>
                 </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -44,7 +44,7 @@
             <Label Text="{Binding UserInfo.description}" FontSize="20" HorizontalTextAlignment="Center"></Label>
                 </StackLayout>
                 </Frame>
-                <Button Grid.Row="4" Margin="10"  IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="Gespeichertes Passwort entfernen"></Button>
+                <Button Grid.Row="4" Margin="5"  IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="Gespeichertes Passwort entfernen"></Button>
             </Grid>
 
             </ScrollView>

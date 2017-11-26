@@ -49,6 +49,7 @@ namespace TutorScout24
                 {
                     MvvmNanoIoC.RegisterAsSingleton<Authentication>(auth.authentication);
                     SetUpMainPage<MasterDetailViewModel>();
+                    return;
                 }
             }
            

@@ -19,8 +19,9 @@ namespace TutorScout24.ViewModels
             GetMyUserInfo();
 
             CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
-            _passwordWasSaved = CService.DoCredentialsExist();
            
+            PasswordWasSaved = CService.DoCredentialsExist();
+            Debug.WriteLine(_passwordWasSaved);
         }
 
         public ICommand RemovePassword => new Command(RemovePass);
