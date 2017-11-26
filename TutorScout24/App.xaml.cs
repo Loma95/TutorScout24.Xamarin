@@ -24,16 +24,12 @@ namespace TutorScout24
         {
             base.OnStart();
             SetupDependencies();
-            //TryToPerformAutoLogin();
 
-            //only for debug
-            SetUpMainPage<MasterDetailViewModel>();
-            //only for debug
+            TryToPerformAutoLogin();
 
-            //SetUpMainPage<LoginViewModel>();
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            var navigation = (MvvmNanoNavigationPage)master.Detail;
-            navigation.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+    
+
+            SetUpMainPage<LoginViewModel>();
           
 
         }
@@ -46,9 +42,12 @@ namespace TutorScout24
                 auth.authentication = new Authentication();
                 auth.authentication.password = CService.Password;
                 auth.authentication.userName = CService.UserName;
+
+
                 bool result = await IsValidAuthentication(auth);
                 if (result)
                 {
+                    MvvmNanoIoC.RegisterAsSingleton<Authentication>(auth.authentication);
                     SetUpMainPage<MasterDetailViewModel>();
                 }
             }

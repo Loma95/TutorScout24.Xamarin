@@ -3,6 +3,50 @@
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
     x:TypeArguments="viewModels1:ProfileViewModel" x:Class="TutorScout24.ProfilePage"    >
     <forms:MvvmNanoContentPage.Content  >
+    <ScrollView>
+       <Grid>
+           <Grid.RowDefinitions Margin="10">
+                    <RowDefinition Height="2*">
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+                    </RowDefinition>
+                <RowDefinition Height="1*">
+                    </RowDefinition>
+                <RowDefinition Height="1*">
+                    </RowDefinition>
+                <RowDefinition Height="30">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+          <Frame Margin="10" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="Center"  Orientation="Vertical">
+            <Label  Text="{Binding UserInfo.firstName}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center"></Label>
+            <Label  Text="{Binding UserInfo.lastName}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+                </Frame>
+             <Frame Margin="10" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="10">
+            <Label Text="Alter:" FontSize="20" HorizontalTextAlignment="Start"></Label>
+            <Label Text="{Binding UserInfo.age}" FontSize="20" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+                </Frame>
+             <Frame Margin="10" Grid.Row="2" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <StackLayout VerticalOptions="Center"   Orientation="Horizontal" Margin="10">
+            <Label Text="Geschlecht:" FontSize="20" HorizontalTextAlignment="Start"></Label>
+            <Label  Text="{Binding UserInfo.gender}" FontSize="20" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+                </Frame>
+             <Frame Margin="10" Grid.Row="3"  IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+               <StackLayout VerticalOptions="Center"  Orientation="Horizontal" Margin="10">
+            <Label Text="Beschreibung:" FontSize="20" HorizontalTextAlignment="Start"></Label>
+            <Label Text="{Binding UserInfo.description}" FontSize="20" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+                </Frame>
+                <Button Grid.Row="4" Margin="10"  IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="Gespeichertes Passwort entfernen"></Button>
+            </Grid>
 
+            </ScrollView>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage >

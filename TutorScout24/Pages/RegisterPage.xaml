@@ -2,6 +2,7 @@
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundImage="background_screen.jpg" Title="Registrieren" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24" x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage" xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
     xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
     <forms:MvvmNanoContentPage.Content>
+        <ScrollView>
       <Frame Margin="15" Grid.Column="1" Grid.Row="1" IsClippedToBounds="False" HasShadow="True" CornerRadius="10" BackgroundColor="#BFFFFFFF" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid>
                 <Grid.RowDefinitions>
@@ -15,21 +16,46 @@
                     </RowDefinition>
                     <RowDefinition Height="50">
                     </RowDefinition>
-              
-                    <RowDefinition Height="*">
+                  <RowDefinition Height="50">
+                    </RowDefinition>
+                        <RowDefinition Height="50">
+                    </RowDefinition>
+                        <RowDefinition Height="50">
+                    </RowDefinition>
+                        <RowDefinition Height="50">
+                    </RowDefinition>
+                        <RowDefinition Height="50">
+                    </RowDefinition>
+                        <RowDefinition Height="50">
+                    </RowDefinition>
+            <RowDefinition Height="50">
                     </RowDefinition>
                 </Grid.RowDefinitions>
                     <Image Source="icon.png" Grid.Row="0" Margin="10">
                     </Image>
-                    <ie:IconEntry Icon="password.png" Grid.Row="1" TextColor="Black" HeightRequest="50" Placeholder="Email" Text="{Binding Email}">
+                    <ie:IconEntry Icon="password.png" Grid.Row="1" TextColor="Black" HeightRequest="50" Keyboard="Email" Placeholder="Email" Text="{Binding Email}">
                     </ie:IconEntry>
                     <ie:IconEntry Icon="username.png" Grid.Row="2" TextColor="Black" HeightRequest="50" Placeholder="Benutzername" Text="{Binding UserName}">
                     </ie:IconEntry>
                     <ie:IconEntry Icon="password.png" Grid.Row="3" TextColor="Black" HeightRequest="50" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true">
                     </ie:IconEntry>
-                    <Button  Grid.Row="4"  Text="Jetzt loslegen!" Command="{Binding StartCommand}">
+                 <ie:IconEntry Icon="password.png" Grid.Row="4" TextColor="Black" HeightRequest="50" Placeholder="Vorname" Text="{Binding FirstName}" >
+                    </ie:IconEntry>
+                 <ie:IconEntry Icon="password.png" Grid.Row="5" TextColor="Black" HeightRequest="50" Placeholder="Nachname" Text="{Binding LastName}" >
+                    </ie:IconEntry>
+                 <ie:IconEntry  Keyboard="Numeric" Icon="password.png" Grid.Row="6" TextColor="Black" HeightRequest="50" Placeholder="Alter" Text="{Binding Age}" >
+                    </ie:IconEntry>
+                    <Picker Grid.Row="7" Title="Geschlecht" ItemsSource="{Binding Gender}" SelectedItem="{Binding SelectedGender}"></Picker>
+                 <ie:IconEntry Icon="password.png" Grid.Row="8" TextColor="Black" HeightRequest="50" Placeholder="Beschreibung" Text="{Binding Description}" >
+                    </ie:IconEntry>
+                    <ie:IconEntry Icon="password.png" Grid.Row="9" TextColor="Black" HeightRequest="50" Placeholder="Wohnort" Text="{Binding PlaceOfResidence}" >
+                    </ie:IconEntry>
+                    <ie:IconEntry Icon="password.png" Grid.Row="10" TextColor="Black" HeightRequest="50" Placeholder="maximaler Abschluss" Text="{Binding Graduation}" >
+                    </ie:IconEntry>
+                    <Button  Grid.Row="11"  Text="Jetzt loslegen!" Command="{Binding StartCommand}">
                     </Button>
               </Grid>
             </Frame>
+            </ScrollView>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

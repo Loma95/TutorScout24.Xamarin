@@ -23,14 +23,16 @@ namespace TutorScout24.ViewModels
         {
             base.Initialize();
 
-            //InitView<MasterDetailViewModel>();
-
             CService = MvvmNanoIoC.Resolve<CredentialService>();
           
 
         }
-
-        private IView _view;
+        private bool _passwordShouldBeSaved;
+        public bool PasswordShouldBeSaved
+        {
+            get { return _passwordShouldBeSaved; }
+            set { _passwordShouldBeSaved = value; }
+        }
 
         private string _userName;
         public string UserName
@@ -50,7 +52,7 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        public ICommand LoginCommand => new Command( () => LoginAsync());
+        public ICommand LoginCommand => new Command( async () => LoginAsync());
 
         private async Task LoginAsync()
         {
@@ -65,7 +67,11 @@ namespace TutorScout24.ViewModels
             bool result = await IsValidAuthentication(auth);
             if (result)
             {
-                CService.SaveCredentials(UserName, Password);
+                if (PasswordShouldBeSaved)
+                {
+                    CService.SaveCredentials(UserName, Password);
+                }
+                MvvmNanoIoC.RegisterAsSingleton<Authentication>(auth.authentication);
                 NavigateTo<MasterDetailViewModel>();
             }
             else
@@ -82,14 +88,7 @@ namespace TutorScout24.ViewModels
             NavigateTo<RegisterViewModel>();
         }
 
-        private void InitView<TViewModel>()where TViewModel : MvvmNanoViewModel
-        {
-            var viewModel = MvvmNanoIoC.Resolve<TViewModel>();
-            _view = MvvmNanoIoC.Resolve<IPresenter>().CreateViewFor<TViewModel>();
-            _view.SetViewModel(viewModel);
-
-        }
-
+    
         private async Task<bool> IsValidAuthentication(CheckAuthentication auth)
         {
             return await MvvmNanoIoC.Resolve<TutorScoutRestService>().CanAuthenticate(auth);

@@ -41,7 +41,7 @@ namespace TutorScout24.Services
         }
 
 
-        public async Task<UserInfos> GetUserInfo()
+        public async Task<UserInfos> GetUserInfos()
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/info";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
@@ -73,6 +73,31 @@ namespace TutorScout24.Services
             Debug.WriteLine(response.StatusCode);
             return false;
         }
+
+        public async Task<UserInfo> GetMyUserInfo()
+        {
+
+            FindUser _findUser = new FindUser();
+            _findUser.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            _findUser.userToFind = MvvmNano.MvvmNanoIoC.Resolve<Authentication>().userName;
+
+
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/userInfo";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(_findUser);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var rescontent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<UserInfo>(rescontent);
+            }
+            else
+            {
+                return null;
+            }
+        }
+   
 
         public List<Tutoring> GetTutorings()
         {

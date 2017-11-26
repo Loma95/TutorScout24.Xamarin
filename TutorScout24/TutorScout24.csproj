@@ -86,6 +86,9 @@
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Utils\CustomPresenter.cs" />
     <Compile Include="Utils\IThemeable.cs" />
+    <Compile Include="Models\Authentication.cs" />
+    <Compile Include="Models\FindUser.cs" />
+    <Compile Include="Models\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
