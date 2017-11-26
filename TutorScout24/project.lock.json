@@ -2,6 +2,53 @@
   "version": 3,
   "targets": {
     ".NETPortable,Version=v4.5,Profile=Profile111": {
+      "Microsoft.AppCenter/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Analytics/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AppCenter": "1.0.1"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Analytics.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Analytics.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Crashes/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AppCenter": "1.0.1"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Crashes.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Crashes.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
+      },
       "Microsoft.Bcl.Build/1.0.21": {
         "type": "package",
         "build": {
@@ -219,6 +266,64 @@
     }
   },
   "libraries": {
+    "Microsoft.AppCenter/1.0.1": {
+      "sha512": "cVHMaWJ3BmUj187sDWOiJ77/Z+W9q1cO8KYT85Ee/6EONVUHQHuGniZkwSbKhXZN7NaCFiDUNshVAOvRZPv0BA==",
+      "type": "package",
+      "path": "microsoft.appcenter/1.0.1",
+      "files": [
+        "lib/MonoAndroid403/Microsoft.AppCenter.Android.Bindings.dll",
+        "lib/MonoAndroid403/Microsoft.AppCenter.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.iOS.Bindings.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.dll",
+        "lib/uap10.0/Microsoft.AppCenter.dll",
+        "microsoft.appcenter.1.0.1.nupkg.sha512",
+        "microsoft.appcenter.nuspec"
+      ]
+    },
+    "Microsoft.AppCenter.Analytics/1.0.1": {
+      "sha512": "vTqFc1hg0sP/rq6nk5vcWsY4MCUXzU5QaUcQA/xdXTJAt/qZtGH+FN4fNgkzQ4PUw2RNBaQH7UHuqUXszbrokw==",
+      "type": "package",
+      "path": "microsoft.appcenter.analytics/1.0.1",
+      "files": [
+        "lib/MonoAndroid403/Microsoft.AppCenter.Analytics.Android.Bindings.dll",
+        "lib/MonoAndroid403/Microsoft.AppCenter.Analytics.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.iOS.Bindings.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Analytics.dll",
+        "lib/uap10.0/Microsoft.AppCenter.Analytics.dll",
+        "microsoft.appcenter.analytics.1.0.1.nupkg.sha512",
+        "microsoft.appcenter.analytics.nuspec"
+      ]
+    },
+    "Microsoft.AppCenter.Crashes/1.0.1": {
+      "sha512": "5KirkbHI9SV9DqqHQSZtx3bQzpi3SyJ22ZUzbOjfuJZCZOyisHfew3wGdCpWg0Q0fzZ1h6YG3I9rzHto2AeneA==",
+      "type": "package",
+      "path": "microsoft.appcenter.crashes/1.0.1",
+      "files": [
+        "build/uap10.0/Microsoft.AppCenter.Crashes.targets",
+        "lib/MonoAndroid403/Microsoft.AppCenter.Crashes.Android.Bindings.dll",
+        "lib/MonoAndroid403/Microsoft.AppCenter.Crashes.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.iOS.Bindings.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microsoft.AppCenter.Crashes.dll",
+        "microsoft.appcenter.crashes.1.0.1.nupkg.sha512",
+        "microsoft.appcenter.crashes.nuspec",
+        "ref/uap10.0/Microsoft.AppCenter.Crashes.dll",
+        "runtimes/win10-arm/lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
+        "runtimes/win10-arm/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-arm/native/WatsonRegistrationUtility.dll",
+        "runtimes/win10-x64/lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
+        "runtimes/win10-x64/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-x64/native/WatsonRegistrationUtility.dll",
+        "runtimes/win10-x86/lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
+        "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-x86/native/WatsonRegistrationUtility.dll"
+      ]
+    },
     "Microsoft.Bcl.Build/1.0.21": {
       "sha512": "sgHu4mIt0+NVGyI12Bj4hLPypNK55UOH+ologj2LqDCjxq3EbIxe/uAtHjY+fEwbE1dtsAHG8SXHf+V/EYbKTg==",
       "type": "package",
@@ -852,6 +957,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.AppCenter.Analytics >= 1.0.1",
+      "Microsoft.AppCenter.Crashes >= 1.0.1",
       "Microsoft.Bcl.Build >= 1.0.21",
       "MvvmNano.Core >= 3.1.0",
       "MvvmNano.Forms >= 3.1.0",
@@ -893,6 +1000,8 @@
       }
     },
     "dependencies": {
+      "Microsoft.AppCenter.Analytics": "1.0.1",
+      "Microsoft.AppCenter.Crashes": "1.0.1",
       "Microsoft.Bcl.Build": "1.0.21",
       "MvvmNano.Core": "3.1.0",
       "MvvmNano.Forms": "3.1.0",

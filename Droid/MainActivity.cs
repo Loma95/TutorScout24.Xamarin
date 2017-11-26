@@ -17,6 +17,9 @@ using Android.Graphics;
 using TutorScout24.Services;
 using Xamarin.Auth;
 using IconEntry.FormsPlugin.Android;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace TutorScout24.Droid
 {
@@ -34,6 +37,8 @@ namespace TutorScout24.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
             IconEntryRenderer.Init();
+            AppCenter.Start("b0585775-e91e-4607-93e8-d36b1dcc2273",
+                   typeof(Analytics), typeof(Crashes));
 
             NControlViewRenderer.Init();
             try

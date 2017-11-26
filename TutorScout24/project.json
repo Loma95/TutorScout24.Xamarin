@@ -1,5 +1,7 @@
 ﻿{
   "dependencies": {
+    "Microsoft.AppCenter.Analytics": "1.0.1",
+    "Microsoft.AppCenter.Crashes": "1.0.1",
     "Microsoft.Bcl.Build": "1.0.21",
     "MvvmNano.Core": "3.1.0",
     "MvvmNano.Forms": "3.1.0",
