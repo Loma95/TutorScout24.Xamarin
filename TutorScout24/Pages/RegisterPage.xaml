@@ -26,30 +26,32 @@
                         <RowDefinition Height="50" />
                         <RowDefinition Height="50" />
                         <RowDefinition Height="50" />
+                        <RowDefinition Height="30" />
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
                     <Image Source="icon.png" Grid.Row="0" Margin="10" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="1" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="1" TextColor="Black" HeightRequest="50"
                                   Keyboard="Email" Placeholder="Email" Text="{Binding Email}" />
-                    <ie:IconEntry Icon="username.png" Grid.Row="2" TextColor="Black" HeightRequest="50"
+                    <Entry  Grid.Row="2" TextColor="Black" HeightRequest="50"
                                   Placeholder="Benutzername" Text="{Binding UserName}" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="3" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="3" TextColor="Black" HeightRequest="50"
                                   Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="4" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="4" TextColor="Black" HeightRequest="50"
                                   Placeholder="Vorname" Text="{Binding FirstName}" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="5" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="5" TextColor="Black" HeightRequest="50"
                                   Placeholder="Nachname" Text="{Binding LastName}" />
-                    <ie:IconEntry Keyboard="Numeric" Icon="password.png" Grid.Row="6" TextColor="Black"
+                    <Entry Keyboard="Numeric"   Grid.Row="6" TextColor="Black"
                                   HeightRequest="50" Placeholder="Alter" Text="{Binding Age}" />
                     <Picker Grid.Row="7" Title="Geschlecht" ItemsSource="{Binding Gender}"
                             SelectedItem="{Binding SelectedGender}" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="8" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="8" TextColor="Black" HeightRequest="50"
                                   Placeholder="Beschreibung" Text="{Binding Description}" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="9" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="9" TextColor="Black" HeightRequest="50"
                                   Placeholder="Wohnort" Text="{Binding PlaceOfResidence}" />
-                    <ie:IconEntry Icon="password.png" Grid.Row="10" TextColor="Black" HeightRequest="50"
+                    <Entry   Grid.Row="10" TextColor="Black" HeightRequest="50"
                                   Placeholder="maximaler Abschluss" Text="{Binding Graduation}" />
-                    <Button Grid.Row="11" Text="Jetzt loslegen!" Command="{Binding StartCommand}" />
+                     <Label Grid.Row="11" Text="{Binding ErrorText}" FontSize="15" HorizontalOptions="Center" IsVisible="{Binding IsNotValid}" TextColor="Red"/>
+                    <Button Grid.Row="12" Text="Jetzt loslegen!" Command="{Binding StartCommand}" />
                 </Grid>
             </Frame>
         </ScrollView>

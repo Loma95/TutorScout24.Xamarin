@@ -103,6 +103,7 @@
   <Compile Include="Resources\AppResource.de.Designer.cs">
       <DependentUpon>AppResource.de.resx</DependentUpon>
     </Compile>
+  <Compile Include="Utils\InputValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

@@ -36,6 +36,8 @@ namespace TutorScout24
 
         private async void TryToPerformAutoLogin(){
             CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
+            try
+            {
             if (CService.DoCredentialsExist())
             {
                 CheckAuthentication auth = new CheckAuthentication();
@@ -44,6 +46,7 @@ namespace TutorScout24
                 auth.authentication.userName = CService.UserName;
 
 
+               
                 bool result = await IsValidAuthentication(auth);
                 if (result)
                 {
@@ -53,6 +56,11 @@ namespace TutorScout24
                     SetUpMainPage<LoginViewModel>();
                 }
             }else{
+                SetUpMainPage<LoginViewModel>();
+            }
+            }
+            catch (Exception ex)
+            {
                 SetUpMainPage<LoginViewModel>();
             }
            

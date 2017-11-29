@@ -46,10 +46,6 @@ namespace TutorScout24.ViewModels
                     updateUser.lastName = _userInfo.lastName;
                     updateUser.gender = _userInfo.gender;
                     updateUser.note = _userInfo.description;
-                    updateUser.password = "";
-                    updateUser.email = "";
-                    updateUser.maxGraduation = "";
-                    updateUser.placeOfResidence = "";
                     await MvvmNanoIoC.Resolve<TutorScoutRestService>().UpdateUser(updateUser);
                 }
                 EditMode = !EditMode;
@@ -59,6 +55,7 @@ namespace TutorScout24.ViewModels
 
             master.ToolbarItems.Add(_EditSwitch);
         }
+
 
         public ICommand RemovePassword => new Command(RemovePass);
 
@@ -70,6 +67,8 @@ namespace TutorScout24.ViewModels
 
             MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Erfolgreich","Sie haben das gespeicherte Passwort entfernt"));
         }
+
+
 
         private bool _editMode;
         public bool EditMode
