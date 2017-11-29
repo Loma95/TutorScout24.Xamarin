@@ -8,6 +8,9 @@ using TutorScout24.Services;
 using TutorScout24.Models;
 using System.Threading.Tasks;
 using System;
+using System.Reflection;
+using TutorScout24.Resources;
+using System.Globalization;
 
 namespace TutorScout24
 {
@@ -27,10 +30,7 @@ namespace TutorScout24
 
             TryToPerformAutoLogin();
 
-    
-
-            SetUpMainPage<LoginViewModel>();
-          
+            AppResources.Culture = new CultureInfo("de");
 
         }
 
@@ -49,8 +49,11 @@ namespace TutorScout24
                 {
                     MvvmNanoIoC.RegisterAsSingleton<Authentication>(auth.authentication);
                     SetUpMainPage<MasterDetailViewModel>();
-                    return;
+                }else{
+                    SetUpMainPage<LoginViewModel>();
                 }
+            }else{
+                SetUpMainPage<LoginViewModel>();
             }
            
         }

@@ -30,7 +30,7 @@ namespace TutorScout24.Pages
             AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", "\xf007"));
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
-                DisplayAlert("Alert", arg2.Text, "ok");
+                DisplayAlert(arg2.Header, arg2.Text, "ok");
             });
 
            
@@ -159,10 +159,8 @@ namespace TutorScout24.Pages
                 Text = "\uf0ec"
             };
 
-            //switchI.SetBinding(ToolbarItem.TextProperty, nameof(MasterDetailViewModel.ChangeCommand));
            
          this.ToolbarItems.Add(switchI);
-
         switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
 
       

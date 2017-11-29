@@ -95,6 +95,14 @@
     <Compile Include="Models\Authentication.cs" />
     <Compile Include="Models\FindUser.cs" />
     <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\UpdateUser.cs" />
+    <Compile Include="Utils\TranslateExtension.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  <Compile Include="Resources\AppResource.de.Designer.cs">
+      <DependentUpon>AppResource.de.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -112,6 +120,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResource.de.resx">
+       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResource.de.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\CurrentLocationWeatherPage.xaml">
