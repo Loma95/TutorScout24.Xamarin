@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Input;
 using TutorScout24.Controls;
 using TutorScout24.ViewModels;
@@ -15,7 +16,10 @@ namespace TutorScout24
             InitializeComponent();
 
 
-        }
+       BindingContext = new TutorialsViewModel();
+
+    }
+      
 
     }
 }

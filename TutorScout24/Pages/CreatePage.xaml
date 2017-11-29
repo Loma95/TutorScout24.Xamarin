@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
+                           xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+                           xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+                           x:TypeArguments="viewModels1:CreateViewModel" x:Class="TutorScout24.Pages.CreatePage"
+                           xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
+                           xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
+                           Title="Neu erstellen">
+    <forms:MvvmNanoContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Entry Text="{Binding Subject, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Entry Text="{Binding Text, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <DatePicker Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Date="{Binding ExpDate}" MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}"></DatePicker>
+            <Picker Title="Positionsangabe" ItemsSource="{Binding Selections}" SelectedItem="{Binding Selection}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Picker>
+        </Grid>
+    </forms:MvvmNanoContentPage.Content>
+</forms:MvvmNanoContentPage>

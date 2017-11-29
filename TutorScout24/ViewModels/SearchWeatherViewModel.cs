@@ -16,7 +16,7 @@ namespace TutorScout24.ViewModels
         public SearchWeatherViewModel()
         {
             var tutServ =  MvvmNanoIoC.Resolve<TutorScoutRestService>();
-            _tut = tutServ.GetTutorings().ToArray();
+            //_tut = tutServ.GetTutorings().ToArray();
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }

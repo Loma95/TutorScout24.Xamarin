@@ -29,6 +29,17 @@ namespace TutorScout24.ViewModels
 
         }
 
+        public ICommand FabCommand
+        {
+            get { return new Command(Fab); }
+
+        }
+        private void Fab()
+        {
+            NavigateTo<CreateViewModel>();
+            Debug.WriteLine("Command");
+        }
+
         private bool _hasData;
         public bool HasData
         {

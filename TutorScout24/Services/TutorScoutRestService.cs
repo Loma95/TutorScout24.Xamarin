@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 using System.Diagnostics;
+using MvvmNano;
+using TutorScout24.ViewModels;
 
 namespace TutorScout24.Services
 {
@@ -99,7 +101,7 @@ namespace TutorScout24.Services
         }
    
 
-        public List<Tutoring> GetTutorings()
+       /* public List<Tutoring> GetTutorings()
         {
             var assembly = typeof(TutorScout24.App).GetTypeInfo().Assembly;
                 
@@ -116,6 +118,76 @@ namespace TutorScout24.Services
            var list = JsonConvert.DeserializeObject<List<Tutoring>>(text);
         
             return list;
+        }*/
+
+        public async Task<List<Tutoring>> GetTutorings()
+        {
+            Debug.WriteLine("Getting Offers");
+            LocationService serv = LocationService.getInstance();
+            var tutoringRequest = new TutoringRequest
+            {
+                latitude = (int)(await serv.GetPosition()).Latitude,
+                longitude = (int)(await serv.GetPosition()).Longitude,
+                authentication = MvvmNanoIoC.Resolve<Authentication>(),
+                rangeKm = 100000,
+                rowLimit = 20,
+                rowOffset = 0
+            };
+            Debug.WriteLine(MvvmNanoIoC.Resolve<Authentication>().userName);
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/tutoring/";
+            if (MasterDetailViewModel.CurrentMode.Equals(MasterDetailViewModel.Mode.STUDENT))
+            {
+                RestUrl += "offers";
+            } else
+            {
+                RestUrl += "requests";
+            }
+
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(tutoringRequest);
+            Debug.WriteLine("JSON Serialized:" + json);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Got Offers");
+                var rescontent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Tutoring>>(rescontent);
+            }
+            else
+            {
+                Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                return null;
+            }
+        }
+
+        public async Task<List<Tutoring>> GetRequests()
+        {
+            Debug.WriteLine("Getting Requests");
+            LocationService serv = LocationService.getInstance();
+            var tutoringRequest = new TutoringRequest
+            {
+                latitude = (int)(await serv.GetPosition()).Latitude,
+                longitude = (int)(await serv.GetPosition()).Longitude,
+                authentication = MvvmNanoIoC.Resolve<Authentication>(),
+                rangeKm = 100000,
+                rowLimit = 20,
+                rowOffset = 0
+            };
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/tutoring/requests";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(tutoringRequest);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var rescontent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Tutoring>>(rescontent);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

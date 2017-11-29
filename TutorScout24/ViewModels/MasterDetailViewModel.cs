@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.Linq;
 using System.Diagnostics.Contracts;
+using TutorScout24.CustomData;
 using TutorScout24.Utils;
 
 namespace TutorScout24.ViewModels
@@ -29,19 +30,19 @@ namespace TutorScout24.ViewModels
             if(CurrentMode == Mode.STUDENT){
                 CurrentMode = Mode.TUTOR;
                 Application.Current.Resources["MainColor"] = Color.FromHex("#EF5350");
-            }else{
+            }
+            else{
                 CurrentMode = Mode.STUDENT;
                 Application.Current.Resources["MainColor"] = Color.FromHex("#78909c");
             }
-
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             var navigation = (MvvmNanoNavigationPage)master.Detail;
             IThemeable vc =  (IThemeable)navigation.RootPage.BindingContext;
             vc.ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
-
             SetBarColor();
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new ChangeModeMessage(CurrentMode));
         }
         /// <summary>
         /// Sets the color of the bar.
