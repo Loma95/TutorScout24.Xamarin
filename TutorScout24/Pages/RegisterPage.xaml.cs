@@ -11,9 +11,16 @@ namespace TutorScout24.Pages
         {
             InitializeComponent();
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
-            {
-                DisplayAlert("Alert", arg2.Text, "ok");
-            });
+           {
+               DisplayAlert(arg2.Header, arg2.Text, "ok");
+           });
+        }
+
+        public override void Dispose()
+        {
+
+            MvvmNanoIoC.Resolve<IMessenger>().Unsubscribe<DialogMessage>(this);
+            base.Dispose();
         }
     }
 }

@@ -8,12 +8,16 @@ namespace TutorScout24
             get;
             set;
         }
-
+        public string Header
+        {
+            get;
+            set;
+        }
        
-        public DialogMessage(string text)
+        public DialogMessage(string header,string text)
         {
             this.Text = text;
-
+            this.Header = header;
         }
     }
 }

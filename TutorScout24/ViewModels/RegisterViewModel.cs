@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using MvvmNano;
@@ -158,23 +159,26 @@ namespace TutorScout24.ViewModels
 
         private async void CreateUser()
         {
-            User usr = new User();
-            usr.gender = SelectedGender.ToString();
-            usr.firstName = FirstName;
-            usr.lastName = LastName;
-            usr.age = int.Parse(Age);
-            usr.maxGraduation = Graduation;
-            usr.note = Description;
-            usr.placeOfResidence = PlaceOfResidence;
-            usr.email = Email;
-            usr.password = Password;
-            usr.userName = UserName;
-            bool Succeeded = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+              User usr = new User();
+              usr.gender = SelectedGender.ToString();
+              usr.firstName = FirstName;
+              usr.lastName = LastName;
+              usr.age = int.Parse(Age);
+              usr.maxGraduation = Graduation;
+              usr.note = Description;
+              usr.placeOfResidence = PlaceOfResidence;
+              usr.email = Email;
+              usr.password = Password;
+              usr.userName = UserName;
+              bool Succeeded = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
 
+
+            
             if(Succeeded){
                 NavigateTo<LoginViewModel>();
             }else{
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Das hat leider nicht geklappt Lol"));
+                Debug.WriteLine("send");
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler","Das hat leider nicht geklappt Lol"));
 
             }
      

@@ -41,6 +41,26 @@ namespace TutorScout24.Services
         }
 
 
+        public async Task<bool> UpdateUser(UpdateUser usr)
+        {
+            usr.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/updateUser";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(usr);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            Debug.WriteLine(json);
+            HttpResponseMessage response = null;
+            response = await client.PutAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+
+            }
+            return false;
+
+        }
+
+
         public async Task<UserInfos> GetUserInfos()
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/info";
