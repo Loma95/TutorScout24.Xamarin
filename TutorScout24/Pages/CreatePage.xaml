@@ -8,23 +8,33 @@
                            x:TypeArguments="viewModels1:CreateViewModel" x:Class="TutorScout24.Pages.CreatePage"
                            xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
                            xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
-                           Title="Neu erstellen">
+                           Title="{Binding PageTitle}">
     <forms:MvvmNanoContentPage.Content>
-        <Grid>
+        <Grid Margin="30">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.2*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Entry Text="{Binding Subject, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Entry Text="{Binding Text, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <DatePicker Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Date="{Binding ExpDate}" MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}"></DatePicker>
-            <Picker Title="Positionsangabe" ItemsSource="{Binding Selections}" SelectedItem="{Binding Selection}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Picker>
+            <Entry Text="{Binding Subject, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Placeholder="Fach eingeben" TextColor="Black"/>
+            <Entry Text="{Binding Text, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                   Placeholder="Beschreibung eingeben" HeightRequest="100" TextColor="Black"/>
+            <Label Text="Ablaufdatum:" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="18" TextColor="Black"></Label>
+            <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding ExpDate}"
+                        MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}" TextColor="Black"/>
+            <Picker Title="Positionsangabe" ItemsSource="{Binding Selections}" SelectedItem="{Binding Selection}"
+                    Grid.Row="3" Grid.Column="0" TextColor="Black"/>
+            <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" Grid.Row="3" Grid.Column="1" TextColor="Black" />
+            <Button IsVisible="{Binding ShowMapButton}" Grid.Row="3" Grid.Column="1"
+                    Text="Karte öffnen" TextColor="Black" Command="{Binding PosSelCommand}"/>
         </Grid>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

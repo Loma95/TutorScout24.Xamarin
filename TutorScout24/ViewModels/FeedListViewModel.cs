@@ -55,14 +55,7 @@ namespace TutorScout24.ViewModels
         {
             var tutServ = MvvmNanoIoC.Resolve<TutorScoutRestService>();
             List<Tutoring> offers;
-            if (mode == MasterDetailViewModel.Mode.STUDENT)
-            {
-                offers = await tutServ.GetTutorings();
-            }
-            else
-            {
-                offers = await tutServ.GetRequests();
-            }
+            offers = await tutServ.GetTutorings();
             
             _tut = new ObservableCollection<Tutoring>(offers);
             NotifyPropertyChanged("Tutorings");

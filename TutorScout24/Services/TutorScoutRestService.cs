@@ -181,33 +181,26 @@ namespace TutorScout24.Services
             }
         }
 
-        public async Task<List<Tutoring>> GetRequests()
+        public async Task<bool> CreateTutoring(CreateTutoring ct)
         {
-            Debug.WriteLine("Getting Requests");
             LocationService serv = LocationService.getInstance();
-            var tutoringRequest = new TutoringRequest
+            ct.authentication = MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/tutoring/create";
+            if (MasterDetailViewModel.CurrentMode.Equals(MasterDetailViewModel.Mode.STUDENT))
             {
-                latitude = (int)(await serv.GetPosition()).Latitude,
-                longitude = (int)(await serv.GetPosition()).Longitude,
-                authentication = MvvmNanoIoC.Resolve<Authentication>(),
-                rangeKm = 100000,
-                rowLimit = 20,
-                rowOffset = 0
-            };
-            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/tutoring/requests";
-            var uri = new Uri(string.Format(RestUrl, string.Empty));
-            var json = JsonConvert.SerializeObject(tutoringRequest);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                var rescontent = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Tutoring>>(rescontent);
+                RestUrl += "Request";
             }
             else
             {
-                return null;
+                RestUrl += "Offer";
             }
+
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(ct);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+            Debug.WriteLine("tutoring" + response.Content);
+            return response.IsSuccessStatusCode;
         }
     }
 }
