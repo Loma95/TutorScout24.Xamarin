@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
@@ -8,6 +9,7 @@ using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Auth;
 using Xamarin.Forms;
+using System.Net.Http;
 
 namespace TutorScout24.ViewModels
 {
@@ -24,9 +26,23 @@ namespace TutorScout24.ViewModels
             base.Initialize();
 
             CService = MvvmNanoIoC.Resolve<CredentialService>();
-          
 
+            NoConnection = IsNotConnected();
         }
+
+        private bool IsNotConnected(){
+
+            return !System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+ 
+        }
+
+        private bool _noConnection;
+        public bool NoConnection
+        {
+            get { return _noConnection; }
+            set { _noConnection = value; }
+        }
+
         private bool _passwordShouldBeSaved;
         public bool PasswordShouldBeSaved
         {

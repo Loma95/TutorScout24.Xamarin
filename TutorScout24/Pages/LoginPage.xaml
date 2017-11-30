@@ -45,6 +45,7 @@
                         <TapGestureRecognizer Command="{Binding ForgotCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
+                <Label Text="Keine Verbindung zum Internet" Grid.Row="7" HorizontalOptions="Center" TextColor="Red" FontSize="20" IsVisible="{Binding NoConnection}"/>
             </Grid>
         </Frame>        
     </forms:MvvmNanoContentPage.Content>

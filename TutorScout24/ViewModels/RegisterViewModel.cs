@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 using MvvmNano;
 using TutorScout24.Models;
@@ -9,6 +10,7 @@ using TutorScout24.Pages;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace TutorScout24.ViewModels
 {
@@ -22,6 +24,34 @@ namespace TutorScout24.ViewModels
            
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
            
+        }
+
+        private bool _isNotValid;
+        public bool IsNotValid
+        {
+            get { return _isNotValid; }
+            set
+            {
+                _isNotValid = value;
+                NotifyPropertyChanged("IsNotValid");
+            }
+        }
+
+        private string _errorText;
+        public string ErrorText
+        {
+            get { return _errorText; }
+            set
+            {
+                _errorText = value;
+                if (value != "")
+                {
+                    IsNotValid = true;
+                }else{
+                    IsNotValid = false;
+                }
+                NotifyPropertyChanged("ErrorText");
+            }
         }
 
         private string _userName;
@@ -151,7 +181,40 @@ namespace TutorScout24.ViewModels
 
         private void Start()
         {
-            /*Check Password and all inputs*/
+            
+
+            Type type = this.GetType();
+            var properties = type.GetProperties();
+
+            List<string> NotNullProperties = new List<string>() { "FirstName", "LastName", "Age", "Graduation", "PlaceOfResidence", "Description", "UserName" };
+
+            foreach (PropertyInfo property in properties)
+            {
+                if (NotNullProperties.Contains(property.Name))
+                {
+                    if(!InputValidator.IsNotEmpty((string)property.GetValue(this, null))){
+                        ErrorText = property.Name + " darf nicht leer sein!";
+                        return;
+                    }
+                }
+               
+            }
+
+            if(!InputValidator.IsNotEmpty(SelectedGender.ToString())){
+                ErrorText = "Bitte wählen Sie ein Geschlecht aus";
+                return;
+            }
+            if(!InputValidator.IsValidEmail(Email)){
+                ErrorText = "Email nicht valide";
+                return;
+            }
+            if (!InputValidator.IsValidPassword(Password)){
+                ErrorText = "Passwort nicht valide";
+                return;
+            }
+
+            ErrorText = "";
+
             CreateUser();
             
         }
