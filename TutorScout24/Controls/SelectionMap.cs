@@ -13,8 +13,8 @@ namespace TutorScout24.Controls
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(SelectionMap),
             new Position(0, 0), propertyChanged: OnPropertyChanged);
 
-        /*public static readonly BindableProperty SelectionProperty = BindableProperty.Create("PosSelection", typeof(Position), typeof(SelectionMap),
-            new Position(0, 0), propertyChanged: OnPropertyChanged);*/
+        public static readonly BindableProperty SelectionProperty = BindableProperty.Create("PosSelection", typeof(Position), typeof(SelectionMap),
+            new Position(0, 0), propertyChanged: OnPropertyChanged);
 
 
         private Position _position;
@@ -24,12 +24,12 @@ namespace TutorScout24.Controls
             set { _position = value; }
         }
 
-       /* private Position _posSelection;
+       private Position _posSelection;
         public Position PosSelection
         {
             get { return _posSelection; }
             set { _posSelection = value; }
-        }*/
+        }
 
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -64,7 +64,7 @@ namespace TutorScout24.Controls
                 };
                 Pins.Clear();
                 Pins.Add(pin);
-                //PosSelection = VisibleRegion.Center;
+                PosSelection = VisibleRegion.Center;
             }
         }
     }

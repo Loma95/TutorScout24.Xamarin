@@ -14,7 +14,8 @@
                           RelativeLayout.WidthConstraint="{ ConstraintExpression Type=RelativeToParent,
                                                       Property=Width}"
                           RelativeLayout.HeightConstraint="{ ConstraintExpression Type=RelativeToParent,
-                                                      Property=Height}"/>
+                                                      Property=Height}"
+                          FeedPins="{Binding Pins}"/>
       <ActivityIndicator  IsVisible="{Binding Loads}"
                           IsRunning="{Binding Loads}"
                           Color="Gray"

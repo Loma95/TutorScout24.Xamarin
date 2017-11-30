@@ -1,8 +1,13 @@
 ﻿using System;
-using Plugin.Geolocator.Abstractions;
+using System.Collections.Generic;
+using MvvmNano;
+using TutorScout24.CustomData;
+using TutorScout24.Models;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using Position = Plugin.Geolocator.Abstractions.Position;
 
 namespace TutorScout24.ViewModels
 {
@@ -21,6 +26,15 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        private List<Pin> _pins;
+
+        public List<Pin> Pins
+        {
+            get { return _pins; }
+            set { _pins = value; }
+        }
+
+
         private bool _searchingGPS;
         public bool Loads
         {
@@ -37,6 +51,24 @@ namespace TutorScout24.ViewModels
         {
             GetFirstPosition();
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            MvvmNanoIoC.Resolve<IMessenger>().Subscribe(this, (object arg1, ChangeModeMessage arg2) =>
+            {
+                SetPinsAsync();
+            });
+        }
+
+        private async void SetPinsAsync()
+        {
+            List<Tutoring> list = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetTutorings();
+            List<Pin> pins = new List<Pin>();
+            foreach (Tutoring tutoring in list)
+            {
+                pins.Add(new Pin()
+                {
+                    Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
+                    Label = tutoring.userName + "\n" + tutoring.subject
+                });
+            }
         }
 
         private async void GetFirstPosition()
