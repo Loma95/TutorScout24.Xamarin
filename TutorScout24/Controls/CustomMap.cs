@@ -14,8 +14,8 @@ namespace TutorScout24.Controls
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(CustomMap),
             new Position(0,0), propertyChanged: OnPropertyChanged);
 
-        public static readonly BindableProperty PinsProperty = BindableProperty.Create("FeedPins", typeof(List<Pin>), typeof(CustomMap),
-            new Position(0, 0), propertyChanged: OnPinChange);
+/*        public static readonly BindableProperty PinsProperty = BindableProperty.Create(nameof(FeedPins), typeof(List<Pin>), typeof(Pin), defaultValue:new List<Pin>());*/
+   
 
         private Position _position;
         public Position Position
@@ -24,15 +24,15 @@ namespace TutorScout24.Controls
             set { _position = value; }
         }
 
-        private List<Pin> _feedPins;
+/*        private List<Pin> _feedPins;
 
        public List<Pin> FeedPins
         {
             get => _feedPins;
             set => _feedPins = value;
-        }
+        }*/
 
-        public static void OnPinChange(BindableObject bindable, object oldValue, object newValue)
+ /*       public static void OnPinChange(BindableObject bindable, object oldValue, object newValue)
         {
             var map = (CustomMap) bindable;
             var newPins = (List<Pin>) newValue;
@@ -42,7 +42,7 @@ namespace TutorScout24.Controls
                 map.Pins.Add(pin);
             }
 
-        }
+        }*/
 
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

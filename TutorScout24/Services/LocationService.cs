@@ -41,7 +41,7 @@ namespace TutorScout24.Services
                     Debug.WriteLine("Use Last Known Location");
                     pos = await CrossGeolocator.Current.GetLastKnownLocationAsync();
                 }
-                await StartListening();
+                //await StartListening();
             }
 
             return pos;

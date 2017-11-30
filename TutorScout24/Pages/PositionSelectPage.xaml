@@ -13,7 +13,7 @@
             IsShowingUser="true"
             MapType="Hybrid"
             Position="{Binding Position}"
-            PosSelection="{Binding PosSelect}"
+            
            />
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>
