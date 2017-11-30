@@ -27,7 +27,8 @@ namespace TutorScout24.ViewModels
 
             CService = MvvmNanoIoC.Resolve<CredentialService>();
 
-            NoConnection = IsNotConnected();
+            Info = IsNotConnected();
+            InfoText = "Keine Verbindung zum Internet";
         }
 
         private bool IsNotConnected(){
@@ -36,11 +37,18 @@ namespace TutorScout24.ViewModels
  
         }
 
-        private bool _noConnection;
-        public bool NoConnection
+        private bool _info;
+        public bool Info
         {
-            get { return _noConnection; }
-            set { _noConnection = value; }
+            get { return _info; }
+            set { _info = value; }
+        }
+
+        private string _infoText;
+        public string InfoText
+        {
+            get { return _infoText; }
+            set { _infoText = value; }
         }
 
         private bool _passwordShouldBeSaved;
@@ -92,6 +100,8 @@ namespace TutorScout24.ViewModels
             }
             else
             {
+                Info = true;
+                InfoText = "Passwort ist nicht korrekt";
                 Debug.WriteLine("Not authenticated");
             }
 
