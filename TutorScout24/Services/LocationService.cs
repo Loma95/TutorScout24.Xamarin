@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using System.Collections.Generic;
+using Xamarin.Forms.Maps;
+using Position = Plugin.Geolocator.Abstractions.Position;
 
 namespace TutorScout24.Services
 {
@@ -55,6 +57,15 @@ namespace TutorScout24.Services
               CrossGeolocator.Current.PositionChanged += PositionChanged;
               CrossGeolocator.Current.PositionError += PositionError;
           }
+
+        public async Task<Position> AdressToPos(string adress)
+        {
+            Geocoder gc = new Geocoder();
+            var positions = await gc.GetPositionsForAddressAsync(adress);
+            Position pos = new Position(
+                positions.GetEnumerator().Current.Latitude, positions.GetEnumerator().Current.Longitude);
+            return pos;
+        }
 
           private void PositionChanged(object sender, PositionEventArgs e)
           {

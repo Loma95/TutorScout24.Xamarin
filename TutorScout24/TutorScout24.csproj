@@ -28,7 +28,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\CustomMap.cs" />
+    <Compile Include="Controls\SelectionMap.cs" />
     <Compile Include="CustomData\ChangeModeMessage.cs" />
+    <Compile Include="CustomData\MapNavigationParameter.cs" />
+    <Compile Include="Models\CreateTutoring.cs" />
     <Compile Include="Models\Tutoring.cs" />
     <Compile Include="Models\TutoringRequest.cs" />
     <Compile Include="Pages\CreatePage.xaml.cs">
@@ -43,6 +46,9 @@
     <Compile Include="Pages\FeedTabPage.xaml.cs">
       <DependentUpon>FeedTabPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PositionSelectPage.xaml.cs">
+      <DependentUpon>PositionSelectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RootWeather.cs" />
     <Compile Include="Services\RestService.cs" />
@@ -51,6 +57,7 @@
     <Compile Include="ViewModels\FeedListViewModel.cs" />
     <Compile Include="ViewModels\FeedMapViewModel.cs" />
     <Compile Include="ViewModels\FeedTabViewModel.cs" />
+    <Compile Include="ViewModels\PositionSelectViewModel.cs" />
     <Compile Include="ViewModels\SearchWeatherViewModel.cs" />
     <Compile Include="Pages\CurrentLocationWeatherPage.xaml.cs">
       <DependentUpon>CurrentLocationWeatherPage.xaml</DependentUpon>
@@ -100,7 +107,7 @@
     <Compile Include="Resources\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-  <Compile Include="Resources\AppResource.de.Designer.cs">
+    <Compile Include="Resources\AppResource.de.Designer.cs">
       <DependentUpon>AppResource.de.resx</DependentUpon>
     </Compile>
   <Compile Include="Utils\InputValidator.cs" />
@@ -126,9 +133,9 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\AppResource.de.resx">
-       <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResource.de.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\CurrentLocationWeatherPage.xaml">
@@ -169,7 +176,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <EmbeddedResource Include="Pages\PositionSelectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\CreatePage.xaml">

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TutorScout24.Models;
 using TutorScout24.Utils;
 using Xamarin.Forms;
 
@@ -28,7 +29,7 @@ namespace TutorScout24.ViewModels
         }
         private void Fab()
         {
-            NavigateTo<CreateViewModel>();
+            NavigateTo<CreateViewModel, CreateTutoring>(new CreateTutoring());
             Debug.WriteLine("Command");
         }
 
