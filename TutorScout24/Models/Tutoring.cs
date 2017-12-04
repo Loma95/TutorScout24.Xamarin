@@ -14,8 +14,8 @@ namespace TutorScout24.Models
         public string subject { get; set; }
         public string text { get; set; }
         public DateTime expirationDate { get; set; }
-        public int latitude { get; set; }
-        public int longitude { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
         public double distanceKm { get; set; }
     }
 }
