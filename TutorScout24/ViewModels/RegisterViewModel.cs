@@ -14,7 +14,7 @@ using Xamarin.Forms.Internals;
 
 namespace TutorScout24.ViewModels
 {
-    public enum Genders { Männlich, Weiblich };
+    public enum Genders { Maennlich, Weiblich };
     
     public class RegisterViewModel: MvvmNano.MvvmNanoViewModel,IThemeable
     {
@@ -110,14 +110,14 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _age;
-        public string Age
+        private DateTime _birthdate ;
+        public DateTime BirthDate
         {
-            get { return _age; }
+            get { return _birthdate; }
             set
             {
-                _age = value;
-                NotifyPropertyChanged("Age");
+                _birthdate = value;
+                NotifyPropertyChanged("Birthdate");
             }
         }
 
@@ -181,6 +181,8 @@ namespace TutorScout24.ViewModels
 
         private void Start()
         {
+
+      
             
 
             Type type = this.GetType();
@@ -226,7 +228,8 @@ namespace TutorScout24.ViewModels
               usr.gender = SelectedGender.ToString();
               usr.firstName = FirstName;
               usr.lastName = LastName;
-              usr.age = int.Parse(Age);
+
+              usr.birthdate = BirthDate.Year.ToString() + BirthDate.Month.ToString("D2") + BirthDate.Day.ToString("D2");
               usr.maxGraduation = Graduation;
               usr.note = Description;
               usr.placeOfResidence = PlaceOfResidence;
@@ -241,7 +244,7 @@ namespace TutorScout24.ViewModels
                 NavigateTo<LoginViewModel>();
             }else{
                 Debug.WriteLine("send");
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler","Das hat leider nicht geklappt Lol"));
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler","Benutzer oder Email existiert schon"));
 
             }
      

@@ -5,6 +5,7 @@
                            xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
                            xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
                            xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+                            xmlns:sys="clr-namespace:System;assembly=mscorlib" 
                            x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage"
                            xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
                            xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
@@ -29,7 +30,7 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
-                    <Image Source="icon.png" Grid.Row="0" Margin="10" />
+                    <Image Source="icon.ipng" Grid.Row="0" Margin="10" />
                     <Entry   Grid.Row="1" TextColor="Black" HeightRequest="50"
                                   Keyboard="Email" Placeholder="Email" Text="{Binding Email}" />
                     <Entry  Grid.Row="2" TextColor="Black" HeightRequest="50"
@@ -40,10 +41,27 @@
                                   Placeholder="Vorname" Text="{Binding FirstName}" />
                     <Entry   Grid.Row="5" TextColor="Black" HeightRequest="50"
                                   Placeholder="Nachname" Text="{Binding LastName}" />
-                    <Entry Keyboard="Numeric"   Grid.Row="6" TextColor="Black"
-                                  HeightRequest="50" Placeholder="Alter" Text="{Binding Age}" />
+                    <DatePicker Grid.Row="6" VerticalOptions="CenterAndExpand" Date="{Binding BirthDate}">
+         <DatePicker.Format>dd-MM-yyy</DatePicker.Format >
+         <DatePicker.MinimumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>1 Jan 1900</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MinimumDate>
+         <DatePicker.MaximumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>Dec 31 2050</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MaximumDate>
+      </DatePicker>
+
+
                     <Picker Grid.Row="7" Title="Geschlecht" ItemsSource="{Binding Gender}"
-                            SelectedItem="{Binding SelectedGender}" />
+                           SelectedItem="{Binding SelectedGender}" />
                     <Entry   Grid.Row="8" TextColor="Black" HeightRequest="50"
                                   Placeholder="Beschreibung" Text="{Binding Description}" />
                     <Entry   Grid.Row="9" TextColor="Black" HeightRequest="50"

@@ -105,6 +105,7 @@ namespace TutorScout24.ViewModels
         {
             get { return _userInfo; }
             set { _userInfo = value; 
+
                 Debug.WriteLine(_userInfo.description);
                 NotifyPropertyChanged("UserInfo");
             }

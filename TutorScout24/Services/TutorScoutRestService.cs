@@ -30,7 +30,7 @@ namespace TutorScout24.Services
             var uri = new Uri(string.Format(RestUrl, string.Empty));
             var json = JsonConvert.SerializeObject(usr);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
+            Debug.WriteLine(json);
             HttpResponseMessage response = null;
             response = await client.PostAsync(uri, content);
             if (response.IsSuccessStatusCode)
