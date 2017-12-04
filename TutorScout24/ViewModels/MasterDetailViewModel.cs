@@ -41,6 +41,7 @@ namespace TutorScout24.ViewModels
             IThemeable vc =  (IThemeable)navigation.RootPage.BindingContext;
             vc.ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
+
             SetBarColor();
             MvvmNanoIoC.Resolve<IMessenger>().Send(new ChangeModeMessage(CurrentMode));
         }

@@ -42,6 +42,64 @@ namespace TutorScout24.Services
  
         }
 
+        public async Task<bool> SendMessage(SendMessage msg)
+        {
+            msg.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/message/sendMessage";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(msg);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+
+            }
+            return false;
+
+        }
+
+        public async Task<List<RestMessage>> GetReceivedMessages()
+        {
+            RestCommandWithAuthentication cmd = new RestCommandWithAuthentication();
+            cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/message/getReceivedMessages";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(cmd);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var msgs = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<RestMessage>>(msgs);
+
+            }
+            return null;
+
+        }
+
+        public async Task<List<RestMessage>> GetSentMessages()
+        {
+            RestCommandWithAuthentication cmd = new RestCommandWithAuthentication();
+            cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/message/getSentMessages";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(cmd);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var msgs = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<RestMessage>>(msgs);
+
+            }
+            return null;
+
+        }
+
 
         public async Task<bool> UpdateUser(RestCommandWithAuthentication cmd)
         {

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <forms:MvvmNanoContentPage  xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
-    x:TypeArguments="viewModels1:MessageViewModel" x:Class="TutorScout24.Pages.MessagePage"    >
+
+    x:TypeArguments="viewModels1:ChatViewModel" x:Class="TutorScout24.Pages.ChatPage"    >
+
     <forms:MvvmNanoContentPage.Content  >
- <ListView  ItemsSource="{Binding Conversations}"  SelectedItem="{Binding SelectedItem}" BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
+ <ListView  ItemsSource="{Binding Messages}"   BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                         
-                                    <Label Text="{Binding id}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                        <Frame Margin="10" IsClippedToBounds="False"  HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              
+                                    <Label Text="{Binding MyTypeName}"  TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
                            
-
-                        
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </forms:MvvmNanoContentPage.Content>
+ 
 </forms:MvvmNanoContentPage >
+

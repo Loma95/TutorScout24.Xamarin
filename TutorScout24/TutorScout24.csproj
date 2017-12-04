@@ -109,6 +109,20 @@
     <Compile Include="Utils\InputValidator.cs" />
     <Compile Include="Models\UpdateProfile.cs" />
     <Compile Include="Models\RestCommandWithAuthentication.cs" />
+    <Compile Include="Pages\MessagePage.xaml.cs">
+      <DependentUpon>MessagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="Models\Chat\Conversation.cs" />
+    <Compile Include="Models\Chat\Message.cs" />
+    <Compile Include="Models\Chat\SentMessage.cs" />
+    <Compile Include="Models\Chat\ReceivedMessage.cs" />
+    <Compile Include="Models\SendMessage.cs" />
+    <Compile Include="Models\RestMessage.cs" />
+    <Compile Include="Pages\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ChatViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -133,6 +147,14 @@
     <EmbeddedResource Include="Resources\AppResource.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResource.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MessagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +203,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Chat\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

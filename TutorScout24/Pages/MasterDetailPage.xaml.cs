@@ -26,6 +26,7 @@ namespace TutorScout24.Pages
            
             AddDetailData<FeedTabViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
             AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", "\xf212"));
+            AddDetailData<MessageViewModel>(new CustomMasterDetailData("Chats", "\xf0e6"));
             AddDetailData<ProfileViewModel>(new CustomMasterDetailData("Profil", "\xf007"));
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe<DialogMessage>(this, (object arg1, DialogMessage arg2) =>
             {
