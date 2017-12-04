@@ -53,15 +53,11 @@
     <Compile Include="Models\RootWeather.cs" />
     <Compile Include="Services\RestService.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
-    <Compile Include="ViewModels\CurrentLocationWeatherViewModel.cs" />
     <Compile Include="ViewModels\FeedListViewModel.cs" />
     <Compile Include="ViewModels\FeedMapViewModel.cs" />
     <Compile Include="ViewModels\FeedTabViewModel.cs" />
     <Compile Include="ViewModels\PositionSelectViewModel.cs" />
     <Compile Include="ViewModels\SearchWeatherViewModel.cs" />
-    <Compile Include="Pages\CurrentLocationWeatherPage.xaml.cs">
-      <DependentUpon>CurrentLocationWeatherPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -110,7 +106,7 @@
     <Compile Include="Resources\AppResource.de.Designer.cs">
       <DependentUpon>AppResource.de.resx</DependentUpon>
     </Compile>
-  <Compile Include="Utils\InputValidator.cs" />
+    <Compile Include="Utils\InputValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -138,9 +134,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\CurrentLocationWeatherPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\TutorialsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
