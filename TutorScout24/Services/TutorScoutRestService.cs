@@ -150,7 +150,7 @@ namespace TutorScout24.Services
                 longitude = (int)(await serv.GetPosition()).Longitude,
                 authentication = MvvmNanoIoC.Resolve<Authentication>(),
                 rangeKm = 100000,
-                rowLimit = 20,
+                rowLimit = 50,
                 rowOffset = 0
             };
             Debug.WriteLine(MvvmNanoIoC.Resolve<Authentication>().userName);

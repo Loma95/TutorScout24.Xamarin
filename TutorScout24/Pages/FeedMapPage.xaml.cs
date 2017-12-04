@@ -22,6 +22,7 @@ namespace TutorScout24.Pages
             base.OnAppearing();
             FeedMapViewModel vM = (FeedMapViewModel) BindingContext;
             vM.Map = RequestMap;
+            vM.SetPinsAsync();
         }
     }
 }

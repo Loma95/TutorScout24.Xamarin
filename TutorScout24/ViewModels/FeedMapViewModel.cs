@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using MvvmNano;
 using TutorScout24.Controls;
 using TutorScout24.CustomData;
@@ -65,15 +66,18 @@ namespace TutorScout24.ViewModels
             {
                 SetPinsAsync();
             });
-            SetPinsAsync();
         }
 
-        private async void SetPinsAsync()
+        public async void SetPinsAsync()
         {
             List<Tutoring> list = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetTutorings();
             List<Pin> pins = new List<Pin>();
+            if(Map!=null)
             foreach (Tutoring tutoring in list)
             {
+                Debug.WriteLine("Set Pin:" + tutoring.latitude);
+
+                Map.Pins.Clear();
                 Map.Pins.Add(new Pin()
                 {
                     Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
