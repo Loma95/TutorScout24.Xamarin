@@ -117,7 +117,7 @@ namespace TutorScout24.ViewModels
             set
             {
                 _birthdate = value;
-                NotifyPropertyChanged("Birthdate");
+                NotifyPropertyChanged("BirthDate");
             }
         }
 

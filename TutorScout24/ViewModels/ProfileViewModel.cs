@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
@@ -40,12 +43,12 @@ namespace TutorScout24.ViewModels
                 {
                     _EditSwitch.Text = "\uf044";
                     NotifyPropertyChanged("UserInfo");
-                    UpdateUser updateUser = new UpdateUser();
-                    updateUser.age = _userInfo.age;
+                    UpdateProfile updateUser = new UpdateProfile();
                     updateUser.firstName = _userInfo.firstName;
                     updateUser.lastName = _userInfo.lastName;
                     updateUser.gender = _userInfo.gender;
                     updateUser.note = _userInfo.description;
+                    updateUser.maxGraduation = _userInfo.maxGraduation;
                     await MvvmNanoIoC.Resolve<TutorScoutRestService>().UpdateUser(updateUser);
                 }
                 EditMode = !EditMode;
@@ -55,6 +58,7 @@ namespace TutorScout24.ViewModels
 
             master.ToolbarItems.Add(_EditSwitch);
         }
+
 
 
         public ICommand RemovePassword => new Command(RemovePass);
@@ -111,9 +115,32 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        public List<string> Gender
+        {
+            get
+            {
+                return Enum.GetNames(typeof(Genders)).Select(b => b).ToList();
+            }
+        }
+
+ 
+
+        private DateTime _birthdate;
+        public DateTime BirthDate
+        {
+            get { return _birthdate; }
+            set
+            {
+                _birthdate = value;
+                NotifyPropertyChanged("BirthDate");
+            }
+        }
+
         private async void GetMyUserInfo(){
                   
             UserInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyUserInfo();
+
+
           
         }
 
@@ -122,6 +149,7 @@ namespace TutorScout24.ViewModels
 
         public override void Dispose()
         {
+            
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_EditSwitch);
             base.Dispose();

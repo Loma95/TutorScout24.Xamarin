@@ -2,8 +2,8 @@
 namespace TutorScout24.Models
 {
  
-    public class CheckAuthentication
+    public class CheckAuthentication: RestCommandWithAuthentication
     {
-        public Authentication authentication { get; set; }
+        
     }
 }

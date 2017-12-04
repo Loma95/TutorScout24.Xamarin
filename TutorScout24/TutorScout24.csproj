@@ -107,6 +107,8 @@
       <DependentUpon>AppResource.de.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\InputValidator.cs" />
+    <Compile Include="Models\UpdateProfile.cs" />
+    <Compile Include="Models\RestCommandWithAuthentication.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

@@ -43,16 +43,17 @@ namespace TutorScout24.Services
         }
 
 
-        public async Task<bool> UpdateUser(UpdateUser usr)
+        public async Task<bool> UpdateUser(RestCommandWithAuthentication cmd)
         {
-            usr.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/updateUser";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
-            var json = JsonConvert.SerializeObject(usr);
+            var json = JsonConvert.SerializeObject(cmd);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             Debug.WriteLine(json);
             HttpResponseMessage response = null;
             response = await client.PutAsync(uri, content);
+            Debug.WriteLine(await response.Content.ReadAsStringAsync());
             if (response.IsSuccessStatusCode)
             {
                 return true;
@@ -68,9 +69,11 @@ namespace TutorScout24.Services
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/info";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
             var response = await client.GetAsync(uri);
+            Debug.WriteLine(await response.Content.ReadAsStringAsync());
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(content);
                 return JsonConvert.DeserializeObject<UserInfos>(content);
             }else{
                 return null;

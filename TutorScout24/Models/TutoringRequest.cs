@@ -8,14 +8,14 @@ using TutorScout24.Services;
 
 namespace TutorScout24.Models
 {
-    public class TutoringRequest
+    public class TutoringRequest:RestCommandWithAuthentication
     {
         public int latitude { get; set; }
         public int longitude { get; set; }
         public int rangeKm { get; set; }
         public int rowLimit { get; set; }
         public int rowOffset { get; set; }
-        public Authentication authentication { get; set; }
+
 
     }
 }
