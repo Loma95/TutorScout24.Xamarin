@@ -14,6 +14,8 @@
                     </RowDefinition>
                     <RowDefinition Height="1*">
                     </RowDefinition>
+                       <RowDefinition Height="1*">
+                    </RowDefinition>
                     <RowDefinition Height="0.5*">
                     </RowDefinition>
                 </Grid.RowDefinitions>
@@ -33,7 +35,17 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
+                        <Label Text="Email:" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                        <Entry Text="{Binding UserInfo.email,Mode=TwoWay}" IsVisible="{Binding EditMode}" FontSize="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        </Entry>
+                        <Label Text="{Binding UserInfo.email,Mode=TwoWay}" IsVisible="{Binding ViewMode}" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" Grid.Row="2" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Geschlecht:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
@@ -43,7 +55,7 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Frame Margin="5" Grid.Row="2" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame Margin="5" Grid.Row="3" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Beschreibung:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
@@ -53,15 +65,15 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Frame Margin="5" Grid.Row="3" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame Margin="5" Grid.Row="4" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Alter:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
-                        <Label Text="{Binding UserInfo.age,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
+                        <Label Text="{Binding UserInfo.dayOfBirth,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Frame Margin="5" Grid.Row="4" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame Margin="5" Grid.Row="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Höchster Abschlussgrad:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
@@ -71,7 +83,7 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Button Grid.Row="5" Margin="5" IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="{i18n:Translate RemovePassword}">
+                <Button Grid.Row="6" Margin="5" IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="{i18n:Translate RemovePassword}">
                 </Button>
             </Grid>
         </ScrollView>

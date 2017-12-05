@@ -50,22 +50,16 @@
       <DependentUpon>PositionSelectPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\RootWeather.cs" />
-    <Compile Include="Services\RestService.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
     <Compile Include="ViewModels\FeedListViewModel.cs" />
     <Compile Include="ViewModels\FeedMapViewModel.cs" />
     <Compile Include="ViewModels\FeedTabViewModel.cs" />
     <Compile Include="ViewModels\PositionSelectViewModel.cs" />
-    <Compile Include="ViewModels\SearchWeatherViewModel.cs" />
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TutorialsPage.xaml.cs">
       <DependentUpon>TutorialsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SearchWeatherPage.xaml.cs">
-      <DependentUpon>SearchWeatherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -123,6 +117,11 @@
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="Pages\ForeignProfilePage.xaml.cs">
+      <DependentUpon>ForeignProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyUserInfo.cs" />
+    <Compile Include="ViewModels\ForeignProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -156,15 +155,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ForeignProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\TutorialsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProfilePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SearchWeatherPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">

@@ -14,7 +14,16 @@ namespace TutorScout24.Pages
 
             InitializeComponent();
 
+    
 
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            CreateViewModel Vm = (CreateViewModel) BindingContext;
+            Vm.RemoveToolbarItem();
         }
 
     }

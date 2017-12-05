@@ -23,7 +23,7 @@ namespace TutorScout24.Pages
         {
             InitializeComponent();
 
-           
+
             AddDetailData<FeedTabViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
             AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", "\xf212"));
             AddDetailData<MessageViewModel>(new CustomMasterDetailData("Chats", "\xf0e6"));
@@ -33,7 +33,7 @@ namespace TutorScout24.Pages
                 DisplayAlert(arg2.Header, arg2.Text, "ok");
             });
 
-           
+
         }
 
 
@@ -46,6 +46,11 @@ namespace TutorScout24.Pages
 
 
 
+
+        private ToolbarItem switchI = new ToolbarItem
+        {
+            Text = "\uf0ec"
+        };
 
         private RelativeLayout _headerLayout = new RelativeLayout
         {
@@ -65,12 +70,22 @@ namespace TutorScout24.Pages
         protected override void DetailSet(MvvmNanoMasterDetailData lastDetailData, MvvmNanoMasterDetailData newDetailData, Page page)
         {
             base.DetailSet(lastDetailData, newDetailData, page);
-
-            MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage) page.Parent;
+            if (newDetailData.ViewModelType == typeof(FeedTabViewModel)|| newDetailData.ViewModelType == typeof(TutorialsViewModel))
+            {
+                if (!this.ToolbarItems.Contains(switchI))
+                {
+                    this.ToolbarItems.Add(switchI);
+                    switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
+                }
+                
+                }else{
+                this.ToolbarItems.Remove(switchI);
+            }
+            MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage)page.Parent;
             navi.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
         }
-      
-       
+
+
 
 
 
@@ -105,7 +120,7 @@ namespace TutorScout24.Pages
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.StartAndExpand,
-                    FontFamily ="fontawesome"
+                    FontFamily = "fontawesome"
                 };
 
 
@@ -114,13 +129,13 @@ namespace TutorScout24.Pages
                 detailImage.SetBinding(Label.TextProperty, nameof(CustomMasterDetailData.ImageCode));
 
                 //fill the RelativeLayout with the views
-                AddToLayoutWithConstraints(detailImage,20,0,relLayout);
-                AddToLayoutWithConstraints(titleLabel,0,0,relLayout);
+                AddToLayoutWithConstraints(detailImage, 20, 0, relLayout);
+                AddToLayoutWithConstraints(titleLabel, 0, 0, relLayout);
 
 
                 return new ViewCell
                 {
-                    
+
                     View = relLayout
                 };
             });
@@ -133,7 +148,8 @@ namespace TutorScout24.Pages
         /// <param name="xCons">X Constraint</param>
         /// <param name="yCons">Y Constraint</param>
         /// <param name="l">RelativeLayout where you want to add the View  </param>
-        private void AddToLayoutWithConstraints(View view,double xCons,double yCons,RelativeLayout l){
+        private void AddToLayoutWithConstraints(View view, double xCons, double yCons, RelativeLayout l)
+        {
             l.Children.Add(view,
                            Constraint.Constant(xCons),
                            Constraint.Constant(yCons),
@@ -149,23 +165,10 @@ namespace TutorScout24.Pages
 
 
 
-        /// <summary>
-        /// Adds the toggle button to tool bar.
-        /// </summary>
-        private void AddToggleButtonToToolBar(){
 
-            ToolbarItem switchI = new ToolbarItem
-            { 
-                Text = "\uf0ec"
-            };
 
-           
-         this.ToolbarItems.Add(switchI);
-        switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
 
-      
-
-        } 
+    
 
     
       
@@ -176,8 +179,7 @@ namespace TutorScout24.Pages
         /// <returns>The master page.</returns>
         protected override Page CreateMasterPage()
         {
-            AddToggleButtonToToolBar();
-
+            
             AddToLayoutWithConstraints(profileImage, 0, 0, _headerLayout);
             DetailListView.Header = _headerLayout;
 

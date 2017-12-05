@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" Title="{Binding UserInfo.userid}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:i18n="clr-namespace:TutorScout24.Utils;assembly=TutorScout24" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:TypeArguments="viewModels1:ForeignProfileViewModel" x:Class="TutorScout24.Pages.ForeignProfilePage">
+    <forms:MvvmNanoContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions Margin="10">
+                    <RowDefinition Height="1.5*">
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical">
+                     
+                        <Label Text="{Binding UserInfo.firstName,Mode=TwoWay}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
+                        </Label>
+                        <Label Text="{Binding UserInfo.lastName,Mode=TwoWay}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
+                        <Label Text="Geschlecht:" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    
+                        <Label Text="{Binding UserInfo.gender,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" Grid.Row="2" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
+                        <Label Text="Beschreibung:" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                       
+                        <Label Text="{Binding UserInfo.description,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" Grid.Row="3" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
+                        <Label Text="Alter:" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                        <Label Text="{Binding UserInfo.age,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" Grid.Row="4" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
+                        <Label Text="Höchster Abschlussgrad:" FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+
+                        <Label Text="{Binding UserInfo.maxGraduation,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </forms:MvvmNanoContentPage.Content>
+</forms:MvvmNanoContentPage>

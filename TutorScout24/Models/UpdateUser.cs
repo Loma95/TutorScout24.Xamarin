@@ -14,6 +14,7 @@ namespace TutorScout24.Models
             public string note { get; set; }
             public string placeOfResidence { get; set; }
             public string maxGraduation { get; set; }
+
         }
 
 }

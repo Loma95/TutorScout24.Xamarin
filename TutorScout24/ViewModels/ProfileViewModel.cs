@@ -48,6 +48,7 @@ namespace TutorScout24.ViewModels
                     updateUser.lastName = _userInfo.lastName;
                     updateUser.gender = _userInfo.gender;
                     updateUser.note = _userInfo.description;
+                    updateUser.email = _userInfo.email;
                     updateUser.maxGraduation = _userInfo.maxGraduation;
                     await MvvmNanoIoC.Resolve<TutorScoutRestService>().UpdateUser(updateUser);
                 }
@@ -104,8 +105,8 @@ namespace TutorScout24.ViewModels
                 NotifyPropertyChanged("PasswordWasSaved");}
         }
 
-        private UserInfo _userInfo;
-        public UserInfo UserInfo
+        private MyUserInfo _userInfo;
+        public MyUserInfo UserInfo
         {
             get { return _userInfo; }
             set { _userInfo = value; 

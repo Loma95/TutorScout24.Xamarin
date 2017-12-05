@@ -216,5 +216,12 @@ namespace TutorScout24.ViewModels
             Text = _ct.text;
             ExpDate = DateTime.Today.AddDays(_ct.duration);
         }
+
+
+        public void RemoveToolbarItem(){
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            master.ToolbarItems.Remove(_CreateSwitch);
+        }
+      
     }
 }

@@ -33,5 +33,7 @@ namespace TutorScout24.Models.Chat
         {
             get;
         }
+
+
     }
 }

@@ -10,6 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using MvvmNano;
 using TutorScout24.ViewModels;
+using TutorScout24.Models.Chat;
 
 namespace TutorScout24.Services
 {
@@ -18,6 +19,7 @@ namespace TutorScout24.Services
 
         String RestUrl;
         HttpClient client;
+        List<Conversation> Conversations = new List<Conversation>();
         public TutorScoutRestService()
         {
             client = new HttpClient();
@@ -157,12 +159,36 @@ namespace TutorScout24.Services
             return false;
         }
 
-        public async Task<UserInfo> GetMyUserInfo()
+        public async Task<MyUserInfo> GetMyUserInfo()
         {
 
             FindUser _findUser = new FindUser();
             _findUser.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
             _findUser.userToFind = MvvmNano.MvvmNanoIoC.Resolve<Authentication>().userName;
+
+
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/myUserInfo";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(_findUser);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var rescontent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<MyUserInfo>(rescontent);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<UserInfo> GetUserInfo(string username)
+        {
+
+            FindUser _findUser = new FindUser();
+            _findUser.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            _findUser.userToFind = username;
 
 
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/userInfo";
@@ -263,5 +289,78 @@ namespace TutorScout24.Services
             Debug.WriteLine("tutoring" + response.Content);
             return response.IsSuccessStatusCode;
         }
+
+
+        public async Task<List<Conversation>> GetAllAsync()
+        {
+
+            List<RestMessage> AllMessages = new System.Collections.Generic.List<RestMessage>();
+            List<RestMessage> sentM = await GetSentMessages();
+            List<RestMessage> recM = await GetReceivedMessages();
+            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)recM);
+            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)sentM);
+            if (AllMessages != null)
+            {
+                foreach (RestMessage item in AllMessages)
+                {
+
+                    Conversation toAdd;
+                    Message m;
+                    if (item.fromUserId == MvvmNanoIoC.Resolve<Authentication>().userName)
+                    {
+                        toAdd = GetConversationById(item.toUserId);
+                        m = new SentMessage();
+                        toAdd.id = item.toUserId;
+                    }
+                    else
+                    {
+                        toAdd = GetConversationById(item.fromUserId);
+                        m = new ReceivedMessage();
+                        toAdd.id = item.fromUserId;
+                    }
+
+                    m.Text = item.text;
+                    m.Time = item.datetime;
+                    m.ToUser = item.toUserId;
+                    m.FromUser = item.fromUserId;
+
+                    toAdd.Messages.Add(m);
+
+                    if (CheckIfConversationIsNew(item.fromUserId))
+                    {
+                        Conversations.Add(toAdd);
+
+                    }
+                }
+            }
+
+            return Conversations;
+        }
+
+        public Conversation GetConversationById(string id)
+        {
+            foreach (Conversation item in Conversations)
+            {
+                if (item.id == id)
+                {
+                    return item;
+                }
+            }
+            return new Conversation();
+        }
+
+
+        private bool CheckIfConversationIsNew(string id)
+        {
+            foreach (Conversation item in Conversations)
+            {
+                if (item.id == id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

@@ -27,14 +27,17 @@ namespace TutorScout24.ViewModels
         public FeedListViewModel()
         {
             GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
             MvvmNanoIoC.Resolve<IMessenger>().Subscribe(this, (object arg1, ChangeModeMessage arg2) =>
             {
                 _tut = new ObservableCollection<Tutoring>();
                 NotifyPropertyChanged("Tutorings");
+                Debug.WriteLine("updateColor");
+                ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
                 GetTutoringsAsync(arg2.newMode);
             });
         }
+
 
         private ObservableCollection<Tutoring> _tut = new ObservableCollection<Tutoring>();
         public ObservableCollection<Tutoring> Tutorings
