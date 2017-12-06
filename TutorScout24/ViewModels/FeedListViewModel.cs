@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TutorScout24.CustomData;
 using TutorScout24.Models;
 using TutorScout24.Services;
@@ -21,8 +22,24 @@ namespace TutorScout24.ViewModels
         public Tutoring CurrentItem
         {
             get { return myVar; }
-            set { myVar = value; }
-        } 
+            set
+            {
+                myVar = value;
+                GoToDetailPage();
+                myVar = null;
+            }
+        }
+
+        public ICommand TutoringTapped
+        {
+            get { return new Command(GoToDetailPage); }
+
+        }
+        private void GoToDetailPage()
+        {
+            NavigateToAsync<TutoringDetailViewModel, Tutoring>(CurrentItem);
+        }
+
 
         public FeedListViewModel()
         {
@@ -65,7 +82,7 @@ namespace TutorScout24.ViewModels
             Debug.WriteLine(offers + "Size::::" + offers.Count);
             foreach (var VARIABLE in offers)
             {
-                Debug.WriteLine(VARIABLE.text);
+                VARIABLE.daysLeft = (int) (VARIABLE.expirationDate - DateTime.Today).TotalDays;
             }
         }
     }

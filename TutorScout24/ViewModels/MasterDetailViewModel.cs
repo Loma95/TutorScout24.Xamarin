@@ -20,7 +20,7 @@ namespace TutorScout24.ViewModels
     public class MasterDetailViewModel : MvvmNano.MvvmNanoViewModel
     {
         public enum Mode  { TUTOR,STUDENT };
-        public static Mode CurrentMode;
+        public static Mode CurrentMode = Mode.STUDENT;
         public ICommand ChangeCommand => new Command(Change);
 
         private  void Change()
@@ -29,11 +29,11 @@ namespace TutorScout24.ViewModels
 
             if(CurrentMode == Mode.STUDENT){
                 CurrentMode = Mode.TUTOR;
-                Application.Current.Resources["MainColor"] = Color.FromHex("#EF5350");
+                Application.Current.Resources["MainColor"] = Color.FromHex("#78909c");
             }
             else{
                 CurrentMode = Mode.STUDENT;
-                Application.Current.Resources["MainColor"] = Color.FromHex("#78909c");
+                Application.Current.Resources["MainColor"] = Color.FromHex("#EF5350");
             }
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;

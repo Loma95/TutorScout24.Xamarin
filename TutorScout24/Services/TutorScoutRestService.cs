@@ -206,26 +206,6 @@ namespace TutorScout24.Services
                 return null;
             }
         }
-   
-
-       /* public List<Tutoring> GetTutorings()
-        {
-            var assembly = typeof(TutorScout24.App).GetTypeInfo().Assembly;
-                
-             Stream stream = assembly.GetManifestResourceStream("TutorScout24.MockData.TutoringData.json");
-           
-             string text = "";
-
-             using (var reader = new System.IO.StreamReader(stream))
-             {
-                 text = reader.ReadToEnd();
-             }
-
-            Debug.WriteLine(text);
-           var list = JsonConvert.DeserializeObject<List<Tutoring>>(text);
-        
-            return list;
-        }*/
 
         public async Task<List<Tutoring>> GetTutorings()
         {
@@ -288,6 +268,43 @@ namespace TutorScout24.Services
             var response = await client.PostAsync(uri, content);
             Debug.WriteLine("tutoring" + response.Content);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<List<MyTutoring>> GetMyTutorings()
+        {
+            RestCommandWithAuthentication auth = new RestCommandWithAuthentication()
+            {
+                authentication = MvvmNanoIoC.Resolve<Authentication>()
+            };
+
+
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/tutoring/my";
+
+            if (MasterDetailViewModel.CurrentMode.Equals(MasterDetailViewModel.Mode.STUDENT))
+            {
+                RestUrl += "Requests";
+            }
+            else
+            {
+                RestUrl += "Offers";
+            }
+
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(auth);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            Debug.WriteLine(json);
+            var response = await client.PostAsync(uri, content);
+            Debug.WriteLine("Response:" + await response.Content.ReadAsStringAsync());
+            if (response.IsSuccessStatusCode)
+            {
+                var rescontent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<MyTutoring>>(rescontent);
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
 

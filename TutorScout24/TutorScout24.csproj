@@ -31,9 +31,10 @@
     <Compile Include="Controls\SelectionMap.cs" />
     <Compile Include="CustomData\ChangeModeMessage.cs" />
     <Compile Include="CustomData\MapNavigationParameter.cs" />
-    <Compile Include="Models\CreateTutoring.cs" />
-    <Compile Include="Models\Tutoring.cs" />
-    <Compile Include="Models\TutoringRequest.cs" />
+    <Compile Include="Models\Tutoring\CreateTutoring.cs" />
+    <Compile Include="Models\Tutoring\MyTutoring.cs" />
+    <Compile Include="Models\Tutoring\Tutoring.cs" />
+    <Compile Include="Models\Tutoring\TutoringRequest.cs" />
     <Compile Include="Pages\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -48,6 +49,9 @@
     </Compile>
     <Compile Include="Pages\PositionSelectPage.xaml.cs">
       <DependentUpon>PositionSelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TutoringDetailPage.xaml.cs">
+      <DependentUpon>TutoringDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
@@ -73,26 +77,26 @@
     </Compile>
     <Compile Include="CustomData\CustomMasterDetailData.cs" />
     <Compile Include="Services\TutorScoutRestService.cs" />
-    <Compile Include="Models\UserInfos.cs" />
+    <Compile Include="Models\UserData\UserInfos.cs" />
     <Compile Include="Controls\CircularButtonControl.cs" />
     <Compile Include="CustomData\DialogMessage.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserData\User.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Services\CredentialService.cs" />
-    <Compile Include="Models\CheckAuthentication.cs" />
+    <Compile Include="Models\UserData\CheckAuthentication.cs" />
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Utils\CustomPresenter.cs" />
     <Compile Include="Utils\IThemeable.cs" />
-    <Compile Include="Models\Authentication.cs" />
-    <Compile Include="Models\FindUser.cs" />
-    <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Models\UpdateUser.cs" />
+    <Compile Include="Models\UserData\Authentication.cs" />
+    <Compile Include="Models\UserData\FindUser.cs" />
+    <Compile Include="Models\UserData\UserInfo.cs" />
+    <Compile Include="Models\UserData\UpdateUser.cs" />
     <Compile Include="Utils\TranslateExtension.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
@@ -101,7 +105,7 @@
       <DependentUpon>AppResource.de.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\InputValidator.cs" />
-    <Compile Include="Models\UpdateProfile.cs" />
+    <Compile Include="Models\UserData\UpdateProfile.cs" />
     <Compile Include="Models\RestCommandWithAuthentication.cs" />
     <Compile Include="Pages\MessagePage.xaml.cs">
       <DependentUpon>MessagePage.xaml</DependentUpon>
@@ -120,8 +124,9 @@
     <Compile Include="Pages\ForeignProfilePage.xaml.cs">
       <DependentUpon>ForeignProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\MyUserInfo.cs" />
+    <Compile Include="Models\UserData\MyUserInfo.cs" />
     <Compile Include="ViewModels\ForeignProfileViewModel.cs" />
+    <Compile Include="ViewModels\TutoringDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -205,7 +210,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Chat\" />
+    <EmbeddedResource Include="Pages\TutoringDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

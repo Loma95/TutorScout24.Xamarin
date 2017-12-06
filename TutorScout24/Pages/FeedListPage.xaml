@@ -9,29 +9,18 @@
                             <Grid Padding="15">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="0.5*" />
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding userName}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                                    <Label Text="{Binding subject}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                                    <Label Text="{Binding creationDate}" TextColor="Black" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
-                                </Grid>
-                                <Label Text="{Binding text}" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
-                                <BoxView BackgroundColor="White" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
+                                <Label Text="{Binding userName}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                                <Label Text="{Binding subject}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                                <Label Text="{Binding distanceKm}" TextColor="Black" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
+                                <Label Text="{Binding text}" TextColor="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
                             </Grid>
                         </Frame>
                     </ViewCell>
