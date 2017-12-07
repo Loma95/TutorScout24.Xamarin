@@ -9,7 +9,7 @@ using TutorScout24.Models.Chat;
 
 namespace TutorScout24.Services
 {
-    public class MessageService  
+    public class MessageService
     {
         public MessageService()
         {
@@ -20,71 +20,86 @@ namespace TutorScout24.Services
 
 
         private List<ConversationObserver> observers = new List<ConversationObserver>();
+        private List<IObserver<ObservableCollection<Conversation>>> allObservers = new List<IObserver<ObservableCollection<Conversation>>>();
         public ObservableCollection<Conversation> Conversations = new ObservableCollection<Conversation>();
 
-        public async Task<ObservableCollection<Conversation>> GetAllAsync()
+        public async void GetMessages()
         {
-            Debug.WriteLine("Lets start");
+
             Conversations.Clear();
 
             List<RestMessage> AllMessages = new System.Collections.Generic.List<RestMessage>();
             List<RestMessage> sentM = await GetSent();
             List<RestMessage> recM = await GetReceived();
-            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)recM);
-            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)sentM);
 
-            Debug.WriteLine("I got " + AllMessages.Count);
-            if (AllMessages != null)
+            if (sentM != null)
             {
-                foreach (RestMessage item in AllMessages)
+
+                foreach (RestMessage item in sentM)
                 {
 
-                    Conversation toAdd;
-                    Message m;
-                    if (item.fromUserId == MvvmNanoIoC.Resolve<Authentication>().userName)
+                    Conversation con = GetConversationById(item.toUserId);
+                    SentMessage sentMsg = new SentMessage();
+                    sentMsg.Text = item.text;
+                    sentMsg.Time = item.datetime;
+                    sentMsg.FromUser = item.fromUserId;
+                    sentMsg.ToUser = item.toUserId;
+
+                    con.Messages.Add(sentMsg);
+                    if (CheckIfConversationIsNew(con.id))
                     {
-                        toAdd = GetConversationById(item.toUserId);
-                        m = new SentMessage();
-                        toAdd.id = item.toUserId;
-                    }
-                    else
-                    {
-                        toAdd = GetConversationById(item.fromUserId);
-                        m = new ReceivedMessage();
-                        toAdd.id = item.fromUserId;
-                    }
-
-                    m.Text = item.text;
-                    m.Time = item.datetime;
-                    m.ToUser = item.toUserId;
-                    m.FromUser = item.fromUserId;
-
-                    toAdd.Messages.Add(m);
-
-                    if (CheckIfConversationIsNew(item.fromUserId))
-                    {
-                        Conversations.Add(toAdd);
-
+                        Conversations.Add(con);
                     }
                 }
 
 
+
+            }
+            if (recM != null)
+            {
+                foreach (var item in recM)
+                {
+
+                    Conversation con = GetConversationById(item.fromUserId);
+                    ReceivedMessage recMsg = new ReceivedMessage();
+                    recMsg.Text = item.text;
+                    recMsg.Time = item.datetime;
+                    recMsg.FromUser = item.fromUserId;
+                    recMsg.ToUser = item.toUserId;
+
+                    con.Messages.Add(recMsg);
+                    if (CheckIfConversationIsNew(con.id))
+                    {
+                        Conversations.Add(con);
+                    }
+                }
+
             }
 
+            SortConversationMessages();
+
+
+            foreach (var obs in observers)
+            {
+                obs.OnNext(GetConversationById(obs.ConversationId));
+            }
+
+            foreach (var item in allObservers)
+            {
+                item.OnNext(Conversations);
+            }
+
+
+        }
+
+
+        private void SortConversationMessages()
+        {
 
             foreach (Conversation item in Conversations)
             {
                 item.Messages.Sort(delegate (Message m1, Message m2) { return m1.Time.CompareTo(m2.Time); });
             }
-
-            Debug.WriteLine(observers.Count);
-            foreach (var obs in observers)
-            {
-                Debug.WriteLine("OnNext");
-                obs.OnNext(GetConversationById(obs.ConversationId));
-            }
-            Debug.WriteLine("Im finished");
-            return Conversations;
         }
 
         public Conversation GetConversationById(string id)
@@ -96,7 +111,10 @@ namespace TutorScout24.Services
                     return item;
                 }
             }
-            return new Conversation();
+
+            Conversation con = new Conversation();
+            con.id = id;
+            return con;
         }
 
 
@@ -121,6 +139,13 @@ namespace TutorScout24.Services
         private async Task<List<RestMessage>> GetReceived()
         {
             return await MvvmNano.MvvmNanoIoC.Resolve<TutorScoutRestService>().GetReceivedMessages();
+        }
+
+
+        public IDisposable Subscribe(IObserver<ObservableCollection<Conversation>> observer)
+        {
+            allObservers.Add(observer);
+            return null;
         }
 
         public IDisposable Subscribe(ConversationObserver observer)

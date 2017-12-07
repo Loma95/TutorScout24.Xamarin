@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,18 +13,19 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ProfileViewModel : MvvmNanoViewModel,IThemeable
+    public class ProfileViewModel : MvvmNanoViewModel, IThemeable
     {
 
         private ToolbarItem _EditSwitch;
 
-        public ProfileViewModel(){
+        public ProfileViewModel()
+        {
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
             GetMyUserInfo();
 
             CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
-           
+
             PasswordWasSaved = CService.DoCredentialsExist();
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
@@ -56,7 +58,7 @@ namespace TutorScout24.ViewModels
                 ViewMode = !EditMode;
 
             };
-
+            master.ToolbarItems.Clear();
             master.ToolbarItems.Add(_EditSwitch);
         }
 
@@ -70,7 +72,7 @@ namespace TutorScout24.ViewModels
             CService.DeleteCredentials();
             PasswordWasSaved = false;
 
-            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Erfolgreich","Sie haben das gespeicherte Passwort entfernt"));
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Erfolgreich", "Sie haben das gespeicherte Passwort entfernt"));
         }
 
 
@@ -101,15 +103,20 @@ namespace TutorScout24.ViewModels
         public bool PasswordWasSaved
         {
             get { return _passwordWasSaved; }
-            set { _passwordWasSaved = value;
-                NotifyPropertyChanged("PasswordWasSaved");}
+            set
+            {
+                _passwordWasSaved = value;
+                NotifyPropertyChanged("PasswordWasSaved");
+            }
         }
 
         private MyUserInfo _userInfo;
         public MyUserInfo UserInfo
         {
             get { return _userInfo; }
-            set { _userInfo = value; 
+            set
+            {
+                _userInfo = value;
 
                 Debug.WriteLine(_userInfo.description);
                 NotifyPropertyChanged("UserInfo");
@@ -124,36 +131,50 @@ namespace TutorScout24.ViewModels
             }
         }
 
- 
 
-        private DateTime _birthdate;
-        public DateTime BirthDate
+
+        private string _age;
+        public string Age
         {
-            get { return _birthdate; }
+            get { return _age; }
             set
             {
-                _birthdate = value;
-                NotifyPropertyChanged("BirthDate");
+                _age = value;
+                NotifyPropertyChanged("Age");
             }
         }
 
-        private async void GetMyUserInfo(){
-                  
-            UserInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyUserInfo();
+        private async void GetMyUserInfo()
+        {
+
+            var UInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyUserInfo();
+            if (UInfo != null)
+            {
+                UserInfo = UInfo;
+                Age =  DateTimeUtils.CalculateAge(DateTime.ParseExact(UserInfo.dayOfBirth,
+                                  "yyyyMMdd",
+                                   CultureInfo.InvariantCulture)).ToString();
+            }
 
 
-          
         }
+
+        public override void Dispose()
+        {
+            RemoveToolBarItem();
+            base.Dispose();
+         
+        }
+
+
+
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
 
-        public override void Dispose()
-        {
-            
+        public void RemoveToolBarItem(){
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_EditSwitch);
-            base.Dispose();
         }
     }
 }

@@ -76,13 +76,18 @@ namespace TutorScout24.ViewModels
             var tutServ = MvvmNanoIoC.Resolve<TutorScoutRestService>();
             List<Tutoring> offers;
             offers = await tutServ.GetTutorings();
-            
-            _tut = new ObservableCollection<Tutoring>(offers);
-            NotifyPropertyChanged("Tutorings");
-            Debug.WriteLine(offers + "Size::::" + offers.Count);
-            foreach (var VARIABLE in offers)
+            if (offers != null)
             {
-                VARIABLE.daysLeft = (int) (VARIABLE.expirationDate - DateTime.Today).TotalDays;
+                _tut = new ObservableCollection<Tutoring>(offers);
+                NotifyPropertyChanged("Tutorings");
+                Debug.WriteLine(offers + "Size::::" + offers.Count);
+                foreach (var VARIABLE in offers)
+                {
+                    VARIABLE.daysLeft = (int)(VARIABLE.expirationDate - DateTime.Today).TotalDays;
+                }
+
+            }else{
+                // Handle no data ...
             }
         }
     }

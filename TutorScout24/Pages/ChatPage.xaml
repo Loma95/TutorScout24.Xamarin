@@ -2,41 +2,43 @@
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" x:TypeArguments="viewModels1:ChatViewModel" x:Class="TutorScout24.Pages.ChatPage">
     <forms:MvvmNanoContentPage.Content>
         <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*">
-                    </RowDefinition>
-                    <RowDefinition Height="50">
-                    </RowDefinition>
-                   </Grid.RowDefinitions>
-           
-        <ListView x:Name="MessagesList" ItemsSource="{Binding Messages}" BackgroundColor="{Binding ThemeColor}"  SeparatorVisibility="None" CachingStrategy="RecycleElement" HasUnevenRows="true">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame Margin="2" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Frame.Triggers>
-                                <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="ReceivedMessage">
-                                  <Setter Property="HorizontalOptions" Value="Start"  />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="SentMessage">
-                                    <Setter Property="HorizontalOptions" Value="End" />
-                                </DataTrigger>
-                            </Frame.Triggers>
-                            <Label Text="{Binding Text}" TextColor="Black"  Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*">
+                </RowDefinition>
+                <RowDefinition Height="50">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <ListView x:Name="MessagesList" ItemsSource="{Binding Messages}" BackgroundColor="{Binding ThemeColor}" SeparatorVisibility="None" CachingStrategy="RecycleElement" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="2" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="ReceivedMessage">
+                                        <Setter Property="HorizontalOptions" Value="Start" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="SentMessage">
+                                        <Setter Property="HorizontalOptions" Value="End" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                                <StackLayout>
+                                    <Label Text="{Binding Text}" TextColor="Black" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                                    <Label Text="{Binding Time}" TextColor="Black" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <StackLayout x:Name="stack" Grid.Row="1" Orientation="Horizontal">
-                 <Entry  Text="{Binding CurrentMessage}" HorizontalOptions="FillAndExpand" > </Entry> 
-           
-             <Label FontFamily="fontawesome" x:Name="send" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" WidthRequest="50" > <Label.GestureRecognizers>
+                <Entry Text="{Binding CurrentMessage}" HorizontalOptions="FillAndExpand">
+                </Entry>
+                <Label FontFamily="fontawesome" x:Name="send" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" WidthRequest="50">
+                    <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SendCommand}" />
                     </Label.GestureRecognizers>
-                    </Label>
-                        
-                </StackLayout>
+                </Label>
+            </StackLayout>
         </Grid>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

@@ -74,11 +74,13 @@ namespace TutorScout24.Pages
             {
                 if (!this.ToolbarItems.Contains(switchI))
                 {
+
                     this.ToolbarItems.Add(switchI);
                     switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
                 }
                 
                 }else{
+
                 this.ToolbarItems.Remove(switchI);
             }
             MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage)page.Parent;

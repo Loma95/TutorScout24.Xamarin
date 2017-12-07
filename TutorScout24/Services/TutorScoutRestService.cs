@@ -27,7 +27,7 @@ namespace TutorScout24.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<bool> CreateUser(User usr)
+        public async Task<string> CreateUser(User usr)
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/create";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
@@ -38,10 +38,10 @@ namespace TutorScout24.Services
             response = await client.PostAsync(uri, content);
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                return "true";
 
             }
-            return false;
+            return await response.Content.ReadAsStringAsync();
  
         }
 
@@ -110,7 +110,11 @@ namespace TutorScout24.Services
             cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/updateUser";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
-            var json = JsonConvert.SerializeObject(cmd);
+            var json = JsonConvert.SerializeObject(cmd,Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             Debug.WriteLine(json);
             HttpResponseMessage response = null;

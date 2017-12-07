@@ -24,6 +24,8 @@ namespace TutorScout24.ViewModels
 
         }
 
+
+
         public Action<Message> OnMessageAdded { get; set; }
 
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
@@ -77,7 +79,7 @@ namespace TutorScout24.ViewModels
                
             }
         } 
-        private ToolbarItem reload = new ToolbarItem
+        private ToolbarItem _reload = new ToolbarItem
         {
             Text = "\uf021"
         };
@@ -101,18 +103,19 @@ namespace TutorScout24.ViewModels
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
 
-            reload.Clicked += (sender, e) => {
+            _reload.Clicked += (sender, e) => {
                 Reload();
             };
-            master.ToolbarItems.Add(reload);
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_reload);
             MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
           
 
         }
 
-        private async void Reload(){
+        private  void Reload(){
       
-           await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetAllAsync();
+            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetMessages();
 
         }
 
@@ -130,14 +133,14 @@ namespace TutorScout24.ViewModels
         {
             Messages = new ObservableCollection<Message>(value.Messages);
             NotifyPropertyChanged("Messages");
-            OnMessageAdded?.Invoke(Messages[Messages.Count - 1]);
+            OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
 
         public void RemoveToolbarItem()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Remove(reload);
+            master.ToolbarItems.Remove(_reload);
         }
 
         private Color _themeColor;

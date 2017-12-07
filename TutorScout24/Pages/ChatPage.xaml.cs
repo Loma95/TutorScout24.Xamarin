@@ -18,8 +18,6 @@ namespace TutorScout24.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-          
         }
         protected override void OnBindingContextChanged()
         {
@@ -38,14 +36,20 @@ namespace TutorScout24.Pages
 
             ChatViewModel vM = (ChatViewModel)BindingContext;
 
-
             vM.OnMessageAdded = message =>
             {
-                Debug.WriteLine("OnMessageAdded");
-                Debug.WriteLine(message.Text);
-                MessagesList.ScrollTo(message, ScrollToPosition.End, true);
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
+                    MessagesList.ScrollTo(vM.Messages[vM.Messages.Count - 1], ScrollToPosition.MakeVisible, true);
+
+                });
+
             };
 
+            if(vM.Messages.Count > 0)
             MessagesList.ScrollTo(vM.Messages[vM.Messages.Count-1], ScrollToPosition.MakeVisible, false);
         }
     }

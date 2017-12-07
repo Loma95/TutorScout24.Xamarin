@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\TutoringDetailViewModel.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ConversationObserver.cs" />
+    <Compile Include="Utils\DateTimeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

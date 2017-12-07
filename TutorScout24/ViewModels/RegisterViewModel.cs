@@ -236,15 +236,14 @@ namespace TutorScout24.ViewModels
               usr.email = Email;
               usr.password = Password;
               usr.userName = UserName;
-              bool Succeeded = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+              string _serverMessage = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
 
 
             
-            if(Succeeded){
+            if(_serverMessage == "true"){
                 NavigateTo<LoginViewModel>();
             }else{
-                Debug.WriteLine("send");
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler","Benutzer oder Email existiert schon"));
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Problem",_serverMessage));
 
             }
      
