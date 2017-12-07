@@ -3,10 +3,12 @@
     xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
     x:TypeArguments="viewModels1:MessageViewModel" x:Class="TutorScout24.Pages.MessagePage"    >
     <forms:MvvmNanoContentPage.Content  >
- <ListView  ItemsSource="{Binding Conversations}"  SelectedItem="{Binding SelectedItem}" BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
+ <ListView  ItemsSource="{Binding Conversations}"  SelectedItem="{Binding SelectedItem}"  BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell >
+                     
+                        
                         <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                          
                                     <Label Text="{Binding id}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />

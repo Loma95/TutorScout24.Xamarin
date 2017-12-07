@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MvvmNano;
 using MvvmNano.Forms;
 using TutorScout24.Models;
@@ -34,14 +35,12 @@ namespace TutorScout24.ViewModels
         {
             get { return _selectedItem; }
             set { _selectedItem = value;
-                if (value != null)
-                {
-                    NavigateTo<ChatViewModel, Conversation>(value);
-                }
+                if(value != null)
+                NavigateTo<ChatViewModel, Conversation>(SelectedItem);
+               
+          
             }
         } 
-
-
         private ObservableCollection<Conversation> _conversations = new ObservableCollection<Conversation>();
         public ObservableCollection<Conversation> Conversations 
         {
@@ -57,19 +56,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-    
-
-
-      
-
-
-
         private async void GetAll(){
-            Conversations = new ObservableCollection<Conversation>(await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().GetAllAsync());
+            Conversations = new ObservableCollection<Conversation>(await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetAllAsync());
         }
-
-
-       
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value;

@@ -127,6 +127,8 @@
     <Compile Include="Models\UserData\MyUserInfo.cs" />
     <Compile Include="ViewModels\ForeignProfileViewModel.cs" />
     <Compile Include="ViewModels\TutoringDetailViewModel.cs" />
+    <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\ConversationObserver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

@@ -13,7 +13,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Frame Margin="2" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="ReceivedMessage">
                                   <Setter Property="HorizontalOptions" Value="Start"  />
@@ -22,15 +22,20 @@
                                     <Setter Property="HorizontalOptions" Value="End" />
                                 </DataTrigger>
                             </Frame.Triggers>
-                            <Label Text="{Binding Text}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                            <Label Text="{Binding Text}" TextColor="Black"  Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <StackLayout Grid.Row="1" Orientation="Horizontal">
+            <StackLayout x:Name="stack" Grid.Row="1" Orientation="Horizontal">
                  <Entry  Text="{Binding CurrentMessage}" HorizontalOptions="FillAndExpand" > </Entry> 
-           <Button  Text="send" Command="{Binding SendCommand}" HorizontalOptions="End" WidthRequest="50"></Button>
+           
+             <Label FontFamily="fontawesome" x:Name="send" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" WidthRequest="50" > <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendCommand}" />
+                    </Label.GestureRecognizers>
+                    </Label>
+                        
                 </StackLayout>
         </Grid>
     </forms:MvvmNanoContentPage.Content>

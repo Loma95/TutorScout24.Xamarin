@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Models.Chat;
+using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable
+    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable,ConversationObserver
     {
         Conversation conversation;
         public ListView MessagesList;
@@ -31,35 +34,30 @@ namespace TutorScout24.ViewModels
             {
                 _messages = value;
 
-             
                 NotifyPropertyChanged("Messages");
 
             }
         }
 
-        public ICommand SendCommand => new Command(async () =>  SendMessageAsync());
+        public ICommand SendCommand => new Command(SendMessageAsync);
 
 
 
         private async void SendMessageAsync()
         {
-            SendMessage m = new SendMessage();
-            m.toUserId = conversation.id;
-            m.text = CurrentMessage;
-            Debug.WriteLine(m.text);
-            await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().SendMessage(m);
-            Message mess = new SentMessage
+            if (CurrentMessage != "")
             {
-                FromUser = MvvmNano.MvvmNanoIoC.Resolve<Authentication>().userName,
-                Text = m.text,
-                ToUser = m.toUserId,
-                Time = DateTime.Now
-            };
-            Messages.Add(mess);
-            CurrentMessage = "";
-            NotifyPropertyChanged("CurrentMessage");
-            NotifyPropertyChanged("Messages");
-            OnMessageAdded?.Invoke(mess);
+                SendMessage m = new SendMessage();
+                m.toUserId = conversation.id;
+                m.text = CurrentMessage;
+             
+                await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().SendMessage(m);
+           
+                Reload();
+                CurrentMessage = "";
+                NotifyPropertyChanged("CurrentMessage");
+
+            }
         }
 
         private string _currentMessage;
@@ -79,32 +77,72 @@ namespace TutorScout24.ViewModels
                
             }
         } 
+        private ToolbarItem reload = new ToolbarItem
+        {
+            Text = "\uf021"
+        };
 
         public override void Initialize(Conversation parameter)
         {
             base.Initialize(parameter);
-  
+
             if (parameter != null)
             {
                 conversation = parameter;
                 foreach (var item in parameter.Messages)
                 {
-                    if(item.MyTypeName == typeof(ReceivedMessage).Name){
-                        Debug.WriteLine("received" + item.FromUser);
-                    }else{
-                        Debug.WriteLine("sent" + item.ToUser);
-                    }
                     Messages.Add(item);
                 }
                 NotifyPropertyChanged("Messages");
-
+                 
             }
+
+     
+
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+
+            reload.Clicked += (sender, e) => {
+                Reload();
+            };
+            master.ToolbarItems.Add(reload);
+            MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
+          
 
         }
 
+        private async void Reload(){
+      
+           await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetAllAsync();
 
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(Conversation value)
+        {
+            Messages = new ObservableCollection<Message>(value.Messages);
+            NotifyPropertyChanged("Messages");
+            OnMessageAdded?.Invoke(Messages[Messages.Count - 1]);
+        }
+
+
+        public void RemoveToolbarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            master.ToolbarItems.Remove(reload);
+        }
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
+
+        public string ConversationId { get => conversation.id; set => conversation.id = value; }
     }
 }

@@ -80,11 +80,13 @@ namespace TutorScout24
         protected override void SetUpPresenter()
         {
             MvvmNanoIoC.RegisterAsSingleton<IPresenter>(new CustomPresenter(this));
+            MvvmNanoIoC.RegisterAsSingleton<MessageService>(new MessageService());
         }
          
         private static void SetupDependencies(){
             MvvmNanoIoC.Register<IMessenger,MvvmNano.Forms.MvvmNanoFormsMessenger>();
             MvvmNanoIoC.Register<TutorScoutRestService,TutorScoutRestService>();
+
             MvvmNanoIoC.Register<CredentialService,CredentialService>();
         }
 

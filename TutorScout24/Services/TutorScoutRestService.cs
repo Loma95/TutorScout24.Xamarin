@@ -11,6 +11,7 @@ using System.Diagnostics;
 using MvvmNano;
 using TutorScout24.ViewModels;
 using TutorScout24.Models.Chat;
+using System.Collections.ObjectModel;
 
 namespace TutorScout24.Services
 {
@@ -19,7 +20,7 @@ namespace TutorScout24.Services
 
         String RestUrl;
         HttpClient client;
-        List<Conversation> Conversations = new List<Conversation>();
+      
         public TutorScoutRestService()
         {
             client = new HttpClient();
@@ -75,6 +76,7 @@ namespace TutorScout24.Services
             if (response.IsSuccessStatusCode)
             {
                 var msgs = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(msgs);
                 return JsonConvert.DeserializeObject<List<RestMessage>>(msgs);
 
             }
@@ -308,76 +310,7 @@ namespace TutorScout24.Services
         }
 
 
-        public async Task<List<Conversation>> GetAllAsync()
-        {
-
-            List<RestMessage> AllMessages = new System.Collections.Generic.List<RestMessage>();
-            List<RestMessage> sentM = await GetSentMessages();
-            List<RestMessage> recM = await GetReceivedMessages();
-            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)recM);
-            AllMessages.AddRange((System.Collections.Generic.IEnumerable<TutorScout24.Models.RestMessage>)sentM);
-            if (AllMessages != null)
-            {
-                foreach (RestMessage item in AllMessages)
-                {
-
-                    Conversation toAdd;
-                    Message m;
-                    if (item.fromUserId == MvvmNanoIoC.Resolve<Authentication>().userName)
-                    {
-                        toAdd = GetConversationById(item.toUserId);
-                        m = new SentMessage();
-                        toAdd.id = item.toUserId;
-                    }
-                    else
-                    {
-                        toAdd = GetConversationById(item.fromUserId);
-                        m = new ReceivedMessage();
-                        toAdd.id = item.fromUserId;
-                    }
-
-                    m.Text = item.text;
-                    m.Time = item.datetime;
-                    m.ToUser = item.toUserId;
-                    m.FromUser = item.fromUserId;
-
-                    toAdd.Messages.Add(m);
-
-                    if (CheckIfConversationIsNew(item.fromUserId))
-                    {
-                        Conversations.Add(toAdd);
-
-                    }
-                }
-            }
-
-            return Conversations;
-        }
-
-        public Conversation GetConversationById(string id)
-        {
-            foreach (Conversation item in Conversations)
-            {
-                if (item.id == id)
-                {
-                    return item;
-                }
-            }
-            return new Conversation();
-        }
-
-
-        private bool CheckIfConversationIsNew(string id)
-        {
-            foreach (Conversation item in Conversations)
-            {
-                if (item.id == id)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+     
 
     }
 }
