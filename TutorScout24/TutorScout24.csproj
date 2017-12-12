@@ -130,6 +130,8 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ConversationObserver.cs" />
     <Compile Include="Utils\DateTimeUtils.cs" />
+    <Compile Include="Utils\ChatDateConverter.cs" />
+    <Compile Include="Utils\LastItemConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Models.Chat;
+using Xamarin.Forms;
 
 namespace TutorScout24.Services
 {
@@ -14,9 +15,11 @@ namespace TutorScout24.Services
         public MessageService()
         {
 
-
+           
         }
 
+
+    
 
 
         private List<ConversationObserver> observers = new List<ConversationObserver>();
@@ -78,16 +81,19 @@ namespace TutorScout24.Services
 
             SortConversationMessages();
 
-
-            foreach (var obs in observers)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                obs.OnNext(GetConversationById(obs.ConversationId));
-            }
 
-            foreach (var item in allObservers)
-            {
-                item.OnNext(Conversations);
-            }
+                foreach (var obs in observers)
+                {
+                    obs.OnNext(GetConversationById(obs.ConversationId));
+                }
+
+                foreach (var item in allObservers)
+                {
+                    item.OnNext(Conversations);
+                }
+            });
 
 
         }
