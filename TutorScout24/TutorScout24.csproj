@@ -134,6 +134,7 @@
     <Compile Include="Utils\DateTimeUtils.cs" />
     <Compile Include="Utils\ChatDateConverter.cs" />
     <Compile Include="Utils\LastItemConverter.cs" />
+    <Compile Include="Models\DeleteMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

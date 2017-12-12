@@ -44,6 +44,7 @@ namespace TutorScout24.Services
                     Conversation con = GetConversationById(item.toUserId);
                     SentMessage sentMsg = new SentMessage();
                     sentMsg.Text = item.text;
+                    sentMsg.ID = item.messageId;
                     sentMsg.Time = item.datetime;
                     sentMsg.FromUser = item.fromUserId;
                     sentMsg.ToUser = item.toUserId;
@@ -66,6 +67,7 @@ namespace TutorScout24.Services
                     Conversation con = GetConversationById(item.fromUserId);
                     ReceivedMessage recMsg = new ReceivedMessage();
                     recMsg.Text = item.text;
+                    recMsg.ID = item.messageId;
                     recMsg.Time = item.datetime;
                     recMsg.FromUser = item.fromUserId;
                     recMsg.ToUser = item.toUserId;

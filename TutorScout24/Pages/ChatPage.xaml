@@ -8,7 +8,7 @@
                 <RowDefinition Height="50">
                 </RowDefinition>
             </Grid.RowDefinitions>
-            <ListView x:Name="MessagesList" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" ItemsSource="{Binding Messages}" BackgroundColor="{Binding ThemeColor}" SeparatorVisibility="None" CachingStrategy="RecycleElement" HasUnevenRows="true">
+            <ListView x:Name="MessagesList" IsPullToRefreshEnabled="True" SelectedItem="{Binding SelectedItem}" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" ItemsSource="{Binding Messages}" BackgroundColor="{Binding ThemeColor}" SeparatorVisibility="None" CachingStrategy="RecycleElement" HasUnevenRows="true">
                 <ListView.Resources>
                     <ResourceDictionary>
                         <utils:LastItemConverter x:Key="LastItemConverter" />
@@ -19,6 +19,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" Text="Löschen" IsDestructive="true" CommandParameter="{Binding .}" />
+                                    </ViewCell.ContextActions>
                             <Frame Margin="2" IsClippedToBounds="False" HasShadow="True" CornerRadius="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding MyTypeName}" Value="ReceivedMessage">

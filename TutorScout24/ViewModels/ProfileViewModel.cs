@@ -17,6 +17,7 @@ namespace TutorScout24.ViewModels
     {
 
         private ToolbarItem _EditSwitch;
+        private MyUserInfo OldUserData; 
 
         public ProfileViewModel()
         {
@@ -50,7 +51,7 @@ namespace TutorScout24.ViewModels
                     updateUser.lastName = _userInfo.lastName;
                     updateUser.gender = _userInfo.gender;
                     updateUser.note = _userInfo.description;
-                    updateUser.email = _userInfo.email;
+                    updateUser.email = _userInfo.email != OldUserData.email ? _userInfo.email : null;
                     updateUser.maxGraduation = _userInfo.maxGraduation;
                     await MvvmNanoIoC.Resolve<TutorScoutRestService>().UpdateUser(updateUser);
                 }
@@ -151,6 +152,7 @@ namespace TutorScout24.ViewModels
             if (UInfo != null)
             {
                 UserInfo = UInfo;
+                OldUserData = UInfo;
                 Age =  DateTimeUtils.CalculateAge(DateTime.ParseExact(UserInfo.dayOfBirth,
                                   "yyyyMMdd",
                                    CultureInfo.InvariantCulture)).ToString();

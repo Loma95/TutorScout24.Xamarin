@@ -63,6 +63,31 @@ namespace TutorScout24.Services
 
         }
 
+
+        public async Task<bool> DeleteMessage(int messageId)
+        {
+            DeleteMessage dm = new Models.DeleteMessage();
+            dm.messageId = messageId;
+            dm.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
+            RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/message/deleteMessage";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            var json = JsonConvert.SerializeObject(dm);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri,content);
+            Debug.WriteLine(response.Content.ReadAsStringAsync());
+            if (response.IsSuccessStatusCode)
+            {
+                
+                return true;
+
+            }
+            return false;
+
+        }
+
+
+
         public async Task<List<RestMessage>> GetReceivedMessages()
         {
             RestCommandWithAuthentication cmd = new RestCommandWithAuthentication();

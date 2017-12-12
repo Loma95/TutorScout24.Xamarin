@@ -17,9 +17,9 @@ namespace TutorScout24.Utils
             TimeSpan elapsedSpan = new TimeSpan(span);
             string display = "";
             if(elapsedSpan.Days == 0){
-                display = "Heute um " + datetime.Hour + ":" + datetime.Minute;
+                display = "Heute um " + datetime.Hour.ToString("D2") + ":" + datetime.Minute.ToString("D2");
             }else if(elapsedSpan.Days == 1){
-                display = "Gestern um " + datetime.Hour + ":" + datetime.Minute;
+                display = "Gestern um " + datetime.Hour.ToString("D2") + ":" + datetime.Minute.ToString("D2");
             }else{
                 display = "Am " + datetime.ToString("dd.MM.yyyy");
             }

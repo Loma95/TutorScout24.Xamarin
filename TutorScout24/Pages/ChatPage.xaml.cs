@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TutorScout24.Models.Chat;
 using TutorScout24.ViewModels;
 using Xamarin.Forms;
 
@@ -30,6 +31,15 @@ namespace TutorScout24.Pages
             ChatViewModel vM = (ChatViewModel)BindingContext;
             vM.RemoveToolbarItem();
         }
+
+        void OnDelete(object sender, EventArgs e)
+        {
+            var item = (MenuItem)sender;
+            Message selMess = (Message)item.CommandParameter;
+            ViewModel.DeleteSelectedItem(selMess.ID);
+        }
+       
+  
         public override void OnViewModelSet()
         {
             base.OnViewModelSet();

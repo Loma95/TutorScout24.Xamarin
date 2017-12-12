@@ -29,6 +29,12 @@ namespace TutorScout24.Models.Chat
             set;
         }
 
+        public int ID
+        {
+            get;
+            set;
+        }
+
         public abstract string MyTypeName
         {
             get;

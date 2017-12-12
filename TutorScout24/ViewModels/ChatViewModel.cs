@@ -102,15 +102,32 @@ namespace TutorScout24.ViewModels
         public Message SelectedItem
         {
             get { return _selectedItem; }
-            set { _selectedItem = value;
+            set {
+                
+               
+                _selectedItem = value;
                
             }
         } 
+
+
+   
+
+        public async void DeleteSelectedItem(int messageID){
+            await MvvmNanoIoC.Resolve<TutorScoutRestService>().DeleteMessage(messageID);
+            Reload();
+        }
+
+
+ 
+
         private ToolbarItem _reload = new ToolbarItem
         {
             Text = "\uf021"
         };
 
+
+   
         public override void Initialize(Conversation parameter)
         {
             base.Initialize(parameter);
