@@ -10,7 +10,37 @@
                            xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
                            Title="{Binding PageTitle}">
     <forms:MvvmNanoContentPage.Content>
-        <Grid Margin="30">
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Entry Text="{Binding Subject, Mode=TwoWay}"
+                           Placeholder="Fach eingeben" TextColor="Black"/>
+                </Frame>
+                <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Beschreibung:" FontSize="18" TextColor="Black"></Label>
+                        <Editor Text="{Binding Text, Mode=TwoWay}" HeightRequest="150" TextColor="Black"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Ablaufdatum:" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="18" TextColor="Black"></Label>
+                        <DatePicker Date="{Binding ExpDate}"
+                                    MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}" TextColor="Black"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Picker Title="Positionsangabe" ItemsSource="{Binding Selections}" SelectedItem="{Binding Selection}"
+                                 TextColor="Black"/>
+                        <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" TextColor="Black" />
+                        <Button IsVisible="{Binding ShowMapButton}" 
+                                Text="Karte öffnen" TextColor="Black" Command="{Binding PosSelCommand}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        <!--<Grid Margin="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*" />
                 <ColumnDefinition Width="*" />
@@ -35,6 +65,6 @@
             <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" Grid.Row="3" Grid.Column="1" TextColor="Black" />
             <Button IsVisible="{Binding ShowMapButton}" Grid.Row="3" Grid.Column="1"
                     Text="Karte öffnen" TextColor="Black" Command="{Binding PosSelCommand}"/>
-        </Grid>
+        </Grid>-->
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

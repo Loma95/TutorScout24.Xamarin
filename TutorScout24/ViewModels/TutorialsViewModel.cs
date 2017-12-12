@@ -54,8 +54,8 @@ namespace TutorScout24.ViewModels
         }
         private void Fab()
         {
-            NavigateTo<ForeignProfileViewModel, string>("RobertAndroid");
-            //NavigateTo<CreateViewModel, CreateTutoring>(new CreateTutoring());
+            //NavigateTo<ForeignProfileViewModel, string>("RobertAndroid");
+            NavigateTo<CreateViewModel, CreateTutoring>(new CreateTutoring());
             Debug.WriteLine("Command");
         }
 

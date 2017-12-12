@@ -32,35 +32,7 @@ namespace TutorScout24.ViewModels
                     : "Neues Angebot erstellen";
                 NotifyPropertyChanged("PageTitle");
             });
-
-            var master = (Pages.MasterDetailPage) Application.Current.MainPage;
-
-            _CreateSwitch = new ToolbarItem
-            {
-                Text = "\uf1d8"
-            };
-
-            _CreateSwitch.Clicked += async (sender, e) =>
-            {
-                _CreateSwitch.Text = "\uf1d8";
-
-
-                _ct = new CreateTutoring
-                {
-                    duration = _expDate.Day - DateTime.Today.Day,
-                    text = Text,
-                    subject = Subject
-                };
-                if (_selection == "Adresse")
-                {
-                    Position pos = await LocationService.getInstance().AdressToPos(_adress);
-                    _ct.latitude = pos.Latitude;
-                    _ct.longitude = pos.Longitude;
-                }
-                await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateTutoring(_ct);
-            };
-
-            master.ToolbarItems.Add(_CreateSwitch);
+            AddToolbarItem();
         }
 
         private ToolbarItem _CreateSwitch;
@@ -183,6 +155,7 @@ namespace TutorScout24.ViewModels
                 NotifyPropertyChanged("PosSelection");
                 Debug.WriteLine(value);
             }
+
         }
 
         public DateTime ExpDate
@@ -221,6 +194,38 @@ namespace TutorScout24.ViewModels
         public void RemoveToolbarItem(){
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_CreateSwitch);
+        }
+
+        public void AddToolbarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+
+            _CreateSwitch = new ToolbarItem
+            {
+                Text = "\uf1d8"
+            };
+
+            _CreateSwitch.Clicked += async (sender, e) =>
+            {
+                _CreateSwitch.Text = "\uf1d8";
+
+
+                _ct = new CreateTutoring
+                {
+                    duration = _expDate.Day - DateTime.Today.Day,
+                    text = Text,
+                    subject = Subject
+                };
+                if (_selection == "Adresse")
+                {
+                    Position pos = await LocationService.getInstance().AdressToPos(_adress);
+                    _ct.latitude = pos.Latitude;
+                    _ct.longitude = pos.Longitude;
+                }
+                await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateTutoring(_ct);
+            };
+
+            master.ToolbarItems.Add(_CreateSwitch);
         }
       
     }
