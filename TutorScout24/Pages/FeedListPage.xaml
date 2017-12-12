@@ -8,21 +8,20 @@
                 <DataTemplate>
                     <ViewCell>
                         <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid Padding="15">
+                            <Grid Padding="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="0.5*" />
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding userName}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                                <Label Text="{Binding subject}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                                <Label Text="{Binding distanceKm}" TextColor="Black" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
-                                <Label Text="{Binding text}" TextColor="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
+                                <Label Text="{Binding userName}" TextColor="Black" FontSize="14" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                <Label Text="{Binding subject}" TextColor="DarkBlue" FontSize="14" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                <Label Text="{Binding distanceKm, StringFormat='{0:N0} km'}" TextColor="Gray" FontSize="15" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding text}" TextColor="Gray" FontSize="15" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  />
                             </Grid>
                         </Frame>
                     </ViewCell>

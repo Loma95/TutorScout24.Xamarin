@@ -95,6 +95,7 @@ namespace TutorScout24.ViewModels
         private Color _themeColor;
         public Color ThemeColor { get{ return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor");} }
 
+
         private async void GetTutoringsAsync(MasterDetailViewModel.Mode mode)
         {
             var tutServ = MvvmNanoIoC.Resolve<TutorScoutRestService>();

@@ -17,8 +17,6 @@ namespace TutorScout24.Pages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            var vM = (CreateViewModel) BindingContext;
-            vM.RemoveToolbarItem();
         }
 
         protected override void OnAppearing()
