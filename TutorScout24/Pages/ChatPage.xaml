@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:utils="clr-namespace:TutorScout24.Utils;assembly=TutorScout24" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" x:TypeArguments="viewModels1:ChatViewModel" x:Class="TutorScout24.Pages.ChatPage">
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{Binding ConversationId}" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:utils="clr-namespace:TutorScout24.Utils;assembly=TutorScout24" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" x:TypeArguments="viewModels1:ChatViewModel" x:Class="TutorScout24.Pages.ChatPage">
     <forms:MvvmNanoContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

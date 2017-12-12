@@ -982,23 +982,20 @@
     ".NETPortable,Version=v4.5,Profile=Profile111": []
   },
   "packageFolders": {
-    "C:\\Users\\Alexander\\.nuget\\packages\\": {}
+    "/Users/marvinlouis/.nuget/packages/": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Projekte\\MobileApplikationen\\TutorScout24\\TutorScout24.csproj",
+      "projectUniqueName": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/TutorScout24.csproj",
       "projectName": "TutorScout24",
-      "projectPath": "C:\\Projekte\\MobileApplikationen\\TutorScout24\\TutorScout24.csproj",
-      "projectJsonPath": "C:\\Projekte\\MobileApplikationen\\TutorScout24\\project.json",
-      "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
-      "outputPath": "C:\\Projekte\\MobileApplikationen\\TutorScout24\\obj\\",
+      "projectPath": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/TutorScout24.csproj",
+      "projectJsonPath": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/project.json",
+      "packagesPath": "/Users/marvinlouis/.nuget/packages/",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/marvinlouis/.config/NuGet/NuGet.Config"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       }
     },
