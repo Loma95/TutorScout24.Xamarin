@@ -11,7 +11,6 @@ namespace TutorScout24.Pages
     {
         public CreatePage()
         {
-
             InitializeComponent();
         }
 
@@ -26,6 +25,16 @@ namespace TutorScout24.Pages
         {
             base.OnAppearing();
             ViewModel.AddToolbarItem();
+        }
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            
+            SuggestionListView.ItemTapped += (sender, e) =>
+            {
+                AdressEntry.Text = e.Item.ToString();
+            };
         }
     }
 }

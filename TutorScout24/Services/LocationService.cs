@@ -12,7 +12,7 @@ namespace TutorScout24.Services
 {
     public class LocationService : IObservable<Position>
     {
-        private static Position pos;
+        public static Position pos;
         private static LocationService instance;
         private List<IObserver<Position>> observers = new List<IObserver<Position>>();
 

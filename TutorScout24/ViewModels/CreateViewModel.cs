@@ -18,6 +18,19 @@ namespace TutorScout24.ViewModels
     {
         private CreateTutoring _ct;
 
+        private List<string> _geoCodeSuggestions;
+
+        public List<string> GeoCodeSuggestions
+        {
+            get => _geoCodeSuggestions;
+            set
+            {
+                _geoCodeSuggestions = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         public CreateViewModel()
         {
             _ct = new CreateTutoring();
@@ -87,7 +100,19 @@ namespace TutorScout24.ViewModels
         public string Adress
         {
             get { return _adress; }
-            set { _adress = value; }
+            set
+            {
+                _adress = value;
+                if (value != "")
+                {
+                    GetSuggestionsAsync(value);
+                }
+            }
+        }
+
+        private async void GetSuggestionsAsync(string value)
+        {
+            GeoCodeSuggestions = await MvvmNanoIoC.Resolve<GeocodeAutocompleteService>().GetSuggestions(value);
         }
 
         private bool _showAdressField = false;

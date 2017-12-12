@@ -31,6 +31,7 @@
     <Compile Include="Controls\SelectionMap.cs" />
     <Compile Include="CustomData\ChangeModeMessage.cs" />
     <Compile Include="CustomData\MapNavigationParameter.cs" />
+    <Compile Include="Models\Geocoding\AutocompleteResponse.cs" />
     <Compile Include="Models\Tutoring\CreateTutoring.cs" />
     <Compile Include="Models\Tutoring\MyTutoring.cs" />
     <Compile Include="Models\Tutoring\Tutoring.cs" />
@@ -54,6 +55,7 @@
       <DependentUpon>TutoringDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GeocodeAutocompleteService.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
     <Compile Include="ViewModels\FeedListViewModel.cs" />
     <Compile Include="ViewModels\FeedMapViewModel.cs" />
