@@ -25,20 +25,44 @@ namespace TutorScout24.ViewModels
             set
             {
                 myVar = value;
-                GoToDetailPage();
-                myVar = null;
             }
         }
 
-        public ICommand TutoringTapped
+       
+        public void GoToDetailPage()
         {
-            get { return new Command(GoToDetailPage); }
-
-        }
-        private void GoToDetailPage()
-        {
+            Debug.WriteLine("navigateTo");
             NavigateToAsync<TutoringDetailViewModel, Tutoring>(CurrentItem);
         }
+
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                NotifyPropertyChanged("IsRefreshing");
+            }
+        }
+
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() => 
+                {
+                    IsRefreshing = true;
+
+                     GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
 
 
         public FeedListViewModel()

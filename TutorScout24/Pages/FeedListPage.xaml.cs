@@ -21,6 +21,17 @@ namespace TutorScout24.Pages
 
         }
 
+      protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+
+            FeedListViewModel VM = (FeedListViewModel)BindingContext;
+            MyListView.ItemTapped += (sender, e) => {
+                Debug.WriteLine("Tapped");
+                VM.GoToDetailPage();
+            };
+        }
+
 
 
     }

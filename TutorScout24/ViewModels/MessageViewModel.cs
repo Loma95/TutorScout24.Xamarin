@@ -30,6 +30,34 @@ namespace TutorScout24.ViewModels
 
         }
 
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                NotifyPropertyChanged("IsRefreshing");
+            }
+        }
+
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsRefreshing = true;
+
+                    Load();
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
         public void AddToolBarButton()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;

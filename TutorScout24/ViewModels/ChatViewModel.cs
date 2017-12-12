@@ -45,6 +45,35 @@ namespace TutorScout24.ViewModels
 
 
 
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                NotifyPropertyChanged("IsRefreshing");
+            }
+        }
+
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command( ()=>
+                {
+                    IsRefreshing = true;
+
+                     Reload();
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
+
         private async void SendMessageAsync()
         {
             if (CurrentMessage != "")
@@ -133,6 +162,7 @@ namespace TutorScout24.ViewModels
         {
             Messages = new ObservableCollection<Message>(value.Messages);
             NotifyPropertyChanged("Messages");
+            if(Messages.Count > 1)
             OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
