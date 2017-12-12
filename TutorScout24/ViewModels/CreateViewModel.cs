@@ -45,7 +45,10 @@ namespace TutorScout24.ViewModels
                     : "Neues Angebot erstellen";
                 NotifyPropertyChanged("PageTitle");
             });
-            AddToolbarItem();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                AddToolbarItem();
+            });
         }
 
         private ToolbarItem _CreateSwitch;
@@ -216,9 +219,17 @@ namespace TutorScout24.ViewModels
         }
 
 
-        public void RemoveToolbarItem(){
+        public void RemoveToolbarItem()
+        {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_CreateSwitch);
+            foreach(ToolbarItem tbi in master.ToolbarItems)
+            {
+                if(tbi.Text== "\uf1d8")
+                {
+                    master.ToolbarItems.Remove(tbi);
+                }
+            }
         }
 
         public void AddToolbarItem()
@@ -247,11 +258,33 @@ namespace TutorScout24.ViewModels
                     _ct.latitude = pos.Latitude;
                     _ct.longitude = pos.Longitude;
                 }
-                await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateTutoring(_ct);
-            };
 
-            master.ToolbarItems.Add(_CreateSwitch);
+                bool success = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateTutoring(_ct);
+                if (success)
+                {
+                    NavigateTo<TutorialsViewModel>();
+                }
+                else
+                {
+                    if (MasterDetailViewModel.CurrentMode == MasterDetailViewModel.Mode.STUDENT)
+                    {
+                        MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Anfrage konnte nicht erstellt werden."));
+                    }
+                    else
+                    {
+                        MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Angebot konnte nicht erstellt werden."));
+                    }
+                }
+            };
+            if(master.ToolbarItems.Count<2)
+            {
+                master.ToolbarItems.Add(_CreateSwitch);
+            }
         }
-      
+        public override void Dispose()
+        {
+            base.Dispose();
+            RemoveToolbarItem();
+        }
     }
 }

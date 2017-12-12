@@ -27,6 +27,13 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        public ICommand ToProfileCommand => new Command(ToProfile);
+
+        private void ToProfile()
+        {
+            NavigateTo<ForeignProfileViewModel, string>(Tutoring.userName);
+        }
+
         public override void Initialize(Tutoring parameter)
         {
             base.Initialize(parameter);

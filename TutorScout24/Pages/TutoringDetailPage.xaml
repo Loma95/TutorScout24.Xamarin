@@ -4,25 +4,40 @@
     xmlns:tutorScout24="clr-namespace:TutorScout24;assembly=TutorScout24"
     x:TypeArguments="viewModels1:TutoringDetailViewModel" x:Class="TutorScout24.Pages.TutoringDetailPage"    >
     <forms:MvvmNanoContentPage.Content>
-        <Grid Padding="15">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition>/</RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Text="Fach:" Grid.Row="0" Grid.Column="0"></Label>
-            <Label Text="{Binding Tutoring.subject}" Grid.Row="0" Grid.Column="1"></Label>
-            <Label Text="Benutzer:" Grid.Row="1" Grid.Column="0"></Label>
-            <Label Text="{Binding Tutoring.userName}" Grid.Row="1" Grid.Column="1"></Label>
-            <Label Text="{Binding Tutoring.daysLeft, StringFormat='{0} Tage übrig'}" Grid.Row="2" Grid.Column="0"></Label>
-            <Label Text="{Binding Tutoring.text}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-            <Button Text="Chatten" Grid.Row="4" Command="{Binding GoToChatCommand}" ></Button>
-        </Grid>
+      <ScrollView>
+        <StackLayout Orientation="Vertical" Margin="10">
+          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical">
+              <Label Text="Fach" FontSize="18" TextColor="Black"></Label>
+              <Label Text="{Binding Tutoring.subject}" Grid.Row="0" Grid.Column="1"></Label>
+            </StackLayout>
+          </Frame>
+          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ToProfileCommand}" />
+            </Frame.GestureRecognizers>
+            <StackLayout Orientation="Vertical">
+              <Label Text="Benutzer" FontSize="18" TextColor="Black"></Label>
+              <Label Text="{Binding Tutoring.userName}" Grid.Row="1" Grid.Column="1"></Label>
+            </StackLayout>
+          </Frame>
+          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical">
+              <Label Text="Beschreibung" FontSize="18" TextColor="Black"></Label>
+              <Label Text="{Binding Tutoring.text}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            </StackLayout>
+          </Frame>
+          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical">
+              <Label Text="{Binding Tutoring.daysLeft, StringFormat='{0} Tage übrig'}" Grid.Row="2" Grid.Column="0"></Label>
+            </StackLayout>
+          </Frame>
+          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical">
+              <Button Text="Chatten" Grid.Row="4" Command="{Binding GoToChatCommand}" ></Button>
+            </StackLayout>
+          </Frame>
+        </StackLayout>
+      </ScrollView>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage >
