@@ -19,7 +19,7 @@ namespace TutorScout24.ViewModels
         public ListView MessagesList;
         public ChatViewModel()
         {
-
+            
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }
