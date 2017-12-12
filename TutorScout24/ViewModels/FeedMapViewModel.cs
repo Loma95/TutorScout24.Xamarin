@@ -78,11 +78,16 @@ namespace TutorScout24.ViewModels
                 Debug.WriteLine("Set Pin:" + tutoring.latitude);
 
                 Map.Pins.Clear();
-                Map.Pins.Add(new Pin()
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
-                    Label = tutoring.userName + "\n" + tutoring.subject
+                    Map.Pins.Add(new Pin()
+                    {
+                        Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
+                        Label = tutoring.userName + "\n" + tutoring.subject
+                    });
+
                 });
+
             }
         }
 

@@ -64,11 +64,9 @@ namespace TutorScout24.ViewModels
             {
                 return new Command( ()=>
                 {
-                    IsRefreshing = true;
-
+                   
                      Reload();
 
-                    IsRefreshing = false;
                 });
             }
         }
@@ -142,8 +140,9 @@ namespace TutorScout24.ViewModels
 
         }
 
-        private  void Reload(){
-      
+        private  void Reload()
+        {
+            IsRefreshing = true;
             MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetMessages();
 
         }
@@ -160,6 +159,7 @@ namespace TutorScout24.ViewModels
 
         public void OnNext(Conversation value)
         {
+            IsRefreshing = false;
             Messages = new ObservableCollection<Message>(value.Messages);
             NotifyPropertyChanged("Messages");
             if(Messages.Count > 1)

@@ -58,7 +58,7 @@ namespace TutorScout24.ViewModels
 
                      GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
 
-                    IsRefreshing = false;
+                    
                 });
             }
         }
@@ -102,6 +102,7 @@ namespace TutorScout24.ViewModels
             offers = await tutServ.GetTutorings();
             if (offers != null)
             {
+                IsRefreshing = false;
                 _tut = new ObservableCollection<Tutoring>(offers);
                 NotifyPropertyChanged("Tutorings");
                 Debug.WriteLine(offers + "Size::::" + offers.Count);

@@ -103,6 +103,8 @@ namespace TutorScout24.ViewModels
                 Info = true;
                 InfoText = "Passwort ist nicht korrekt";
                 Debug.WriteLine("Not authenticated");
+                NotifyPropertyChanged("Info");
+                NotifyPropertyChanged("InfoText");
             }
 
         }
