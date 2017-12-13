@@ -17,6 +17,7 @@ namespace TutorScout24.ViewModels
     {
 
         private ToolbarItem _EditSwitch;
+        private ToolbarItem _logout;
         private MyUserInfo OldUserData; 
 
         public ProfileViewModel()
@@ -35,6 +36,17 @@ namespace TutorScout24.ViewModels
             {
                 Text = "\uf044"
             };
+
+            _logout = new ToolbarItem
+            {
+                Text ="\uf08b"
+            };
+
+            _logout.Clicked += (sender, e) => {
+                ((ToolbarItem)sender).IsEnabled = false;
+                RemovePass();
+            };
+
 
             _EditSwitch.Clicked += async (sender, e) =>
             {
@@ -61,19 +73,25 @@ namespace TutorScout24.ViewModels
             };
             master.ToolbarItems.Clear();
             master.ToolbarItems.Add(_EditSwitch);
+
+            if (PasswordWasSaved)
+            {
+                master.ToolbarItems.Add(_logout);
+            }
         }
 
 
 
-        public ICommand RemovePassword => new Command(RemovePass);
-
         private void RemovePass()
         {
+            
             CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
             CService.DeleteCredentials();
             PasswordWasSaved = false;
 
-            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Erfolgreich", "Sie haben das gespeicherte Passwort entfernt"));
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Autom. Login deaktiviert", "Sie haben das gespeicherte Passwort entfernt."));
+
+          
         }
 
 
@@ -177,6 +195,7 @@ namespace TutorScout24.ViewModels
         public void RemoveToolBarItem(){
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_EditSwitch);
+            master.ToolbarItems.Remove(_logout);
         }
     }
 }

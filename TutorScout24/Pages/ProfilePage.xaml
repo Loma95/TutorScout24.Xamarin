@@ -16,8 +16,6 @@
                     </RowDefinition>
                        <RowDefinition Height="1*">
                     </RowDefinition>
-                    <RowDefinition Height="0.5*">
-                    </RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*">
@@ -83,8 +81,6 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                <Button Grid.Row="6" Margin="5" IsVisible="{Binding PasswordWasSaved}" Command="{Binding RemovePassword}" Text="{i18n:Translate RemovePassword}">
-                </Button>
             </Grid>
         </ScrollView>
     </forms:MvvmNanoContentPage.Content>

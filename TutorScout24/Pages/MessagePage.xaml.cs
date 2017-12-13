@@ -14,7 +14,7 @@ namespace TutorScout24.Pages
         {
             InitializeComponent();
 
-           
+          
         }
 
 
@@ -26,17 +26,17 @@ namespace TutorScout24.Pages
             base.OnAppearing();
         }
 
-        Boolean isRunning = false;
-
-
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
 
             MessageViewModel VM = (MessageViewModel)BindingContext;
-
-            List.ItemTapped += new SingleClick(VM.GoToChat).Click;
-
+            try
+            {
+                List.ItemTapped += new SingleClick(ViewModel.GoToChat).Click;
+            }catch(Exception){
+                
+            }
             }
     }
 }

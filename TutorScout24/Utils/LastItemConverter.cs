@@ -13,8 +13,13 @@ namespace TutorScout24.Utils
             IEnumerable<Message> items = value as IEnumerable<Message>;
             if (items != null)
             {
-                Message m = (Message)items.LastOrDefault();
-                return m.Text;
+                
+                   Message m = (Message)items.LastOrDefault();
+                if (m != null)
+                    return m.Text;
+                else
+                    return "";
+
             }
             else return "";
         }

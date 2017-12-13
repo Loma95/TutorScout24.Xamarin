@@ -64,7 +64,7 @@ namespace TutorScout24.ViewModels
             {
                 return new Command( ()=>
                 {
-                   
+                    IsRefreshing = true;
                      Reload();
 
                 });
@@ -159,7 +159,7 @@ namespace TutorScout24.ViewModels
 
         private  void Reload()
         {
-            IsRefreshing = true;
+            
             MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetMessages();
 
         }
