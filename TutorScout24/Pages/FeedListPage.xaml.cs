@@ -5,6 +5,7 @@ using MvvmNano;
 using MvvmNano.Forms;
 using Plugin.Geolocator;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using TutorScout24.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -26,10 +27,9 @@ namespace TutorScout24.Pages
             base.OnBindingContextChanged();
 
             FeedListViewModel VM = (FeedListViewModel)BindingContext;
-            MyListView.ItemTapped += (sender, e) => {
-                Debug.WriteLine("Tapped");
-                VM.GoToDetailPage();
-            };
+          
+
+            MyListView.ItemTapped += new SingleClick(VM.GoToDetailPage).Click;
         }
 
 

@@ -29,9 +29,8 @@ namespace TutorScout24.ViewModels
         }
 
        
-        public void GoToDetailPage()
+        public void GoToDetailPage(object sender, EventArgs e)
         {
-            Debug.WriteLine("navigateTo");
             NavigateToAsync<TutoringDetailViewModel, Tutoring>(CurrentItem);
         }
 

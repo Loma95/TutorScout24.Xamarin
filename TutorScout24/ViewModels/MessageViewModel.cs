@@ -149,15 +149,15 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
-
-        public void GoToChat()
+    
+        public void GoToChat(object sender, EventArgs e)
         {
             if (_selectedItem != null)
             {
                 NavigateToAsync<ChatViewModel, Conversation>(SelectedItem);
             }
         }
+       
 
         private ObservableCollection<Conversation> _conversations = new ObservableCollection<Conversation>();
         public ObservableCollection<Conversation> Conversations

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using TutorScout24.Models;
+using TutorScout24.Utils;
 using TutorScout24.ViewModels;
 using Xamarin.Forms;
 
@@ -25,15 +26,17 @@ namespace TutorScout24.Pages
             base.OnAppearing();
         }
 
+        Boolean isRunning = false;
+
+
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
 
             MessageViewModel VM = (MessageViewModel)BindingContext;
 
-            List.ItemTapped += (sender, e) => {
-                VM.GoToChat();
-            };
-        }
+            List.ItemTapped += new SingleClick(VM.GoToChat).Click;
+
+            }
     }
 }
