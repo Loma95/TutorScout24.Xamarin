@@ -26,10 +26,9 @@ namespace TutorScout24.ViewModels
                 NotifyPropertyChanged();
             }
         }
+        
 
-        public ICommand ToProfileCommand => new Command(ToProfile);
-
-        private void ToProfile()
+        public void ToProfile(object sender, EventArgs e)
         {
             NavigateTo<ForeignProfileViewModel, string>(Tutoring.userName);
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MvvmNano;
+using TutorScout24.Controls;
 using TutorScout24.CustomData;
 using TutorScout24.Models;
 using TutorScout24.Services;
@@ -17,6 +18,7 @@ namespace TutorScout24.ViewModels
     {
         private CreateTutoring _ct;
         private Xamarin.Forms.Maps.Position _position;
+        private ToolbarItem _CreateSwitch;
 
         public Xamarin.Forms.Maps.Position Position
         {
@@ -40,6 +42,7 @@ namespace TutorScout24.ViewModels
         public PositionSelectViewModel()
         {
             SetPos();
+            AddToolbarItem();
         }
 
         private async void SetPos()
@@ -54,5 +57,32 @@ namespace TutorScout24.ViewModels
             base.Initialize(parameter);
             _ct = parameter;
         }
+
+        public void AddToolbarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+
+            _CreateSwitch = new ToolbarItem
+            {
+                Text = "\uf00c"
+            };
+
+            _CreateSwitch.Clicked += async (sender, e) =>
+            {
+                _ct.latitude = map.VisibleRegion.Center.Latitude;
+                _ct.longitude= map.VisibleRegion.Center.Longitude;
+                RemoveToolbarItem();
+                NavigateTo<CreateViewModel, CreateTutoring>(_ct);
+            };
+            master.ToolbarItems.Add(_CreateSwitch);
+        }
+
+        public void RemoveToolbarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            master.ToolbarItems.Remove(_CreateSwitch);
+        }
+
+        public SelectionMap map;
     }
 }

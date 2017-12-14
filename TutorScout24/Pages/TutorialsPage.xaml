@@ -9,33 +9,12 @@
                 <DataTemplate>
                     <ViewCell>
                         <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid Padding="15">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="1" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding end}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                                    <Label Text="{Binding subject}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                                    <Label Text="{Binding creationdate}" TextColor="Black" FontSize="Medium" Margin="0,0,5,0" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" HorizontalOptions="End" />
-                                </Grid>
-                                <Label Text="{Binding text}" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
-                                <BoxView BackgroundColor="White" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
-                            </Grid>
+                          <StackLayout>
+                              <Label Text="{Binding subject}" TextColor="Black" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                              <Label Text="{Binding creationdate, StringFormat='Erstellt am: {0:dd.MM.yyyy}'}" TextColor="DarkBlue" FontSize="14"  HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                              <Label Text="{Binding end, StringFormat='Gültig bis: {0:dd.MM.yyyy}'}" TextColor="DarkBlue" FontSize="15"  VerticalTextAlignment="Center"/>
+                              <Label Text="{Binding text}" TextColor="Gray" FontSize="15"   />
+                          </StackLayout>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>

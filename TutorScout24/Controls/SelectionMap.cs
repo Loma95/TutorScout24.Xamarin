@@ -8,7 +8,7 @@ using Xamarin.Forms.Maps;
 
 namespace TutorScout24.Controls
 {
-    class SelectionMap : Map
+    public class SelectionMap : Map
     {
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(SelectionMap),
             new Position(0, 0), propertyChanged: OnPropertyChanged);
