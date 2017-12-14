@@ -72,29 +72,32 @@ namespace TutorScout24.ViewModels
         {
             List<Tutoring> list = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetTutorings();
             List<Pin> pins = new List<Pin>();
-            Map.Pins.Clear();
-            Map.CustomPins.Clear();
-            if(Map!=null)
-            foreach (Tutoring tutoring in list)
+
+            if (Map != null)
             {
-                Debug.WriteLine("Set Pin:" + tutoring.latitude);
-                Device.BeginInvokeOnMainThread(() =>
+                Map.Pins.Clear();
+                Map.CustomPins.Clear();
+                foreach (Tutoring tutoring in list)
                 {
-                    
-                    var pin = new CustomPin
+                    Debug.WriteLine("Set Pin:" + tutoring.latitude);
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
-                        Label = tutoring.userName ,
-                        Description = tutoring.subject
-                    };
 
-               
-                    Map.CustomPins.Add(pin);
-                    Map.Pins.Add(pin);
-                
+                        var pin = new CustomPin
+                        {
+                            Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
+                            Label = tutoring.userName,
+                            Description = tutoring.subject
+                        };
 
-                });
 
+                        Map.CustomPins.Add(pin);
+                        Map.Pins.Add(pin);
+
+
+                    });
+
+                }
             }
         }
 

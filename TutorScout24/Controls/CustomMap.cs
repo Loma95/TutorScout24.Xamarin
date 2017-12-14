@@ -14,9 +14,11 @@ namespace TutorScout24.Controls
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(CustomMap),
             new Position(0,0), propertyChanged: OnPropertyChanged);
 
-/*        public static readonly BindableProperty PinsProperty = BindableProperty.Create(nameof(FeedPins), typeof(List<Pin>), typeof(Pin), defaultValue:new List<Pin>());*/
-   
-        public List<CustomPin> CustomPins { get; set; }
+        /*        public static readonly BindableProperty PinsProperty = BindableProperty.Create(nameof(FeedPins), typeof(List<Pin>), typeof(Pin), defaultValue:new List<Pin>());*/
+        List<CustomPin> _customPins = new List<CustomPin>();
+
+        public List<CustomPin> CustomPins {   get { return _customPins; }
+            set { _customPins = value; } }
         private Position _position;
         public Position Position
         {

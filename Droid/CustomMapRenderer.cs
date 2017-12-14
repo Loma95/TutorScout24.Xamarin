@@ -30,9 +30,10 @@ namespace TutorScout24.Droid
             if (e.NewElement != null)
             {
                 var formsMap = (CustomMap)e.NewElement;
-
-                customPins = formsMap.CustomPins;
-                Control.GetMapAsync(this);
+              
+                    customPins = formsMap.CustomPins;
+                    Control.GetMapAsync(this);
+               
             }
         }
 

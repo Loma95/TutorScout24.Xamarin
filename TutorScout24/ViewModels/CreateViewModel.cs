@@ -240,13 +240,15 @@ namespace TutorScout24.ViewModels
             {
                 _CreateSwitch.Text = "\uf1d8";
 
-
-                _ct = new CreateTutoring
+                if (_ct == null)
                 {
-                    duration = _expDate.Day - DateTime.Today.Day,
-                    text = Text,
-                    subject = Subject
-                };
+                    _ct = new CreateTutoring
+                    {
+                        duration = _expDate.Day - DateTime.Today.Day,
+                        text = Text,
+                        subject = Subject
+                    };
+                }
                 if (_selection == "Adresse")
                 {
                     var response = await MvvmNanoIoC.Resolve<GeocodeService>().GetResponseForString(Adress);

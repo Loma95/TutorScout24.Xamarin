@@ -982,48 +982,45 @@
     ".NETPortable,Version=v4.5,Profile=Profile111": []
   },
   "packageFolders": {
-    "C:\\Users\\alexa\\.nuget\\packages\\": {}
+    "/Users/marvinlouis/.nuget/packages/": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "D:\\Development\\MA\\TutorScout24\\TutorScout24.csproj",
+      "projectUniqueName": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/TutorScout24.csproj",
       "projectName": "TutorScout24",
-      "projectPath": "D:\\Development\\MA\\TutorScout24\\TutorScout24.csproj",
-      "projectJsonPath": "D:\\Development\\MA\\TutorScout24\\project.json",
-      "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\MA\\TutorScout24\\obj\\",
+      "projectPath": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/TutorScout24.csproj",
+      "projectJsonPath": "/Users/marvinlouis/Projects/TutorScout24/TutorScout24/project.json",
+      "packagesPath": "/Users/marvinlouis/.nuget/packages/",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/marvinlouis/.config/NuGet/NuGet.Config"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       }
     },
     "dependencies": {
-      "Microsoft.AppCenter.Analytics": "[1.0.1, )",
-      "Microsoft.AppCenter.Crashes": "[1.0.1, )",
-      "Microsoft.Bcl.Build": "[1.0.21, )",
-      "MvvmNano.Core": "[3.1.0, )",
-      "MvvmNano.Forms": "[3.1.0, )",
-      "MvvmNano.Ninject": "[3.1.0, )",
-      "NControl": "[0.9.1, )",
-      "NGraphics": "[0.4.0, )",
-      "Newtonsoft.Json": "[10.0.3, )",
-      "PCLCrypto": "[2.0.147, )",
-      "PInvoke.BCrypt": "[0.3.2, )",
-      "PInvoke.Kernel32": "[0.3.2, )",
-      "PInvoke.NCrypt": "[0.3.2, )",
-      "PInvoke.Windows.Core": "[0.3.2, )",
-      "Portable.Ninject": "[3.3.1, )",
-      "Validation": "[2.2.8, )",
-      "Xam.FormsPlugin.IconEntry": "[1.0.1, )",
-      "Xam.Plugin.Geolocator": "[4.1.2, )",
-      "Xamarin.Auth": "[1.5.0.3, )",
-      "Xamarin.Forms": "[2.4.0.18342, )",
-      "Xamarin.Forms.Maps": "[2.4.0.18342, )"
+      "Microsoft.AppCenter.Analytics": "1.0.1",
+      "Microsoft.AppCenter.Crashes": "1.0.1",
+      "Microsoft.Bcl.Build": "1.0.21",
+      "MvvmNano.Core": "3.1.0",
+      "MvvmNano.Forms": "3.1.0",
+      "MvvmNano.Ninject": "3.1.0",
+      "NControl": "0.9.1.0",
+      "Newtonsoft.Json": "10.0.3",
+      "NGraphics": "0.4.0",
+      "PCLCrypto": "2.0.147",
+      "PInvoke.BCrypt": "0.3.2",
+      "PInvoke.Kernel32": "0.3.2",
+      "PInvoke.NCrypt": "0.3.2",
+      "PInvoke.Windows.Core": "0.3.2",
+      "Portable.Ninject": "3.3.1",
+      "Validation": "2.2.8",
+      "Xam.FormsPlugin.IconEntry": "1.0.1",
+      "Xam.Plugin.Geolocator": "4.1.2",
+      "Xamarin.Auth": "1.5.0.3",
+      "Xamarin.Forms": "2.4.0.18342",
+      "Xamarin.Forms.Maps": "2.4.0.18342"
     },
     "frameworks": {
       "portable45-net45+win8+wpa81": {}
