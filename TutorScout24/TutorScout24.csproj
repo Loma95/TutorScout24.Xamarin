@@ -138,6 +138,7 @@
     <Compile Include="Utils\LastItemConverter.cs" />
     <Compile Include="Models\DeleteMessage.cs" />
     <Compile Include="Utils\SingleClick.cs" />
+    <Compile Include="Controls\CustomPin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

@@ -15,6 +15,7 @@ namespace TutorScout24.Pages
         {
             InitializeComponent();
 
+            RequestMap.CustomPins = new List<Controls.CustomPin>();
         }
 
         protected override void OnAppearing()
