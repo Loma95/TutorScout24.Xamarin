@@ -13,9 +13,18 @@ namespace TutorScout24.Pages
     {
         public PositionSelectPage()
         {
-
             InitializeComponent();
+        }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            ViewModel.map = MyMap2;
         }
     }
 }

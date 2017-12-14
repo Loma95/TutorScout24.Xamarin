@@ -86,6 +86,7 @@ namespace TutorScout24
         private static void SetupDependencies(){
             MvvmNanoIoC.Register<IMessenger,MvvmNano.Forms.MvvmNanoFormsMessenger>();
             MvvmNanoIoC.Register<TutorScoutRestService,TutorScoutRestService>();
+            MvvmNanoIoC.RegisterAsSingleton<GeocodeService, GeocodeService>();
             MvvmNanoIoC.RegisterAsSingleton<GeocodeAutocompleteService, GeocodeAutocompleteService>();
 
             MvvmNanoIoC.Register<CredentialService,CredentialService>();

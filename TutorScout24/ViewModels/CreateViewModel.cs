@@ -210,12 +210,14 @@ namespace TutorScout24.ViewModels
 
         public override void Initialize(CreateTutoring parameter)
         {
+            Debug.WriteLine("init");
             base.Initialize(parameter);
-            if (parameter.subject == null && parameter.text == null && parameter.duration == 0) return;
+            if (parameter==null || parameter.longitude==0 && parameter.latitude==0) return;
             _ct = parameter;
             Subject = _ct.subject;
             Text = _ct.text;
             ExpDate = DateTime.Today.AddDays(_ct.duration);
+            Debug.WriteLine("long:"+_ct.longitude +  "lat:" + _ct.latitude);
         }
 
 
@@ -223,13 +225,6 @@ namespace TutorScout24.ViewModels
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_CreateSwitch);
-            foreach(ToolbarItem tbi in master.ToolbarItems)
-            {
-                if(tbi.Text== "\uf1d8")
-                {
-                    master.ToolbarItems.Remove(tbi);
-                }
-            }
         }
 
         public void AddToolbarItem()
@@ -254,7 +249,13 @@ namespace TutorScout24.ViewModels
                 };
                 if (_selection == "Adresse")
                 {
-                    Position pos = await LocationService.getInstance().AdressToPos(_adress);
+                    var response = await MvvmNanoIoC.Resolve<GeocodeService>().GetResponseForString(Adress);
+                    var pos = new Position(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+                    if (pos.Latitude == 0 && pos.Longitude == 0)
+                    {
+                        MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Kein Ort gefunden."));
+                        return;
+                    }
                     _ct.latitude = pos.Latitude;
                     _ct.longitude = pos.Longitude;
                 }
