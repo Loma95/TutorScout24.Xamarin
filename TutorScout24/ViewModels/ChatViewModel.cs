@@ -13,13 +13,13 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable,ConversationObserver
+    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable, ConversationObserver
     {
         Conversation conversation;
         public ListView MessagesList;
         public ChatViewModel()
         {
-            
+
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }
@@ -62,12 +62,12 @@ namespace TutorScout24.ViewModels
         {
             get
             {
-                return new Command( ()=>
-                {
-                    IsRefreshing = true;
-                     Reload();
+                return new Command(() =>
+               {
+                   IsRefreshing = true;
+                   Reload();
 
-                });
+               });
             }
         }
 
@@ -79,9 +79,9 @@ namespace TutorScout24.ViewModels
                 SendMessage m = new SendMessage();
                 m.toUserId = conversation.id;
                 m.text = CurrentMessage;
-             
+
                 await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().SendMessage(m);
-           
+
                 Reload();
                 CurrentMessage = "";
                 NotifyPropertyChanged("CurrentMessage");
@@ -93,33 +93,37 @@ namespace TutorScout24.ViewModels
         public string CurrentMessage
         {
             get { return _currentMessage; }
-            set { _currentMessage = value;
-               
+            set
+            {
+                _currentMessage = value;
+
             }
-        } 
+        }
 
         private Message _selectedItem;
         public Message SelectedItem
         {
             get { return _selectedItem; }
-            set {
-                
-               
+            set
+            {
+
+
                 _selectedItem = value;
-               
+
             }
-        } 
+        }
 
 
-   
 
-        public async void DeleteSelectedItem(int messageID){
+
+        public async void DeleteSelectedItem(int messageID)
+        {
             await MvvmNanoIoC.Resolve<TutorScoutRestService>().DeleteMessage(messageID);
             Reload();
         }
 
 
- 
+
 
         private ToolbarItem _reload = new ToolbarItem
         {
@@ -127,7 +131,7 @@ namespace TutorScout24.ViewModels
         };
 
 
-   
+
         public override void Initialize(Conversation parameter)
         {
             base.Initialize(parameter);
@@ -140,26 +144,27 @@ namespace TutorScout24.ViewModels
                     Messages.Add(item);
                 }
                 NotifyPropertyChanged("Messages");
-                 
+
             }
 
-     
+
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
 
-            _reload.Clicked += (sender, e) => {
+            _reload.Clicked += (sender, e) =>
+            {
                 Reload();
             };
             master.ToolbarItems.Clear();
             master.ToolbarItems.Add(_reload);
             MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
-          
+
 
         }
 
-        private  void Reload()
+        private void Reload()
         {
-            
+
             MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().ReloadMessages();
 
         }
@@ -179,8 +184,8 @@ namespace TutorScout24.ViewModels
             IsRefreshing = false;
             Messages = new ObservableCollection<Message>(value.Messages);
             NotifyPropertyChanged("Messages");
-            if(Messages.Count > 1)
-            OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
+            if (Messages.Count > 1)
+                OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
 

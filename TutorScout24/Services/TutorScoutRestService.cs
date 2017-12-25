@@ -20,7 +20,7 @@ namespace TutorScout24.Services
 
         String RestUrl;
         HttpClient client;
-      
+
         public TutorScoutRestService()
         {
             client = new HttpClient();
@@ -42,7 +42,7 @@ namespace TutorScout24.Services
 
             }
             return await response.Content.ReadAsStringAsync();
- 
+
         }
 
         public async Task<bool> SendMessage(SendMessage msg)
@@ -74,11 +74,11 @@ namespace TutorScout24.Services
             var json = JsonConvert.SerializeObject(dm);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-            response = await client.PostAsync(uri,content);
+            response = await client.PostAsync(uri, content);
             Debug.WriteLine(response.Content.ReadAsStringAsync());
             if (response.IsSuccessStatusCode)
             {
-                
+
                 return true;
 
             }
@@ -135,7 +135,7 @@ namespace TutorScout24.Services
             cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/updateUser";
             var uri = new Uri(string.Format(RestUrl, string.Empty));
-            var json = JsonConvert.SerializeObject(cmd,Newtonsoft.Json.Formatting.None,
+            var json = JsonConvert.SerializeObject(cmd, Newtonsoft.Json.Formatting.None,
                             new JsonSerializerSettings
                             {
                                 NullValueHandling = NullValueHandling.Ignore
@@ -166,7 +166,9 @@ namespace TutorScout24.Services
                 var content = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine(content);
                 return JsonConvert.DeserializeObject<UserInfos>(content);
-            }else{
+            }
+            else
+            {
                 return null;
             }
         }
@@ -256,7 +258,8 @@ namespace TutorScout24.Services
             if (MasterDetailViewModel.CurrentMode.Equals(MasterDetailViewModel.Mode.STUDENT))
             {
                 RestUrl += "offers";
-            } else
+            }
+            else
             {
                 RestUrl += "requests";
             }
@@ -335,11 +338,11 @@ namespace TutorScout24.Services
             {
                 return null;
             }
-            
+
         }
 
 
-     
+
 
     }
 }

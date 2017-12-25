@@ -44,6 +44,7 @@ namespace TutorScout24.Pages
         }
 
 
+        
 
 
 
@@ -70,7 +71,15 @@ namespace TutorScout24.Pages
         protected override void DetailSet(MvvmNanoMasterDetailData lastDetailData, MvvmNanoMasterDetailData newDetailData, Page page)
         {
             base.DetailSet(lastDetailData, newDetailData, page);
-            if (newDetailData.ViewModelType == typeof(FeedTabViewModel)|| newDetailData.ViewModelType == typeof(TutorialsViewModel))
+            RefreshToolBarItems();
+            MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage)page.Parent;
+            navi.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+        }
+
+
+        public void RefreshToolBarItems()
+        {
+            if (newDetailData.ViewModelType == typeof(FeedTabViewModel) || newDetailData.ViewModelType == typeof(TutorialsViewModel))
             {
                 if (!this.ToolbarItems.Contains(switchI))
                 {
@@ -78,16 +87,14 @@ namespace TutorScout24.Pages
                     this.ToolbarItems.Add(switchI);
                     switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
                 }
-                
-                }else{
+
+            }
+            else
+            {
 
                 this.ToolbarItems.Remove(switchI);
             }
-            MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage)page.Parent;
-            navi.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
         }
-
-
 
 
 
@@ -170,10 +177,14 @@ namespace TutorScout24.Pages
 
 
 
-    
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            RefreshToolBarItems();
+        }
 
-    
-      
+
+
 
         /// <summary>
         /// Creates the master page.

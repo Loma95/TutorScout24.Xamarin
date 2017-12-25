@@ -10,6 +10,7 @@ using TutorScout24.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
+using TutorScout24.ViewModels;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace TutorScout24.Droid
@@ -51,7 +52,6 @@ namespace TutorScout24.Droid
             marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
             marker.SetTitle(pin.Label);
             marker.SetSnippet(pin.Address);
-            //marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.username));
             return marker;
         }
 
@@ -63,7 +63,11 @@ namespace TutorScout24.Droid
                 throw new Exception("Custom pin not found");
             }
 
-          
+
+            //Go to the Chat
+            TutorScout24.ViewModels.MasterDetailViewModel vM = (TutorScout24.ViewModels.MasterDetailViewModel)  Xamarin.Forms.Application.Current.MainPage.BindingContext;
+            vM.OpenChat(customPin.UserName);
+
         }
 
         public Android.Views.View GetInfoContents(Marker marker)
@@ -81,12 +85,12 @@ namespace TutorScout24.Droid
 
            
 
-
-                    view = inflater.Inflate(Resource.Layout.ItemInfoView, null);
+                view = inflater.Inflate(Resource.Layout.ItemInfoView, null);
                 
 
                 var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoTitle);
                 var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoSubTitle);
+       
 
                 if (infoTitle != null)
                 {
@@ -97,12 +101,10 @@ namespace TutorScout24.Droid
                     infoSubtitle.Text = customPin.Description;
                 }
 
-
                 return view;
             }
             return null;
         }
-
         public Android.Views.View GetInfoWindow(Marker marker)
         {
             return null;

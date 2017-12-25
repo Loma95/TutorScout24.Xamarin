@@ -87,7 +87,8 @@ namespace TutorScout24.ViewModels
                         {
                             Position = new Xamarin.Forms.Maps.Position(tutoring.latitude, tutoring.longitude),
                             Label = tutoring.userName,
-                            Description = tutoring.subject
+                            Description = tutoring.subject,
+                            UserName = tutoring.userName
                         };
 
 
@@ -123,7 +124,7 @@ namespace TutorScout24.ViewModels
         {
             //Position = new Xamarin.Forms.Maps.Position(value.Latitude, value.Longitude);
         }
-
+        
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }

@@ -13,12 +13,12 @@ using System.Net.Http;
 
 namespace TutorScout24.ViewModels
 {
-    public class LoginViewModel:MvvmNano.MvvmNanoViewModel
+    public class LoginViewModel : MvvmNano.MvvmNanoViewModel
     {
         CredentialService CService;
         public LoginViewModel()
         {
-            
+
         }
 
         public override void Initialize()
@@ -31,10 +31,11 @@ namespace TutorScout24.ViewModels
             InfoText = "Keine Verbindung zum Internet";
         }
 
-        private bool IsNotConnected(){
+        private bool IsNotConnected()
+        {
 
             return !System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
- 
+
         }
 
         private bool _info;
@@ -61,8 +62,10 @@ namespace TutorScout24.ViewModels
         private string _userName;
         public string UserName
         {
-            get{ return _userName; }
-            set { _userName = value;
+            get { return _userName; }
+            set
+            {
+                _userName = value;
                 NotifyPropertyChanged("UserName");
             }
         }
@@ -71,12 +74,14 @@ namespace TutorScout24.ViewModels
         public string Password
         {
             get { return _password; }
-            set { _password = value;
+            set
+            {
+                _password = value;
                 NotifyPropertyChanged("Password");
             }
         }
 
-        public ICommand LoginCommand => new Command( async () => LoginAsync());
+        public ICommand LoginCommand => new Command(async () => LoginAsync());
 
         private async Task LoginAsync()
         {
@@ -116,7 +121,7 @@ namespace TutorScout24.ViewModels
             NavigateTo<RegisterViewModel>();
         }
 
-    
+
         private async Task<bool> IsValidAuthentication(CheckAuthentication auth)
         {
             return await MvvmNanoIoC.Resolve<TutorScoutRestService>().CanAuthenticate(auth);

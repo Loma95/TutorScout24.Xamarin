@@ -23,4 +23,5 @@
         android:layout_marginRight="10dp"
         android:id="@+id/InfoSubTitle"
         android:textColor="@android:color/black" />
+
 </LinearLayout>

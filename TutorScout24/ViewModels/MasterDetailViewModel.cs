@@ -14,6 +14,7 @@ using System.Linq;
 using System.Diagnostics.Contracts;
 using TutorScout24.CustomData;
 using TutorScout24.Utils;
+using TutorScout24.Models.Chat;
 
 namespace TutorScout24.ViewModels
 {
@@ -48,6 +49,12 @@ namespace TutorScout24.ViewModels
             MvvmNanoIoC.Resolve<IMessenger>().Send(new ChangeModeMessage(CurrentMode));
         }
 
+
+        public void OpenChat(string userName)
+        {
+            Conversation conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(userName);
+            NavigateToAsync<ChatViewModel, Conversation>(conn);
+        }
 
         /// <summary>
         /// Sets the color of the bar.
