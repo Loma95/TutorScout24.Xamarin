@@ -19,36 +19,41 @@ namespace TutorScout24.ViewModels
 {
     public class MasterDetailViewModel : MvvmNano.MvvmNanoViewModel
     {
-        public enum Mode  { TUTOR,STUDENT };
+        public enum Mode { TUTOR, STUDENT };
         public static Mode CurrentMode = Mode.STUDENT;
         public ICommand ChangeCommand => new Command(Change);
 
-        private  void Change()
+        private void Change()
         {
 
 
-            if(CurrentMode == Mode.STUDENT){
+            if (CurrentMode == Mode.STUDENT)
+            {
                 CurrentMode = Mode.TUTOR;
                 Application.Current.Resources["MainColor"] = Color.FromHex("#78909c");
             }
-            else{
+            else
+            {
                 CurrentMode = Mode.STUDENT;
                 Application.Current.Resources["MainColor"] = Color.FromHex("#EF5350");
             }
 
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             var navigation = (MvvmNanoNavigationPage)master.Detail;
-            IThemeable vc =  (IThemeable)navigation.RootPage.BindingContext;
+            IThemeable vc = (IThemeable)navigation.RootPage.BindingContext;
             vc.ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
 
             SetBarColor();
             MvvmNanoIoC.Resolve<IMessenger>().Send(new ChangeModeMessage(CurrentMode));
         }
+
+
         /// <summary>
         /// Sets the color of the bar.
         /// </summary>
-        private void SetBarColor(){
+        private void SetBarColor()
+        {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             var navigation = (MvvmNanoNavigationPage)master.Detail;
             navigation.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];

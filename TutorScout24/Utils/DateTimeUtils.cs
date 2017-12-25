@@ -7,6 +7,11 @@ namespace TutorScout24.Utils
         {
         }
 
+        /// <summary>
+        /// calculates the age from the given datetime
+        /// </summary>
+        /// <param name="dateOfBirth"></param>
+        /// <returns></returns>
         public static int CalculateAge(DateTime dateOfBirth)
         {
             int age = 0;

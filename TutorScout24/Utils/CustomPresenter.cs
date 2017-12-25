@@ -11,32 +11,36 @@ namespace TutorScout24
     {
         public CustomPresenter(MvvmNano.Forms.MvvmNanoApplication application) : base(application)
         {
-            
+
         }
 
         protected override void OpenPage(Page page)
         {
 
 
-            if(page is LoginPage){
+            if (page is LoginPage)
+            {
                 Application.MainPage = new MvvmNano.Forms.MvvmNanoNavigationPage(page);
-            }else if(page is Pages.MasterDetailPage)
+            }
+            else if (page is Pages.MasterDetailPage)
             {
 
                 Application.MainPage = page;
                 NavigateToViewModel<FeedTabViewModel>();
 
-            }else{
-               
-                base.OpenPage(page); 
+            }
+            else
+            {
+
+                base.OpenPage(page);
             }
 
 
- 
+
         }
 
 
-    
+
 
         protected override System.Threading.Tasks.Task OpenPageAsync(Page page)
         {

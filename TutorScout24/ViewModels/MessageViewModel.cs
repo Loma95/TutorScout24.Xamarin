@@ -179,7 +179,7 @@ namespace TutorScout24.ViewModels
         private void Load()
         {
 
-            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetMessages();
+            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().ReloadMessages();
 
         }
 

@@ -13,8 +13,6 @@ namespace TutorScout24.Controls
     {
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(CustomMap),
             new Position(0,0), propertyChanged: OnPropertyChanged);
-
-        /*        public static readonly BindableProperty PinsProperty = BindableProperty.Create(nameof(FeedPins), typeof(List<Pin>), typeof(Pin), defaultValue:new List<Pin>());*/
         List<CustomPin> _customPins = new List<CustomPin>();
 
         public List<CustomPin> CustomPins {   get { return _customPins; }
@@ -26,25 +24,6 @@ namespace TutorScout24.Controls
             set { _position = value; }
         }
 
-/*        private List<Pin> _feedPins;
-
-       public List<Pin> FeedPins
-        {
-            get => _feedPins;
-            set => _feedPins = value;
-        }*/
-
- /*       public static void OnPinChange(BindableObject bindable, object oldValue, object newValue)
-        {
-            var map = (CustomMap) bindable;
-            var newPins = (List<Pin>) newValue;
-            map.Pins.Clear();
-            foreach (Pin pin in newPins)
-            {
-                map.Pins.Add(pin);
-            }
-
-        }*/
 
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -52,7 +31,6 @@ namespace TutorScout24.Controls
             var newPos = (Position)newValue;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(newPos.Latitude, newPos.Longitude), Distance.FromMiles(0.5)));
-            //AddLocationAsPin(map, newPos);
         }
 
         private static void AddLocationAsPin(CustomMap map, Position newPos)

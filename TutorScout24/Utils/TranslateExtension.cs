@@ -8,19 +8,19 @@ using Xamarin.Forms.Xaml;
 
 namespace TutorScout24.Utils
 {
-   
-        [ContentProperty("Text")]
+
+    [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
-        {
-            public string Text { get; set; }
+    {
+        public string Text { get; set; }
 
         object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
                 return null;
-            CultureInfo ci =  CultureInfo.CurrentCulture;
+            CultureInfo ci = CultureInfo.CurrentCulture;
             ResourceManager rm = new ResourceManager("TutorScout24.Resources.AppResources", typeof(TranslateExtension).GetTypeInfo().Assembly);
-                return rm.GetString(Text, ci);
+            return rm.GetString(Text, ci);
         }
     }
 

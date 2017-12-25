@@ -160,7 +160,7 @@ namespace TutorScout24.ViewModels
         private  void Reload()
         {
             
-            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().GetMessages();
+            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().ReloadMessages();
 
         }
 

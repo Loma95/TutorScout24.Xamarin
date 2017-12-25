@@ -18,22 +18,25 @@ namespace TutorScout24.Pages
         public FeedListPage()
         {
             InitializeComponent();
-          
+
 
         }
 
-      protected override void OnBindingContextChanged()
+        protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
 
             FeedListViewModel VM = (FeedListViewModel)BindingContext;
-          
-            try{
-                MyListView.ItemTapped += new SingleClick(VM.GoToDetailPage).Click;   
-            }catch( Exception ex ){
-                
+
+            try
+            {
+                MyListView.ItemTapped += new SingleClick(VM.GoToDetailPage).Click;
             }
-          
+            catch 
+            {
+
+            }
+
         }
 
 

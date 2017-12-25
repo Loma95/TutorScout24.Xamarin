@@ -43,7 +43,7 @@ namespace TutorScout24.ViewModels
         public ICommand GoToChatCommand => new Command(GoToChat);
 
         private void GoToChat(){
-            MvvmNanoIoC.Resolve<MessageService>().GetMessages();
+            MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();
             Debug.WriteLine(Tutoring.userName);
           
            Conversation conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(Tutoring.userName);

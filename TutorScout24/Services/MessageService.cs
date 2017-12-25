@@ -17,16 +17,15 @@ namespace TutorScout24.Services
 
            
         }
-
-
-    
-
-
         private List<ConversationObserver> observers = new List<ConversationObserver>();
         private List<IObserver<ObservableCollection<Conversation>>> allObservers = new List<IObserver<ObservableCollection<Conversation>>>();
         public ObservableCollection<Conversation> Conversations = new ObservableCollection<Conversation>();
 
-        public async void GetMessages()
+    
+        /// <summary>
+        /// reloads the message data and notifies the observers
+        /// </summary>
+        public async void ReloadMessages()
         {
 
             Conversations.Clear();
@@ -37,52 +36,25 @@ namespace TutorScout24.Services
 
             if (sentM != null)
             {
-
-                foreach (RestMessage item in sentM)
-                {
-
-                    Conversation con = GetConversationById(item.toUserId);
-                    SentMessage sentMsg = new SentMessage();
-                    sentMsg.Text = item.text;
-                    sentMsg.ID = item.messageId;
-                    sentMsg.Time = item.datetime;
-                    sentMsg.FromUser = item.fromUserId;
-                    sentMsg.ToUser = item.toUserId;
-
-                    con.Messages.Add(sentMsg);
-                    if (CheckIfConversationIsNew(con.id))
-                    {
-                        Conversations.Add(con);
-                    }
-                }
-
-
-
+                CreateConversationWithSentMessages(sentM);
             }
             if (recM != null)
             {
-                foreach (var item in recM)
-                {
-
-                    Conversation con = GetConversationById(item.fromUserId);
-                    ReceivedMessage recMsg = new ReceivedMessage();
-                    recMsg.Text = item.text;
-                    recMsg.ID = item.messageId;
-                    recMsg.Time = item.datetime;
-                    recMsg.FromUser = item.fromUserId;
-                    recMsg.ToUser = item.toUserId;
-
-                    con.Messages.Add(recMsg);
-                    if (CheckIfConversationIsNew(con.id))
-                    {
-                        Conversations.Add(con);
-                    }
-                }
+                CreateConversationWithReceivedMessages(recM);
 
             }
 
             SortConversationMessages();
 
+            NotifyConversationObservers();
+        }
+
+
+        /// <summary>
+        /// Notify the observers
+        /// </summary>
+        private void NotifyConversationObservers()
+        {
             Device.BeginInvokeOnMainThread(() =>
             {
 
@@ -96,11 +68,62 @@ namespace TutorScout24.Services
                     item.OnNext(Conversations);
                 }
             });
-
-
         }
 
 
+        /// <summary>
+        /// creates the conversation by iterating through the receivedmessages
+        /// </summary>
+        /// <param name="recM"></param>
+        private void CreateConversationWithReceivedMessages(List<RestMessage> recM)
+        {
+            foreach (var item in recM)
+            {
+
+                Conversation con = GetConversationById(item.fromUserId);
+                ReceivedMessage recMsg = new ReceivedMessage();
+                recMsg.Text = item.text;
+                recMsg.ID = item.messageId;
+                recMsg.Time = item.datetime;
+                recMsg.FromUser = item.fromUserId;
+                recMsg.ToUser = item.toUserId;
+
+                con.Messages.Add(recMsg);
+                if (CheckIfConversationIsNew(con.id))
+                {
+                    Conversations.Add(con);
+                }
+            }
+        }
+
+        /// <summary>
+        /// creates the conversation by iterating through the sentmessages
+        /// </summary>
+        /// <param name="sentM"></param>
+        private void CreateConversationWithSentMessages(List<RestMessage> sentM)
+        {
+            foreach (RestMessage item in sentM)
+            {
+
+                Conversation con = GetConversationById(item.toUserId);
+                SentMessage sentMsg = new SentMessage();
+                sentMsg.Text = item.text;
+                sentMsg.ID = item.messageId;
+                sentMsg.Time = item.datetime;
+                sentMsg.FromUser = item.fromUserId;
+                sentMsg.ToUser = item.toUserId;
+
+                con.Messages.Add(sentMsg);
+                if (CheckIfConversationIsNew(con.id))
+                {
+                    Conversations.Add(con);
+                }
+            }
+        }
+
+        /// <summary>
+        /// sorts the messages by time
+        /// </summary>
         private void SortConversationMessages()
         {
 
@@ -110,6 +133,12 @@ namespace TutorScout24.Services
             }
         }
 
+
+        /// <summary>
+        /// returns the conversation with the given id or creates an empty one and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Conversation GetConversationById(string id)
         {
             foreach (Conversation item in Conversations)
@@ -125,7 +154,11 @@ namespace TutorScout24.Services
             return con;
         }
 
-
+        /// <summary>
+        /// checks if the conversation exists in the current data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool CheckIfConversationIsNew(string id)
         {
             foreach (Conversation item in Conversations)

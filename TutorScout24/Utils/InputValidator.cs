@@ -18,8 +18,6 @@ namespace TutorScout24.Utils
 
         public static bool IsValidPassword(string pass){
             Regex r = new Regex(@"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%]).{8,70})$");
- 
-        
             return IsNotEmpty(pass) && r.IsMatch(pass);
         }
     }

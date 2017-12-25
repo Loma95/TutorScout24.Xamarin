@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.Pages
 {
-    public partial class ChatPage 
+    public partial class ChatPage
     {
         public ChatPage()
         {
@@ -23,7 +23,7 @@ namespace TutorScout24.Pages
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-           
+
         }
         protected override void OnDisappearing()
         {
@@ -38,8 +38,8 @@ namespace TutorScout24.Pages
             Message selMess = (Message)item.CommandParameter;
             ViewModel.DeleteSelectedItem(selMess.ID);
         }
-       
-  
+
+
         public override void OnViewModelSet()
         {
             base.OnViewModelSet();
@@ -59,8 +59,8 @@ namespace TutorScout24.Pages
 
             };
 
-            if(vM.Messages.Count > 0)
-            MessagesList.ScrollTo(vM.Messages[vM.Messages.Count-1], ScrollToPosition.MakeVisible, false);
+            if (vM.Messages.Count > 0)
+                MessagesList.ScrollTo(vM.Messages[vM.Messages.Count - 1], ScrollToPosition.MakeVisible, false);
         }
     }
 }

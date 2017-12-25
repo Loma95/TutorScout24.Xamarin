@@ -14,7 +14,7 @@ using Xamarin.Forms.Maps;
 
 namespace TutorScout24.ViewModels
 {
-    public class PositionSelectViewModel: MvvmNanoViewModel<CreateTutoring>
+    public class PositionSelectViewModel : MvvmNanoViewModel<CreateTutoring>
     {
         private CreateTutoring _ct;
         private Xamarin.Forms.Maps.Position _position;
@@ -47,7 +47,7 @@ namespace TutorScout24.ViewModels
 
         private async void SetPos()
         {
-            var tempPos= await LocationService.getInstance().GetPosition();
+            var tempPos = await LocationService.getInstance().GetPosition();
             _position = new Position(tempPos.Latitude, tempPos.Longitude);
             NotifyPropertyChanged("Position");
         }
@@ -70,7 +70,7 @@ namespace TutorScout24.ViewModels
             _CreateSwitch.Clicked += async (sender, e) =>
             {
                 _ct.latitude = map.VisibleRegion.Center.Latitude;
-                _ct.longitude= map.VisibleRegion.Center.Longitude;
+                _ct.longitude = map.VisibleRegion.Center.Longitude;
                 RemoveToolbarItem();
                 NavigateTo<CreateViewModel, CreateTutoring>(_ct);
             };
