@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ProfileViewModel : MvvmNanoViewModel, IThemeable
+    public class ProfileViewModel : MvvmNanoViewModel, IThemeable,IToolBarItem
     {
 
         private ToolbarItem _EditSwitch;
@@ -71,13 +71,9 @@ namespace TutorScout24.ViewModels
                 ViewMode = !EditMode;
 
             };
-            master.ToolbarItems.Clear();
-            master.ToolbarItems.Add(_EditSwitch);
 
-            if (PasswordWasSaved)
-            {
-                master.ToolbarItems.Add(_logout);
-            }
+            AddToolBarItem();
+
         }
 
 
@@ -196,6 +192,18 @@ namespace TutorScout24.ViewModels
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_EditSwitch);
             master.ToolbarItems.Remove(_logout);
+        }
+
+        public void AddToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_EditSwitch);
+
+            if (PasswordWasSaved)
+            {
+                master.ToolbarItems.Add(_logout);
+            }
         }
     }
 }

@@ -139,6 +139,8 @@
     <Compile Include="Models\DeleteMessage.cs" />
     <Compile Include="Utils\SingleClick.cs" />
     <Compile Include="Controls\CustomPin.cs" />
+    <Compile Include="Utils\IToolBarItem.cs" />
+    <Compile Include="Utils\SelectedLocationArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

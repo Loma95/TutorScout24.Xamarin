@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ForeignProfileViewModel:MvvmNano.MvvmNanoViewModel<string>,IThemeable
+    public class ForeignProfileViewModel:MvvmNano.MvvmNanoViewModel<string>,IThemeable,IToolBarItem
     {
 
         public ForeignProfileViewModel(){
@@ -48,6 +48,15 @@ namespace TutorScout24.ViewModels
 
             }
 
+        }
+
+        public void AddToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            if (master != null)
+            {
+                master.ToolbarItems.Clear();
+            }
         }
 
         private Color _themeColor;

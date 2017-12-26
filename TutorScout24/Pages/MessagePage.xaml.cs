@@ -22,7 +22,7 @@ namespace TutorScout24.Pages
       protected override void OnAppearing()
         {
             MessageViewModel VM = (MessageViewModel)BindingContext;
-            VM.AddToolBarButton();
+            VM.AddToolBarItem();
             base.OnAppearing();
         }
 

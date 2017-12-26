@@ -15,17 +15,12 @@ namespace TutorScout24.Pages
             InitializeComponent();
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
 
-        protected override void OnAppearing()
+        protected override bool OnBackButtonPressed()
         {
-            base.OnAppearing();
-            ViewModel.AddToolbarItem();
+            ViewModel.RemoveToolbarItem();
+            return base.OnBackButtonPressed();
         }
-
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();

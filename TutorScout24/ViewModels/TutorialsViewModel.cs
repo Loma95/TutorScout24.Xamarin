@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class TutorialsViewModel : MvvmNanoViewModel,IThemeable
+    public class TutorialsViewModel : MvvmNanoViewModel,IThemeable,IToolBarItem
     {
 
         public TutorialsViewModel()
@@ -45,7 +45,22 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        private ToolbarItem switchI = new ToolbarItem
+        {
+            Text = "\uf0ec"
+        };
 
+
+        public void AddToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            if (master != null)
+            {
+                master.ToolbarItems.Clear();
+                master.ToolbarItems.Add(switchI);
+                switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
+            }
+        }
 
         public ICommand FabCommand
         {
@@ -59,6 +74,7 @@ namespace TutorScout24.ViewModels
             Debug.WriteLine("Command");
         }
 
+   
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }

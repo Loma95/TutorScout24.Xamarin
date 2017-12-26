@@ -18,12 +18,14 @@ namespace TutorScout24.Pages
             RequestMap.CustomPins = new List<Controls.CustomPin>();
         }
 
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             FeedMapViewModel vM = (FeedMapViewModel) BindingContext;
             vM.Map = RequestMap;
             vM.SetPinsAsync();
+           
         }
     }
 }

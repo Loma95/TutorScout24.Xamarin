@@ -9,11 +9,12 @@ using MvvmNano;
 using TutorScout24.Models;
 using TutorScout24.Models.Chat;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class TutoringDetailViewModel : MvvmNanoViewModel<Tutoring>
+    public class TutoringDetailViewModel : MvvmNanoViewModel<Tutoring>,IToolBarItem
     {
         private Tutoring _tutoring;
 
@@ -51,7 +52,14 @@ namespace TutorScout24.ViewModels
             NavigateToAsync<ChatViewModel, Conversation>(conn);
         }
 
+        public void AddToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            if (master != null)
+            {
+                master.ToolbarItems.Clear();
+            }
 
-
+        }
     }
 }

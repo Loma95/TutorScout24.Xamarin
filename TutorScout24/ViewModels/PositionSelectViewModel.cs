@@ -4,21 +4,24 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MvvmNano;
+using MvvmNano.Forms;
 using TutorScout24.Controls;
 using TutorScout24.CustomData;
 using TutorScout24.Models;
+using TutorScout24.Pages;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace TutorScout24.ViewModels
 {
-    public class PositionSelectViewModel : MvvmNanoViewModel<CreateTutoring>
+    public class PositionSelectViewModel : MvvmNanoViewModel
     {
-        private CreateTutoring _ct;
+
         private Xamarin.Forms.Maps.Position _position;
-        private ToolbarItem _CreateSwitch;
 
         public Xamarin.Forms.Maps.Position Position
         {
@@ -42,7 +45,7 @@ namespace TutorScout24.ViewModels
         public PositionSelectViewModel()
         {
             SetPos();
-            AddToolbarItem();
+        
         }
 
         private async void SetPos()
@@ -52,36 +55,10 @@ namespace TutorScout24.ViewModels
             NotifyPropertyChanged("Position");
         }
 
-        public override void Initialize(CreateTutoring parameter)
-        {
-            base.Initialize(parameter);
-            _ct = parameter;
-        }
+    
 
-        public void AddToolbarItem()
-        {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-
-            _CreateSwitch = new ToolbarItem
-            {
-                Text = "\uf00c"
-            };
-
-            _CreateSwitch.Clicked += async (sender, e) =>
-            {
-                _ct.latitude = map.VisibleRegion.Center.Latitude;
-                _ct.longitude = map.VisibleRegion.Center.Longitude;
-                RemoveToolbarItem();
-                NavigateTo<CreateViewModel, CreateTutoring>(_ct);
-            };
-            master.ToolbarItems.Add(_CreateSwitch);
-        }
-
-        public void RemoveToolbarItem()
-        {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Remove(_CreateSwitch);
-        }
+ 
+  
 
         public SelectionMap map;
     }

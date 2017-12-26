@@ -13,14 +13,14 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class MessageViewModel : MvvmNano.MvvmNanoViewModel, IThemeable, IObserver<ObservableCollection<Conversation>>
+    public class MessageViewModel : MvvmNano.MvvmNanoViewModel, IThemeable, IObserver<ObservableCollection<Conversation>>,IToolBarItem
     {
         public MessageViewModel()
         {
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
 
-            AddToolBarButton();
+            AddToolBarItem();
 
             MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().Subscribe(this);
 
@@ -58,14 +58,7 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        public void AddToolBarButton()
-        {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-
-            master.ToolbarItems.Clear();
-            master.ToolbarItems.Add(_createChat);
-            _createChat.Command = OpenCreateCommand;
-        }
+   
 
 
         private void OpenCreateDialog()
@@ -219,6 +212,15 @@ namespace TutorScout24.ViewModels
         public void OnNext(ObservableCollection<Conversation> value)
         {
             Conversations = new ObservableCollection<Conversation>(value);
+        }
+
+        public void AddToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_createChat);
+            _createChat.Command = OpenCreateCommand;
         }
 
         private Color _themeColor;

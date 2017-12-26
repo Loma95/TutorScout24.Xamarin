@@ -18,6 +18,7 @@ namespace TutorScout24
         {
 
 
+
             if (page is LoginPage)
             {
                 Application.MainPage = new MvvmNano.Forms.MvvmNanoNavigationPage(page);
@@ -28,16 +29,18 @@ namespace TutorScout24
                 Application.MainPage = page;
                 NavigateToViewModel<FeedTabViewModel>();
 
-            }
-            else
-            {
 
+
+            
+             
+            }else{
                 base.OpenPage(page);
             }
 
 
 
         }
+
 
 
 

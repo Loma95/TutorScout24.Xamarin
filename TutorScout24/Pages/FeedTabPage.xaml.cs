@@ -23,6 +23,19 @@ namespace TutorScout24.Pages
             view2.BindingContext = MvvmNanoIoC.Resolve<FeedMapViewModel>();
             view2.Title = "Karte";
             Children.Add(view2);
+
+
+         
+
         }
+
+       protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.AddToolBarItem();
+        }
+
+    
     }
 }

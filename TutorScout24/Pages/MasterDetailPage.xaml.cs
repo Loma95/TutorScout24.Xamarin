@@ -24,6 +24,7 @@ namespace TutorScout24.Pages
             InitializeComponent();
 
 
+
             AddDetailData<FeedTabViewModel>(new CustomMasterDetailData("Feed", "\xf09e"));
             AddDetailData<TutorialsViewModel>(new CustomMasterDetailData("Tutorien", "\xf212"));
             AddDetailData<MessageViewModel>(new CustomMasterDetailData("Chats", "\xf0e6"));
@@ -33,8 +34,16 @@ namespace TutorScout24.Pages
                 DisplayAlert(arg2.Header, arg2.Text, "ok");
             });
 
-
+            this.ToolbarItems.Clear();
+            this.ToolbarItems.Add(switchI);
+            switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
         }
+
+
+        private ToolbarItem switchI = new ToolbarItem
+        {
+            Text = "\uf0ec"
+        };
 
 
         protected override void OnDisappearing()
@@ -43,15 +52,6 @@ namespace TutorScout24.Pages
             MvvmNanoIoC.Resolve<IMessenger>().Unsubscribe<DialogMessage>(this);
         }
 
-
-        
-
-
-
-        private ToolbarItem switchI = new ToolbarItem
-        {
-            Text = "\uf0ec"
-        };
 
         private RelativeLayout _headerLayout = new RelativeLayout
         {
@@ -71,30 +71,10 @@ namespace TutorScout24.Pages
         protected override void DetailSet(MvvmNanoMasterDetailData lastDetailData, MvvmNanoMasterDetailData newDetailData, Page page)
         {
             base.DetailSet(lastDetailData, newDetailData, page);
-            RefreshToolBarItems();
             MvvmNanoNavigationPage navi = (MvvmNanoNavigationPage)page.Parent;
             navi.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
         }
 
-
-        public void RefreshToolBarItems()
-        {
-            if (newDetailData.ViewModelType == typeof(FeedTabViewModel) || newDetailData.ViewModelType == typeof(TutorialsViewModel))
-            {
-                if (!this.ToolbarItems.Contains(switchI))
-                {
-
-                    this.ToolbarItems.Add(switchI);
-                    switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
-                }
-
-            }
-            else
-            {
-
-                this.ToolbarItems.Remove(switchI);
-            }
-        }
 
 
 
@@ -171,19 +151,6 @@ namespace TutorScout24.Pages
                     return parent.Height;
                 }));
         }
-
-
-
-
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            RefreshToolBarItems();
-        }
-
-
 
 
         /// <summary>

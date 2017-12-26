@@ -66,6 +66,8 @@ namespace TutorScout24.ViewModels
             {
                 SetPinsAsync();
             });
+
+
         }
 
         public async void SetPinsAsync()
@@ -124,7 +126,8 @@ namespace TutorScout24.ViewModels
         {
             //Position = new Xamarin.Forms.Maps.Position(value.Latitude, value.Longitude);
         }
-        
+      
+      
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }

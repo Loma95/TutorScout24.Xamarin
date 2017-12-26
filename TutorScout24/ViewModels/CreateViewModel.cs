@@ -6,15 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
+using MvvmNano.Forms;
 using Plugin.Geolocator.Abstractions;
 using TutorScout24.CustomData;
 using TutorScout24.Models;
+using TutorScout24.Pages;
 using TutorScout24.Services;
+using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class CreateViewModel : MvvmNano.MvvmNanoViewModel<CreateTutoring>
+    public class CreateViewModel : MvvmNano.MvvmNanoViewModel<CreateTutoring>,IToolBarItem
     {
         private CreateTutoring _ct;
 
@@ -45,10 +48,9 @@ namespace TutorScout24.ViewModels
                     : "Neues Angebot erstellen";
                 NotifyPropertyChanged("PageTitle");
             });
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                AddToolbarItem();
-            });
+           
+                AddToolBarItem();
+
         }
 
         private ToolbarItem _CreateSwitch;
@@ -70,9 +72,22 @@ namespace TutorScout24.ViewModels
 
         public void PosSel()
         {
-            NavigateTo<PositionSelectViewModel, CreateTutoring>(_ct);
+            var posPage = new PositionSelectPage();
+            posPage.PositionSelected += PositionSelected;
+  
+            Pages.MasterDetailPage mdp = (Pages.MasterDetailPage)Application.Current.MainPage;
+            mdp.Detail.Navigation.PushModalAsync(posPage);
         }
 
+        private void PositionSelected(object sender,EventArgs e){
+            SelectedLocationArgs slA = (SelectedLocationArgs)e;
+
+            _ct.latitude = slA.Lat;
+            _ct.longitude = slA.Lon;
+
+            Pages.MasterDetailPage mdp = (Pages.MasterDetailPage)Application.Current.MainPage;
+            mdp.Detail.Navigation.PopModalAsync();
+        }
 
         private string _subject;
 
@@ -212,25 +227,42 @@ namespace TutorScout24.ViewModels
         {
             Debug.WriteLine("init");
             base.Initialize(parameter);
+
+        
+
+
             if (parameter==null || parameter.longitude==0 && parameter.latitude==0) return;
             _ct = parameter;
             Subject = _ct.subject;
             Text = _ct.text;
             ExpDate = DateTime.Today.AddDays(_ct.duration);
             Debug.WriteLine("long:"+_ct.longitude +  "lat:" + _ct.latitude);
+
+       
         }
 
+
+        public void SetTutoring(CreateTutoring t){
+            _ct = t;
+        }
 
         public void RemoveToolbarItem()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Remove(_CreateSwitch);
+            master.ToolbarItems.Clear();
         }
 
-        public void AddToolbarItem()
+    
+        public override void Dispose()
+        {
+            base.Dispose();
+            RemoveToolbarItem();
+        }
+
+        public void AddToolBarItem()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-
+            master.ToolbarItems.Clear();
             _CreateSwitch = new ToolbarItem
             {
                 Text = "\uf1d8"
@@ -279,15 +311,9 @@ namespace TutorScout24.ViewModels
                     }
                 }
             };
-            if(master.ToolbarItems.Count<2)
-            {
-                master.ToolbarItems.Add(_CreateSwitch);
-            }
-        }
-        public override void Dispose()
-        {
-            base.Dispose();
-            RemoveToolbarItem();
+         
+            master.ToolbarItems.Add(_CreateSwitch);
+
         }
     }
 }

@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable, ConversationObserver
+    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable, ConversationObserver,IToolBarItem
     {
         Conversation conversation;
         public ListView MessagesList;
@@ -23,6 +23,8 @@ namespace TutorScout24.ViewModels
             _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
 
         }
+
+
 
 
 
@@ -125,7 +127,7 @@ namespace TutorScout24.ViewModels
 
 
 
-        private ToolbarItem _reload = new ToolbarItem
+        public ToolbarItem _reload = new ToolbarItem
         {
             Text = "\uf021"
         };
@@ -155,12 +157,17 @@ namespace TutorScout24.ViewModels
             {
                 Reload();
             };
-            master.ToolbarItems.Clear();
-            master.ToolbarItems.Add(_reload);
+
+
+            AddToolBarItem();           
             MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
 
 
         }
+
+
+
+
 
         private void Reload()
         {
@@ -188,16 +195,17 @@ namespace TutorScout24.ViewModels
                 OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
-
-        public void RemoveToolbarItem()
+        public void AddToolBarItem()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Remove(_reload);
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_reload);
         }
 
         private Color _themeColor;
         public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
 
         public string ConversationId { get => conversation.id; set => conversation.id = value; }
+
     }
 }
