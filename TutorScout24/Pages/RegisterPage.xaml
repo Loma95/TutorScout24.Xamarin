@@ -5,7 +5,6 @@
                            xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
                            xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
                            xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
-                            xmlns:sys="clr-namespace:System;assembly=mscorlib" 
                            x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage"
                            xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
                            xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
@@ -44,18 +43,9 @@
                     <DatePicker Grid.Row="6" VerticalOptions="CenterAndExpand" Date="{Binding BirthDate}">
          <DatePicker.Format>dd-MM-yyy</DatePicker.Format >
          <DatePicker.MinimumDate>
-            <sys:DateTime x:FactoryMethod="Parse">
-               <x:Arguments>
-                  <x:String>1 Jan 1900</x:String>
-               </x:Arguments>
-            </sys:DateTime>
+            
          </DatePicker.MinimumDate>
          <DatePicker.MaximumDate>
-            <sys:DateTime x:FactoryMethod="Parse">
-               <x:Arguments>
-                  <x:String>Dec 31 2050</x:String>
-               </x:Arguments>
-            </sys:DateTime>
          </DatePicker.MaximumDate>
       </DatePicker>
 
