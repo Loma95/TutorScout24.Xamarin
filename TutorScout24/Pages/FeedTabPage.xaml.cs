@@ -29,12 +29,19 @@ namespace TutorScout24.Pages
 
         }
 
-       protected override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-
             ViewModel.AddToolBarItem();
         }
+
+       public override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
+            ViewModel.AddToolBarItem();
+        }
+
+    
 
     
     }

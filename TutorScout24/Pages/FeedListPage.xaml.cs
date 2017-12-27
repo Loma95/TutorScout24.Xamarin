@@ -31,6 +31,7 @@ namespace TutorScout24.Pages
             try
             {
                 MyListView.ItemTapped += new SingleClick(VM.GoToDetailPage).Click;
+   
             }
             catch 
             {
