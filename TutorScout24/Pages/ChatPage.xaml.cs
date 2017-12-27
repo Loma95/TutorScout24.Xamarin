@@ -31,7 +31,7 @@ namespace TutorScout24.Pages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            ChatViewModel vM = (ChatViewModel)BindingContext;
+            ViewModel.RemoveToolBarItem();
         }
 
         void OnDelete(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace TutorScout24.Pages
             ViewModel.DeleteSelectedItem(selMess.ID);
         }
 
-
+    
 
         public override void OnViewModelSet()
         {

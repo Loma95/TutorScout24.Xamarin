@@ -18,10 +18,14 @@ namespace TutorScout24.Pages
 		    var label = new Label
 		    {
 		        Text = "\uf08e",
+                FontFamily = "fontawesome",
 		        HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center
+                VerticalTextAlignment = TextAlignment.Center,
+   
 		    };
 		    UserGrid.Children.Add(label, 1, 0);
+
+
 
 		}
 
@@ -33,6 +37,7 @@ namespace TutorScout24.Pages
                 var gr = new TapGestureRecognizer();
 	            gr.Tapped += new SingleClick(ViewModel.ToProfile).Click;
                 UserFrame.GestureRecognizers.Add(gr);
+                ViewModel.AddToolBarItem();
 	        }
 	        catch (Exception ex)
 	        {

@@ -47,7 +47,6 @@ namespace TutorScout24.ViewModels
 
 
 
-
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -125,7 +124,7 @@ namespace TutorScout24.ViewModels
         }
 
 
-
+   
 
         public ToolbarItem _reload = new ToolbarItem
         {
@@ -166,9 +165,6 @@ namespace TutorScout24.ViewModels
         }
 
 
-
-
-
         private void Reload()
         {
 
@@ -195,6 +191,12 @@ namespace TutorScout24.ViewModels
                 OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
+
+        public void RemoveToolBarItem()
+        {
+            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            master.ToolbarItems.Clear();
+        }
         public void AddToolBarItem()
         {
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;

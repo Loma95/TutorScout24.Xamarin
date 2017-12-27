@@ -47,8 +47,7 @@ namespace TutorScout24.ViewModels
             MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();
             Debug.WriteLine(Tutoring.userName);
           
-           Conversation conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(Tutoring.userName);
-            Debug.WriteLine(conn.Messages.Count);
+            Conversation conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(Tutoring.userName);
             NavigateToAsync<ChatViewModel, Conversation>(conn);
         }
 
