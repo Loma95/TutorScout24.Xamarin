@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MvvmNano;
+﻿using MvvmNano;
 using TutorScout24.ViewModels;
 
 namespace TutorScout24.CustomData
 {
-    class ChangeModeMessage : IMessage
+    /// <summary>
+    ///     Data Transfer Object that is sent with a Change Mode Event.
+    /// </summary>
+    internal class ChangeModeMessage : IMessage
     {
-        public MasterDetailViewModel.Mode newMode { get; set; }
-
         public ChangeModeMessage(MasterDetailViewModel.Mode mode)
         {
-            this.newMode = mode;
+            NewMode = mode;
         }
+
+        public MasterDetailViewModel.Mode NewMode { get; set; }
     }
 }

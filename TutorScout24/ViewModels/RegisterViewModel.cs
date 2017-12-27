@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Input;
 using MvvmNano;
-using TutorScout24.Models;
-using TutorScout24.Pages;
+using TutorScout24.CustomData;
+using TutorScout24.Models.UserData;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
@@ -14,22 +12,52 @@ using Xamarin.Forms.Internals;
 
 namespace TutorScout24.ViewModels
 {
-    public enum Genders { Maennlich, Weiblich };
-    
-    public class RegisterViewModel: MvvmNano.MvvmNanoViewModel,IThemeable
+    public enum Genders
     {
-        User _usr = new User();
-        public RegisterViewModel()
-        {
-           
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
-           
-        }
+        Maennlich,
+        Weiblich
+    }
+
+    public class RegisterViewModel : MvvmNanoViewModel, IThemeable
+    {
+        private DateTime _birthdate;
+
+        private string _description;
+
+
+        private string _email;
+
+        private string _errorText;
+
+        private string _firstName;
+
+        private string _graduation;
 
         private bool _isNotValid;
+
+        private string _lastName;
+
+        private string _password;
+
+
+        private string _placeOfResidence;
+
+        private Genders _selectedGender;
+
+
+        private Color _themeColor;
+
+        private string _userName;
+        private User _usr = new User();
+
+        public RegisterViewModel()
+        {
+            _themeColor = (Color) Application.Current.Resources["MainColor"];
+        }
+
         public bool IsNotValid
         {
-            get { return _isNotValid; }
+            get => _isNotValid;
             set
             {
                 _isNotValid = value;
@@ -37,27 +65,22 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _errorText;
         public string ErrorText
         {
-            get { return _errorText; }
+            get => _errorText;
             set
             {
                 _errorText = value;
                 if (value != "")
-                {
                     IsNotValid = true;
-                }else{
-                    IsNotValid = false;
-                }
+                else IsNotValid = false;
                 NotifyPropertyChanged("ErrorText");
             }
         }
 
-        private string _userName;
         public string UserName
         {
-            get { return _userName; }
+            get => _userName;
             set
             {
                 _userName = value;
@@ -65,10 +88,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _password;
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 _password = value;
@@ -76,11 +98,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-  
-        private string _email;
         public string Email
         {
-            get { return _email; }
+            get => _email;
             set
             {
                 _email = value;
@@ -88,10 +108,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _firstName;
         public string FirstName
         {
-            get { return _firstName; }
+            get => _firstName;
             set
             {
                 _firstName = value;
@@ -99,10 +118,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _lastName;
         public string LastName
         {
-            get { return _lastName; }
+            get => _lastName;
             set
             {
                 _lastName = value;
@@ -110,10 +128,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private DateTime _birthdate ;
         public DateTime BirthDate
         {
-            get { return _birthdate; }
+            get => _birthdate;
             set
             {
                 _birthdate = value;
@@ -121,10 +138,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private Genders _selectedGender ;
         public Genders SelectedGender
         {
-            get { return _selectedGender; }
+            get => _selectedGender;
             set
             {
                 _selectedGender = value;
@@ -132,11 +148,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
-        private string _placeOfResidence;
         public string PlaceOfResidence
         {
-            get { return _placeOfResidence; }
+            get => _placeOfResidence;
             set
             {
                 _placeOfResidence = value;
@@ -144,10 +158,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _graduation;
         public string Graduation
         {
-            get { return _graduation; }
+            get => _graduation;
             set
             {
                 _graduation = value;
@@ -155,10 +168,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private string _description;
         public string Description
         {
-            get { return _description; }
+            get => _description;
             set
             {
                 _description = value;
@@ -168,49 +180,58 @@ namespace TutorScout24.ViewModels
 
         public List<string> Gender
         {
-            get
-            {
-                return Enum.GetNames(typeof(Genders)).Select(b => b).ToList();
-            }
+            get { return Enum.GetNames(typeof(Genders)).Select(b => b).ToList(); }
         }
-
-
 
 
         public ICommand StartCommand => new Command(Start);
 
+        public Color ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
+
         private void Start()
         {
-
-      
-            
-
-            Type type = this.GetType();
+            var type = GetType();
             var properties = type.GetProperties();
 
-            List<string> NotNullProperties = new List<string>() { "FirstName", "LastName", "Age", "Graduation", "PlaceOfResidence", "Description", "UserName" };
-
-            foreach (PropertyInfo property in properties)
+            var NotNullProperties = new List<string>
             {
+                "FirstName",
+                "LastName",
+                "Age",
+                "Graduation",
+                "PlaceOfResidence",
+                "Description",
+                "UserName"
+            };
+
+            foreach (var property in properties)
                 if (NotNullProperties.Contains(property.Name))
-                {
-                    if(!InputValidator.IsNotEmpty((string)property.GetValue(this, null))){
+                    if (!InputValidator.IsNotEmpty((string) property.GetValue(this, null)))
+                    {
                         ErrorText = property.Name + " darf nicht leer sein!";
                         return;
                     }
-                }
-               
-            }
 
-            if(!InputValidator.IsNotEmpty(SelectedGender.ToString())){
+            if (!InputValidator.IsNotEmpty(SelectedGender.ToString()))
+            {
                 ErrorText = "Bitte wählen Sie ein Geschlecht aus";
                 return;
             }
-            if(!InputValidator.IsValidEmail(Email)){
+            if (!InputValidator.IsValidEmail(Email))
+            {
                 ErrorText = "Email nicht valide";
                 return;
             }
-            if (!InputValidator.IsValidPassword(Password)){
+            if (!InputValidator.IsValidPassword(Password))
+            {
                 ErrorText = "Passwort nicht valide";
                 return;
             }
@@ -218,40 +239,28 @@ namespace TutorScout24.ViewModels
             ErrorText = "";
 
             CreateUser();
-            
         }
 
 
         private async void CreateUser()
         {
-              User usr = new User();
-              usr.gender = SelectedGender.ToString();
-              usr.firstName = FirstName;
-              usr.lastName = LastName;
+            var usr = new User();
+            usr.gender = SelectedGender.ToString();
+            usr.firstName = FirstName;
+            usr.lastName = LastName;
 
-              usr.birthdate = BirthDate.Year.ToString() + BirthDate.Month.ToString("D2") + BirthDate.Day.ToString("D2");
-              usr.maxGraduation = Graduation;
-              usr.note = Description;
-              usr.placeOfResidence = PlaceOfResidence;
-              usr.email = Email;
-              usr.password = Password;
-              usr.userName = UserName;
-              string _serverMessage = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
+            usr.birthdate = BirthDate.Year + BirthDate.Month.ToString("D2") + BirthDate.Day.ToString("D2");
+            usr.maxGraduation = Graduation;
+            usr.note = Description;
+            usr.placeOfResidence = PlaceOfResidence;
+            usr.email = Email;
+            usr.password = Password;
+            usr.userName = UserName;
+            var _serverMessage = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateUser(usr);
 
 
-            
-            if(_serverMessage == "true"){
-                NavigateTo<LoginViewModel>();
-            }else{
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Problem",_serverMessage));
-
-            }
-     
+            if (_serverMessage == "true") NavigateTo<LoginViewModel>();
+            else MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Problem", _serverMessage));
         }
-
-
-        private Color _themeColor;
-        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
-
     }
 }

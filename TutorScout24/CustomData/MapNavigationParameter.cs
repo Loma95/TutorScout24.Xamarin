@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TutorScout24.Models;
+﻿using TutorScout24.Models.Tutorings;
 
 namespace TutorScout24.CustomData
 {
-    class MapNavigationParameter
+    internal class MapNavigationParameter
     {
         public CreateTutoring Tutoring { get; set; }
     }

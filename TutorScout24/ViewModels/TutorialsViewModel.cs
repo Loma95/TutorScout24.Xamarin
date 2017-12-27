@@ -1,43 +1,38 @@
-﻿using MvvmNano;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using MvvmNano;
 using TutorScout24.CustomData;
-using TutorScout24.Models;
+using TutorScout24.Models.Tutorings;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using MasterDetailPage = TutorScout24.Pages.MasterDetailPage;
 
 namespace TutorScout24.ViewModels
 {
-    public class TutorialsViewModel : MvvmNanoViewModel,IThemeable,IToolBarItem
+    public class TutorialsViewModel : MvvmNanoViewModel, IThemeable, IToolBarItem
     {
-
-        public TutorialsViewModel()
+        private readonly ToolbarItem switchI = new ToolbarItem
         {
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
-            SetTutorings();
-            MvvmNanoIoC.Resolve<IMessenger>().Subscribe(this, (object arg1, ChangeModeMessage arg2) =>
-            {
-                SetTutorings();
-            });
+            Text = "\uf0ec"
+        };
 
-        }
-
-        public async void SetTutorings()
-        {
-            Tutorings = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyTutorings();
-        }
+        private Color _themeColor;
 
         private List<MyTutoring> _tutorings = new List<MyTutoring>();
 
+        public TutorialsViewModel()
+        {
+            _themeColor = (Color) Application.Current.Resources["MainColor"];
+            SetTutorings();
+            MvvmNanoIoC.Resolve<IMessenger>()
+                .Subscribe(this, (object arg1, ChangeModeMessage arg2) => { SetTutorings(); });
+        }
+
         public List<MyTutoring> Tutorings
         {
-            get { return _tutorings; }
+            get => _tutorings;
             set
             {
                 _tutorings = value;
@@ -45,40 +40,42 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private ToolbarItem switchI = new ToolbarItem
+
+        public ICommand FabCommand => new Command(Fab);
+
+        public Color ThemeColor
         {
-            Text = "\uf0ec"
-        };
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
 
-
+        /// <summary>
+        /// Add Change mode button to page
+        /// </summary>
         public void AddToolBarItem()
         {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            var master = (MasterDetailPage) Application.Current.MainPage;
             if (master != null)
             {
                 master.ToolbarItems.Clear();
                 master.ToolbarItems.Add(switchI);
-                switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
+                switchI.SetBinding(MenuItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
             }
         }
 
-
-
-        public ICommand FabCommand
+        public async void SetTutorings()
         {
-            get { return new Command(Fab); }
-
+            Tutorings = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyTutorings();
         }
+
         private void Fab()
         {
-            //NavigateTo<ForeignProfileViewModel, string>("RobertAndroid");
             NavigateTo<CreateViewModel, CreateTutoring>(new CreateTutoring());
             Debug.WriteLine("Command");
         }
-
-   
-
-        private Color _themeColor;
-        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
     }
 }

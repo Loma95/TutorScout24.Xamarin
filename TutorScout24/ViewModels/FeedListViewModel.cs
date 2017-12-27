@@ -1,44 +1,48 @@
-﻿using MvvmNano;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using MvvmNano;
 using TutorScout24.CustomData;
-using TutorScout24.Models;
+using TutorScout24.Models.Tutorings;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class FeedListViewModel : MvvmNanoViewModel,IThemeable
+    public class FeedListViewModel : MvvmNanoViewModel, IThemeable
     {
-        private Tutoring myVar;
+        private bool _isRefreshing;
 
-        public Tutoring CurrentItem
+        private Color _themeColor;
+
+
+        private ObservableCollection<Tutoring> _tut = new ObservableCollection<Tutoring>();
+
+        /// <summary>
+        /// Get Tutorings and subscribe to mode changes
+        /// </summary>
+        public FeedListViewModel()
         {
-            get { return myVar; }
-            set
+            GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
+            ThemeColor = (Color) Application.Current.Resources["MainColor"];
+            MvvmNanoIoC.Resolve<IMessenger>().Subscribe(this, (object arg1, ChangeModeMessage arg2) =>
             {
-                myVar = value;
-            }
+                _tut = new ObservableCollection<Tutoring>();
+                NotifyPropertyChanged("Tutorings");
+                Debug.WriteLine("updateColor");
+                ThemeColor = (Color) Application.Current.Resources["MainColor"];
+                GetTutoringsAsync(arg2.NewMode);
+            });
         }
 
-       
-        public void GoToDetailPage(object sender, EventArgs e)
-        {
-            NavigateToAsync<TutoringDetailViewModel, Tutoring>(CurrentItem);
-        }
+        public Tutoring CurrentItem { get; set; }
 
-
-        private bool _isRefreshing = false;
         public bool IsRefreshing
         {
-            get { return _isRefreshing; }
+            get => _isRefreshing;
             set
             {
                 _isRefreshing = value;
@@ -51,50 +55,45 @@ namespace TutorScout24.ViewModels
         {
             get
             {
-                return new Command(() => 
+                return new Command(() =>
                 {
                     IsRefreshing = true;
 
-                     GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
-
-                    
+                    GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
                 });
             }
         }
 
-
-
-        public FeedListViewModel()
-        {
-            GetTutoringsAsync(MasterDetailViewModel.CurrentMode);
-            ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
-            MvvmNanoIoC.Resolve<IMessenger>().Subscribe(this, (object arg1, ChangeModeMessage arg2) =>
-            {
-                _tut = new ObservableCollection<Tutoring>();
-                NotifyPropertyChanged("Tutorings");
-                Debug.WriteLine("updateColor");
-                ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
-                GetTutoringsAsync(arg2.newMode);
-            });
-        }
-
-
-        private ObservableCollection<Tutoring> _tut = new ObservableCollection<Tutoring>();
         public ObservableCollection<Tutoring> Tutorings
         {
-            get { return _tut; }
+            get => _tut;
             set
             {
                 _tut = value;
                 NotifyPropertyChanged("Tutorings");
-
             }
         }
 
-        private Color _themeColor;
-        public Color ThemeColor { get{ return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor");} }
+        public Color ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
 
 
+        public void GoToDetailPage(object sender, EventArgs e)
+        {
+            NavigateToAsync<TutoringDetailViewModel, Tutoring>(CurrentItem);
+        }
+
+        /// <summary>
+        /// Get Tutorings for given mode via service
+        /// </summary>
+        /// <param name="mode">mode for which to get items</param>
         private async void GetTutoringsAsync(MasterDetailViewModel.Mode mode)
         {
             var tutServ = MvvmNanoIoC.Resolve<TutorScoutRestService>();
@@ -107,12 +106,7 @@ namespace TutorScout24.ViewModels
                 NotifyPropertyChanged("Tutorings");
                 Debug.WriteLine(offers + "Size::::" + offers.Count);
                 foreach (var VARIABLE in offers)
-                {
-                    VARIABLE.daysLeft = (int)(VARIABLE.expirationDate - DateTime.Today).TotalDays;
-                }
-
-            }else{
-                // Handle no data ...
+                    VARIABLE.daysLeft = (int) (VARIABLE.expirationDate - DateTime.Today).TotalDays;
             }
         }
     }

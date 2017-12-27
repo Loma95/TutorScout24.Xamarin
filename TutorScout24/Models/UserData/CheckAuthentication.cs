@@ -1,9 +1,6 @@
-﻿using System;
-namespace TutorScout24.Models
+﻿namespace TutorScout24.Models.UserData
 {
- 
-    public class CheckAuthentication: RestCommandWithAuthentication
+    public class CheckAuthentication : RestCommandWithAuthentication
     {
-        
     }
 }

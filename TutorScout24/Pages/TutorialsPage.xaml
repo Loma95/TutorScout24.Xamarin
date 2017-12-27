@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms:MvvmNanoContentPage  xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
-    xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
-    ControlTemplate="{StaticResource FloatingActionTemplate}"  
-    x:TypeArguments="viewModels1:TutorialsViewModel" x:Class="TutorScout24.TutorialsPage"    >
-    <forms:MvvmNanoContentPage.Content  >
-        <ListView x:Name="MyListView" ItemsSource="{Binding Tutorings}"  BackgroundColor="{Binding ThemeColor}" CachingStrategy="RecycleElement" HasUnevenRows="true">
+
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
+                           xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+                           ControlTemplate="{StaticResource FloatingActionTemplate}"
+                           x:TypeArguments="viewModels1:TutorialsViewModel" x:Class="TutorScout24.TutorialsPage">
+    <forms:MvvmNanoContentPage.Content>
+        <ListView x:Name="MyListView" ItemsSource="{Binding Tutorings}" BackgroundColor="{Binding ThemeColor}"
+                  CachingStrategy="RecycleElement" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                          <StackLayout>
-                              <Label Text="{Binding subject}" TextColor="Black" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
-                              <Label Text="{Binding creationdate, StringFormat='Erstellt am: {0:dd.MM.yyyy}'}" TextColor="DarkBlue" FontSize="14"  HorizontalTextAlignment="Start" HorizontalOptions="Start" />
-                              <Label Text="{Binding end, StringFormat='Gültig bis: {0:dd.MM.yyyy}'}" TextColor="DarkBlue" FontSize="15"  VerticalTextAlignment="Center"/>
-                              <Label Text="{Binding text}" TextColor="Gray" FontSize="15"   />
-                          </StackLayout>
+                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5"
+                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <StackLayout>
+                                <Label Text="{Binding subject}" TextColor="Black" FontSize="14"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                <Label Text="{Binding creationdate, StringFormat='Erstellt am: {0:dd.MM.yyyy}'}"
+                                       TextColor="DarkBlue" FontSize="14" HorizontalTextAlignment="Start"
+                                       HorizontalOptions="Start" />
+                                <Label Text="{Binding end, StringFormat='Gültig bis: {0:dd.MM.yyyy}'}"
+                                       TextColor="DarkBlue" FontSize="15" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding text}" TextColor="Gray" FontSize="15" />
+                            </StackLayout>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </forms:MvvmNanoContentPage.Content>
-</forms:MvvmNanoContentPage >
+</forms:MvvmNanoContentPage>

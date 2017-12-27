@@ -1,25 +1,50 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net;
+﻿using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
-using TutorScout24.Models;
+using TutorScout24.Models.UserData;
 using TutorScout24.Services;
-using TutorScout24.Utils;
-using Xamarin.Auth;
 using Xamarin.Forms;
-using System.Net.Http;
 
 namespace TutorScout24.ViewModels
 {
-    public class LoginViewModel : MvvmNano.MvvmNanoViewModel
+    public class LoginViewModel : MvvmNanoViewModel
     {
-        CredentialService CService;
-        public LoginViewModel()
-        {
+        private string _password;
 
+        private string _userName;
+        private CredentialService CService;
+
+        public bool Info { get; set; }
+
+        public string InfoText { get; set; }
+
+        public bool PasswordShouldBeSaved { get; set; }
+
+        public string UserName
+        {
+            get => _userName;
+            set
+            {
+                _userName = value;
+                NotifyPropertyChanged("UserName");
+            }
         }
+
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                NotifyPropertyChanged("Password");
+            }
+        }
+
+        public ICommand LoginCommand => new Command(async () => LoginAsync());
+
+        public ICommand SignUpCommand => new Command(SignUp);
 
         public override void Initialize()
         {
@@ -33,74 +58,22 @@ namespace TutorScout24.ViewModels
 
         private bool IsNotConnected()
         {
-
-            return !System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
-
+            return !NetworkInterface.GetIsNetworkAvailable();
         }
-
-        private bool _info;
-        public bool Info
-        {
-            get { return _info; }
-            set { _info = value; }
-        }
-
-        private string _infoText;
-        public string InfoText
-        {
-            get { return _infoText; }
-            set { _infoText = value; }
-        }
-
-        private bool _passwordShouldBeSaved;
-        public bool PasswordShouldBeSaved
-        {
-            get { return _passwordShouldBeSaved; }
-            set { _passwordShouldBeSaved = value; }
-        }
-
-        private string _userName;
-        public string UserName
-        {
-            get { return _userName; }
-            set
-            {
-                _userName = value;
-                NotifyPropertyChanged("UserName");
-            }
-        }
-
-        private string _password;
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                NotifyPropertyChanged("Password");
-            }
-        }
-
-        public ICommand LoginCommand => new Command(async () => LoginAsync());
 
         private async Task LoginAsync()
         {
-
-
-
-            CheckAuthentication auth = new CheckAuthentication();
+            var auth = new CheckAuthentication();
             auth.authentication = new Authentication();
             auth.authentication.password = Password;
             auth.authentication.userName = UserName;
 
-            bool result = await IsValidAuthentication(auth);
+            var result = await IsValidAuthentication(auth);
             if (result)
             {
                 if (PasswordShouldBeSaved)
-                {
                     CService.SaveCredentials(UserName, Password);
-                }
-                MvvmNanoIoC.RegisterAsSingleton<Authentication>(auth.authentication);
+                MvvmNanoIoC.RegisterAsSingleton(auth.authentication);
                 NavigateTo<MasterDetailViewModel>();
             }
             else
@@ -111,10 +84,7 @@ namespace TutorScout24.ViewModels
                 NotifyPropertyChanged("Info");
                 NotifyPropertyChanged("InfoText");
             }
-
         }
-
-        public ICommand SignUpCommand => new Command(SignUp);
 
         private void SignUp()
         {
@@ -125,10 +95,6 @@ namespace TutorScout24.ViewModels
         private async Task<bool> IsValidAuthentication(CheckAuthentication auth)
         {
             return await MvvmNanoIoC.Resolve<TutorScoutRestService>().CanAuthenticate(auth);
-
         }
-
-
-
     }
 }

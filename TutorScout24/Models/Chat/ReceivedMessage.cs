@@ -1,12 +1,7 @@
-﻿using System;
-namespace TutorScout24.Models.Chat
+﻿namespace TutorScout24.Models.Chat
 {
-    public class ReceivedMessage:Message
+    public class ReceivedMessage : Message
     {
-        public ReceivedMessage()
-        {
-        }
-
-        public override string MyTypeName { get => this.GetType().Name; }
+        public override string MyTypeName => GetType().Name;
     }
 }

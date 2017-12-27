@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
-
-namespace TutorScout24.Pages
+﻿namespace TutorScout24.Pages
 {
     public partial class ForeignProfilePage
     {

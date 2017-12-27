@@ -1,24 +1,19 @@
-﻿using System;
-using MvvmNano.Forms.MasterDetail;
-using Xamarin.Forms;
+﻿using MvvmNano.Forms.MasterDetail;
 
 namespace TutorScout24.CustomData
 {
+    /// <summary>
+    /// Data Object for DetailPages in Navigation.
+    /// </summary>
     public class CustomMasterDetailData : MvvmNanoMasterDetailData
     {
-      
-
-        public string ImageCode
-        {
-            get;
-            set;
-        }
-           
         public CustomMasterDetailData(string title, string imageCode) : base(title)
         {
             ImageCode = imageCode;
             Title = title;
-
         }
+
+
+        public string ImageCode { get; set; }
     }
 }

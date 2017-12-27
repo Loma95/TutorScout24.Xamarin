@@ -1,7 +1,5 @@
-﻿using System;
-namespace TutorScout24.Models
+﻿namespace TutorScout24.Models.UserData
 {
-
     public class User
     {
         public string userName { get; set; }
@@ -15,5 +13,4 @@ namespace TutorScout24.Models
         public string placeOfResidence { get; set; }
         public string maxGraduation { get; set; }
     }
-
 }
