@@ -38,7 +38,16 @@ namespace TutorScout24.Pages
        public override void OnViewModelSet()
         {
             base.OnViewModelSet();
-            ViewModel.AddToolBarItem();
+            try
+            {
+                ViewModel.AddToolBarItem();
+
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        
         }
 
     
