@@ -1,0 +1,57 @@
+\hypertarget{class_tutor_scout24_1_1_services_1_1_message_service}{}\section{Tutor\+Scout24.\+Services.\+Message\+Service Class Reference}
+\label{class_tutor_scout24_1_1_services_1_1_message_service}\index{Tutor\+Scout24.\+Services.\+Message\+Service@{Tutor\+Scout24.\+Services.\+Message\+Service}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async void \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_message_service_a1a170ef80b97e859c90b2cd709ec4407}{Reload\+Messages}} ()
+\begin{DoxyCompactList}\small\item\em reloads the message data and notifies the observers \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_message_service_a85c1daee447550a3368d544643dceac6}{Get\+Conversation\+By\+Id}} (string id)
+\begin{DoxyCompactList}\small\item\em returns the conversation with the given id or creates an empty one and returns it \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_message_service_af117587ac2a4d36eef204fd9b4567a6d}\label{class_tutor_scout24_1_1_services_1_1_message_service_af117587ac2a4d36eef204fd9b4567a6d}} 
+I\+Disposable {\bfseries Subscribe} (I\+Observer$<$ Observable\+Collection$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} $>$$>$ observer)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_message_service_afc352cebb6ac789d1be129448f4bd707}\label{class_tutor_scout24_1_1_services_1_1_message_service_afc352cebb6ac789d1be129448f4bd707}} 
+I\+Disposable {\bfseries Subscribe} (\mbox{\hyperlink{interface_tutor_scout24_1_1_services_1_1_conversation_observer}{Conversation\+Observer}} observer)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_message_service_ab4fcf14142bb7be69e4341cc1a8940d5}\label{class_tutor_scout24_1_1_services_1_1_message_service_ab4fcf14142bb7be69e4341cc1a8940d5}} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} $>$ {\bfseries Conversations} = new Observable\+Collection$<$\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}}$>$()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_message_service_a85c1daee447550a3368d544643dceac6}\label{class_tutor_scout24_1_1_services_1_1_message_service_a85c1daee447550a3368d544643dceac6}} 
+\index{Tutor\+Scout24\+::\+Services\+::\+Message\+Service@{Tutor\+Scout24\+::\+Services\+::\+Message\+Service}!Get\+Conversation\+By\+Id@{Get\+Conversation\+By\+Id}}
+\index{Get\+Conversation\+By\+Id@{Get\+Conversation\+By\+Id}!Tutor\+Scout24\+::\+Services\+::\+Message\+Service@{Tutor\+Scout24\+::\+Services\+::\+Message\+Service}}
+\subsubsection{\texorpdfstring{Get\+Conversation\+By\+Id()}{GetConversationById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} Tutor\+Scout24.\+Services.\+Message\+Service.\+Get\+Conversation\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+returns the conversation with the given id or creates an empty one and returns it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_message_service_a1a170ef80b97e859c90b2cd709ec4407}\label{class_tutor_scout24_1_1_services_1_1_message_service_a1a170ef80b97e859c90b2cd709ec4407}} 
+\index{Tutor\+Scout24\+::\+Services\+::\+Message\+Service@{Tutor\+Scout24\+::\+Services\+::\+Message\+Service}!Reload\+Messages@{Reload\+Messages}}
+\index{Reload\+Messages@{Reload\+Messages}!Tutor\+Scout24\+::\+Services\+::\+Message\+Service@{Tutor\+Scout24\+::\+Services\+::\+Message\+Service}}
+\subsubsection{\texorpdfstring{Reload\+Messages()}{ReloadMessages()}}
+{\footnotesize\ttfamily async void Tutor\+Scout24.\+Services.\+Message\+Service.\+Reload\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+reloads the message data and notifies the observers 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tutor\+Scout24/\+Services/Message\+Service.\+cs\end{DoxyCompactItemize}
