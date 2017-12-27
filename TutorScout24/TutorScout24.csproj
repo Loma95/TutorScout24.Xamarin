@@ -49,9 +49,6 @@
     <Compile Include="Pages\FeedTabPage.xaml.cs">
       <DependentUpon>FeedTabPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PositionSelectPage.xaml.cs">
-      <DependentUpon>PositionSelectPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\TutoringDetailPage.xaml.cs">
       <DependentUpon>TutoringDetailPage.xaml</DependentUpon>
     </Compile>
@@ -62,7 +59,6 @@
     <Compile Include="ViewModels\FeedListViewModel.cs" />
     <Compile Include="ViewModels\FeedMapViewModel.cs" />
     <Compile Include="ViewModels\FeedTabViewModel.cs" />
-    <Compile Include="ViewModels\PositionSelectViewModel.cs" />
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -140,7 +136,9 @@
     <Compile Include="Utils\SingleClick.cs" />
     <Compile Include="Controls\CustomPin.cs" />
     <Compile Include="Utils\IToolBarItem.cs" />
-    <Compile Include="Utils\SelectedLocationArgs.cs" />
+    <Compile Include="Controls\PopUpDialogView.xaml.cs">
+      <DependentUpon>PopUpDialogView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -178,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PopUpDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\TutorialsPage.xaml">
@@ -207,12 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\FeedMapPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\PositionSelectPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

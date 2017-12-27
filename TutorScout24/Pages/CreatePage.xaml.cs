@@ -13,6 +13,15 @@ namespace TutorScout24.Pages
         public CreatePage()
         {
             InitializeComponent();
+
+            selectButton.Clicked += (sender, e) => {
+                if (ViewModel.ShowMap)
+                {
+                    ViewModel.PositionSelected(MyMap2.VisibleRegion.Center.Latitude, MyMap2.VisibleRegion.Center.Longitude);
+                }else{
+                    ViewModel.SetLocationWithAdress();
+                }
+            };
         }
 
 
@@ -29,6 +38,9 @@ namespace TutorScout24.Pages
             {
                 AdressEntry.Text = e.Item.ToString();
             };
+
+            ViewModel.map = MyMap2;
+            ViewModel.DialogView = PopUpDialog;
            
         }
     }

@@ -20,7 +20,7 @@
                         <Frame Margin="5" IsClippedToBounds="False" HasShadow="True" CornerRadius="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout>
                                  <Label Text="{Binding id}" TextColor="Black" FontSize="Medium" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
-                                     <Label Text="{Binding Messages, Converter={StaticResource LastItemConverter}}" TextColor="Black"  Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Start" />
+                                     <Label Text="{Binding Messages, Converter={StaticResource LastItemConverter}}" TextColor="Black"  Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
                                 </StackLayout>
                            
                         </Frame>

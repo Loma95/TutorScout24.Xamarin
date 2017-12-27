@@ -30,8 +30,6 @@ namespace TutorScout24
                 NavigateToViewModel<FeedTabViewModel>();
 
 
-
-            
              
             }else{
                 base.OpenPage(page);

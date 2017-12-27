@@ -28,12 +28,12 @@ namespace TutorScout24.ViewModels
 
         }
 
-        private async void SetTutorings()
+        public async void SetTutorings()
         {
             Tutorings = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyTutorings();
         }
 
-        private List<MyTutoring> _tutorings;
+        private List<MyTutoring> _tutorings = new List<MyTutoring>();
 
         public List<MyTutoring> Tutorings
         {
@@ -61,6 +61,8 @@ namespace TutorScout24.ViewModels
                 switchI.SetBinding(ToolbarItem.CommandProperty, nameof(MasterDetailViewModel.ChangeCommand));
             }
         }
+
+
 
         public ICommand FabCommand
         {

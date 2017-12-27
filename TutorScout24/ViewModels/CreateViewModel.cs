@@ -8,6 +8,7 @@ using System.Windows.Input;
 using MvvmNano;
 using MvvmNano.Forms;
 using Plugin.Geolocator.Abstractions;
+using TutorScout24.Controls;
 using TutorScout24.CustomData;
 using TutorScout24.Models;
 using TutorScout24.Pages;
@@ -17,7 +18,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.ViewModels
 {
-    public class CreateViewModel : MvvmNano.MvvmNanoViewModel<CreateTutoring>,IToolBarItem
+    public class CreateViewModel : MvvmNano.MvvmNanoViewModel<CreateTutoring>, IToolBarItem
     {
         private CreateTutoring _ct;
 
@@ -48,8 +49,8 @@ namespace TutorScout24.ViewModels
                     : "Neues Angebot erstellen";
                 NotifyPropertyChanged("PageTitle");
             });
-           
-                AddToolBarItem();
+
+            AddToolBarItem();
 
         }
 
@@ -72,21 +73,32 @@ namespace TutorScout24.ViewModels
 
         public void PosSel()
         {
-            var posPage = new PositionSelectPage();
-            posPage.PositionSelected += PositionSelected;
-  
-            Pages.MasterDetailPage mdp = (Pages.MasterDetailPage)Application.Current.MainPage;
-            mdp.Detail.Navigation.PushModalAsync(posPage);
+            DialogView.IsVisible = true;
+            DialogView.DialogClosed += (sender, e) => {
+                DialogView.IsVisible = false;
+            };
+            DialogView.ShowDialog();
+            SelectionMode = true;
+            SetPos();
         }
 
-        private void PositionSelected(object sender,EventArgs e){
-            SelectedLocationArgs slA = (SelectedLocationArgs)e;
+        public void PositionSelected(double lat,double lon)
+        {
 
-            _ct.latitude = slA.Lat;
-            _ct.longitude = slA.Lon;
+            _ct.latitude = lat;
+            _ct.longitude = lon;
 
-            Pages.MasterDetailPage mdp = (Pages.MasterDetailPage)Application.Current.MainPage;
-            mdp.Detail.Navigation.PopModalAsync();
+            DialogView.IsVisible = false;
+            _selectedText = lat + " " + lon;
+            NotifyPropertyChanged("SelectedText");
+        }
+
+        private string _selectedText;
+        public string SelectedText
+        {
+            get { return _selectedText; }
+      
+
         }
 
         private string _subject;
@@ -157,22 +169,36 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private bool _showMapButton = false;
+        private bool _showMap = false;
 
-        public bool ShowMapButton
+        public bool ShowMap
         {
-            get { return _showMapButton; }
+            get { return _showMap; }
             set
             {
-                _showMapButton = value;
-                NotifyPropertyChanged("ShowMapButton");
+                _showMap = value;
+                NotifyPropertyChanged("ShowMap");
             }
         }
 
-
-        public List<string> Selections
+        private bool _selectionMode;
+        public bool SelectionMode
         {
-            get { return Enum.GetNames(typeof(PosSelection)).Select(b => b).ToList(); }
+            get
+            {
+                return _selectionMode;
+            }  
+
+            set{
+                _selectionMode = value;
+                if(value){
+                    Selection = "Karte";
+
+                }else{
+                    Selection = "Adresse";
+                }
+                NotifyPropertyChanged("SelectionMode");
+            }
         }
 
         public string Selection
@@ -183,20 +209,17 @@ namespace TutorScout24.ViewModels
                 _selection = value;
                 if (value == "Karte")
                 {
-                    _showMapButton = true;
-                    _showAdressField = false;
-                    NotifyPropertyChanged("ShowMapButton");
-                    NotifyPropertyChanged("ShowAdressField");
+                    ShowMap = true;
+                    ShowAdressField = false;
                 }
                 else
                 {
-                    _showMapButton = false;
-                    _showAdressField = true;
-                    NotifyPropertyChanged("ShowMapButton");
-                    NotifyPropertyChanged("ShowAdressField");
+                    ShowMap = false;
+                    ShowAdressField = true;
                 }
                 NotifyPropertyChanged("PosSelection");
                 Debug.WriteLine(value);
+                NotifyPropertyChanged("Selection");
             }
 
         }
@@ -228,23 +251,19 @@ namespace TutorScout24.ViewModels
             Debug.WriteLine("init");
             base.Initialize(parameter);
 
-        
 
 
-            if (parameter==null || parameter.longitude==0 && parameter.latitude==0) return;
+
+            if (parameter == null || parameter.longitude == 0 && parameter.latitude == 0) return;
             _ct = parameter;
             Subject = _ct.subject;
             Text = _ct.text;
             ExpDate = DateTime.Today.AddDays(_ct.duration);
-            Debug.WriteLine("long:"+_ct.longitude +  "lat:" + _ct.latitude);
+            Debug.WriteLine("long:" + _ct.longitude + "lat:" + _ct.latitude);
 
-       
+
         }
 
-
-        public void SetTutoring(CreateTutoring t){
-            _ct = t;
-        }
 
         public void RemoveToolbarItem()
         {
@@ -252,7 +271,7 @@ namespace TutorScout24.ViewModels
             master.ToolbarItems.Clear();
         }
 
-    
+
         public override void Dispose()
         {
             base.Dispose();
@@ -281,23 +300,11 @@ namespace TutorScout24.ViewModels
                         subject = Subject
                     };
                 }
-                if (_selection == "Adresse")
-                {
-                    var response = await MvvmNanoIoC.Resolve<GeocodeService>().GetResponseForString(Adress);
-                    var pos = new Position(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
-                    if (pos.Latitude == 0 && pos.Longitude == 0)
-                    {
-                        MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Kein Ort gefunden."));
-                        return;
-                    }
-                    _ct.latitude = pos.Latitude;
-                    _ct.longitude = pos.Longitude;
-                }
-
+             
                 bool success = await MvvmNanoIoC.Resolve<TutorScoutRestService>().CreateTutoring(_ct);
                 if (success)
                 {
-                    NavigateTo<TutorialsViewModel>();
+                    master.SendBackButtonPressed();
                 }
                 else
                 {
@@ -311,9 +318,75 @@ namespace TutorScout24.ViewModels
                     }
                 }
             };
-         
+
             master.ToolbarItems.Add(_CreateSwitch);
 
         }
+
+
+        #region "SelectPosition"
+
+        public  async void SetLocationWithAdress(){
+
+            if (Adress != null)
+            {
+                var response = await MvvmNanoIoC.Resolve<GeocodeService>().GetResponseForString(Adress);
+                var pos = new Position(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+                if (pos.Latitude == 0 && pos.Longitude == 0)
+                {
+                    MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Kein Ort gefunden."));
+                    return;
+                }
+                _ct.latitude = pos.Latitude;
+                _ct.longitude = pos.Longitude;
+
+                _selectedText = Adress;
+                NotifyPropertyChanged("SelectedText");
+
+                DialogView.IsVisible = false;
+            }else{
+                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Fehler", "Bitte eine Adresse eingeben"));
+            }
+        }
+
+        private Xamarin.Forms.Maps.Position _position;
+
+        public Xamarin.Forms.Maps.Position Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
+
+        private PopUpDialogView _dialogView;
+        public PopUpDialogView DialogView
+        {
+            get { return _dialogView; }
+            set { _dialogView = value; }
+        }
+
+        private Position _posSelect;
+
+        public Position PosSelect
+        {
+            get { return _posSelect; }
+            set
+            {
+                _posSelect = value;
+                Debug.WriteLine(value.Latitude);
+            }
+        }
+
+
+        private async void SetPos()
+        {
+            var tempPos = await LocationService.getInstance().GetPosition();
+            _position = new Xamarin.Forms.Maps.Position(tempPos.Latitude, tempPos.Longitude);
+            NotifyPropertyChanged("Position");
+        }
+
+
+        public SelectionMap map;
+        #endregion
     }
 }

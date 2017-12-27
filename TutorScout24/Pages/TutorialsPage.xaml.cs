@@ -30,7 +30,10 @@ namespace TutorScout24
         {
             base.OnAppearing();
             ViewModel.AddToolBarItem();
+            ViewModel.SetTutorings();
         }
+
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
@@ -9,6 +9,7 @@
                            xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
                            Title="{Binding PageTitle}">
     <forms:MvvmNanoContentPage.Content>
+        <Grid>
         <ScrollView>
             <StackLayout Orientation="Vertical" Margin="10">
                 <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -31,17 +32,52 @@
                     </StackLayout>
                 </Frame>
                 <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="Positionsangabe" FontSize="18" TextColor="Black"></Label>
-                        <Picker Title="" ItemsSource="{Binding Selections}" SelectedItem="{Binding Selection}"
-                                 TextColor="Black"/>
+
+                        <StackLayout Orientation="Vertical">
+                                          <Label VerticalOptions="Center" TextColor="Black" Text="{Binding SelectedText}" ></Label>
+                   <Button
+                                Text="Position wählen" TextColor="Black" Command="{Binding PosSelCommand}"/>
+                            </StackLayout>
+                </Frame>
+
+                  
+            </StackLayout>
+
+             
+        </ScrollView>
+               <controls:PopUpDialogView x:Name="PopUpDialog" HeaderTitle="Position auswählen" IsVisible="false">
+
+
+
+                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Margin="0">
+
+                   <StackLayout Orientation="Vertical">
+
+                        <StackLayout Grid.Row="4" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                              <Label VerticalOptions="Center" TextColor="Black" Text="Modus:" ></Label>
+                     <Label VerticalOptions="Center" TextColor="Black" Text="{Binding Selection}" ></Label>
+                       <Switch IsToggled="{Binding SelectionMode}" />
+                </StackLayout>
+                   
                         <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" x:Name="AdressEntry" TextColor="Black" />
                         <ListView ItemsSource="{Binding GeoCodeSuggestions}" x:Name="SuggestionListView" IsVisible="{Binding ShowAdressField}"></ListView>
-                        <Button IsVisible="{Binding ShowMapButton}" 
-                                Text="Karte öffnen" TextColor="Black" Command="{Binding PosSelCommand}"/>
+                      
                     </StackLayout>
-                </Frame>
+                    
+        <controls:SelectionMap
+            IsVisible="{Binding ShowMap}"
+            x:Name="MyMap2"
+            IsShowingUser="true"
+            MapType="Hybrid"
+            Position="{Binding Position}"
+           />
+            <Button Text="übernehmen" x:Name="selectButton"></Button>
             </StackLayout>
-        </ScrollView>
+          
+
+      </controls:PopUpDialogView>
+        </Grid>
+       
+        
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>
