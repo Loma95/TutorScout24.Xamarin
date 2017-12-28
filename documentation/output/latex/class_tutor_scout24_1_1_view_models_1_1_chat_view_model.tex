@@ -1,0 +1,91 @@
+\hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model}{}\section{Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model Class Reference}
+\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model}\index{Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model@{Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model}}
+Inheritance diagram for Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.489362cm]{class_tutor_scout24_1_1_view_models_1_1_chat_view_model}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a23f8ff95f10cb9df7c0bc16575675079}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a23f8ff95f10cb9df7c0bc16575675079}} 
+void {\bfseries On\+Completed} ()
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_afc70f8ee9455d3765624d067d693470f}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_afc70f8ee9455d3765624d067d693470f}} 
+void {\bfseries On\+Error} (Exception error)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}} 
+void {\bfseries On\+Next} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} value)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a0d72982d5dc685381d2ffa5bdb03df65}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a0d72982d5dc685381d2ffa5bdb03df65}} 
+void {\bfseries Add\+Tool\+Bar\+Item} ()
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}} 
+async void {\bfseries Delete\+Selected\+Item} (int message\+ID)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}} 
+override void {\bfseries Initialize} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} parameter)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a434a4b1fbb043203975b27ae572a12e0}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a434a4b1fbb043203975b27ae572a12e0}} 
+void {\bfseries Remove\+Tool\+Bar\+Item} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Toolbar\+Item {\bfseries \+\_\+reload}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ac503da7bebe7201d429be66e0a5b1025}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ac503da7bebe7201d429be66e0a5b1025}} 
+List\+View {\bfseries Messages\+List}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a035cc5292afa9270fb67105a58d9cbb4}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a035cc5292afa9270fb67105a58d9cbb4}} 
+I\+Command {\bfseries Send\+Command} =$>$ new Command(Send\+Message\+Async)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aade3a65862d4dc7a14b7bc29ddacb30c}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aade3a65862d4dc7a14b7bc29ddacb30c}} 
+Action$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_message}{Message}} $>$ {\bfseries On\+Message\+Added}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a8be64844dfccc69d7d5a02a949b05851}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a8be64844dfccc69d7d5a02a949b05851}} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_message}{Message}} $>$ {\bfseries Messages}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a70acd1d5418f5700fb7cc1c23c0e6975}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a70acd1d5418f5700fb7cc1c23c0e6975}} 
+bool {\bfseries Is\+Refreshing}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_abb7ace1b22ee3bfa7a07b143e7115852}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_abb7ace1b22ee3bfa7a07b143e7115852}} 
+I\+Command {\bfseries Refresh\+Command}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a991c47b55db67b7a29a90eb914a2df7c}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a991c47b55db67b7a29a90eb914a2df7c}} 
+string {\bfseries Current\+Message}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a01dfcbd8d5bfe43e46e9f9213b0a4d6a}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a01dfcbd8d5bfe43e46e9f9213b0a4d6a}} 
+\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_message}{Message}} {\bfseries Selected\+Item}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a252746c3bf69ebe011ed9023b8acd3e3}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a252746c3bf69ebe011ed9023b8acd3e3}} 
+string {\bfseries Conversation\+Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_af93ff2eaaf62c8ee2b5645ee6a9608e9}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_af93ff2eaaf62c8ee2b5645ee6a9608e9}} 
+Color {\bfseries Theme\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a436239b9dcfd275c018fe0accad173af}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a436239b9dcfd275c018fe0accad173af}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}!\+\_\+reload@{\+\_\+reload}}
+\index{\+\_\+reload@{\+\_\+reload}!Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}}
+\subsubsection{\texorpdfstring{\+\_\+reload}{\_reload}}
+{\footnotesize\ttfamily Toolbar\+Item Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model.\+\_\+reload}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{new} ToolbarItem
+        \{
+            Text = \textcolor{stringliteral}{"\(\backslash\)uf021"}
+        \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tutor\+Scout24/\+View\+Models/Chat\+View\+Model.\+cs\end{DoxyCompactItemize}

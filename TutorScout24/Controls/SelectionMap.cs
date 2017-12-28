@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace TutorScout24.Controls
 {
+    /// <summary>
+    /// A map that lets you select a position.
+    /// A marker is always placed in the middle and the selected position is stored in a property.
+    /// </summary>
     public class SelectionMap : Map
     {
         public static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(Position), typeof(SelectionMap),
@@ -24,13 +23,20 @@ namespace TutorScout24.Controls
             set { _position = value; }
         }
 
-       private Position _posSelection;
+        private Position _posSelection;
         public Position PosSelection
         {
             get { return _posSelection; }
             set { _posSelection = value; }
         }
 
+        /// <summary>
+        /// Called when position is changed.
+        /// Moves Map to new center.
+        /// </summary>
+        /// <param name="bindable">The Map which has a Position Change</param>
+        /// <param name="oldValue">Old Position</param>
+        /// <param name="newValue">New Position</param>
         public static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var map = (SelectionMap)bindable;
@@ -39,18 +45,11 @@ namespace TutorScout24.Controls
                 new Xamarin.Forms.Maps.Position(newPos.Latitude, newPos.Longitude), Distance.FromMiles(0.5)));
         }
 
-
-        private static void AddLocationAsPin(SelectionMap map, Position newPos)
-        {
-            var pin = new Pin()
-            {
-                Position = new Position(newPos.Latitude, newPos.Longitude),
-                Label = newPos.Latitude + " " + newPos.Longitude
-            };
-            map.Pins.Clear();
-            map.Pins.Add(pin);
-        }
-
+        /// <summary>
+        /// Called when any property changes.
+        /// When VisibleRegion changes, move pin to new center.
+        /// </summary>
+        /// <param name="propertyName"></param>
         protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);

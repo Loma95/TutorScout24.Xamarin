@@ -1,0 +1,145 @@
+\hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model}{}\section{Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model Class Reference}
+\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model}\index{Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model@{Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model}}
+Inheritance diagram for Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tutor_scout24_1_1_view_models_1_1_create_view_model}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a2cdbfdb58688e57fa4a3f6a24cf6af68}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a2cdbfdb58688e57fa4a3f6a24cf6af68}} 
+enum {\bfseries Pos\+Selection} \{ {\bfseries Adresse}, 
+{\bfseries Karte}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa617a300b1411a5a4f28b5b72bf177d6}{Create\+View\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Set Title according to mode, subscribe to mode changes to change title later and add toolbaritems \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_afa96e3fde1e926d0bc909a817a8bdaaf}{Add\+Tool\+Bar\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Add Switch for creation to toolbar \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}{Pos\+Sel}} ()
+\begin{DoxyCompactList}\small\item\em When Position Select is pressed, open dialog for selection \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}} 
+void {\bfseries Position\+Selected} (double lat, double lon)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ab469edfe5a4c4dcb0e7b50ab93572b3d}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ab469edfe5a4c4dcb0e7b50ab93572b3d}} 
+override void {\bfseries Initialize} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_tutorings_1_1_create_tutoring}{Create\+Tutoring}} parameter)
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a3081038a79b7da05515b70ac13f91673}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a3081038a79b7da05515b70ac13f91673}} 
+void {\bfseries Remove\+Toolbar\+Item} ()
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a712c72048ee79fd25c170838487fffc1}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a712c72048ee79fd25c170838487fffc1}} 
+override void {\bfseries Dispose} ()
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}} 
+async void {\bfseries Set\+Location\+With\+Adress} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a8479f4d285e9b743085a037d59fd1c25}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a8479f4d285e9b743085a037d59fd1c25}} 
+I\+Command {\bfseries Pos\+Sel\+Command} =$>$ new Command(\mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}{Pos\+Sel}})
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aad8f0b81c0749f3ffef8ea25c97370ad}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aad8f0b81c0749f3ffef8ea25c97370ad}} 
+\mbox{\hyperlink{class_tutor_scout24_1_1_controls_1_1_selection_map}{Selection\+Map}} {\bfseries map}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a7da88ab5db2382c3cf6be8b51846daed}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a7da88ab5db2382c3cf6be8b51846daed}} 
+List$<$ string $>$ {\bfseries Geo\+Code\+Suggestions}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a33700f6aadced1038b6807f989d9b266}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a33700f6aadced1038b6807f989d9b266}} 
+string {\bfseries Selected\+Text}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aaa909989e71b24054a0314dba3ff0b38}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aaa909989e71b24054a0314dba3ff0b38}} 
+string {\bfseries Subject}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5b617345ab08558ec6a3e61bd159482f}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5b617345ab08558ec6a3e61bd159482f}} 
+string {\bfseries Text}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa0a9ca8c4567754bd30be5970c8a8a2e}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa0a9ca8c4567754bd30be5970c8a8a2e}} 
+string {\bfseries Adress}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a72fb34cdc2712194a156e1744d265275}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a72fb34cdc2712194a156e1744d265275}} 
+bool {\bfseries Show\+Adress\+Field}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ae2c595ab275046fa998844d0ac907288}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ae2c595ab275046fa998844d0ac907288}} 
+string {\bfseries Page\+Title}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a2446f5d68db28a69d4cd88712b2d4aab}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a2446f5d68db28a69d4cd88712b2d4aab}} 
+bool {\bfseries Show\+Map}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a928c330a2123dd0be927315eacede9e7}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a928c330a2123dd0be927315eacede9e7}} 
+bool {\bfseries Selection\+Mode}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a8534c49ea5d25665c72e79d0e8c04b47}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a8534c49ea5d25665c72e79d0e8c04b47}} 
+string {\bfseries Selection}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a705e1574a18238326ff9910c05257382}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a705e1574a18238326ff9910c05257382}} 
+Date\+Time {\bfseries Exp\+Date}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a54035256bb68b4620e224129cece136f}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a54035256bb68b4620e224129cece136f}} 
+Date\+Time {\bfseries Min\+Date} = Date\+Time.\+Today\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a3e7eac36cbed0095ca6b9719e09e45cc}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a3e7eac36cbed0095ca6b9719e09e45cc}} 
+Date\+Time {\bfseries Max\+Date} = Date\+Time.\+Today.\+Add\+Days(100)\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_abd9a6e449f6e012f8b7ba2e0cbd93369}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_abd9a6e449f6e012f8b7ba2e0cbd93369}} 
+Position {\bfseries Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aad21601c5c722bf3def86047d35346df}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aad21601c5c722bf3def86047d35346df}} 
+\mbox{\hyperlink{class_tutor_scout24_1_1_controls_1_1_pop_up_dialog_view}{Pop\+Up\+Dialog\+View}} {\bfseries Dialog\+View}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ae6b5ae83b31fb87d9b86cc6f16ee35f3}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ae6b5ae83b31fb87d9b86cc6f16ee35f3}} 
+Plugin.\+Geolocator.\+Abstractions.\+Position {\bfseries Pos\+Select}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa617a300b1411a5a4f28b5b72bf177d6}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa617a300b1411a5a4f28b5b72bf177d6}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Create\+View\+Model@{Create\+View\+Model}}
+\index{Create\+View\+Model@{Create\+View\+Model}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
+\subsubsection{\texorpdfstring{Create\+View\+Model()}{CreateViewModel()}}
+{\footnotesize\ttfamily Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model.\+Create\+View\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set Title according to mode, subscribe to mode changes to change title later and add toolbaritems 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_afa96e3fde1e926d0bc909a817a8bdaaf}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_afa96e3fde1e926d0bc909a817a8bdaaf}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Add\+Tool\+Bar\+Item@{Add\+Tool\+Bar\+Item}}
+\index{Add\+Tool\+Bar\+Item@{Add\+Tool\+Bar\+Item}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
+\subsubsection{\texorpdfstring{Add\+Tool\+Bar\+Item()}{AddToolBarItem()}}
+{\footnotesize\ttfamily void Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model.\+Add\+Tool\+Bar\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add Switch for creation to toolbar 
+
+
+
+Implements \mbox{\hyperlink{interface_tutor_scout24_1_1_utils_1_1_i_tool_bar_item}{Tutor\+Scout24.\+Utils.\+I\+Tool\+Bar\+Item}}.
+
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Pos\+Sel@{Pos\+Sel}}
+\index{Pos\+Sel@{Pos\+Sel}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
+\subsubsection{\texorpdfstring{Pos\+Sel()}{PosSel()}}
+{\footnotesize\ttfamily void Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model.\+Pos\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When Position Select is pressed, open dialog for selection 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tutor\+Scout24/\+View\+Models/Create\+View\+Model.\+cs\end{DoxyCompactItemize}

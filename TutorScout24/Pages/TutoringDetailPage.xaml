@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms:MvvmNanoContentPage  xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
-    xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
-    xmlns:tutorScout24="clr-namespace:TutorScout24;assembly=TutorScout24"
-    x:TypeArguments="viewModels1:TutoringDetailViewModel" x:Class="TutorScout24.Pages.TutoringDetailPage"    >
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:tutorScout24="clr-namespace:TutorScout24;assembly=TutorScout24" x:TypeArguments="viewModels1:TutoringDetailViewModel" x:Class="TutorScout24.Pages.TutoringDetailPage">
     <forms:MvvmNanoContentPage.Content>
-      <ScrollView>
-        <StackLayout Orientation="Vertical" Margin="10">
-          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical">
-              <Label Text="Fach" FontSize="18" TextColor="Black"></Label>
-              <Label Text="{Binding Tutoring.subject}"></Label>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Margin="10">
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Fach" FontSize="18" TextColor="Black">
+                        </Label>
+                        <Label Text="{Binding Tutoring.subject}">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="UserFrame" Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                    </StackLayout>
+                    <Grid x:Name="UserGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition>
+                            </RowDefinition>
+                            <RowDefinition>
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Benutzer" FontSize="18" TextColor="Black" Grid.Row="0" Grid.Column="0">
+                        </Label>
+                        <Label Text="{Binding Tutoring.userName}" Grid.Row="1" Grid.Column="0">
+                        </Label>
+                    </Grid>
+                </Frame>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Beschreibung" FontSize="18" TextColor="Black">
+                        </Label>
+                        <Label Text="{Binding Tutoring.text}">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding Tutoring.daysLeft, StringFormat='{0} Tage übrig'}" Grid.Row="2" Grid.Column="0">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Button Text="Chatten" Grid.Row="4" Command="{Binding GoToChatCommand}">
+                        </Button>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
-          </Frame>
-          <Frame x:Name="UserFrame" Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical">
-            </StackLayout>
-            <Grid x:Name="UserGrid">
-              <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-              </Grid.ColumnDefinitions>
-                <Label Text="Benutzer" FontSize="18" TextColor="Black" Grid.Row="0" Grid.Column="0"></Label>
-                <Label Text="{Binding Tutoring.userName}" Grid.Row="1" Grid.Column="0"></Label>
-            </Grid>
-          </Frame>
-          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical">
-              <Label Text="Beschreibung" FontSize="18" TextColor="Black"></Label>
-              <Label Text="{Binding Tutoring.text}"></Label>
-            </StackLayout>
-          </Frame>
-          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical">
-              <Label Text="{Binding Tutoring.daysLeft, StringFormat='{0} Tage übrig'}" Grid.Row="2" Grid.Column="0"></Label>
-            </StackLayout>
-          </Frame>
-          <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical">
-              <Button Text="Chatten" Grid.Row="4" Command="{Binding GoToChatCommand}" ></Button>
-            </StackLayout>
-          </Frame>
-        </StackLayout>
-      </ScrollView>
+        </ScrollView>
     </forms:MvvmNanoContentPage.Content>
-</forms:MvvmNanoContentPage >
+</forms:MvvmNanoContentPage>

@@ -21,7 +21,6 @@
                 </Grid.ColumnDefinitions>
                 <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical">
-                     
                         <Label Text="{Binding UserInfo.firstName,Mode=TwoWay}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
                         </Label>
                         <Label Text="{Binding UserInfo.lastName,Mode=TwoWay}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
@@ -32,8 +31,7 @@
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Geschlecht:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
-                    
-                        <Label Text="{Binding UserInfo.gender,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        <Label Text="{Binding UserInfo.gender,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
                     </StackLayout>
                 </Frame>
@@ -41,8 +39,7 @@
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Beschreibung:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
-                       
-                        <Label Text="{Binding UserInfo.description,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        <Label Text="{Binding UserInfo.description,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
                     </StackLayout>
                 </Frame>
@@ -58,8 +55,7 @@
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Höchster Abschlussgrad:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
-
-                        <Label Text="{Binding UserInfo.maxGraduation,Mode=TwoWay}"  FontSize="20" HorizontalTextAlignment="Start">
+                        <Label Text="{Binding UserInfo.maxGraduation,Mode=TwoWay}" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>
                     </StackLayout>
                 </Frame>

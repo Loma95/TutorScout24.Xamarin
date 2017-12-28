@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using TutorScout24.Controls;
-using TutorScout24.Utils;
-using TutorScout24.ViewModels;
-using Xamarin.Forms;
-
-namespace TutorScout24.Pages
+﻿namespace TutorScout24.Pages
 {
     public partial class CreatePage
     {
+        /// <summary>
+        ///     When Select Button is pressed, select position from map or from adress field.
+        /// </summary>
         public CreatePage()
         {
             InitializeComponent();
@@ -24,6 +19,7 @@ namespace TutorScout24.Pages
                     // get location from adress string
                     ViewModel.SetLocationWithAdress();
                 }
+
             };
         }
 
@@ -34,18 +30,19 @@ namespace TutorScout24.Pages
             return base.OnBackButtonPressed();
         }
 
+
+        /// <summary>
+        ///     When ViewModel is bound, add Method to set adress field to suggestion when tapped.
+        /// </summary>
+
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            
-            SuggestionListView.ItemTapped += (sender, e) =>
-            {
-                AdressEntry.Text = e.Item.ToString();
-            };
+
+            SuggestionListView.ItemTapped += (sender, e) => { AdressEntry.Text = e.Item.ToString(); };
 
             ViewModel.map = MyMap2;
             ViewModel.DialogView = PopUpDialog;
-           
         }
     }
 }

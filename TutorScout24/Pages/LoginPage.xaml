@@ -13,7 +13,7 @@
                     </RowDefinition>
                     <RowDefinition Height="50">
                     </RowDefinition>
-                      <RowDefinition Height="30">
+                    <RowDefinition Height="30">
                     </RowDefinition>
                     <RowDefinition Height="30">
                     </RowDefinition>
@@ -31,10 +31,11 @@
                 <Button Text="Anmelden" Grid.Row="3" Command="{Binding LoginCommand}">
                 </Button>
                 <StackLayout Grid.Row="4" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                     <Label VerticalOptions="Center" Text="Passwort speichern?" ></Label>
-                    <Switch IsToggled="{Binding PasswordShouldBeSaved}" ></Switch>
+                    <Label VerticalOptions="Center" Text="Passwort speichern?">
+                    </Label>
+                    <Switch IsToggled="{Binding PasswordShouldBeSaved}">
+                    </Switch>
                 </StackLayout>
-
                 <Label Text="Noch nicht dabei?" Grid.Row="5" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SignUpCommand}" />
@@ -45,8 +46,8 @@
                         <TapGestureRecognizer Command="{Binding ForgotCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="{Binding InfoText}" Grid.Row="7" HorizontalOptions="Center" TextColor="Red" FontSize="20" IsVisible="{Binding Info}"/>
+                <Label Text="{Binding InfoText}" Grid.Row="7" HorizontalOptions="Center" TextColor="Red" FontSize="20" IsVisible="{Binding Info}" />
             </Grid>
-        </Frame>        
+        </Frame>
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

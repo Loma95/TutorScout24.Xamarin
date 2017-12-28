@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
+                           xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
+                           xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
+                           x:TypeArguments="viewModels1:FeedListViewModel" x:Class="TutorScout24.Pages.FeedListPage">
+    <forms:MvvmNanoContentPage.Content>
+        <ListView x:Name="MyListView" IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsRefreshing}" SelectedItem="{Binding CurrentItem}"
+                  ItemsSource="{Binding Tutorings}" BackgroundColor="{Binding ThemeColor}"
+                  CachingStrategy="RecycleElement" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="10" IsClippedToBounds="False" HasShadow="True" CornerRadius="5"
+                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding userName}" TextColor="Black" FontSize="14" Grid.Row="0"
+                                       Grid.Column="0" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                <Label Text="{Binding subject}" TextColor="DarkBlue" FontSize="14" Grid.Row="1"
+                                       Grid.Column="0" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                <Label Text="{Binding distanceKm, StringFormat='{0:N0} km'}" TextColor="Gray"
+                                       FontSize="15" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                                       VerticalTextAlignment="Center" />
+                                <Label Text="{Binding text}" TextColor="Gray" FontSize="15" Grid.Row="2"
+                                       Grid.Column="0" Grid.ColumnSpan="2" />
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </forms:MvvmNanoContentPage.Content>
+</forms:MvvmNanoContentPage>

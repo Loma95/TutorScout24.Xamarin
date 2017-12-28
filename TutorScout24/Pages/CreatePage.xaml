@@ -1,83 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
                            xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
                            xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
                            x:TypeArguments="viewModels1:CreateViewModel" x:Class="TutorScout24.Pages.CreatePage"
-                           xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
-                           xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24"
                            Title="{Binding PageTitle}">
     <forms:MvvmNanoContentPage.Content>
         <Grid>
-        <ScrollView>
-            <StackLayout Orientation="Vertical" Margin="10">
-                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="Fach" FontSize="18" TextColor="Black"></Label>
-                        <Entry Text="{Binding Subject, Mode=TwoWay}" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="Beschreibung" FontSize="18" TextColor="Black"></Label>
-                        <Editor Text="{Binding Text, Mode=TwoWay}" HeightRequest="150" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Ablaufdatum" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="18" TextColor="Black"></Label>
-                        <DatePicker Date="{Binding ExpDate}"
-                                    MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
+            <ScrollView>
+                <StackLayout Orientation="Vertical" Margin="10">
+                    <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="{Binding ThemeColor}" HasShadow="True"
+                           CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <StackLayout Orientation="Vertical">
-                                          <Label VerticalOptions="Center" TextColor="Black" Text="{Binding SelectedText}" ></Label>
-                   <Button
-                                Text="Position wählen" TextColor="Black" Command="{Binding PosSelCommand}"/>
-                            </StackLayout>
-                </Frame>
-
-                  
-            </StackLayout>
-
-             
-        </ScrollView>
-               <controls:PopUpDialogView x:Name="PopUpDialog" HeaderTitle="Position auswählen" IsVisible="false">
-
-
-
-                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Margin="0">
-
-                   <StackLayout Orientation="Vertical">
-
-                        <StackLayout Grid.Row="4" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                              <Label VerticalOptions="Center" TextColor="Black" Text="Modus:" ></Label>
-                     <Label VerticalOptions="Center" TextColor="Black" Text="{Binding Selection}" ></Label>
-                       <Switch IsToggled="{Binding SelectionMode}" />
+                            <Label Text="Fach" FontSize="18" TextColor="Black" />
+                            <Entry Text="{Binding Subject, Mode=TwoWay}" TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True"
+                           CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Beschreibung" FontSize="18" TextColor="Black" />
+                            <Editor Text="{Binding Text, Mode=TwoWay}" HeightRequest="150" TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True"
+                           CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Ablaufdatum" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                   FontSize="18" TextColor="Black" />
+                            <DatePicker Date="{Binding ExpDate}"
+                                        MinimumDate="{Binding MinDate}" MaximumDate="{Binding MaxDate}"
+                                        TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="5" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True"
+                           CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical">
+                            <Label VerticalOptions="Center" TextColor="Black" Text="{Binding SelectedText}" />
+                            <Button
+                                Text="Position wählen" TextColor="Black" Command="{Binding PosSelCommand}" />
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
-                   
-                        <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" x:Name="AdressEntry" TextColor="Black" />
-                        <ListView ItemsSource="{Binding GeoCodeSuggestions}" x:Name="SuggestionListView" IsVisible="{Binding ShowAdressField}"></ListView>
-                      
+            </ScrollView>
+            <controls:PopUpDialogView x:Name="PopUpDialog" HeaderTitle="Position auswählen" IsVisible="false">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Margin="0">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Grid.Row="4" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                            <Label VerticalOptions="Center" TextColor="Black" Text="Modus:" />
+                            <Label VerticalOptions="Center" TextColor="Black" Text="{Binding Selection}" />
+                            <Switch IsToggled="{Binding SelectionMode}" />
+                        </StackLayout>
+                        <Entry Text="{Binding Adress}" IsVisible="{Binding ShowAdressField}" x:Name="AdressEntry"
+                               TextColor="Black" />
+                        <ListView ItemsSource="{Binding GeoCodeSuggestions}" x:Name="SuggestionListView"
+                                  IsVisible="{Binding ShowAdressField}" />
                     </StackLayout>
-                    
-        <controls:SelectionMap
-            IsVisible="{Binding ShowMap}"
-            x:Name="MyMap2"
-            IsShowingUser="true"
-            MapType="Hybrid"
-            Position="{Binding Position}"
-           />
-            <Button Text="übernehmen" x:Name="selectButton"></Button>
-            </StackLayout>
-          
-
-      </controls:PopUpDialogView>
+                    <controls:SelectionMap
+                        IsVisible="{Binding ShowMap}"
+                        x:Name="MyMap2"
+                        IsShowingUser="true"
+                        MapType="Hybrid"
+                        Position="{Binding Position}" />
+                    <Button Text="übernehmen" x:Name="selectButton" />
+                </StackLayout>
+            </controls:PopUpDialogView>
         </Grid>
-       
-        
     </forms:MvvmNanoContentPage.Content>
 </forms:MvvmNanoContentPage>

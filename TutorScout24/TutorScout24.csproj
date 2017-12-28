@@ -33,20 +33,20 @@
     <Compile Include="CustomData\MapNavigationParameter.cs" />
     <Compile Include="Models\Geocoding\AutocompleteResponse.cs" />
     <Compile Include="Models\Geocoding\GeocodingResponse.cs" />
-    <Compile Include="Models\Tutoring\CreateTutoring.cs" />
-    <Compile Include="Models\Tutoring\MyTutoring.cs" />
-    <Compile Include="Models\Tutoring\Tutoring.cs" />
-    <Compile Include="Models\Tutoring\TutoringRequest.cs" />
+    <Compile Include="Models\Tutorings\CreateTutoring.cs" />
+    <Compile Include="Models\Tutorings\MyTutoring.cs" />
+    <Compile Include="Models\Tutorings\Tutoring.cs" />
+    <Compile Include="Models\Tutorings\TutoringRequest.cs" />
     <Compile Include="Pages\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FeedListPage.xaml.cs">
+    <Compile Include="Pages\FeedPages\FeedListPage.xaml.cs">
       <DependentUpon>FeedListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FeedMapPage.xaml.cs">
+    <Compile Include="Pages\FeedPages\FeedMapPage.xaml.cs">
       <DependentUpon>FeedMapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FeedTabPage.xaml.cs">
+    <Compile Include="Pages\FeedPages\FeedTabPage.xaml.cs">
       <DependentUpon>FeedTabPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TutoringDetailPage.xaml.cs">
@@ -107,7 +107,7 @@
     <Compile Include="Utils\InputValidator.cs" />
     <Compile Include="Models\UserData\UpdateProfile.cs" />
     <Compile Include="Models\RestCommandWithAuthentication.cs" />
-    <Compile Include="Pages\MessagePage.xaml.cs">
+    <Compile Include="Pages\ChatPages\MessagePage.xaml.cs">
       <DependentUpon>MessagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MessageViewModel.cs" />
@@ -115,9 +115,9 @@
     <Compile Include="Models\Chat\Message.cs" />
     <Compile Include="Models\Chat\SentMessage.cs" />
     <Compile Include="Models\Chat\ReceivedMessage.cs" />
-    <Compile Include="Models\SendMessage.cs" />
-    <Compile Include="Models\RestMessage.cs" />
-    <Compile Include="Pages\ChatPage.xaml.cs">
+    <Compile Include="Models\Chat\SendMessage.cs" />
+    <Compile Include="Models\Chat\RestMessage.cs" />
+    <Compile Include="Pages\ChatPages\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ChatViewModel.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="Utils\DateTimeUtils.cs" />
     <Compile Include="Utils\ChatDateConverter.cs" />
     <Compile Include="Utils\LastItemConverter.cs" />
-    <Compile Include="Models\DeleteMessage.cs" />
+    <Compile Include="Models\Chat\DeleteMessage.cs" />
     <Compile Include="Utils\SingleClick.cs" />
     <Compile Include="Controls\CustomPin.cs" />
     <Compile Include="Utils\IToolBarItem.cs" />
@@ -144,9 +144,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MockData\TutoringData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -164,11 +161,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResource.de.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\MessagePage.xaml">
+    <EmbeddedResource Include="Pages\ChatPages\MessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\ChatPage.xaml">
+    <EmbeddedResource Include="Pages\ChatPages\ChatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -196,19 +193,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\FeedTabPage.xaml">
+    <EmbeddedResource Include="Pages\FeedPages\FeedTabPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\FeedListPage.xaml">
+    <EmbeddedResource Include="Pages\FeedPages\FeedListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\FeedMapPage.xaml">
+    <EmbeddedResource Include="Pages\FeedPages\FeedMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -1,23 +1,20 @@
-﻿using System;
-namespace TutorScout24
+﻿using MvvmNano;
+
+namespace TutorScout24.CustomData
 {
-    public class DialogMessage:MvvmNano.IMessage
+    /// <summary>
+    /// Data Object for displaying DialogMessages within MasterDetailPage.
+    /// </summary>
+    public class DialogMessage : IMessage
     {
-        public string Text
+        public DialogMessage(string header, string text)
         {
-            get;
-            set;
+            Text = text;
+            Header = header;
         }
-        public string Header
-        {
-            get;
-            set;
-        }
-       
-        public DialogMessage(string header,string text)
-        {
-            this.Text = text;
-            this.Header = header;
-        }
+
+        public string Text { get; set; }
+
+        public string Header { get; set; }
     }
 }

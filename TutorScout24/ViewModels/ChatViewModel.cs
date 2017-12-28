@@ -1,53 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
-using TutorScout24.Models;
 using TutorScout24.Models.Chat;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using MasterDetailPage = TutorScout24.Pages.MasterDetailPage;
 
 namespace TutorScout24.ViewModels
 {
-    public class ChatViewModel : MvvmNano.MvvmNanoViewModel<Conversation>, IThemeable, ConversationObserver,IToolBarItem
+    public class ChatViewModel : MvvmNanoViewModel<Conversation>, IThemeable, ConversationObserver, IToolBarItem
     {
-        Conversation conversation;
+        private bool _isRefreshing;
+
+        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
+
+
+        public ToolbarItem _reload = new ToolbarItem
+        {
+            Text = "\uf021"
+        };
+
+
+        private Color _themeColor;
+        private Conversation conversation;
         public ListView MessagesList;
+
         public ChatViewModel()
         {
-
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
-
+            _themeColor = (Color) Application.Current.Resources["MainColor"];
         }
 
 
         public Action<Message> OnMessageAdded { get; set; }
 
-        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         public ObservableCollection<Message> Messages
         {
-            get { return _messages; }
+            get => _messages;
             set
             {
                 _messages = value;
 
                 NotifyPropertyChanged("Messages");
-
             }
         }
 
         public ICommand SendCommand => new Command(SendMessageAsync);
 
-
-
-        private bool _isRefreshing = false;
         public bool IsRefreshing
         {
-            get { return _isRefreshing; }
+            get => _isRefreshing;
             set
             {
                 _isRefreshing = value;
@@ -61,110 +64,16 @@ namespace TutorScout24.ViewModels
             get
             {
                 return new Command(() =>
-               {
-                   IsRefreshing = true;
-                   Reload();
-
-               });
-            }
-        }
-
-
-        private async void SendMessageAsync()
-        {
-            if (CurrentMessage != "")
-            {
-                SendMessage m = new SendMessage();
-                m.toUserId = conversation.id;
-                m.text = CurrentMessage;
-
-                await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().SendMessage(m);
-
-                Reload();
-                CurrentMessage = "";
-                NotifyPropertyChanged("CurrentMessage");
-
-            }
-        }
-
-        private string _currentMessage;
-        public string CurrentMessage
-        {
-            get { return _currentMessage; }
-            set
-            {
-                _currentMessage = value;
-
-            }
-        }
-
-        private Message _selectedItem;
-        public Message SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-
-
-                _selectedItem = value;
-
-            }
-        }
-
-
-
-
-        public async void DeleteSelectedItem(int messageID)
-        {
-            await MvvmNanoIoC.Resolve<TutorScoutRestService>().DeleteMessage(messageID);
-            Reload();
-        }
-
-
-   
-
-        public ToolbarItem _reload = new ToolbarItem
-        {
-            Text = "\uf021"
-        };
-
-
-
-        public override void Initialize(Conversation parameter)
-        {
-            base.Initialize(parameter);
-
-            if (parameter != null)
-            {
-                conversation = parameter;
-                foreach (var item in parameter.Messages)
                 {
-                    Messages.Add(item);
-                }
-                NotifyPropertyChanged("Messages");
-
+                    IsRefreshing = true;
+                    Reload();
+                });
             }
-
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-
-            _reload.Clicked += (sender, e) =>
-            {
-                Reload();
-            };
-
-
-            AddToolBarItem();
-            MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
-
         }
 
+        public string CurrentMessage { get; set; }
 
-        private void Reload()
-        {
-
-            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().ReloadMessages();
-
-        }
+        public Message SelectedItem { get; set; }
 
         public void OnCompleted()
         {
@@ -185,23 +94,87 @@ namespace TutorScout24.ViewModels
                 OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
 
-
-        public void RemoveToolBarItem()
+        public string ConversationId
         {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Clear();
+            get => conversation.id;
+            set => conversation.id = value;
         }
+
+        public Color ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
+
         public void AddToolBarItem()
         {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            var master = (MasterDetailPage) Application.Current.MainPage;
             master.ToolbarItems.Clear();
             master.ToolbarItems.Add(_reload);
         }
 
-        private Color _themeColor;
-        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
 
-        public string ConversationId { get => conversation.id; set => conversation.id = value; }
+        private async void SendMessageAsync()
+        {
+            if (CurrentMessage != "")
+            {
+                var m = new SendMessage();
+                m.toUserId = conversation.id;
+                m.text = CurrentMessage;
 
+                await MvvmNanoIoC.Resolve<TutorScoutRestService>().SendMessage(m);
+
+                Reload();
+                CurrentMessage = "";
+                NotifyPropertyChanged("CurrentMessage");
+            }
+        }
+
+
+        public async void DeleteSelectedItem(int messageID)
+        {
+            await MvvmNanoIoC.Resolve<TutorScoutRestService>().DeleteMessage(messageID);
+            Reload();
+        }
+
+
+        public override void Initialize(Conversation parameter)
+        {
+            base.Initialize(parameter);
+
+            if (parameter != null)
+            {
+                conversation = parameter;
+                foreach (var item in parameter.Messages)
+                    Messages.Add(item);
+                NotifyPropertyChanged("Messages");
+            }
+
+
+            var master = (MasterDetailPage) Application.Current.MainPage;
+
+            _reload.Clicked += (sender, e) => { Reload(); };
+
+
+            AddToolBarItem();
+            MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
+        }
+
+
+        private void Reload()
+        {
+            MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();
+        }
+
+
+        public void RemoveToolBarItem()
+        {
+            var master = (MasterDetailPage) Application.Current.MainPage;
+            master.ToolbarItems.Clear();
+        }
     }
 }

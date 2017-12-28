@@ -14,7 +14,7 @@
                     </RowDefinition>
                     <RowDefinition Height="1*">
                     </RowDefinition>
-                       <RowDefinition Height="1*">
+                    <RowDefinition Height="1*">
                     </RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -33,7 +33,7 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-                    <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame Margin="5" Grid.Row="1" IsClippedToBounds="False" BackgroundColor="White" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="Center" Orientation="Vertical" Margin="5">
                         <Label Text="Email:" FontSize="20" HorizontalTextAlignment="Start">
                         </Label>

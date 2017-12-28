@@ -1,33 +1,28 @@
-﻿using MvvmNano;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using TutorScout24.Models;
-using TutorScout24.Services;
-using Xamarin.Forms;
+﻿using System.Windows.Input;
+using MvvmNano;
 using MvvmNano.Forms;
-using MvvmNano.Forms.MasterDetail;
-using System.Reflection;
-using System.Diagnostics;
-using System.Linq;
-using System.Diagnostics.Contracts;
 using TutorScout24.CustomData;
-using TutorScout24.Utils;
 using TutorScout24.Models.Chat;
+using TutorScout24.Services;
+using TutorScout24.Utils;
+using Xamarin.Forms;
+using MasterDetailPage = TutorScout24.Pages.MasterDetailPage;
 
 namespace TutorScout24.ViewModels
 {
-    public class MasterDetailViewModel : MvvmNano.MvvmNanoViewModel
+    public class MasterDetailViewModel : MvvmNanoViewModel
     {
-        public enum Mode { TUTOR, STUDENT };
+        public enum Mode
+        {
+            TUTOR,
+            STUDENT
+        }
+
         public static Mode CurrentMode = Mode.STUDENT;
         public ICommand ChangeCommand => new Command(Change);
 
         private void Change()
         {
-
-
             if (CurrentMode == Mode.STUDENT)
             {
                 CurrentMode = Mode.TUTOR;
@@ -39,10 +34,10 @@ namespace TutorScout24.ViewModels
                 Application.Current.Resources["MainColor"] = Color.FromHex("#EF5350");
             }
 
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            var navigation = (MvvmNanoNavigationPage)master.Detail;
-            IThemeable vc = (IThemeable)navigation.RootPage.BindingContext;
-            vc.ThemeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            var master = (MasterDetailPage) Application.Current.MainPage;
+            var navigation = (MvvmNanoNavigationPage) master.Detail;
+            var vc = (IThemeable) navigation.RootPage.BindingContext;
+            vc.ThemeColor = (Color) Application.Current.Resources["MainColor"];
 
 
             SetBarColor();
@@ -52,20 +47,18 @@ namespace TutorScout24.ViewModels
 
         public void OpenChat(string userName)
         {
-            Conversation conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(userName);
+            var conn = MvvmNanoIoC.Resolve<MessageService>().GetConversationById(userName);
             NavigateToAsync<ChatViewModel, Conversation>(conn);
         }
 
         /// <summary>
-        /// Sets the color of the bar.
+        ///     Sets the color of the bar.
         /// </summary>
         private void SetBarColor()
         {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            var navigation = (MvvmNanoNavigationPage)master.Detail;
-            navigation.BarBackgroundColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            var master = (MasterDetailPage) Application.Current.MainPage;
+            var navigation = (MvvmNanoNavigationPage) master.Detail;
+            navigation.BarBackgroundColor = (Color) Application.Current.Resources["MainColor"];
         }
-
-
     }
 }

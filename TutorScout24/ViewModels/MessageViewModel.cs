@@ -5,36 +5,50 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmNano;
-using MvvmNano.Forms;
-using TutorScout24.Models;
+using TutorScout24.CustomData;
 using TutorScout24.Models.Chat;
+using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using MasterDetailPage = TutorScout24.Pages.MasterDetailPage;
 
 namespace TutorScout24.ViewModels
 {
-    public class MessageViewModel : MvvmNano.MvvmNanoViewModel, IThemeable, IObserver<ObservableCollection<Conversation>>,IToolBarItem
+    public class MessageViewModel : MvvmNanoViewModel, IThemeable, IObserver<ObservableCollection<Conversation>>,
+        IToolBarItem
     {
+        private bool _addMode;
+
+
+        private ObservableCollection<Conversation> _conversations = new ObservableCollection<Conversation>();
+
+        private readonly ToolbarItem _createChat = new ToolbarItem
+        {
+            Text = "\uf067"
+        };
+
+
+        private bool _isRefreshing;
+
+        private string _newConversationUser;
+
+        private Color _themeColor;
+
         public MessageViewModel()
         {
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            _themeColor = (Color) Application.Current.Resources["MainColor"];
 
 
             AddToolBarItem();
 
-            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().Subscribe(this);
+            MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
 
             Load();
-
-
-
         }
 
-
-        private bool _isRefreshing = false;
         public bool IsRefreshing
         {
-            get { return _isRefreshing; }
+            get => _isRefreshing;
             set
             {
                 _isRefreshing = value;
@@ -58,15 +72,6 @@ namespace TutorScout24.ViewModels
             }
         }
 
-   
-
-
-        private void OpenCreateDialog()
-        {
-            AddMode = !AddMode;
-
-        }
-
         public ICommand OpenCreateCommand => new Command(OpenCreateDialog);
 
         public ICommand AddCommand
@@ -74,12 +79,90 @@ namespace TutorScout24.ViewModels
             get { return new Command(async () => AddConversation()); }
         }
 
+        public bool AddMode
+        {
+            get => _addMode;
+            set
+            {
+                _addMode = value;
+                NotifyPropertyChanged("AddMode");
+            }
+        }
+
+        public List<RestMessage> AllMessages { get; set; }
+
+        public Conversation SelectedItem { get; set; } = new Conversation();
+
+        public string NewConversationUser
+        {
+            get => _newConversationUser;
+            set
+            {
+                _newConversationUser = value;
+                NotifyPropertyChanged("NewConversationUser");
+            }
+        }
+
+        public ObservableCollection<Conversation> Conversations
+        {
+            get => _conversations;
+            set
+            {
+                _conversations = value;
+
+                foreach (var item in value)
+                    Debug.WriteLine(item.id);
+                NotifyPropertyChanged("Conversations");
+                Debug.WriteLine(value.Count);
+            }
+        }
+
+
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
+
+        public void OnNext(ObservableCollection<Conversation> value)
+        {
+            Conversations = new ObservableCollection<Conversation>(value);
+        }
+
+        public Color ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
+
+        public void AddToolBarItem()
+        {
+            var master = (MasterDetailPage) Application.Current.MainPage;
+
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_createChat);
+            _createChat.Command = OpenCreateCommand;
+        }
+
+
+        private void OpenCreateDialog()
+        {
+            AddMode = !AddMode;
+        }
+
 
         private async void AddConversation()
         {
             if (await UserExists())
             {
-                Conversation newConn = new Conversation();
+                var newConn = new Conversation();
                 newConn.id = NewConversationUser;
                 newConn.Messages = new List<Message>();
                 Conversations.Add(newConn);
@@ -89,151 +172,38 @@ namespace TutorScout24.ViewModels
             }
             else
             {
-                MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage(NewConversationUser, "Benutzer existiert nicht"));
+                MvvmNanoIoC.Resolve<IMessenger>()
+                    .Send(new DialogMessage(NewConversationUser, "Benutzer existiert nicht"));
                 NewConversationUser = "";
             }
         }
 
-        private ToolbarItem _createChat = new ToolbarItem
-        {
-            Text = "\uf067"
-        };
 
-
-
-        private bool _addMode;
-        public bool AddMode
-        {
-            get { return _addMode; }
-            set
-            {
-                _addMode = value;
-                NotifyPropertyChanged("AddMode");
-            }
-        }
-
-        public List<RestMessage> AllMessages
-        {
-            get;
-            set;
-        }
-
-        private Conversation _selectedItem = new Conversation();
-        public Conversation SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-
-                _selectedItem = value;
-
-
-            }
-        }
-
-        private string _newConversationUser;
-        public string NewConversationUser
-        {
-            get { return _newConversationUser; }
-            set
-            {
-                _newConversationUser = value;
-                NotifyPropertyChanged("NewConversationUser");
-            }
-        }
-
-    
         public void GoToChat(object sender, EventArgs e)
         {
-            if (_selectedItem != null)
-            {
+            if (SelectedItem != null)
                 NavigateToAsync<ChatViewModel, Conversation>(SelectedItem);
-            }
-        }
-       
-
-        private ObservableCollection<Conversation> _conversations = new ObservableCollection<Conversation>();
-        public ObservableCollection<Conversation> Conversations
-        {
-            get { return _conversations; }
-            set
-            {
-                _conversations = value;
-
-                foreach (Conversation item in value)
-                {
-                    Debug.WriteLine(item.id);
-                }
-                NotifyPropertyChanged("Conversations");
-                Debug.WriteLine(value.Count);
-            }
         }
 
         private void Load()
         {
-
-            MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.MessageService>().ReloadMessages();
-
+            MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();
         }
 
 
         private async Task<bool> UserExists()
         {
-            var UserInfo = await MvvmNano.MvvmNanoIoC.Resolve<TutorScout24.Services.TutorScoutRestService>().GetUserInfo(NewConversationUser);
+            var UserInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo(NewConversationUser);
             if (UserInfo != null)
-            {
                 return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return false;
         }
 
         public override void Dispose()
         {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            var master = (MasterDetailPage) Application.Current.MainPage;
             master.ToolbarItems.Remove(_createChat);
             base.Dispose();
-        }
-
-
-        public void OnCompleted()
-        {
-
-        }
-
-        public void OnError(Exception error)
-        {
-
-        }
-
-        public void OnNext(ObservableCollection<Conversation> value)
-        {
-            Conversations = new ObservableCollection<Conversation>(value);
-        }
-
-        public void AddToolBarItem()
-        {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-
-            master.ToolbarItems.Clear();
-            master.ToolbarItems.Add(_createChat);
-            _createChat.Command = OpenCreateCommand;
-        }
-
-        private Color _themeColor;
-        public Color ThemeColor
-        {
-            get { return _themeColor; }
-            set
-            {
-                _themeColor = value;
-
-                NotifyPropertyChanged("ThemeColor");
-
-            }
         }
     }
 }

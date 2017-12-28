@@ -3,34 +3,47 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using MvvmNano;
-using TutorScout24.Models;
+using TutorScout24.CustomData;
+using TutorScout24.Models.UserData;
 using TutorScout24.Services;
 using TutorScout24.Utils;
 using Xamarin.Forms;
+using MasterDetailPage = TutorScout24.Pages.MasterDetailPage;
 
 namespace TutorScout24.ViewModels
 {
-    public class ProfileViewModel : MvvmNanoViewModel, IThemeable,IToolBarItem
+    public class ProfileViewModel : MvvmNanoViewModel, IThemeable, IToolBarItem
     {
+        private string _age;
 
-        private ToolbarItem _EditSwitch;
-        private ToolbarItem _logout;
-        private MyUserInfo OldUserData; 
+
+        private bool _editMode;
+
+        private readonly ToolbarItem _EditSwitch;
+        private readonly ToolbarItem _logout;
+
+        private bool _passwordWasSaved;
+
+
+        private Color _themeColor;
+
+        private MyUserInfo _userInfo;
+
+        private bool _viewMode = true;
+        private MyUserInfo OldUserData;
 
         public ProfileViewModel()
         {
-            _themeColor = (Xamarin.Forms.Color)Application.Current.Resources["MainColor"];
+            _themeColor = (Color) Application.Current.Resources["MainColor"];
 
             GetMyUserInfo();
 
-            CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
+            var CService = MvvmNanoIoC.Resolve<CredentialService>();
 
             PasswordWasSaved = CService.DoCredentialsExist();
 
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+            var master = (MasterDetailPage) Application.Current.MainPage;
 
             _EditSwitch = new ToolbarItem
             {
@@ -39,11 +52,12 @@ namespace TutorScout24.ViewModels
 
             _logout = new ToolbarItem
             {
-                Text ="\uf08b"
+                Text = "\uf08b"
             };
 
-            _logout.Clicked += (sender, e) => {
-                ((ToolbarItem)sender).IsEnabled = false;
+            _logout.Clicked += (sender, e) =>
+            {
+                ((ToolbarItem) sender).IsEnabled = false;
                 RemovePass();
             };
 
@@ -58,7 +72,7 @@ namespace TutorScout24.ViewModels
                 {
                     _EditSwitch.Text = "\uf044";
                     NotifyPropertyChanged("UserInfo");
-                    UpdateProfile updateUser = new UpdateProfile();
+                    var updateUser = new UpdateProfile();
                     updateUser.firstName = _userInfo.firstName;
                     updateUser.lastName = _userInfo.lastName;
                     updateUser.gender = _userInfo.gender;
@@ -69,33 +83,14 @@ namespace TutorScout24.ViewModels
                 }
                 EditMode = !EditMode;
                 ViewMode = !EditMode;
-
             };
 
             AddToolBarItem();
-
         }
 
-
-
-        private void RemovePass()
-        {
-            
-            CredentialService CService = MvvmNanoIoC.Resolve<CredentialService>();
-            CService.DeleteCredentials();
-            PasswordWasSaved = false;
-
-            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Autom. Login deaktiviert", "Sie haben das gespeicherte Passwort entfernt."));
-
-          
-        }
-
-
-
-        private bool _editMode;
         public bool EditMode
         {
-            get { return _editMode; }
+            get => _editMode;
             set
             {
                 _editMode = value;
@@ -103,10 +98,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private bool _viewMode = true;
         public bool ViewMode
         {
-            get { return _viewMode; }
+            get => _viewMode;
             set
             {
                 _viewMode = value;
@@ -114,10 +108,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private bool _passwordWasSaved;
         public bool PasswordWasSaved
         {
-            get { return _passwordWasSaved; }
+            get => _passwordWasSaved;
             set
             {
                 _passwordWasSaved = value;
@@ -125,10 +118,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        private MyUserInfo _userInfo;
         public MyUserInfo UserInfo
         {
-            get { return _userInfo; }
+            get => _userInfo;
             set
             {
                 _userInfo = value;
@@ -140,18 +132,12 @@ namespace TutorScout24.ViewModels
 
         public List<string> Gender
         {
-            get
-            {
-                return Enum.GetNames(typeof(Genders)).Select(b => b).ToList();
-            }
+            get { return Enum.GetNames(typeof(Genders)).Select(b => b).ToList(); }
         }
 
-
-
-        private string _age;
         public string Age
         {
-            get { return _age; }
+            get => _age;
             set
             {
                 _age = value;
@@ -159,51 +145,61 @@ namespace TutorScout24.ViewModels
             }
         }
 
+        public Color ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                NotifyPropertyChanged("ThemeColor");
+            }
+        }
+
+        public void AddToolBarItem()
+        {
+            var master = (MasterDetailPage) Application.Current.MainPage;
+            master.ToolbarItems.Clear();
+            master.ToolbarItems.Add(_EditSwitch);
+
+            if (PasswordWasSaved)
+                master.ToolbarItems.Add(_logout);
+        }
+
+
+        private void RemovePass()
+        {
+            var CService = MvvmNanoIoC.Resolve<CredentialService>();
+            CService.DeleteCredentials();
+            PasswordWasSaved = false;
+
+            MvvmNanoIoC.Resolve<IMessenger>().Send(new DialogMessage("Autom. Login deaktiviert",
+                "Sie haben das gespeicherte Passwort entfernt."));
+        }
+
         private async void GetMyUserInfo()
         {
-
             var UInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetMyUserInfo();
             if (UInfo != null)
             {
                 UserInfo = UInfo;
                 OldUserData = UInfo;
-                Age =  DateTimeUtils.CalculateAge(DateTime.ParseExact(UserInfo.dayOfBirth,
-                                  "yyyyMMdd",
-                                   CultureInfo.InvariantCulture)).ToString();
+                Age = DateTimeUtils.CalculateAge(DateTime.ParseExact(UserInfo.dayOfBirth,
+                    "yyyyMMdd",
+                    CultureInfo.InvariantCulture)).ToString();
             }
-
-
         }
 
         public override void Dispose()
         {
             RemoveToolBarItem();
             base.Dispose();
-         
         }
 
-
-
-
-        private Color _themeColor;
-        public Color ThemeColor { get { return _themeColor; } set { _themeColor = value; NotifyPropertyChanged("ThemeColor"); } }
-
-        public void RemoveToolBarItem(){
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
+        public void RemoveToolBarItem()
+        {
+            var master = (MasterDetailPage) Application.Current.MainPage;
             master.ToolbarItems.Remove(_EditSwitch);
             master.ToolbarItems.Remove(_logout);
-        }
-
-        public void AddToolBarItem()
-        {
-            var master = (Pages.MasterDetailPage)Application.Current.MainPage;
-            master.ToolbarItems.Clear();
-            master.ToolbarItems.Add(_EditSwitch);
-
-            if (PasswordWasSaved)
-            {
-                master.ToolbarItems.Add(_logout);
-            }
         }
     }
 }

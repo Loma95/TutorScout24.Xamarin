@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundImage="background_screen.jpg"
-                           Title="Registrieren" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                           xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms"
-                           xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24"
-                           xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24"
-                           x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage"
-                           xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
-                           xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
+<forms:MvvmNanoContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundImage="background_screen.jpg" Title="Registrieren" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:MvvmNano.Forms;assembly=MvvmNano.Forms" xmlns:viewModels1="clr-namespace:TutorScout24.ViewModels;assembly=TutorScout24" xmlns:controls="clr-namespace:TutorScout24.Controls;assembly=TutorScout24" x:TypeArguments="viewModels1:RegisterViewModel" x:Class="TutorScout24.Pages.RegisterPage" xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions"
+    xmlns:local="clr-namespace:TutorScout24.Pages;assembly=TutorScout24">
     <forms:MvvmNanoContentPage.Content>
         <ScrollView>
-            <Frame Margin="15" Grid.Column="1" Grid.Row="1" IsClippedToBounds="False" HasShadow="True"
-                   CornerRadius="10" BackgroundColor="#BFFFFFFF" HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand">
+            <Frame Margin="15" Grid.Column="1" Grid.Row="1" IsClippedToBounds="False" HasShadow="True" CornerRadius="10" BackgroundColor="#BFFFFFFF" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -30,35 +21,23 @@
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
                     <Image Source="icon.ipng" Grid.Row="0" Margin="10" />
-                    <Entry   Grid.Row="1" TextColor="Black" HeightRequest="50"
-                                  Keyboard="Email" Placeholder="Email" Text="{Binding Email}" />
-                    <Entry  Grid.Row="2" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Benutzername" Text="{Binding UserName}" />
-                    <Entry   Grid.Row="3" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" />
-                    <Entry   Grid.Row="4" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Vorname" Text="{Binding FirstName}" />
-                    <Entry   Grid.Row="5" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Nachname" Text="{Binding LastName}" />
+                    <Entry Grid.Row="1" TextColor="Black" HeightRequest="50" Keyboard="Email" Placeholder="Email" Text="{Binding Email}" />
+                    <Entry Grid.Row="2" TextColor="Black" HeightRequest="50" Placeholder="Benutzername" Text="{Binding UserName}" />
+                    <Entry Grid.Row="3" TextColor="Black" HeightRequest="50" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" />
+                    <Entry Grid.Row="4" TextColor="Black" HeightRequest="50" Placeholder="Vorname" Text="{Binding FirstName}" />
+                    <Entry Grid.Row="5" TextColor="Black" HeightRequest="50" Placeholder="Nachname" Text="{Binding LastName}" />
                     <DatePicker Grid.Row="6" VerticalOptions="CenterAndExpand" Date="{Binding BirthDate}">
-         <DatePicker.Format>dd-MM-yyy</DatePicker.Format >
-         <DatePicker.MinimumDate>
-            
-         </DatePicker.MinimumDate>
-         <DatePicker.MaximumDate>
-         </DatePicker.MaximumDate>
-      </DatePicker>
-
-
-                    <Picker Grid.Row="7" Title="Geschlecht" ItemsSource="{Binding Gender}"
-                           SelectedItem="{Binding SelectedGender}" />
-                    <Entry   Grid.Row="8" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Beschreibung" Text="{Binding Description}" />
-                    <Entry   Grid.Row="9" TextColor="Black" HeightRequest="50"
-                                  Placeholder="Wohnort" Text="{Binding PlaceOfResidence}" />
-                    <Entry   Grid.Row="10" TextColor="Black" HeightRequest="50"
-                                  Placeholder="maximaler Abschluss" Text="{Binding Graduation}" />
-                     <Label Grid.Row="11" Text="{Binding ErrorText}" FontSize="15" HorizontalOptions="Center" IsVisible="{Binding IsNotValid}" TextColor="Red"/>
+                        <DatePicker.Format>dd-MM-yyy</DatePicker.Format>
+                        <DatePicker.MinimumDate>
+                        </DatePicker.MinimumDate>
+                        <DatePicker.MaximumDate>
+                        </DatePicker.MaximumDate>
+                    </DatePicker>
+                    <Picker Grid.Row="7" Title="Geschlecht" ItemsSource="{Binding Gender}" SelectedItem="{Binding SelectedGender}" />
+                    <Entry Grid.Row="8" TextColor="Black" HeightRequest="50" Placeholder="Beschreibung" Text="{Binding Description}" />
+                    <Entry Grid.Row="9" TextColor="Black" HeightRequest="50" Placeholder="Wohnort" Text="{Binding PlaceOfResidence}" />
+                    <Entry Grid.Row="10" TextColor="Black" HeightRequest="50" Placeholder="maximaler Abschluss" Text="{Binding Graduation}" />
+                    <Label Grid.Row="11" Text="{Binding ErrorText}" FontSize="15" HorizontalOptions="Center" IsVisible="{Binding IsNotValid}" TextColor="Red" />
                     <Button Grid.Row="12" Text="Jetzt loslegen!" Command="{Binding StartCommand}" />
                 </Grid>
             </Frame>

@@ -1,9 +1,7 @@
-﻿using System;
-namespace TutorScout24.Models
+﻿namespace TutorScout24.Models.UserData
 {
     public class UserInfo
     {
-
         public string userid { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }

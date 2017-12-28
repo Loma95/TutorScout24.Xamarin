@@ -10,6 +10,7 @@ using TutorScout24.Utils;
 using Xamarin.Auth;
 using Xamarin.Forms;
 using System.Net.Http;
+using TutorScout24.Models.UserData;
 
 namespace TutorScout24.ViewModels
 {
@@ -85,8 +86,6 @@ namespace TutorScout24.ViewModels
 
         private async Task LoginAsync()
         {
-
-
 
             CheckAuthentication auth = new CheckAuthentication();
             auth.authentication = new Authentication();
