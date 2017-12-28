@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace TutorScout24.Controls
 {
+    // thanks to https://github.com/winstongubantes/Xamarin.Forms/tree/master/CustomPopupDialog
     [ContentProperty("DialogContent")]
     public partial class PopUpDialogView : ContentView
     {

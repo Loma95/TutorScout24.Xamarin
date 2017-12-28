@@ -26,17 +26,12 @@ namespace TutorScout24.Pages
         {
             base.OnBindingContextChanged();
 
-            FeedListViewModel VM = (FeedListViewModel)BindingContext;
-
             try
             {
-                MyListView.ItemTapped += new SingleClick(VM.GoToDetailPage).Click;
-   
+                MyListView.ItemTapped += new SingleClick(ViewModel.GoToDetailPage).Click;
             }
-            catch 
-            {
-
-            }
+            catch (Exception e)
+            { }
 
         }
 

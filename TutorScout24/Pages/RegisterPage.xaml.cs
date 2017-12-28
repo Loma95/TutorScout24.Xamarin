@@ -18,7 +18,6 @@ namespace TutorScout24.Pages
 
         public override void Dispose()
         {
-
             MvvmNanoIoC.Resolve<IMessenger>().Unsubscribe<DialogMessage>(this);
             base.Dispose();
         }

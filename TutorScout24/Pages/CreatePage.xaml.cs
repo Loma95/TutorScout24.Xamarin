@@ -15,10 +15,13 @@ namespace TutorScout24.Pages
             InitializeComponent();
 
             selectButton.Clicked += (sender, e) => {
+                //check for the Mode
                 if (ViewModel.ShowMap)
                 {
+                    // save Location
                     ViewModel.PositionSelected(MyMap2.VisibleRegion.Center.Latitude, MyMap2.VisibleRegion.Center.Longitude);
                 }else{
+                    // get location from adress string
                     ViewModel.SetLocationWithAdress();
                 }
             };
@@ -30,6 +33,7 @@ namespace TutorScout24.Pages
             ViewModel.RemoveToolbarItem();
             return base.OnBackButtonPressed();
         }
+
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();

@@ -16,21 +16,15 @@ namespace TutorScout24.Pages
 
           
         }
-
-
-     
-      protected override void OnAppearing()
+        protected override void OnAppearing()
         {
-            MessageViewModel VM = (MessageViewModel)BindingContext;
-            VM.AddToolBarItem();
+            ViewModel.AddToolBarItem();
             base.OnAppearing();
         }
 
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-
-            MessageViewModel VM = (MessageViewModel)BindingContext;
             try
             {
                 List.ItemTapped += new SingleClick(ViewModel.GoToChat).Click;

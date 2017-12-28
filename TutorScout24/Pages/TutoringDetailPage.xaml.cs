@@ -24,9 +24,6 @@ namespace TutorScout24.Pages
    
 		    };
 		    UserGrid.Children.Add(label, 1, 0);
-
-
-
 		}
 
 	    protected override void OnBindingContextChanged()

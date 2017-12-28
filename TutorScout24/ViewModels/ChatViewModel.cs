@@ -25,9 +25,6 @@ namespace TutorScout24.ViewModels
         }
 
 
-
-
-
         public Action<Message> OnMessageAdded { get; set; }
 
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
@@ -148,8 +145,6 @@ namespace TutorScout24.ViewModels
 
             }
 
-
-
             var master = (Pages.MasterDetailPage)Application.Current.MainPage;
 
             _reload.Clicked += (sender, e) =>
@@ -158,9 +153,8 @@ namespace TutorScout24.ViewModels
             };
 
 
-            AddToolBarItem();           
+            AddToolBarItem();
             MvvmNano.MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
-
 
         }
 

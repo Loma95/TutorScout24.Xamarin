@@ -14,10 +14,6 @@ namespace TutorScout24
 
             InitializeComponent();
 
-
         }
-
-      
-
     }
 }

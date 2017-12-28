@@ -5,20 +5,11 @@
              x:Name="ParentLayout">
   <ContentView.Content>
     <Grid>
-      <!--Background of the pop-up-->
       <StackLayout x:Name="PopUpBgLayout"
                     IsVisible="False"
                     BackgroundColor="Black"
                     Opacity="0.5" >
-        <!--<Image
-          HorizontalOptions="FillAndExpand"
-          VerticalOptions="FillAndExpand"
-          Aspect="Fill"
-          Source="shadow_9.png">
-        </Image>-->
       </StackLayout>
-
-      <!--The Pop-Up Dialog-->
 
 
       <StackLayout x:Name="PopUpDialogLayout"

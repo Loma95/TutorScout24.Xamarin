@@ -27,6 +27,11 @@ namespace TutorScout24.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
+        /// <summary>
+        /// Creates the user.
+        /// </summary>
+        /// <returns>The user.</returns>
+        /// <param name="usr">Usr.</param>
         public async Task<string> CreateUser(User usr)
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/create";
@@ -45,6 +50,11 @@ namespace TutorScout24.Services
 
         }
 
+        /// <summary>
+        /// Sends the message.
+        /// </summary>
+        /// <returns>The message.</returns>
+        /// <param name="msg">Message.</param>
         public async Task<bool> SendMessage(SendMessage msg)
         {
             msg.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
@@ -63,7 +73,11 @@ namespace TutorScout24.Services
 
         }
 
-
+        /// <summary>
+        /// Deletes the message.
+        /// </summary>
+        /// <returns>The message.</returns>
+        /// <param name="messageId">Message identifier.</param>
         public async Task<bool> DeleteMessage(int messageId)
         {
             DeleteMessage dm = new Models.DeleteMessage();
@@ -87,7 +101,10 @@ namespace TutorScout24.Services
         }
 
 
-
+        /// <summary>
+        /// Gets the received messages.
+        /// </summary>
+        /// <returns>The received messages.</returns>
         public async Task<List<RestMessage>> GetReceivedMessages()
         {
             RestCommandWithAuthentication cmd = new RestCommandWithAuthentication();
@@ -109,6 +126,10 @@ namespace TutorScout24.Services
 
         }
 
+        /// <summary>
+        /// Gets the sent messages.
+        /// </summary>
+        /// <returns>The sent messages.</returns>
         public async Task<List<RestMessage>> GetSentMessages()
         {
             RestCommandWithAuthentication cmd = new RestCommandWithAuthentication();
@@ -129,7 +150,11 @@ namespace TutorScout24.Services
 
         }
 
-
+        /// <summary>
+        /// Updates the user.
+        /// </summary>
+        /// <returns>The user.</returns>
+        /// <param name="cmd">Cmd.</param>
         public async Task<bool> UpdateUser(RestCommandWithAuthentication cmd)
         {
             cmd.authentication = MvvmNano.MvvmNanoIoC.Resolve<Authentication>();
@@ -154,7 +179,10 @@ namespace TutorScout24.Services
 
         }
 
-
+        /// <summary>
+        /// Gets the user infos.
+        /// </summary>
+        /// <returns>The user infos.</returns>
         public async Task<UserInfos> GetUserInfos()
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/info";
@@ -173,6 +201,11 @@ namespace TutorScout24.Services
             }
         }
 
+        /// <summary>
+        /// check if user can authenticate against the backend
+        /// </summary>
+        /// <returns>The authenticate.</returns>
+        /// <param name="auth">Auth.</param>
         public async Task<bool> CanAuthenticate(CheckAuthentication auth)
         {
             RestUrl = "http://tutorscout24.vogel.codes:3000/tutorscout24/api/v1/user/checkAuthentication";
@@ -192,6 +225,10 @@ namespace TutorScout24.Services
             return false;
         }
 
+        /// <summary>
+        /// Gets my user info.
+        /// </summary>
+        /// <returns>The my user info.</returns>
         public async Task<MyUserInfo> GetMyUserInfo()
         {
 
@@ -216,6 +253,11 @@ namespace TutorScout24.Services
             }
         }
 
+        /// <summary>
+        /// Gets the user info.
+        /// </summary>
+        /// <returns>The user info.</returns>
+        /// <param name="username">Username.</param>
         public async Task<UserInfo> GetUserInfo(string username)
         {
 
@@ -240,6 +282,10 @@ namespace TutorScout24.Services
             }
         }
 
+        /// <summary>
+        /// Gets the tutorings.
+        /// </summary>
+        /// <returns>The tutorings.</returns>
         public async Task<List<Tutoring>> GetTutorings()
         {
             Debug.WriteLine("Getting Offers");
@@ -282,6 +328,11 @@ namespace TutorScout24.Services
             }
         }
 
+        /// <summary>
+        /// Creates the tutoring.
+        /// </summary>
+        /// <returns>The tutoring.</returns>
+        /// <param name="ct">Ct.</param>
         public async Task<bool> CreateTutoring(CreateTutoring ct)
         {
             LocationService serv = LocationService.getInstance();
@@ -304,6 +355,10 @@ namespace TutorScout24.Services
             return response.IsSuccessStatusCode;
         }
 
+        /// <summary>
+        /// Gets my tutorings.
+        /// </summary>
+        /// <returns>The my tutorings.</returns>
         public async Task<List<MyTutoring>> GetMyTutorings()
         {
             RestCommandWithAuthentication auth = new RestCommandWithAuthentication()

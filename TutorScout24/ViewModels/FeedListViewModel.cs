@@ -62,8 +62,6 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
-
         public FeedListViewModel()
         {
             GetTutoringsAsync(MasterDetailViewModel.CurrentMode);

@@ -22,9 +22,8 @@ namespace TutorScout24.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            FeedMapViewModel vM = (FeedMapViewModel) BindingContext;
-            vM.Map = RequestMap;
-            vM.SetPinsAsync();
+            ViewModel.Map = RequestMap;
+            ViewModel.SetPinsAsync();
            
         }
     }

@@ -14,11 +14,7 @@ namespace TutorScout24
         {
 
             InitializeComponent();
-
-
-       BindingContext = new TutorialsViewModel();
-
-    }
+        }
       
         public override void OnViewModelSet()
         {
@@ -32,8 +28,6 @@ namespace TutorScout24
             ViewModel.AddToolBarItem();
             ViewModel.SetTutorings();
         }
-
-
 
     }
 }

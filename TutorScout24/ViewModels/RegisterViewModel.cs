@@ -182,9 +182,6 @@ namespace TutorScout24.ViewModels
         private void Start()
         {
 
-      
-            
-
             Type type = this.GetType();
             var properties = type.GetProperties();
 

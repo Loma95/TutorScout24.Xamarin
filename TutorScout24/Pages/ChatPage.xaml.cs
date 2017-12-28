@@ -19,21 +19,18 @@ namespace TutorScout24.Pages
             send.FontFamily = "fontawesome";
             send.Text = "\xf1d8";
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-        protected override void OnBindingContextChanged()
-        {
-            base.OnBindingContextChanged();
 
-        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             ViewModel.RemoveToolBarItem();
         }
 
+        /// <summary>
+        /// when the delete action is clicked
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         void OnDelete(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
@@ -41,7 +38,7 @@ namespace TutorScout24.Pages
             ViewModel.DeleteSelectedItem(selMess.ID);
         }
 
-    
+
 
         public override void OnViewModelSet()
         {
@@ -49,19 +46,17 @@ namespace TutorScout24.Pages
 
             ChatViewModel vM = (ChatViewModel)BindingContext;
 
+            // scroll down if message is added
             vM.OnMessageAdded = message =>
             {
-
                 Device.BeginInvokeOnMainThread(() =>
                 {
-
-
                     MessagesList.ScrollTo(vM.Messages[vM.Messages.Count - 1], ScrollToPosition.MakeVisible, true);
 
                 });
 
             };
-
+            //scroll down on appearing
             if (vM.Messages.Count > 0)
                 MessagesList.ScrollTo(vM.Messages[vM.Messages.Count - 1], ScrollToPosition.MakeVisible, false);
         }
