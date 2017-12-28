@@ -60,7 +60,7 @@ namespace TutorScout24
                 SetUpMainPage<LoginViewModel>();
             }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 SetUpMainPage<LoginViewModel>();
             }

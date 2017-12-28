@@ -85,11 +85,16 @@ namespace TutorScout24.ViewModels
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// gets the reloaded conversation
+        /// </summary>
+        /// <param name="value">Value.</param>
         public void OnNext(Conversation value)
         {
             IsRefreshing = false;
             Messages = new ObservableCollection<Message>(value.Messages);
             NotifyPropertyChanged("Messages");
+            //scroll down
             if (Messages.Count > 1)
                 OnMessageAdded?.DynamicInvoke(Messages[Messages.Count - 1]);
         }
@@ -110,6 +115,7 @@ namespace TutorScout24.ViewModels
             }
         }
 
+
         public void AddToolBarItem()
         {
             var master = (MasterDetailPage) Application.Current.MainPage;
@@ -117,7 +123,9 @@ namespace TutorScout24.ViewModels
             master.ToolbarItems.Add(_reload);
         }
 
-
+        /// <summary>
+        /// Sends the message async and notifies the listview
+        /// </summary>
         private async void SendMessageAsync()
         {
             if (CurrentMessage != "")
@@ -134,14 +142,21 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Deletes the selected item and reload
+        /// </summary>
+        /// <param name="messageID">Message identifier.</param>
         public async void DeleteSelectedItem(int messageID)
         {
             await MvvmNanoIoC.Resolve<TutorScoutRestService>().DeleteMessage(messageID);
             Reload();
         }
 
-
+        /// <summary>
+        /// Initialize the chat with current messages  
+        /// </summary>
+        /// <returns>The initialize.</returns>
+        /// <param name="parameter">Parameter.</param>
         public override void Initialize(Conversation parameter)
         {
             base.Initialize(parameter);
@@ -164,7 +179,9 @@ namespace TutorScout24.ViewModels
             MvvmNanoIoC.Resolve<MessageService>().Subscribe(this);
         }
 
-
+        /// <summary>
+        /// Gets the new messages from the observing conversation
+        /// </summary>
         private void Reload()
         {
             MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();

@@ -41,7 +41,7 @@ namespace TutorScout24.Pages
                 ViewModel.AddToolBarItem();
 
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 
             }

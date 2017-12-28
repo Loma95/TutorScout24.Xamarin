@@ -31,10 +31,10 @@ namespace TutorScout24.Droid
             if (e.NewElement != null)
             {
                 var formsMap = (CustomMap)e.NewElement;
-              
-                    customPins = formsMap.CustomPins;
-                    Control.GetMapAsync(this);
-               
+
+                customPins = formsMap.CustomPins;
+                Control.GetMapAsync(this);
+
             }
         }
 
@@ -65,7 +65,7 @@ namespace TutorScout24.Droid
 
 
             //Go to the Chat
-            TutorScout24.ViewModels.MasterDetailViewModel vM = (TutorScout24.ViewModels.MasterDetailViewModel)  Xamarin.Forms.Application.Current.MainPage.BindingContext;
+            TutorScout24.ViewModels.MasterDetailViewModel vM = (TutorScout24.ViewModels.MasterDetailViewModel)Xamarin.Forms.Application.Current.MainPage.BindingContext;
             vM.OpenChat(customPin.UserName);
 
         }
@@ -83,14 +83,14 @@ namespace TutorScout24.Droid
                     throw new Exception("Custom pin not found");
                 }
 
-           
+
 
                 view = inflater.Inflate(Resource.Layout.ItemInfoView, null);
-                
+
 
                 var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoTitle);
                 var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoSubTitle);
-       
+
 
                 if (infoTitle != null)
                 {
@@ -120,7 +120,7 @@ namespace TutorScout24.Droid
                     return pin;
                 }
             }
-            return null;;
+            return null; ;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace TutorScout24.ViewModels
 
         public MessageViewModel()
         {
-            _themeColor = (Color) Application.Current.Resources["MainColor"];
+            _themeColor = (Color)Application.Current.Resources["MainColor"];
 
 
             AddToolBarItem();
@@ -76,7 +76,7 @@ namespace TutorScout24.ViewModels
 
         public ICommand AddCommand
         {
-            get { return new Command(async () => AddConversation()); }
+            get { return new Command(() => AddConversation()); }
         }
 
         public bool AddMode
@@ -109,11 +109,7 @@ namespace TutorScout24.ViewModels
             set
             {
                 _conversations = value;
-
-                foreach (var item in value)
-                    Debug.WriteLine(item.id);
                 NotifyPropertyChanged("Conversations");
-                Debug.WriteLine(value.Count);
             }
         }
 
@@ -144,7 +140,7 @@ namespace TutorScout24.ViewModels
 
         public void AddToolBarItem()
         {
-            var master = (MasterDetailPage) Application.Current.MainPage;
+            var master = (MasterDetailPage)Application.Current.MainPage;
 
             master.ToolbarItems.Clear();
             master.ToolbarItems.Add(_createChat);
@@ -157,7 +153,9 @@ namespace TutorScout24.ViewModels
             AddMode = !AddMode;
         }
 
-
+        /// <summary>
+        /// Adds a new conversation with the user you want to contact
+        /// </summary>
         private async void AddConversation()
         {
             if (await UserExists())
@@ -178,19 +176,29 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Gos to chat.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         public void GoToChat(object sender, EventArgs e)
         {
             if (SelectedItem != null)
                 NavigateToAsync<ChatViewModel, Conversation>(SelectedItem);
         }
 
+        /// <summary>
+        /// get all the conversations from the service
+        /// </summary>
         private void Load()
         {
             MvvmNanoIoC.Resolve<MessageService>().ReloadMessages();
         }
 
-
+        /// <summary>
+        /// if user exists return true else false
+        /// </summary>
+        /// <returns>The exists.</returns>
         private async Task<bool> UserExists()
         {
             var UserInfo = await MvvmNanoIoC.Resolve<TutorScoutRestService>().GetUserInfo(NewConversationUser);
@@ -201,7 +209,7 @@ namespace TutorScout24.ViewModels
 
         public override void Dispose()
         {
-            var master = (MasterDetailPage) Application.Current.MainPage;
+            var master = (MasterDetailPage)Application.Current.MainPage;
             master.ToolbarItems.Remove(_createChat);
             base.Dispose();
         }

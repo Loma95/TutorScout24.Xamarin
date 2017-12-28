@@ -82,7 +82,7 @@ namespace TutorScout24.ViewModels
             }
         }
 
-        public ICommand LoginCommand => new Command(async () => LoginAsync());
+        public ICommand LoginCommand => new Command(async () => await LoginAsync());
 
         private async Task LoginAsync()
         {

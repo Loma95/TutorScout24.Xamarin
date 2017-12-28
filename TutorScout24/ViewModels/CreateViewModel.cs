@@ -190,7 +190,7 @@ namespace TutorScout24.ViewModels
         public DateTime MaxDate { get; set; } = DateTime.Today.AddDays(100);
 
         /// <summary>
-        /// Add Switch for creation to toolbar
+        /// Add Switch for creation to the toolbar
         /// </summary>
         public void AddToolBarItem()
         {
@@ -244,12 +244,20 @@ namespace TutorScout24.ViewModels
             SetPos();
         }
 
+        /// <summary>
+        /// save the coordinates if someone clicks the button in map mode
+        /// </summary>
+        /// <param name="lat">Lat.</param>
+        /// <param name="lon">Lon.</param>
         public void PositionSelected(double lat, double lon)
         {
             _ct.latitude = lat;
             _ct.longitude = lon;
 
+            //close dialog
             DialogView.IsVisible = false;
+
+            //display selected coordinates to the user
             SelectedText = lat + " " + lon;
             NotifyPropertyChanged("SelectedText");
         }
@@ -287,9 +295,9 @@ namespace TutorScout24.ViewModels
             RemoveToolbarItem();
         }
 
-
-        #region "SelectPosition"
-
+        /// <summary>
+        /// Sets the location with adress.
+        /// </summary>
         public async void SetLocationWithAdress()
         {
             if (Adress != null)
@@ -333,7 +341,9 @@ namespace TutorScout24.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// helper for the map
+        /// </summary>
         private async void SetPos()
         {
             var tempPos = await LocationService.GetInstance().GetPosition();
@@ -343,7 +353,5 @@ namespace TutorScout24.ViewModels
 
 
         public SelectionMap map;
-
-        #endregion
     }
 }
