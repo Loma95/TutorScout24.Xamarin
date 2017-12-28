@@ -11,5 +11,5 @@ var searchData=
   ['getsentmessages',['GetSentMessages',['../class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service.html#a1efcdc1fe62961a72d354f4fe5170d18',1,'TutorScout24::Services::TutorScoutRestService']]],
   ['gettutorings',['GetTutorings',['../class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service.html#a6324b2d5d4b9a9fe5dd7592417e8917c',1,'TutorScout24::Services::TutorScoutRestService']]],
   ['getuserinfo',['GetUserInfo',['../class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service.html#a0a9cee645967c8be7d723b29778fafae',1,'TutorScout24::Services::TutorScoutRestService']]],
-  ['getuserinfos',['GetUserInfos',['../class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service.html#a42b608e3ef3bb174d1a101e4b36046c3',1,'TutorScout24::Services::TutorScoutRestService']]]
+  ['gotochat',['GoToChat',['../class_tutor_scout24_1_1_view_models_1_1_message_view_model.html#ad4ca19244326d28fed25ee600004c936',1,'TutorScout24::ViewModels::MessageViewModel']]]
 ];

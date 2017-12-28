@@ -3,7 +3,7 @@
 Inheritance diagram for Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_tutor_scout24_1_1_view_models_1_1_create_view_model}
+\includegraphics[height=1.723077cm]{class_tutor_scout24_1_1_view_models_1_1_create_view_model}
 \end{center}
 \end{figure}
 \subsection*{Public Types}
@@ -20,12 +20,11 @@ enum {\bfseries Pos\+Selection} \{ {\bfseries Adresse},
 \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_aa617a300b1411a5a4f28b5b72bf177d6}{Create\+View\+Model}} ()
 \begin{DoxyCompactList}\small\item\em Set Title according to mode, subscribe to mode changes to change title later and add toolbaritems \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_afa96e3fde1e926d0bc909a817a8bdaaf}{Add\+Tool\+Bar\+Item}} ()
-\begin{DoxyCompactList}\small\item\em Add Switch for creation to toolbar \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Add Switch for creation to the toolbar \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}{Pos\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em When Position Select is pressed, open dialog for selection \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}} 
-void {\bfseries Position\+Selected} (double lat, double lon)
-\item 
+void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}{Position\+Selected}} (double lat, double lon)
+\begin{DoxyCompactList}\small\item\em save the coordinates if someone clicks the button in map mode \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ab469edfe5a4c4dcb0e7b50ab93572b3d}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ab469edfe5a4c4dcb0e7b50ab93572b3d}} 
 override void {\bfseries Initialize} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_tutorings_1_1_create_tutoring}{Create\+Tutoring}} parameter)
 \item 
@@ -35,9 +34,8 @@ void {\bfseries Remove\+Toolbar\+Item} ()
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a712c72048ee79fd25c170838487fffc1}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a712c72048ee79fd25c170838487fffc1}} 
 override void {\bfseries Dispose} ()
 \item 
-\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}} 
-async void {\bfseries Set\+Location\+With\+Adress} ()
-\end{DoxyCompactItemize}
+async void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}{Set\+Location\+With\+Adress}} ()
+\begin{DoxyCompactList}\small\item\em Sets the location with adress. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -122,12 +120,29 @@ Set Title according to mode, subscribe to mode changes to change title later and
 
 
 
-Add Switch for creation to toolbar 
+Add Switch for creation to the toolbar 
 
 
 
 Implements \mbox{\hyperlink{interface_tutor_scout24_1_1_utils_1_1_i_tool_bar_item}{Tutor\+Scout24.\+Utils.\+I\+Tool\+Bar\+Item}}.
 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a07d907ea55e16e56744a3ccf787f9be0}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Position\+Selected@{Position\+Selected}}
+\index{Position\+Selected@{Position\+Selected}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
+\subsubsection{\texorpdfstring{Position\+Selected()}{PositionSelected()}}
+{\footnotesize\ttfamily void Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model.\+Position\+Selected (\begin{DoxyParamCaption}\item[{double}]{lat,  }\item[{double}]{lon }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+save the coordinates if someone clicks the button in map mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & Lat.\\
+\hline
+{\em lon} & Lon.\\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_a5002145ea2bc96424f202caee461f810}} 
 \index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Pos\+Sel@{Pos\+Sel}}
 \index{Pos\+Sel@{Pos\+Sel}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
@@ -137,6 +152,16 @@ Implements \mbox{\hyperlink{interface_tutor_scout24_1_1_utils_1_1_i_tool_bar_ite
 
 
 When Position Select is pressed, open dialog for selection 
+
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}\label{class_tutor_scout24_1_1_view_models_1_1_create_view_model_ad2021b575ac16ac9877b1b29e2fe8e6a}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}!Set\+Location\+With\+Adress@{Set\+Location\+With\+Adress}}
+\index{Set\+Location\+With\+Adress@{Set\+Location\+With\+Adress}!Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Create\+View\+Model}}
+\subsubsection{\texorpdfstring{Set\+Location\+With\+Adress()}{SetLocationWithAdress()}}
+{\footnotesize\ttfamily async void Tutor\+Scout24.\+View\+Models.\+Create\+View\+Model.\+Set\+Location\+With\+Adress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the location with adress. 
 
 
 

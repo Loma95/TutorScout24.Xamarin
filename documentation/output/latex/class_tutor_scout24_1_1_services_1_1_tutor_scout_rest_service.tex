@@ -11,17 +11,19 @@ Class for communication with Tutor\+Scout backend
 async Task$<$ string $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ac044899ad494ff54cd90ad36f038b993}{Create\+User}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_user}{User}} usr)
 \begin{DoxyCompactList}\small\item\em Create a new User \end{DoxyCompactList}\item 
 async Task$<$ bool $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_aaccc0997a181be6e1076fc74b433ab80}{Send\+Message}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_send_message}{Send\+Message}} msg)
-\begin{DoxyCompactList}\small\item\em Send a Message \end{DoxyCompactList}\item 
-async Task$<$ bool $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ae48165852bad47c2a312a392e413e846}{Delete\+Message}} (int message\+Id)
-\begin{DoxyCompactList}\small\item\em Deletes a message \end{DoxyCompactList}\item 
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ae48165852bad47c2a312a392e413e846}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ae48165852bad47c2a312a392e413e846}} 
+async Task$<$ bool $>$ {\bfseries Delete\+Message} (int message\+Id)
+\item 
 async Task$<$ List$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_rest_message}{Rest\+Message}} $>$ $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a57ffeca07f199af8f3c5ca8bf8a34b35}{Get\+Received\+Messages}} ()
 \begin{DoxyCompactList}\small\item\em Get recieved messages for currently logged in user \end{DoxyCompactList}\item 
 async Task$<$ List$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_rest_message}{Rest\+Message}} $>$ $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a1efcdc1fe62961a72d354f4fe5170d18}{Get\+Sent\+Messages}} ()
-\begin{DoxyCompactList}\small\item\em Get sent messages for currently logged in user \end{DoxyCompactList}\item 
+\item 
 async Task$<$ bool $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a6f94210e708fe30a18c712db702d13d9}{Update\+User}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_rest_command_with_authentication}{Rest\+Command\+With\+Authentication}} cmd)
-\begin{DoxyCompactList}\small\item\em Update User \end{DoxyCompactList}\item 
-async Task$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_user_infos}{User\+Infos}} $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a42b608e3ef3bb174d1a101e4b36046c3}{Get\+User\+Infos}} ()
-\begin{DoxyCompactList}\small\item\em Gets User Infos \end{DoxyCompactList}\item 
+\item 
+\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a42b608e3ef3bb174d1a101e4b36046c3}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a42b608e3ef3bb174d1a101e4b36046c3}} 
+async Task$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_user_infos}{User\+Infos}} $>$ {\bfseries Get\+User\+Infos} ()
+\item 
 async Task$<$ bool $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ad896af0129cadfceb66a35932bed7086}{Can\+Authenticate}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_check_authentication}{Check\+Authentication}} auth)
 \begin{DoxyCompactList}\small\item\em Checks auth \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_my_user_info}{My\+User\+Info}} $>$ \mbox{\hyperlink{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a4a4407306592193566c761cb66332bb5}{Get\+My\+User\+Info}} ()
@@ -96,19 +98,11 @@ Create a new User
 \begin{DoxyReturn}{Returns}
 true if successfull, error string otherwise
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ae48165852bad47c2a312a392e413e846}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_ae48165852bad47c2a312a392e413e846}} 
-\index{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}!Delete\+Message@{Delete\+Message}}
-\index{Delete\+Message@{Delete\+Message}!Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}}
-\subsubsection{\texorpdfstring{Delete\+Message()}{DeleteMessage()}}
-{\footnotesize\ttfamily async Task$<$bool$>$ Tutor\+Scout24.\+Services.\+Tutor\+Scout\+Rest\+Service.\+Delete\+Message (\begin{DoxyParamCaption}\item[{int}]{message\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Deletes a message 
+summary$>$ Send a Message 
 
 
 \begin{DoxyParams}{Parameters}
-{\em message\+Id} & Number of message to delete\\
+{\em msg} & Message to send\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -153,18 +147,26 @@ Get recieved messages for currently logged in user
 \begin{DoxyReturn}{Returns}
 List of Rest\+Messages that the user has recieved.
 \end{DoxyReturn}
+summary$>$ Get sent messages for currently logged in user 
+
+\begin{DoxyReturn}{Returns}
+List of Rest\+Messages that the user has sent.
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a1efcdc1fe62961a72d354f4fe5170d18}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a1efcdc1fe62961a72d354f4fe5170d18}} 
 \index{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}!Get\+Sent\+Messages@{Get\+Sent\+Messages}}
 \index{Get\+Sent\+Messages@{Get\+Sent\+Messages}!Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}}
 \subsubsection{\texorpdfstring{Get\+Sent\+Messages()}{GetSentMessages()}}
 {\footnotesize\ttfamily async Task$<$List$<$\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_rest_message}{Rest\+Message}}$>$ $>$ Tutor\+Scout24.\+Services.\+Tutor\+Scout\+Rest\+Service.\+Get\+Sent\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+summary$>$ Update User 
 
 
-Get sent messages for currently logged in user 
-
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Authentication\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-List of Rest\+Messages that the user has sent.
+true if successfull, false otherwise
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a6324b2d5d4b9a9fe5dd7592417e8917c}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a6324b2d5d4b9a9fe5dd7592417e8917c}} 
 \index{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}!Get\+Tutorings@{Get\+Tutorings}}
@@ -197,32 +199,17 @@ Get User info for input string
 \begin{DoxyReturn}{Returns}
 user info
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a42b608e3ef3bb174d1a101e4b36046c3}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_a42b608e3ef3bb174d1a101e4b36046c3}} 
-\index{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}!Get\+User\+Infos@{Get\+User\+Infos}}
-\index{Get\+User\+Infos@{Get\+User\+Infos}!Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}}
-\subsubsection{\texorpdfstring{Get\+User\+Infos()}{GetUserInfos()}}
-{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_user_data_1_1_user_infos}{User\+Infos}}$>$ Tutor\+Scout24.\+Services.\+Tutor\+Scout\+Rest\+Service.\+Get\+User\+Infos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Gets User Infos 
-
-\begin{DoxyReturn}{Returns}
-User Info
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_aaccc0997a181be6e1076fc74b433ab80}\label{class_tutor_scout24_1_1_services_1_1_tutor_scout_rest_service_aaccc0997a181be6e1076fc74b433ab80}} 
 \index{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}!Send\+Message@{Send\+Message}}
 \index{Send\+Message@{Send\+Message}!Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service@{Tutor\+Scout24\+::\+Services\+::\+Tutor\+Scout\+Rest\+Service}}
 \subsubsection{\texorpdfstring{Send\+Message()}{SendMessage()}}
 {\footnotesize\ttfamily async Task$<$bool$>$ Tutor\+Scout24.\+Services.\+Tutor\+Scout\+Rest\+Service.\+Send\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_send_message}{Send\+Message}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Send a Message 
+summary$>$ Deletes a message 
 
 
 \begin{DoxyParams}{Parameters}
-{\em msg} & Message to send\\
+{\em message\+Id} & Number of message to delete\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -234,17 +221,10 @@ true if successfull, false otherwise
 \subsubsection{\texorpdfstring{Update\+User()}{UpdateUser()}}
 {\footnotesize\ttfamily async Task$<$bool$>$ Tutor\+Scout24.\+Services.\+Tutor\+Scout\+Rest\+Service.\+Update\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_rest_command_with_authentication}{Rest\+Command\+With\+Authentication}}}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+summary$>$ Gets User Infos 
 
-
-Update User 
-
-
-\begin{DoxyParams}{Parameters}
-{\em cmd} & Authentication\\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if successfull, false otherwise
+User Info
 \end{DoxyReturn}
 
 

@@ -3,7 +3,7 @@
 Inheritance diagram for Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=1.489362cm]{class_tutor_scout24_1_1_view_models_1_1_chat_view_model}
+\includegraphics[height=1.329114cm]{class_tutor_scout24_1_1_view_models_1_1_chat_view_model}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -15,18 +15,16 @@ void {\bfseries On\+Completed} ()
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_afc70f8ee9455d3765624d067d693470f}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_afc70f8ee9455d3765624d067d693470f}} 
 void {\bfseries On\+Error} (Exception error)
 \item 
-\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}} 
-void {\bfseries On\+Next} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} value)
-\item 
+void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}{On\+Next}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} value)
+\begin{DoxyCompactList}\small\item\em gets the reloaded conversation \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a0d72982d5dc685381d2ffa5bdb03df65}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a0d72982d5dc685381d2ffa5bdb03df65}} 
 void {\bfseries Add\+Tool\+Bar\+Item} ()
 \item 
-\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}} 
-async void {\bfseries Delete\+Selected\+Item} (int message\+ID)
-\item 
-\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}} 
-override void {\bfseries Initialize} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} parameter)
-\item 
+async void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}{Delete\+Selected\+Item}} (int message\+ID)
+\begin{DoxyCompactList}\small\item\em Deletes the selected item and reload \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}{Initialize}} (\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}} parameter)
+\begin{DoxyCompactList}\small\item\em Initialize the chat with current messages ~\newline
+\end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a434a4b1fbb043203975b27ae572a12e0}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a434a4b1fbb043203975b27ae572a12e0}} 
 void {\bfseries Remove\+Tool\+Bar\+Item} ()
 \end{DoxyCompactItemize}
@@ -68,6 +66,58 @@ string {\bfseries Conversation\+Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mb
 \mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_af93ff2eaaf62c8ee2b5645ee6a9608e9}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_af93ff2eaaf62c8ee2b5645ee6a9608e9}} 
 Color {\bfseries Theme\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_a7e4aeb5984779594082267c2158eec89}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}!Delete\+Selected\+Item@{Delete\+Selected\+Item}}
+\index{Delete\+Selected\+Item@{Delete\+Selected\+Item}!Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}}
+\subsubsection{\texorpdfstring{Delete\+Selected\+Item()}{DeleteSelectedItem()}}
+{\footnotesize\ttfamily async void Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model.\+Delete\+Selected\+Item (\begin{DoxyParamCaption}\item[{int}]{message\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deletes the selected item and reload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message\+ID} & Message identifier.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_ad47d924ce1ce699407a990b361813b40}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily override void Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model.\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}}}]{parameter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialize the chat with current messages ~\newline
+
+
+\begin{DoxyReturn}{Returns}
+The initialize.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & Parameter.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}\label{class_tutor_scout24_1_1_view_models_1_1_chat_view_model_aeec126e30abb6c8b598f2e6654c1b6a9}} 
+\index{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}!On\+Next@{On\+Next}}
+\index{On\+Next@{On\+Next}!Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model@{Tutor\+Scout24\+::\+View\+Models\+::\+Chat\+View\+Model}}
+\subsubsection{\texorpdfstring{On\+Next()}{OnNext()}}
+{\footnotesize\ttfamily void Tutor\+Scout24.\+View\+Models.\+Chat\+View\+Model.\+On\+Next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tutor_scout24_1_1_models_1_1_chat_1_1_conversation}{Conversation}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets the reloaded conversation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value.\\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
